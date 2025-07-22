@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ayarlar - Gensenta B2B Sağlık Dashboard</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#8B5CF6',
+                        secondary: '#10B981'
+                    },
+                    borderRadius: {
+                        'none': '0px',
+                        'sm': '4px',
+                        DEFAULT: '8px',
+                        'md': '12px',
+                        'lg': '16px',
+                        'xl': '20px',
+                        '2xl': '24px',
+                        '3xl': '32px',
+                        'full': '9999px',
+                        'button': '8px'
+                    },
+                    fontFamily: {
+                        'sans': ['Poppins', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" rel="stylesheet">
+    <style>
+        :where([class^="ri-"])::before {
+            content: "\f3c2";
+        }
+
+        input[type="number"]::-webkit-inner-spin-button,
+        input[type="number"]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 min-h-screen font-sans">
+    <div class="flex">
+        <aside class="w-64 bg-[#FAFAFA] h-screen fixed left-0 top-0">
+            <div class="p-6">
+                <div class="flex items-center space-x-2">
+                    <img src="https://static.readdy.ai/image/d5ef78e5e20d4f96c7b7ffa896bb004b/ccb0b2b2c534e04738a6b0e1744323e0.png" alt="Gensenta" class="h-12">
+                </div>
+            </div>
+            <nav class="px-4 space-y-2">
+                <a href="index.html" data-readdy="true" class="flex items-center space-x-3 px-4 py-3 text-gray-900 hover:bg-gray-50 rounded-lg">
+                    <img src="https://static.readdy.ai/image/d5ef78e5e20d4f96c7b7ffa896bb004b/0e0127857fbb04e1630e32c8cfb1d25d.png" alt="Navigation Icons" class="w-6 h-6 object-contain">
+                    <span class=" fs-14 text-black font-semibold ">Kullanım Raporları</span>
+                </a>
+                <a href="Kullanici_Listesi.html" class="flex items-center space-x-3 px-4 py-3 text-gray-900 hover:bg-gray-50 rounded-lg">
+                    <img src="https://static.readdy.ai/image/d5ef78e5e20d4f96c7b7ffa896bb004b/5f94f499b4dc1f2f687bc36cfdca0562.png" alt="Navigation Icons" class="w-6 h-6 object-contain">
+                    <span class=" fs-14 text-black font-semibold ">Kullanıcı Listesi</span>
+                </a>
+                <a href="Paket-Yönetimi-Sayfası.html" class="flex items-center space-x-3 px-4 py-3 text-gray-900 hover:bg-gray-50 rounded-lg">
+                    <img src="https://static.readdy.ai/image/d5ef78e5e20d4f96c7b7ffa896bb004b/9689c8baeebc623103ff203b0e85d6f2.png" alt="Navigation Icons" class="w-6 h-6 object-contain">
+                    <span class=" fs-14 text-black font-semibold ">Paketler</span>
+                </a>
+                <a href="#" class="flex items-center gap-2 text-black rounded-lg ml-2" style="width:227px; height:56px; padding:16px 8px; border-radius:8px; background:#EEE7FA; opacity:1;">
+                    <img src="https://static.readdy.ai/image/d5ef78e5e20d4f96c7b7ffa896bb004b/0fce52ba3ea7a53b517342c076eb57f6.png" alt="Navigation Icons" class="w-6 h-6 object-contain">
+                    <span class=" fs-14 text-black font-semibold ">Hesap Ayarları</span>
+                </a>
+            </nav>
+        </aside>
+        <main class="flex-1 min-h-screen" style="margin-left: 243px;">
+            <div class="p-6 bg-[#FAFAFA]">
+                <div class="flex items-center justify-end mb-6">
+                    <img src="https://static.readdy.ai/image/d5ef78e5e20d4f96c7b7ffa896bb004b/0f748dae3ea01706738c73b4ada168e8.png" alt="Eczacibasi" class="w-32 h-auto">
+                </div>
+                <div class="max-w-3xl mx-auto">
+                    <h1 class="text-2xl font-bold text-gray-900 mb-8 ml-4">Hesap Ayarları</h1>
+                    <div class=" mb-6">
+                        <div class="flex">
+                            <button class="mx-4 py-2 text-black border-b-2 border-black fs-16 font-semibold">Profil Bilgileri</button>
+                            <button class="mx-4 py-2 text-[#A0B2CD] hover:text-gray-700 fs-16 font-semibold">Şifre Bilgileri</button>
+                        </div>
+                    </div>
+                    <div id="profileForm">
+                        <div class="grid grid-cols-2 gap-y-6 gap-x-16 ml-3">
+                            <div class="bg-white border-2 border-[#E0E8F0] rounded px-4 py-1 w-[368px] h-[48px]">
+                                <label class="block text-xs text-primary">İsim Soyisim</label>
+                                <input type="text" placeholder="Placeholder" class="w-full p-0 text-base bg-transparent border-none focus:outline-none placeholder:text-black">
+                            </div>
+                            <div class="bg-white border-2 border-[#E0E8F0] rounded px-4 py-1 w-[368px] h-[48px]">
+                                <label class="block text-xs text-primary">Telefon Numarası</label>
+                                <input type="tel" placeholder="Placeholder" class="w-full p-0 text-base bg-transparent border-none focus:outline-none placeholder:text-black">
+                            </div>
+                            <div class="bg-white border-2 border-[#E0E8F0] rounded px-4 py-1 w-[368px] h-[48px]">
+                                <label class="block text-xs text-primary">TC Kimlik Numarası</label>
+                                <input type="number" placeholder="Placeholder" class="w-full p-0 text-base bg-transparent border-none focus:outline-none placeholder:text-black">
+                            </div>
+                            <div class="bg-white border-2 border-[#E0E8F0] rounded px-4 py-1 w-[368px] h-[48px]">
+                                <label class="block text-xs text-primary">Mail Adresi</label>
+                                <input type="email" placeholder="Placeholder" class="w-full p-0 text-base bg-transparent border-none focus:outline-none placeholder:text-black">
+                            </div>
+                        </div>
+                        <div id="profile-buttons" class="flex justify-end space-x-4 mt-8  hidden" style="width: 790px;">
+                            <button class="flex items-center justify-center text-sm font-semibold" style="width: 101px; height: 40px; border-radius: 32px; padding: 10px 24px; border: 2px solid #E0E8F0;">Vazgeç</button>
+                            <button class="flex items-center justify-center text-white text-sm font-semibold whitespace-nowrap" style="width: 173px; height: 40px; border-radius: 32px; padding: 10px 24px; background: #121212;">Değişiklikleri Kaydet</button>
+                        </div>
+                    </div>
+                    <div id="passwordForm" class="hidden">
+                        <div class="grid grid-cols-1 gap-6 ml-3">
+                            <div>
+                                <div class="flex items-center bg-white rounded border-2 border-[#E0E8F0] px-6" style="width: 464px; height: 48px;">
+                                    <input type="password" placeholder="Mevcut Şifre" class="flex-1 p-0 bg-transparent border-none focus:ring-0 focus:outline-none">
+                                    <img src="https://static.readdy.ai/image/d5ef78e5e20d4f96c7b7ffa896bb004b/b56b5bef6dd633483ecc5d35273e9943.png" alt="toggle password" class="w-5 h-5 cursor-pointer">
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex items-center bg-white rounded border-2 border-[#E0E8F0] px-6" style="width: 464px; height: 48px;">
+                                    <input type="password" placeholder="Şifre" class="flex-1 p-0 bg-transparent border-none focus:ring-0 focus:outline-none">
+                                    <img src="https://static.readdy.ai/image/d5ef78e5e20d4f96c7b7ffa896bb004b/b56b5bef6dd633483ecc5d35273e9943.png" alt="toggle password" class="w-5 h-5 cursor-pointer">
+                                </div>
+                                <p class="text-sm text-gray-500 mt-1 fs-12 text-[#394355] ">Şifreniz en az 6 karakter olmalı, 1 harf ve 1 rakam içermelidir.</p>
+                            </div>
+                            <div>
+                                <div class="flex items-center bg-white rounded border-2 border-[#E0E8F0] px-6" style="width: 464px; height: 48px;">
+                                    <input type="password" placeholder="Şifre Tekrar" class="flex-1 p-0 bg-transparent border-none focus:ring-0 focus:outline-none">
+                                    <img src="https://static.readdy.ai/image/d5ef78e5e20d4f96c7b7ffa896bb004b/b56b5bef6dd633483ecc5d35273e9943.png" alt="toggle password" class="w-5 h-5 cursor-pointer">
+                                </div>
+                            </div>
+                            <div class="flex justify-end space-x-2 mt-4 ml-1" style="width: 462px;">
+                                <button class="flex items-center justify-center text-sm font-semibold" style="width: 101px; height: 40px; border-radius: 32px; padding: 10px 24px; border: 2px solid #E0E8F0;">Vazgeç</button>
+                                <button class="flex items-center justify-center text-white text-sm font-semibold whitespace-nowrap" style="width: 173px; height: 40px; border-radius: 32px; padding: 10px 24px; background: #121212;">Parolayı Güncelle</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const profileTab = document.querySelector('button:first-of-type');
+            const passwordTab = document.querySelector('button:last-of-type');
+            const profileForm = document.getElementById('profileForm');
+            const passwordForm = document.getElementById('passwordForm');
+            const togglePasswordIcons = document.querySelectorAll('#passwordForm img');
+            togglePasswordIcons.forEach(icon => {
+                icon.addEventListener('click', function() {
+                    const input = this.previousElementSibling;
+                    if (input.type === 'password') {
+                        input.type = 'text';
+                    } else {
+                        input.type = 'password';
+                    }
+                });
+            });
+            profileTab.addEventListener('click', function() {
+                profileTab.classList.add('text-black', 'border-b-2', 'border-black');
+                profileTab.classList.remove('text-gray-500');
+                passwordTab.classList.remove('text-black', 'border-b-2', 'border-black');
+                passwordTab.classList.add('text-[#A0B2CD]');
+                profileForm.classList.remove('hidden');
+                passwordForm.classList.add('hidden');
+            });
+            passwordTab.addEventListener('click', function() {
+                passwordTab.classList.add('text-black', 'border-b-2', 'border-black', 'fs-16', 'font-semibold');
+                passwordTab.classList.remove('text-gray-500');
+                profileTab.classList.remove('text-black', 'border-b-2', 'border-black');
+                profileTab.classList.add('text-[#A0B2CD]');
+                passwordForm.classList.remove('hidden');
+                profileForm.classList.add('hidden');
+            });
+
+            const profileFormInputs = document.querySelectorAll('#profileForm input');
+            const profileButtons = document.getElementById('profile-buttons');
+
+            function showProfileButtons() {
+                profileButtons.classList.remove('hidden');
+            }
+
+            profileFormInputs.forEach(input => {
+                input.addEventListener('input', showProfileButtons);
+                input.addEventListener('focus', showProfileButtons);
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gensenta - B2B Sağlık Dashboard</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>tailwind.config = { theme: { extend: { colors: { primary: '#8B5CF6', secondary: '#10B981' }, borderRadius: { 'none': '0px', 'sm': '4px', DEFAULT: '8px', 'md': '12px', 'lg': '16px', 'xl': '20px', '2xl': '24px', '3xl': '32px', 'full': '9999px', 'button': '8px' }, fontFamily: { sans: ['Poppins', 'sans-serif'] } } } }</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.5.0/echarts.min.js"></script>
+    <style>
+        :where([class^="ri-"])::before {
+            content: "\f3c2";
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 min-h-screen font-sans">
+    <div class="flex">
+        <aside class="w-64 bg-[#FAFAFA] h-screen fixed left-0 top-0 ">
+            <div class="p-6">
+                <div class="flex items-center space-x-2">
+                    <img src="https://static.readdy.ai/image/d5ef78e5e20d4f96c7b7ffa896bb004b/ccb0b2b2c534e04738a6b0e1744323e0.png"
+                        alt="Gensenta" class="h-12">
+                </div>
+            </div>
+            <nav class="px-4 space-y-2">
+                <a href="#" class="flex items-center space-x-3 px-4 py-3 text-gray-900 hover:bg-gray-50 rounded-lg">
+                    <img src="https://static.readdy.ai/image/d5ef78e5e20d4f96c7b7ffa896bb004b/0e0127857fbb04e1630e32c8cfb1d25d.png"
+                        alt="Navigation Icons" class="w-6 h-6 object-contain">
+                    <span>Ekip Ritmi</span>
+                </a>
+                <a href="#" class="flex items-center space-x-3 px-4 py-3 text-gray-900 hover:bg-gray-50 rounded-lg">
+                    <img src="https://static.readdy.ai/image/d5ef78e5e20d4f96c7b7ffa896bb004b/0fce52ba3ea7a53b517342c076eb57f6.png"
+                        alt="Navigation Icons" class="w-6 h-6 object-contain">
+                    <span>Kullanıcı Listesi</span>
+                </a>
+                <a href="#" class="flex items-center space-x-3 px-4 py-3 text-gray-900 hover:bg-gray-50 rounded-lg">
+                    <img src="https://static.readdy.ai/image/d5ef78e5e20d4f96c7b7ffa896bb004b/9689c8baeebc623103ff203b0e85d6f2.png"
+                        alt="Navigation Icons" class="w-6 h-6 object-contain">
+                    <span>Paketler</span>
+                </a>
+                <a href="#" class="flex items-center space-x-3 px-4 py-3 text-gray-900 hover:bg-gray-50 rounded-lg">
+                    <img src="https://static.readdy.ai/image/d5ef78e5e20d4f96c7b7ffa896bb004b/0fce52ba3ea7a53b517342c076eb57f6.png"
+                        alt="Navigation Icons" class="w-6 h-6 object-contain">
+                    <span>Ayarlar</span>
+                </a>
+            </nav>
+        </aside>
+        <main class="ml-64 flex-1 min-h-screen">
+            <div class="p-6 bg-[#FAFAFA]">
+                <!-- Üstte Gensenta ve Eczacıbaşı logoları hizalı flex satırı -->
+                <div class="flex items-center justify-between mb-4">
+                    <div class="flex items-center space-x-2">
+                        <!--<img src="https://static.readdy.ai/image/d5ef78e5e20d4f96c7b7ffa896bb004b/ccb0b2b2c534e04738a6b0e1744323e0.png" alt="Gensenta" class="h-12"> -->
+                    </div>
+                    <img src="https://static.readdy.ai/image/d5ef78e5e20d4f96c7b7ffa896bb004b/0f748dae3ea01706738c73b4ada168e8.png" alt="Eczacibasi" class="h-10 mr-2">
+                </div>
+                <!-- Banner ve Eczacıbaşı logosu hizalı -->
+                <div class="relative mb-4">
+                    <div class="rounded-2xl p-2 text-white overflow-hidden h-[140px]"
+                        style="background-image: url('https://static.readdy.ai/image/d5ef78e5e20d4f96c7b7ffa896bb004b/554688d5afb3d7f7a14bf48cb293f37f.png'); background-size: contain; background-position: center; background-repeat: no-repeat;">
+                        <div class="relative z-10">
+                        </div>
+                    </div>
+                    <!--<img src="https://static.readdy.ai/image/d5ef78e5e20d4f96c7b7ffa896bb004b/0f748dae3ea01706738c73b4ada168e8.png" alt="Eczacibasi" class="absolute top-2 right-4 h-12"> -->
+                </div>
+                <div class="flex items-center justify-between mb-4 mt-1">
+                    <div class="flex items-center space-x-4">
+                        <div class="relative">
+                            <button
+                                class="w-[256px] h-[49px] bg-white text-gray-900 px-6 py-2 rounded-lg flex flex-col items-start justify-center shadow-sm hover:shadow-md transition-shadow border-2 border-[#E0E8F0]">
+                                <span class="text-xs text-gray-500">Şehir</span>
+                                <div class="flex items-center justify-between w-full">
+                                    <span class="text-base font-medium">İstanbul</span>
+                                    <div class="w-5 h-5 flex items-center justify-center">
+                                        <i class="ri-arrow-down-s-line text-gray-400"></i>
+                                    </div>
+                                </div>
+                            </button>
+                        </div>
+                        <div class="relative">
+                            <button
+                                class="w-[256px] h-[49px] bg-white text-gray-900 px-6 py-2 rounded-lg flex flex-col items-start justify-center shadow-sm hover:shadow-md transition-shadow border-2 border-[#E0E8F0]">
+                                <span class="text-xs text-gray-500">Ekip</span>
+                                <div class="flex items-center justify-between w-full">
+                                    <span class="text-base font-medium">Tasarım Ekibi</span>
+                                    <div class="w-5 h-5 flex items-center justify-center">
+                                        <i class="ri-arrow-down-s-line text-gray-400"></i>
+                                    </div>
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <button
+                            class="bg-white text-gray-700 px-6 py-3 rounded-full flex items-center space-x-3 border border-black hover:bg-gray-50">
+                            <span class="text-gray-600">Dışa Aktar</span>
+                            <div class="w-5 h-5 flex items-center justify-center">
+                                <img src="https://static.readdy.ai/image/d5ef78e5e20d4f96c7b7ffa896bb004b/336c2c72307ad0fb2020fc3a6d80e112.png"
+                                    alt="Export" class="w-4 h-4">
+                            </div>
+                        </button>
+                        <button
+                            class="bg-[#7853E1] text-white px-8 py-3 rounded-full flex items-center space-x-3 hover:bg-[#6D28D9]">
+                            <span>Çözüm Ekibi</span>
+                            <div class="w-5 h-5 flex items-center justify-center">
+                                <img src="https://static.readdy.ai/image/d5ef78e5e20d4f96c7b7ffa896bb004b/b0f9ebd82903c72b2ae64d0e35e05ad6.png"
+                                    alt="Solution Team" class="w-5 h-5">
+                            </div>
+                        </button>
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-6 mb-8">
+                    <div class="bg-white rounded-xl p-6 shadow-sm border-2 border-[#E0E8F0]">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-4">
+                                <img
+                                src="https://static.readdy.ai/image/d5ef78e5e20d4f96c7b7ffa896bb004b/66acb27976c767cc82248fa5ac23dc96.png"
+                                alt="User Icon"
+                                class="w-8 h-8"
+                              />
+                                <span class="text-3xl font-bold text-gray-900">450</span>
+                                <span class="text-gray-500">Kullanıcı</span>
+                            </div>
+                            <div class="h-12 w-px bg-gray-200"></div>
+                            <div class="flex items-center space-x-4">
+                                <img
+                                src="https://static.readdy.ai/image/d5ef78e5e20d4f96c7b7ffa896bb004b/994275ae80f338f59eb1e0320b2f275e.png"
+                                alt="User Icon"
+                                class="w-6 h-6"
+                              />
+                                <span class="text-3xl font-bold text-gray-900">350</span>
+                                <span class="text-gray-500">Aktif Kullanıcı</span>
+                                <div class="flex items-center text-green-500 text-sm ml-2">
+                                    <span>+8%</span>
+                                    <i class="ri-arrow-up-line ml-1"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-xl p-6 shadow-sm border-2 border-[#E0E8F0]">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-4">
+                                <div class="w-12 h-12 flex items-center justify-center">
+                                    <img
+                                    src="https://static.readdy.ai/image/d5ef78e5e20d4f96c7b7ffa896bb004b/384d224a5b0f0aa50366f906da199ec7.png"
+                                    alt="Gift Icon"
+                                    class="w-8 h-8"
+                                  />
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <span class="text-3xl font-bold text-gray-900">450</span>
+                                    <span class="text-gray-500">Toplam Hak</span>
+                                </div>
+                            </div>
+                            <div class="h-12 w-px bg-gray-200 ml-3"></div>
+                            <div class="flex items-center space-x-2">
+                                <div class="w-12 h-12 flex items-center justify-center">
+                                    <img
+                                    src="https://static.readdy.ai/image/d5ef78e5e20d4f96c7b7ffa896bb004b/dceb852c01592c1447ecdaae258438c0.png"
+                                    alt="Gift Icon"
+                                    class="w-6 h-6"
+                                  />
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <span class="text-3xl font-bold text-gray-900">350</span>
+                                    <span class="text-gray-500">Kullanılan Hak</span>
+                                    <div class="flex items-center text-green-500 text-sm ml-2">
+                                        <span>+8%</span>
+                                        <i class="ri-arrow-up-line ml-1"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="space-y-8 mb-8">
+                    <div class="bg-white rounded-xl p-6 shadow-sm border-2 border-[#E0E8F0]">
+                        <div class="mb-6">
+                            <div class="flex space-x-1 mb-4">
+                                <div class="bg-orange-500 h-8 flex-1 rounded-sm"></div>
+                                <div class="bg-green-600 h-8 w-20 rounded-sm"></div>
+                                <div class="bg-blue-600 h-8 w-16 rounded-sm"></div>
+                                <div class="bg-teal-500 h-8 w-16 rounded-sm"></div>
+                                <div class="bg-purple-500 h-8 w-20 rounded-sm"></div>
+                            </div>
+                        </div>
+                        <div class="space-y-3">
+                            <div class="flex items-center space-x-4">
+                                <div class="flex items-center space-x-2 w-48">
+                                    <div class="w-2 h-2 bg-orange-500 rounded-full"></div>
+                                    <span class="text-sm font-bold text-orange-500">Mental Sağlık</span>
+                                </div>
+                                <span class="text-sm font-bold text-gray-900">200 seans (52.1%)</span>
+                            </div>
+                            <div class="flex items-center space-x-4">
+                                <div class="flex items-center space-x-2 w-48">
+                                    <div class="w-2 h-2 bg-green-600 rounded-full"></div>
+                                    <span class="text-sm font-bold text-green-600">Beslenme ve Diyet</span>
+                                </div>
+                                <span class="text-sm font-bold text-gray-900">30 seans (52.1%)</span>
+                            </div>
+                            <div class="flex items-center space-x-4">
+                                <div class="flex items-center space-x-2 w-48">
+                                    <div class="w-2 h-2 bg-blue-600 rounded-full"></div>
+                                    <span class="text-sm font-bold text-blue-600">Doktor Hizmetleri</span>
+                                </div>
+                                <span class="text-sm font-bold text-gray-900">30 seans (52.1%)</span>
+                            </div>
+                            <div class="flex items-center space-x-4">
+                                <div class="flex items-center space-x-2 w-48">
+                                    <div class="w-2 h-2 bg-teal-500 rounded-full"></div>
+                                    <span class="text-sm font-bold text-teal-500">Doğum Koçu</span>
+                                </div>
+                                <span class="text-sm font-bold text-gray-900">30 seans (52.1%)</span>
+                            </div>
+                            <div class="flex items-center space-x-4">
+                                <div class="flex items-center space-x-2 w-48">
+                                    <div class="w-2 h-2 bg-purple-500 rounded-full"></div>
+                                    <span class="text-sm font-bold text-purple-500">Emzirme Danışmanı</span>
+                                </div>
+                                <span class="text-sm font-bold text-gray-900">30 seans (52.1%)</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-xl p-6 shadow-sm mt-8 border-2 border-[#E0E8F0]">
+                        <div class="flex items-center justify-between mb-6">
+                            <h3 class="text-lg font-semibold text-gray-900">Görüşme Sayısı</h3>
+                            <div class="flex bg-white rounded-full border border-gray-200 p-1">
+                                <button
+                                    class="px-4 py-1.5 bg-black text-white rounded-full text-sm whitespace-nowrap">Aylık</button>
+                                <button
+                                    class="px-4 py-1.5 text-gray-500 text-sm whitespace-nowrap hover:text-gray-700">Haftalık</button>
+                            </div>
+                        </div>
+                        <div id="viewsChart" style="height: 300px;"></div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl p-6 shadow-sm border-2 border-[#E0E8F0]">
+                    <div class="flex items-center justify-between mb-6">
+                        <h3 class="text-lg font-semibold text-gray-900">Memnuniyet Durumu</h3>
+                        <div class="flex space-x-2">
+                            <button onclick="updateSatisfaction(this, '4.82')"
+                                class="satisfaction-btn px-3 py-1 text-gray-600 text-sm hover:bg-gray-100 rounded-md !rounded-button whitespace-nowrap">Tümü</button>
+                            <button onclick="updateSatisfaction(this, '4.52')"
+                                class="satisfaction-btn px-3 py-1 bg-gray-900 text-white rounded-md text-sm !rounded-button whitespace-nowrap">Psikolog</button>
+                            <button onclick="updateSatisfaction(this, '4.65')"
+                                class="satisfaction-btn px-3 py-1 text-gray-600 text-sm hover:bg-gray-100 rounded-md !rounded-button whitespace-nowrap">Diyetisyen</button>
+                            <button onclick="updateSatisfaction(this, '4.71')"
+                                class="satisfaction-btn px-3 py-1 text-gray-600 text-sm hover:bg-gray-100 rounded-md !rounded-button whitespace-nowrap">Kadın
+                                Sağlığı</button>
+                            <button onclick="updateSatisfaction(this, '4.48')"
+                                class="satisfaction-btn px-3 py-1 text-gray-600 text-sm hover:bg-gray-100 rounded-md !rounded-button whitespace-nowrap">Doktor
+                                Hizmetleri</button>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-4 mb-6">
+                        <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
+                            <i class="ri-thumb-up-line text-green-600 text-xl"></i>
+                        </div>
+                        <div>
+                            <div class="text-3xl font-bold text-gray-900">4.52%</div>
+                            <div class="text-gray-500">Memnuniyet</div>
+                        </div>
+                    </div>
+                    <div class="flex space-x-2" id="satisfaction-bars">
+                        <div class="h-3 w-24 rounded-full bg-emerald-400"></div>
+                        <div class="h-3 w-24 rounded-full bg-emerald-400"></div>
+                        <div class="h-3 w-24 rounded-full bg-emerald-400"></div>
+                        <div class="h-3 w-24 rounded-full bg-emerald-400"></div>
+                        <div class="h-3 w-24 rounded-full bg-slate-200"></div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script id="satisfaction-script">
+        function updateSatisfaction(button, rate) {
+            document.querySelectorAll('.satisfaction-btn').forEach(btn => {
+                btn.classList.remove('bg-gray-900', 'text-white');
+                btn.classList.add('text-gray-600');
+            });
+            button.classList.remove('text-gray-600');
+            button.classList.add('bg-gray-900', 'text-white');
+            document.querySelector('.text-3xl.font-bold').textContent = rate + '%';
+            const rateNum = parseFloat(rate);
+            const bars = document.querySelectorAll('#satisfaction-bars div');
+            bars.forEach((bar, index) => {
+                if (index < Math.floor(rateNum)) {
+                    bar.classList.remove('bg-slate-200');
+                    bar.classList.add('bg-emerald-400');
+                } else {
+                    bar.classList.remove('bg-emerald-400');
+                    bar.classList.add('bg-slate-200');
+                }
+            });
+        }
+    </script>
+    <script id="chart-script">
+        document.addEventListener('DOMContentLoaded', function () {
+            const chartDom = document.getElementById('viewsChart');
+            const myChart = echarts.init(chartDom);
+            const option = {
+                animation: false,
+                grid: {
+                    left: 0,
+                    right: 0,
+                    top: 20,
+                    bottom: 40,
+                    containLabel: true
+                },
+                xAxis: {
+                    type: 'category',
+                    data: ['Eylül', 'Ekim', 'Kasım', 'Aralık', 'Ocak', 'Şubat', 'Mart'],
+                    axisLine: {
+                        show: false
+                    },
+                    axisTick: {
+                        show: false
+                    },
+                    axisLabel: {
+                        color: '#6B7280'
+                    }
+                },
+                yAxis: {
+                    type: 'value',
+                    max: 25000,
+                    axisLine: {
+                        show: false
+                    },
+                    axisTick: {
+                        show: false
+                    },
+                    axisLabel: {
+                        color: '#6B7280',
+                        formatter: function (value) {
+                            if (value >= 1000) {
+                                return (value / 1000) + 'k';
+                            }
+                            return value;
+                        }
+                    },
+                    splitLine: {
+                        lineStyle: {
+                            color: '#E5E7EB',
+                            width: 1
+                        }
+                    }
+                },
+                series: [{
+                    data: [15000, 18000, 6000, 16000, 12000, 17000, 22000],
+                    type: 'bar',
+                    itemStyle: {
+                        color: '#7B8FB0',
+                        borderRadius: [4, 4, 0, 0]
+                    },
+                    barWidth: '25%'
+                }],
+                tooltip: {
+                    trigger: 'axis',
+                    backgroundColor: 'rgba(255, 255, 255, 0.9)',
+                    borderColor: '#E5E7EB',
+                    textStyle: {
+                        color: '#1F2937'
+                    }
+                }
+            };
+            myChart.setOption(option);
+        });
+    </script>
+</body>
+
+</html>

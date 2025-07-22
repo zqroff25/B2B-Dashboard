@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paketler - Gensenta B2B Sağlık Dashboard</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#8B5CF6',
+                        secondary: '#10B981'
+                    },
+                    borderRadius: {
+                        'none': '0px',
+                        'sm': '4px',
+                        DEFAULT: '8px',
+                        'md': '12px',
+                        'lg': '16px',
+                        'xl': '20px',
+                        '2xl': '24px',
+                        '3xl': '32px',
+                        'full': '9999px',
+                        'button': '8px'
+                    },
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" rel="stylesheet">
+    <style>
+        :where([class^="ri-"])::before {
+            content: "\f3c2";
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 min-h-screen font-sans">
+    <div class="flex">
+        <aside class="w-64 bg-[#FAFAFA] h-screen fixed left-0 top-0">
+            <div class="p-6">
+                <div class="flex items-center space-x-2">
+                    <img src="https://static.readdy.ai/image/d5ef78e5e20d4f96c7b7ffa896bb004b/ccb0b2b2c534e04738a6b0e1744323e0.png" alt="Gensenta" class="h-12">
+                </div>
+            </div>
+            <nav class="px-4 space-y-2">
+                <a href="index.html" data-readdy="true" class="flex items-center space-x-3 px-4 py-3 text-gray-900 hover:bg-gray-50 rounded-lg">
+                    <img src="https://static.readdy.ai/image/d5ef78e5e20d4f96c7b7ffa896bb004b/0e0127857fbb04e1630e32c8cfb1d25d.png" alt="Navigation Icons" class="w-6 h-6 object-contain">
+                    <span class=" fs-14 text-black font-semibold ">Kullanım Raporları</span>
+                </a>
+                <a href="Kullanici_Listesi.html" class="flex items-center space-x-3 px-4 py-3 text-gray-900 hover:bg-gray-50 rounded-lg">
+                    <img src="https://static.readdy.ai/image/d5ef78e5e20d4f96c7b7ffa896bb004b/5f94f499b4dc1f2f687bc36cfdca0562.png" alt="Navigation Icons" class="w-6 h-6 object-contain">
+                    <span class=" fs-14 text-black font-semibold ">Kullanıcı Listesi</span>
+                </a>
+                <a href="Paket-Yönetimi-Sayfası.html" class="flex items-center gap-2 text-black rounded-lg ml-2" style="width:227px; height:56px; padding:16px 8px; border-radius:8px; background:#EEE7FA; opacity:1;">
+                    <img src="https://static.readdy.ai/image/d5ef78e5e20d4f96c7b7ffa896bb004b/9689c8baeebc623103ff203b0e85d6f2.png" alt="Navigation Icons" class="w-6 h-6 object-contain">
+                    <span class=" fs-14 text-black font-semibold ">Paketler</span>
+                </a>
+                <a href="Yeni-Ayarlar-Sayfası.html" class="flex items-center space-x-3 px-4 py-3 text-gray-900 hover:bg-gray-50 rounded-lg">
+                    <img src="https://static.readdy.ai/image/d5ef78e5e20d4f96c7b7ffa896bb004b/0fce52ba3ea7a53b517342c076eb57f6.png" alt="Navigation Icons" class="w-6 h-6 object-contain">
+                    <span class=" fs-14 text-black font-semibold ">Hesap Ayarları</span>
+                </a>
+            </nav>
+        </aside>
+        <main class="flex-1 min-h-screen" style="margin-left: 243px;">
+            <div class="p-6 bg-[#FAFAFA]">
+                <div class="flex items-center justify-end mb-6">
+                    <img src="https://static.readdy.ai/image/d5ef78e5e20d4f96c7b7ffa896bb004b/0f748dae3ea01706738c73b4ada168e8.png" alt="Eczacibasi" class="w-32 h-auto">
+                </div>
+                <h1 class="font-semibold text-gray-900 fs-16 mb-6">Paketler</h1>
+                <div class="grid grid-cols-3 gap-4">
+                    <div class="bg-white rounded-lg border-2 border-[#EDEBF7] pt-2 px-6 pb-6">
+                        <div class="flex items-center gap-3 mb-6">
+                            <div class="w-10 h-10 flex items-center justify-center">
+                                <img src="https://static.readdy.ai/image/d5ef78e5e20d4f96c7b7ffa896bb004b/609f9d29bd9ce9abe909d1133be62f9c.png" alt="Mental Health Icon" class="w-8 h-8 object-contain">
+                            </div>
+                            <h3 class="fs-16 font-semibold">Mental Sağlık Paketi (45 DK)</h3>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="flex items-start gap-2">
+                                <span class="fs-14 text-[#7B8FB0] w-25 font-semibold ">Hizmet:</span>
+                                <span class="text-black  font-semibold">Online Çalışan Sağlık Paketi</span>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <span class="fs-14 text-[#7B8FB0] w-25 font-semibold ">Paket:</span>
+                                <span class="text-black  font-semibold ">1 Seans</span>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <span class="fs-14 text-[#7B8FB0] w-25 font-semibold ">Durum:</span>
+                                <span class="text-black font-semibold ">Ücretsiz</span>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <span class="fs-14 text-[#7B8FB0] w-25 font-semibold">Seans Fiyat:</span>
+                                <span class="text-black font-medium  text-xl font-semibold ">₺0,00</span>
+                            </div>
+                        </div>
+                        <button class="mt-6 text-sm whitespace-nowrap flex items-center justify-center" style="width:109px; height:40px; padding:10px 16px; border-radius:32px; border:2px solid #E0E8F0; gap:8px; opacity:1;">
+                            Paket Detayı
+                        </button>
+                    </div>
+                    <div class="bg-white rounded-lg border-2 border-[#EDEBF7] pt-2 px-6 pb-6">
+                        <div class="flex items-center gap-3 mb-6">
+                            <div class="w-10 h-10 flex items-center justify-center">
+                                <img src="https://static.readdy.ai/image/d5ef78e5e20d4f96c7b7ffa896bb004b/900ba6b21aa488be0c785bf9dc48cbe0.png" alt="Nutrition Icon" class="w-8 h-8 object-contain">
+                            </div>
+                            <h3 class="fs-16 font-semibold">Beslenme ve Diyet Paketi (45 Dk)</h3>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="flex items-start gap-2">
+                                <span class="fs-14 text-[#7B8FB0] w-25 font-semibold ">Seans:</span>
+                                <span class="text-black  font-semibold">Online Çalışan Sağlık Paketi</span>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <span class="fs-14 text-[#7B8FB0] w-25 font-semibold ">Paket:</span>
+                                <span class="text-black  font-semibold ">1 Seans</span>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <span class="fs-14 text-[#7B8FB0] w-25 font-semibold ">Durum:</span>
+                                <span class="text-black font-semibold ">Ücretsiz</span>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <span class="fs-14 text-[#7B8FB0] w-25 font-semibold">Seans Fiyat:</span>
+                                <span class="text-black font-medium  text-xl font-semibold ">₺0,00</span>
+                            </div>
+                        </div>
+                        <button class="mt-6 text-sm whitespace-nowrap flex items-center justify-center" style="width:109px; height:40px; padding:10px 16px; border-radius:32px; border:2px solid #E0E8F0; gap:8px; opacity:1;">
+                            Paket Detayı
+                        </button>
+                    </div>
+                    <div class="bg-white rounded-lg border-2 border-[#EDEBF7] pt-2 px-6 pb-6">
+                        <div class="flex items-center gap-3 mb-6">
+                            <div class="w-10 h-10 flex items-center justify-center">
+                                <img src="https://static.readdy.ai/image/d5ef78e5e20d4f96c7b7ffa896bb004b/1a571f6c86a9b5cfebd4bac6e88b8f05.png" alt="Doctor Services Icon" class="w-8 h-8 object-contain">
+                            </div>
+                            <h3 class="fs-16 font-semibold">Doktor Hizmetleri Paketi (45 Dk)</h3>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="flex items-start gap-2">
+                                <span class="fs-14 text-[#7B8FB0] w-25 font-semibold ">Seans:</span>
+                                <span class="text-black  font-semibold">Online Çalışan Sağlık Paketi</span>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <span class="fs-14 text-[#7B8FB0] w-25 font-semibold ">Paket:</span>
+                                <span class="text-black  font-semibold ">1 Seans</span>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <span class="fs-14 text-[#7B8FB0] w-25 font-semibold ">Durum:</span>
+                                <span class="text-black font-semibold ">Ücretsiz</span>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <span class="fs-14 text-[#7B8FB0] w-25 font-semibold">Seans Fiyat:</span>
+                                <span class="text-black font-medium  text-xl font-semibold ">₺0,00</span>
+                            </div>
+                        </div>
+                        <button class="mt-6 text-sm whitespace-nowrap flex items-center justify-center" style="width:109px; height:40px; padding:10px 16px; border-radius:32px; border:2px solid #E0E8F0; gap:8px; opacity:1;">
+                            Paket Detayı
+                        </button>
+                    </div>
+                    <div class="bg-white rounded-lg border-2 border-[#EDEBF7] pt-2 px-6 pb-6">
+                        <div class="flex items-center gap-3 mb-6">
+                            <div class="w-10 h-10 flex items-center justify-center">
+                                <img src="https://static.readdy.ai/image/d5ef78e5e20d4f96c7b7ffa896bb004b/3a83ec121cc545bffd44daa61fa0545d.png" alt="Birth Coach Icon" class="w-8 h-8 object-contain">
+                            </div>
+                            <h3 class="fs-16 font-semibold">Doğum Koçu Paketi (45 Dk)</h3>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="flex items-start gap-2">
+                                <span class="fs-14 text-[#7B8FB0] w-25 font-semibold ">Hizmet:</span>
+                                <span class="text-black  font-semibold">Online Çalışan Sağlık Paketi</span>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <span class="fs-14 text-[#7B8FB0] w-25 font-semibold ">Paket:</span>
+                                <span class="text-black  font-semibold ">1 Seans</span>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <span class="fs-14 text-[#7B8FB0] w-25 font-semibold ">Durum:</span>
+                                <span class="text-black font-semibold ">Ücretsiz</span>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <span class="fs-14 text-[#7B8FB0] w-25 font-semibold">Seans Fiyat:</span>
+                                <span class="text-black font-medium  text-xl font-semibold ">₺0,00</span>
+                            </div>
+                        </div>
+                        <button class="mt-6 text-sm whitespace-nowrap flex items-center justify-center" style="width:109px; height:40px; padding:10px 16px; border-radius:32px; border:2px solid #E0E8F0; gap:8px; opacity:1;">
+                            Paket Detayı
+                        </button>
+                    </div>
+                    <div class="bg-white rounded-lg border-2 border-[#EDEBF7] pt-2 px-6 pb-6">
+                        <div class="flex items-center gap-3 mb-6">
+                            <div class="w-10 h-10 flex items-center justify-center">
+                                <img src="https://static.readdy.ai/image/d5ef78e5e20d4f96c7b7ffa896bb004b/e8ba74b2e1f17df13351073288aa6ac2.png" alt="Baby Care Icon" class="w-8 h-8 object-contain">
+                            </div>
+                            <h3 class="fs-16 font-semibold">Emzirme Danışmanı (45 Dk)</h3>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="flex items-start gap-2">
+                                <span class="fs-14 text-[#7B8FB0] w-25 font-semibold ">Seans:</span>
+                                <span class="text-black  font-semibold">Online Çalışan Sağlık Paketi</span>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <span class="fs-14 text-[#7B8FB0] w-25 font-semibold ">Paket:</span>
+                                <span class="text-black  font-semibold ">1 Seans</span>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <span class="fs-14 text-[#7B8FB0] w-25 font-semibold ">Durum:</span>
+                                <span class="text-black font-semibold ">Ücretsiz</span>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <span class="fs-14 text-[#7B8FB0] w-25 font-semibold">Seans Fiyat:</span>
+                                <span class="text-black font-medium  text-xl font-semibold ">₺0,00</span>
+                            </div>
+                        </div>
+                        <button class="mt-6 text-sm whitespace-nowrap flex items-center justify-center" style="width:109px; height:40px; padding:10px 16px; border-radius:32px; border:2px solid #E0E8F0; gap:8px; opacity:1;">
+                            Paket Detayı
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>

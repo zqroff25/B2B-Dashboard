@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kullanıcı Listesi - Gensenta</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3B82F6',
+                        secondary: '#10B981'
+                    },
+                    borderRadius: {
+                        'none': '0px',
+                        'sm': '4px',
+                        DEFAULT: '8px',
+                        'md': '12px',
+                        'lg': '16px',
+                        'xl': '20px',
+                        '2xl': '24px',
+                        '3xl': '32px',
+                        'full': '9999px',
+                        'button': '8px'
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" rel="stylesheet">
+    <style>
+        :where([class^="ri-"])::before {
+            content: "\f3c2";
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 min-h-screen">
+    <div class="flex">
+        <aside class="w-64 bg-white h-screen fixed left-0 top-0 shadow-sm border-r border-gray-100">
+            <div class="p-6">
+                <div class="flex items-center space-x-2">
+                    <div class="font-['Pacifico'] text-2xl text-primary">Gensenta</div>
+                </div>
+            </div>
+            <nav class="px-4 space-y-2">
+                <a href="#" class="flex items-center space-x-3 px-4 py-3 text-gray-600 hover:bg-gray-50 rounded-lg">
+                    <div class="w-6 h-6 flex items-center justify-center">
+                        <i class="ri-home-line text-gray-500"></i>
+                    </div>
+                    <span>Ana Sayfa</span>
+                </a>
+                <a href="#" class="flex items-center space-x-3 px-4 py-3 text-gray-600 hover:bg-gray-50 rounded-lg">
+                    <div class="w-6 h-6 flex items-center justify-center">
+                        <i class="ri-user-line text-gray-500"></i>
+                    </div>
+                    <span>Profil</span>
+                </a>
+                <a href="#" class="flex items-center space-x-3 px-4 py-3 text-gray-600 hover:bg-gray-50 rounded-lg">
+                    <div class="w-6 h-6 flex items-center justify-center">
+                        <i class="ri-message-2-line text-gray-500"></i>
+                    </div>
+                    <span>Mesajlar</span>
+                </a>
+                <a href="#" class="flex items-center space-x-3 px-4 py-3 text-gray-600 hover:bg-gray-50 rounded-lg">
+                    <div class="w-6 h-6 flex items-center justify-center">
+                        <i class="ri-notification-line text-gray-500"></i>
+                    </div>
+                    <span>Bildirimler</span>
+                </a>
+                <a href="#" class="flex items-center space-x-3 px-4 py-3 text-gray-600 hover:bg-gray-50 rounded-lg">
+                    <div class="w-6 h-6 flex items-center justify-center">
+                        <i class="ri-settings-line text-gray-500"></i>
+                    </div>
+                    <span>Ayarlar</span>
+                </a>
+            </nav>
+        </aside>
+        <main class="ml-64 flex-1 min-h-screen">
+            <div class="p-8">
+                <div class="flex items-center justify-between mb-8">
+                    <h1 class="text-2xl font-semibold text-gray-900">Kullanıcı Listesi</h1>
+                    <div class="font-['Pacifico'] text-xl text-orange-500">Eczacıbaşı</div>
+                </div>
+                <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6 mb-6">
+                    <div class="flex items-center space-x-4 mb-6">
+                        <button class="w-[131px] h-[48px] px-6 py-2 text-sm font-medium text-gray-900 bg-white border-2 border-gray-900 rounded !rounded-button whitespace-nowrap">
+                            Tüm Ekipler
+                        </button>
+                        <button class="w-[162px] h-[48px] px-6 py-2 text-sm font-medium text-gray-500 bg-white border-2 border-gray-200 rounded opacity-40 !rounded-button whitespace-nowrap">
+                            Pazarlama Ekibi
+                        </button>
+                        <button class="w-[162px] h-[48px] px-6 py-2 text-sm font-medium text-gray-500 bg-white border-2 border-gray-200 rounded opacity-40 !rounded-button whitespace-nowrap">
+                            Tasarım Ekibi
+                        </button>
+                        <button class="w-[162px] h-[48px] px-6 py-2 text-sm font-medium text-gray-500 bg-white border-2 border-gray-200 rounded opacity-40 !rounded-button whitespace-nowrap">
+                            Marketing Ekibi
+                        </button>
+                        <button class="flex items-center gap-2 w-[117px] h-[48px] px-4 py-2 text-sm font-medium text-gray-700 bg-[#E0E8F0] border-2 border-[#E0E8F0] rounded !rounded-button whitespace-nowrap">
+                            <span>Ekip Ekle</span>
+                            <div class="w-4 h-4 flex items-center justify-center">
+                                <img src="https://static.readdy.ai/image/d5ef78e5e20d4f96c7b7ffa896bb004b/b37d4fdd97593a7283d2b631614de672.png" alt="Add" class="w-4 h-4">
+                            </div>
+                        </button>
+                    </div>
+                    <div class="flex items-center justify-between mb-6">
+                        <div class="relative">
+                            <input type="text" placeholder="Kullanıcı Adı, E-Posta ya da Telefon Numarası" class="w-[391px] h-[40px] pl-10 pr-4 text-sm border border-[#7B8FB0] rounded-full bg-white focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary">
+                            <div class="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 flex items-center justify-center">
+                                <i class="ri-search-line text-gray-400 text-sm"></i>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <button class="flex items-center w-[160px] h-[40px] px-6 py-2 gap-2 text-sm font-medium text-gray-700 bg-white border border-[#7B8FB0] rounded-full hover:bg-gray-50 whitespace-nowrap">
+                                <span>Kullanıcı Ekle</span>
+                                <div class="w-4 h-4 flex items-center justify-center">
+                                    <img src="https://static.readdy.ai/image/d5ef78e5e20d4f96c7b7ffa896bb004b/1bd825f8797f1f200b804294eba0bca3.png" alt="Add" class="w-4 h-4 object-contain">
+                                </div>
+                            </button>
+                            <button class="flex items-center gap-2 w-[186px] h-[40px] px-6 py-2 text-sm font-medium text-gray-700 bg-white border border-[#7B8FB0] rounded-full hover:bg-gray-50 whitespace-nowrap">
+                                <span>Toplu Hak Tanımla</span>
+                                <div class="w-4 h-4 flex items-center justify-center">
+                                    <img src="https://static.readdy.ai/image/d5ef78e5e20d4f96c7b7ffa896bb004b/0e60ab3040e5ee5f9e5808ec5b235742.png" alt="Group" class="w-5 h-5 object-contain">
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="w-full">
+                            <thead>
+                                <tr class="border-b border-gray-200">
+                                    <th class="text-left py-3 px-4 text-sm font-medium text-gray-700">İsim Soyisim</th>
+                                    <th class="text-left py-3 px-4 text-sm font-medium text-gray-700">Telefon</th>
+                                    <th class="text-left py-3 px-4 text-sm font-medium text-gray-700">Mail Adresi</th>
+                                    <th class="text-left py-3 px-4 text-sm font-medium text-gray-700">Şehir</th>
+                                    <th class="text-left py-3 px-4 text-sm font-medium text-gray-700">Aktiflik</th>
+                                    <th class="text-right py-3 px-4 text-sm font-medium text-gray-700"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="border-b border-gray-100 hover:bg-gray-50">
+                                    <td class="py-4 px-4 text-sm text-gray-900">Barış Atakan Elbasan</td>
+                                    <td class="py-4 px-4 text-sm text-gray-600">+905066666666</td>
+                                    <td class="py-4 px-4 text-sm text-gray-600">selim.kaya47@mailora.net</td>
+                                    <td class="py-4 px-4 text-sm text-gray-600">İstanbul</td>
+                                    <td class="py-4 px-4">
+                                        <span class="px-2 py-1 text-xs bg-green-100 text-green-800 rounded-full">Aktif</span>
+                                    </td>
+                                    <td class="py-4 px-4 text-right">
+                                        <div class="flex items-center justify-end space-x-2">
+                                            <button class="flex items-center gap-2 w-[109px] h-[32px] px-4 py-2.5 text-sm font-medium text-gray-700 bg-white border-2 border-[#E0E8F0] rounded-full hover:bg-gray-50 whitespace-nowrap">
+                                                <span>Düzenle</span>
+                                                <div class="w-6 h-6 flex items-center justify-center">
+                                                    <img src="https://static.readdy.ai/image/d5ef78e5e20d4f96c7b7ffa896bb004b/a61593c7e68a6523a93f9b709b190eab.png" alt="Edit" class="w-6 h-6 object-contain">
+                                                </div>
+                                            </button>
+                                            <button class="flex items-center space-x-1 px-3 py-1.5 text-xs text-red-600 hover:bg-red-50 rounded !rounded-button whitespace-nowrap">
+                                                <div class="w-3 h-3 flex items-center justify-center">
+                                                    <i class="ri-delete-bin-line"></i>
+                                                </div>
+                                                <span>Sil</span>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr class="border-b border-gray-100 hover:bg-gray-50">
+                                    <td class="py-4 px-4 text-sm text-gray-900">Barış Atakan Elbasan</td>
+                                    <td class="py-4 px-4 text-sm text-gray-600">+905066666666</td>
+                                    <td class="py-4 px-4 text-sm text-gray-600">selim.kaya47@mailora.net</td>
+                                    <td class="py-4 px-4 text-sm text-gray-600">İstanbul</td>
+                                    <td class="py-4 px-4">
+                                        <span class="px-2 py-1 text-xs bg-green-100 text-green-800 rounded-full">Aktif</span>
+                                    </td>
+                                    <td class="py-4 px-4 text-right">
+                                        <div class="flex items-center justify-end space-x-2">
+                                            <button class="flex items-center gap-2 w-[109px] h-[32px] px-4 py-2.5 text-sm font-medium text-gray-700 bg-white border-2 border-[#E0E8F0] rounded-full hover:bg-gray-50 whitespace-nowrap">
+                                                <span>Düzenle</span>
+                                                <div class="w-6 h-6 flex items-center justify-center">
+                                                    <img src="https://static.readdy.ai/image/d5ef78e5e20d4f96c7b7ffa896bb004b/a61593c7e68a6523a93f9b709b190eab.png" alt="Edit" class="w-6 h-6 object-contain">
+                                                </div>
+                                            </button>
+                                            <button class="flex items-center space-x-1 px-3 py-1.5 text-xs text-red-600 hover:bg-red-50 rounded !rounded-button whitespace-nowrap">
+                                                <div class="w-3 h-3 flex items-center justify-center">
+                                                    <i class="ri-delete-bin-line"></i>
+                                                </div>
+                                                <span>Sil</span>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr class="border-b border-gray-100 hover:bg-gray-50">
+                                    <td class="py-4 px-4 text-sm text-gray-900">Barış Atakan Elbasan</td>
+                                    <td class="py-4 px-4 text-sm text-gray-600">+905066666666</td>
+                                    <td class="py-4 px-4 text-sm text-gray-600">selim.kaya47@mailora.net</td>
+                                    <td class="py-4 px-4 text-sm text-gray-600">İstanbul</td>
+                                    <td class="py-4 px-4">
+                                        <span class="px-2 py-1 text-xs bg-green-100 text-green-800 rounded-full">Aktif</span>
+                                    </td>
+                                    <td class="py-4 px-4 text-right">
+                                        <div class="flex items-center justify-end space-x-2">
+                                            <button class="flex items-center gap-2 w-[109px] h-[32px] px-4 py-2.5 text-sm font-medium text-gray-700 bg-white border-2 border-[#E0E8F0] rounded-full hover:bg-gray-50 whitespace-nowrap">
+                                                <span>Düzenle</span>
+                                                <div class="w-6 h-6 flex items-center justify-center">
+                                                    <img src="https://static.readdy.ai/image/d5ef78e5e20d4f96c7b7ffa896bb004b/a61593c7e68a6523a93f9b709b190eab.png" alt="Edit" class="w-6 h-6 object-contain">
+                                                </div>
+                                            </button>
+                                            <button class="flex items-center space-x-1 px-3 py-1.5 text-xs text-red-600 hover:bg-red-50 rounded !rounded-button whitespace-nowrap">
+                                                <div class="w-3 h-3 flex items-center justify-center">
+                                                    <i class="ri-delete-bin-line"></i>
+                                                </div>
+                                                <span>Sil</span>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr class="border-b border-gray-100 hover:bg-gray-50">
+                                    <td class="py-4 px-4 text-sm text-gray-900">Barış Atakan Elbasan</td>
+                                    <td class="py-4 px-4 text-sm text-gray-600">+905066666666</td>
+                                    <td class="py-4 px-4 text-sm text-gray-600">selim.kaya47@mailora.net</td>
+                                    <td class="py-4 px-4 text-sm text-gray-600">İstanbul</td>
+                                    <td class="py-4 px-4">
+                                        <span class="px-2 py-1 text-xs bg-green-100 text-green-800 rounded-full">Aktif</span>
+                                    </td>
+                                    <td class="py-4 px-4 text-right">
+                                        <div class="flex items-center justify-end space-x-2">
+                                            <button class="flex items-center gap-2 w-[109px] h-[32px] px-4 py-2.5 text-sm font-medium text-gray-700 bg-white border-2 border-[#E0E8F0] rounded-full hover:bg-gray-50 whitespace-nowrap">
+                                                <span>Düzenle</span>
+                                                <div class="w-6 h-6 flex items-center justify-center">
+                                                    <img src="https://static.readdy.ai/image/d5ef78e5e20d4f96c7b7ffa896bb004b/a61593c7e68a6523a93f9b709b190eab.png" alt="Edit" class="w-6 h-6 object-contain">
+                                                </div>
+                                            </button>
+                                            <button class="flex items-center space-x-1 px-3 py-1.5 text-xs text-red-600 hover:bg-red-50 rounded !rounded-button whitespace-nowrap">
+                                                <div class="w-3 h-3 flex items-center justify-center">
+                                                    <i class="ri-delete-bin-line"></i>
+                                                </div>
+                                                <span>Sil</span>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr class="border-b border-gray-100 hover:bg-gray-50">
+                                    <td class="py-4 px-4 text-sm text-gray-900">Barış Atakan Elbasan</td>
+                                    <td class="py-4 px-4 text-sm text-gray-600">+905066666666</td>
+                                    <td class="py-4 px-4 text-sm text-gray-600">selim.kaya47@mailora.net</td>
+                                    <td class="py-4 px-4 text-sm text-gray-600">İstanbul</td>
+                                    <td class="py-4 px-4">
+                                        <span class="px-2 py-1 text-xs bg-green-100 text-green-800 rounded-full">Aktif</span>
+                                    </td>
+                                    <td class="py-4 px-4 text-right">
+                                        <div class="flex items-center justify-end space-x-2">
+                                            <button class="flex items-center gap-2 w-[109px] h-[32px] px-4 py-2.5 text-sm font-medium text-gray-700 bg-white border-2 border-[#E0E8F0] rounded-full hover:bg-gray-50 whitespace-nowrap">
+                                                <span>Düzenle</span>
+                                                <div class="w-6 h-6 flex items-center justify-center">
+                                                    <img src="https://static.readdy.ai/image/d5ef78e5e20d4f96c7b7ffa896bb004b/a61593c7e68a6523a93f9b709b190eab.png" alt="Edit" class="w-6 h-6 object-contain">
+                                                </div>
+                                            </button>
+                                            <button class="flex items-center space-x-1 px-3 py-1.5 text-xs text-red-600 hover:bg-red-50 rounded !rounded-button whitespace-nowrap">
+                                                <div class="w-3 h-3 flex items-center justify-center">
+                                                    <i class="ri-delete-bin-line"></i>
+                                                </div>
+                                                <span>Sil</span>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr class="border-b border-gray-100 hover:bg-gray-50">
+                                    <td class="py-4 px-4 text-sm text-gray-900">Barış Atakan Elbasan</td>
+                                    <td class="py-4 px-4 text-sm text-gray-600">+905066666666</td>
+                                    <td class="py-4 px-4 text-sm text-gray-600">selim.kaya47@mailora.net</td>
+                                    <td class="py-4 px-4 text-sm text-gray-600">İstanbul</td>
+                                    <td class="py-4 px-4">
+                                        <span class="px-2 py-1 text-xs bg-green-100 text-green-800 rounded-full">Aktif</span>
+                                    </td>
+                                    <td class="py-4 px-4 text-right">
+                                        <div class="flex items-center justify-end space-x-2">
+                                            <button class="flex items-center gap-2 w-[109px] h-[32px] px-4 py-2.5 text-sm font-medium text-gray-700 bg-white border-2 border-[#E0E8F0] rounded-full hover:bg-gray-50 whitespace-nowrap">
+                                                <span>Düzenle</span>
+                                                <div class="w-6 h-6 flex items-center justify-center">
+                                                    <img src="https://static.readdy.ai/image/d5ef78e5e20d4f96c7b7ffa896bb004b/a61593c7e68a6523a93f9b709b190eab.png" alt="Edit" class="w-6 h-6 object-contain">
+                                                </div>
+                                            </button>
+                                            <button class="flex items-center space-x-1 px-3 py-1.5 text-xs text-red-600 hover:bg-red-50 rounded !rounded-button whitespace-nowrap">
+                                                <div class="w-3 h-3 flex items-center justify-center">
+                                                    <i class="ri-delete-bin-line"></i>
+                                                </div>
+                                                <span>Sil</span>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="flex items-center justify-between mt-6">
+                        <div class="flex items-center space-x-4">
+                            <div class="flex items-center space-x-2">
+                                <button class="w-8 h-8 flex items-center justify-center rounded border border-gray-300 hover:bg-gray-50">
+                                    <div class="w-4 h-4 flex items-center justify-center">
+                                        <i class="ri-arrow-left-s-line text-gray-400"></i>
+                                    </div>
+                                </button>
+                                <button class="w-8 h-8 flex items-center justify-center rounded bg-gray-900 text-white text-sm">1</button>
+                                <button class="w-8 h-8 flex items-center justify-center rounded border border-gray-300 hover:bg-gray-50 text-sm">2</button>
+                                <button class="w-8 h-8 flex items-center justify-center rounded border border-gray-300 hover:bg-gray-50 text-sm">3</button>
+                                <span class="text-gray-500">...</span>
+                                <button class="w-8 h-8 flex items-center justify-center rounded border border-gray-300 hover:bg-gray-50 text-sm">500</button>
+                                <button class="w-8 h-8 flex items-center justify-center rounded border border-gray-300 hover:bg-gray-50">
+                                    <div class="w-4 h-4 flex items-center justify-center">
+                                        <i class="ri-arrow-right-s-line text-gray-400"></i>
+                                    </div>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <span class="text-sm text-gray-600">Sayfa</span>
+                            <select class="px-3 py-1 text-sm border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary/20 pr-8">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script id="search-functionality">
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.querySelector('input[placeholder*="Kullanıcı Adı"]');
+            const tableRows = document.querySelectorAll('tbody tr');
+            searchInput.addEventListener('input', function() {
+                const searchTerm = this.value.toLowerCase();
+                tableRows.forEach(row => {
+                    const name = row.cells[0].textContent.toLowerCase();
+                    const phone = row.cells[1].textContent.toLowerCase();
+                    const email = row.cells[2].textContent.toLowerCase();
+                    const city = row.cells[3].textContent.toLowerCase();
+                    if (name.includes(searchTerm) || phone.includes(searchTerm) ||
+                        email.includes(searchTerm) || city.includes(searchTerm)) {
+                        row.style.display = '';
+                    } else {
+                        row.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+    <script id="pagination-functionality">
+        document.addEventListener('DOMContentLoaded', function() {
+            const paginationButtons = document.querySelectorAll('button[class*="w-8 h-8"]');
+            const pageSelect = document.querySelector('select');
+            paginationButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    if (this.textContent && !isNaN(this.textContent)) {
+                        paginationButtons.forEach(btn => {
+                            btn.classList.remove('bg-gray-900', 'text-white');
+                            btn.classList.add('border', 'border-gray-300', 'hover:bg-gray-50');
+                        });
+                        this.classList.add('bg-gray-900', 'text-white');
+                        this.classList.remove('border', 'border-gray-300', 'hover:bg-gray-50');
+                    }
+                });
+            });
+            pageSelect.addEventListener('change', function() {
+                const selectedPage = this.value;
+                paginationButtons.forEach(btn => {
+                    if (btn.textContent === selectedPage) {
+                        btn.classList.add('bg-gray-900', 'text-white');
+                        btn.classList.remove('border', 'border-gray-300', 'hover:bg-gray-50');
+                    } else if (btn.textContent && !isNaN(btn.textContent)) {
+                        btn.classList.remove('bg-gray-900', 'text-white');
+                        btn.classList.add('border', 'border-gray-300', 'hover:bg-gray-50');
+                    }
+                });
+            });
+        });
+    </script>
+    <script id="action-buttons">
+        document.addEventListener('DOMContentLoaded', function() {
+            const editButtons = document.querySelectorAll('button:has(i.ri-edit-line)');
+            const deleteButtons = document.querySelectorAll('button:has(i.ri-delete-bin-line)');
+            editButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const row = this.closest('tr');
+                    const name = row.cells[0].textContent;
+                    alert(`${name} kullanıcısını düzenle`);
+                });
+            });
+            deleteButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const row = this.closest('tr');
+                    const name = row.cells[0].textContent;
+                    if (confirm(`${name} kullanıcısını silmek istediğinizden emin misiniz?`)) {
+                        row.remove();
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
