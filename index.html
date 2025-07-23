@@ -39,10 +39,11 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.5.0/echarts.min.js"></script>
     <style>
-        :where([class^="ri-"])::before {
+         :where([class^="ri-"])::before {
             content: "\f3c2";
         }
     </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.5.0/echarts.min.js"></script>
 </head>
 
 <body class="bg-gray-50 min-h-screen font-sans">
@@ -74,7 +75,7 @@
         </aside>
         <main class="ml-64 flex-1 min-h-screen">
             <div class="p-6 bg-[#FAFAFA]">
-                <div class="flex items-center justify-end mb-8">
+                <div class="flex items-center justify-end mb-3">
                     <img src="https://static.readdy.ai/image/d5ef78e5e20d4f96c7b7ffa896bb004b/0f748dae3ea01706738c73b4ada168e8.png" alt="Eczacibasi" class="w-32 h-auto">
                 </div>
                 <!-- Banner ve Eczacıbaşı logosu hizalı -->
@@ -86,38 +87,89 @@
                     <!--<img src="https://static.readdy.ai/image/d5ef78e5e20d4f96c7b7ffa896bb004b/0f748dae3ea01706738c73b4ada168e8.png" alt="Eczacibasi" class="absolute top-2 right-4 h-12"> -->
                 </div>
                 <div class="flex items-center justify-between mb-4 mt-1">
-                    <div class="flex items-center space-x-4">
-                        <div class="relative">
-                            <button class="w-[256px] h-[49px] bg-white text-gray-900 px-6 py-2 rounded-sm flex flex-col items-start justify-center shadow-sm hover:shadow-md transition-shadow border-2 border-[#E0E8F0]">
+                    <!-- Container -->
+                    <div class="flex gap-4">
+                        <!-- Şehir Dropdown -->
+                        <div class="relative" id="dropdownSehirWrapper">
+                            <button onclick="toggleDropdown('sehirDropdown')" class="w-[256px] h-[49px] bg-white text-gray-900 px-6 py-2 flex flex-col items-start justify-center shadow-sm hover:shadow-md border-2 border-[#E0E8F0] rounded-[8px]">
                                 <span class="text-xs text-gray-500">Şehir</span>
                                 <div class="flex items-center justify-between w-full">
-                                    <span class="text-base font-medium">İstanbul</span>
+                                    <span class="text-base font-medium" id="selectedSehir">İstanbul</span>
                                     <div class="w-5 h-5 flex items-center justify-center">
-                                        <i class="ri-arrow-down-s-line text-gray-400"></i>
+                                        <!-- SVG ok -->
+                                        <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M18 9.50017C18 9.50017 13.5811 15.5001 12 15.5001C10.4188 15.5001 6 9.50012 6 9.50012" stroke="#121212" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg>
                                     </div>
                                 </div>
                             </button>
+                            <!-- Açılır Liste -->
+                            <div id="sehirDropdown" class="absolute top-[60px] left-0 w-full bg-white border border-gray-200 rounded-md shadow-md hidden z-10">
+                                <ul class="py-2">
+                                    <li><button onclick="selectSehir('İstanbul')" class="w-full text-left px-4 py-2 hover:bg-gray-100">İstanbul</button></li>
+                                    <li><button onclick="selectSehir('Ankara')" class="w-full text-left px-4 py-2 hover:bg-gray-100">Ankara</button></li>
+                                    <li><button onclick="selectSehir('İzmir')" class="w-full text-left px-4 py-2 hover:bg-gray-100">İzmir</button></li>
+                                </ul>
+                            </div>
                         </div>
-                        <div class="relative">
-                            <button class="w-[256px] h-[49px] bg-white text-gray-900 px-6 py-2 rounded-sm flex flex-col items-start justify-center shadow-sm hover:shadow-md transition-shadow border-2 border-[#E0E8F0]">
+                        <!-- Ekip Dropdown -->
+                        <div class="relative" id="dropdownEkipWrapper">
+                            <button onclick="toggleDropdown('ekipDropdown')" class="w-[256px] h-[49px] bg-white text-gray-900 px-6 py-2 flex flex-col items-start justify-center shadow-sm hover:shadow-md border-2 border-[#E0E8F0] rounded-[8px]">
                                 <span class="text-xs text-gray-500">Ekip</span>
                                 <div class="flex items-center justify-between w-full">
-                                    <span class="text-base font-medium">Tasarım Ekibi</span>
+                                    <span class="text-base font-medium" id="selectedEkip">Tasarım Ekibi</span>
                                     <div class="w-5 h-5 flex items-center justify-center">
-                                        <i class="ri-arrow-down-s-line text-gray-400"></i>
+                                        <!-- SVG ok -->
+                                        <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M18 9.50017C18 9.50017 13.5811 15.5001 12 15.5001C10.4188 15.5001 6 9.50012 6 9.50012" stroke="#121212" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg>
                                     </div>
                                 </div>
                             </button>
+                            <!-- Açılır Liste -->
+                            <div id="ekipDropdown" class="absolute top-[60px] left-0 w-full bg-white border border-gray-200 rounded-md shadow-md hidden z-10">
+                                <ul class="py-2">
+                                    <li><button onclick="selectEkip('Tasarım Ekibi')" class="w-full text-left px-4 py-2 hover:bg-gray-100">Tasarım Ekibi</button></li>
+                                    <li><button onclick="selectEkip('Yazılım Ekibi')" class="w-full text-left px-4 py-2 hover:bg-gray-100">Yazılım Ekibi</button></li>
+                                    <li><button onclick="selectEkip('Satış Ekibi')" class="w-full text-left px-4 py-2 hover:bg-gray-100">Satış Ekibi</button></li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
+                    <script>
+                        function toggleDropdown(id) {
+                            const dropdown = document.getElementById(id);
+                            dropdown.classList.toggle("hidden");
+                        }
+
+                        function selectSehir(value) {
+                            document.getElementById("selectedSehir").textContent = value;
+                            document.getElementById("sehirDropdown").classList.add("hidden");
+                        }
+
+                        function selectEkip(value) {
+                            document.getElementById("selectedEkip").textContent = value;
+                            document.getElementById("ekipDropdown").classList.add("hidden");
+                        }
+
+                        // Dışarı tıklanınca kapanma
+                        document.addEventListener("click", function(e) {
+                            if (!document.getElementById("dropdownSehirWrapper").contains(e.target)) {
+                                document.getElementById("sehirDropdown").classList.add("hidden");
+                            }
+                            if (!document.getElementById("dropdownEkipWrapper").contains(e.target)) {
+                                document.getElementById("ekipDropdown").classList.add("hidden");
+                            }
+                        });
+                    </script>
                     <div class="flex items-center space-x-4">
-                        <button class="bg-white text-gray-700 px-6 py-3 rounded-full flex items-center space-x-3 border border-black hover:bg-gray-50">
+                        <button class="bg-white text-gray-700 px-6 py-3 rounded-full flex items-center space-x-3 border border-black hover:bg-gray-50" style="width: 167px; height: 40px;">
                             <span class="text-gray-600">Dışa Aktar</span>
                             <div class="w-5 h-5 flex items-center justify-center">
                                 <img src="https://static.readdy.ai/image/d5ef78e5e20d4f96c7b7ffa896bb004b/336c2c72307ad0fb2020fc3a6d80e112.png" alt="Export" class="w-4 h-4">
                             </div>
                         </button>
-                        <button class="bg-[#7853E1] text-white px-8 py-3 rounded-full flex items-center space-x-3 hover:bg-[#6D28D9]">
+                        <button class="bg-[#7853E1] text-white px-8 py-3 rounded-full flex items-center space-x-3 hover:bg-[#6D28D9]" style="width: 195px; height: 40px;">
                             <span>Çözüm Ekibi</span>
                             <div class="w-5 h-5 flex items-center justify-center">
                                 <img src="https://static.readdy.ai/image/d5ef78e5e20d4f96c7b7ffa896bb004b/b0f9ebd82903c72b2ae64d0e35e05ad6.png" alt="Solution Team" class="w-5 h-5">
@@ -125,142 +177,221 @@
                         </button>
                     </div>
                 </div>
-                <div class="grid grid-cols-2 gap-6 mb-8">
-                    <div class="bg-white rounded-xl p-6 shadow-sm border-2 border-[#E0E8F0]">
-                        <div class="flex items-center justify-between">
-                            <div class="flex items-center space-x-4">
+                <div class="flex mb-8">
+                    <div class="space-y-4">
+                        <div class="bg-white rounded-xl shadow-sm border-2 border-[#E0E8F0] w-[600px] px-6 py-5 space-y-4 mb-2">
+                            <!-- Üst Satır: Toplam Kullanıcı -->
+                            <div class="flex items-center justify-start space-x-3">
                                 <img src="https://static.readdy.ai/image/d5ef78e5e20d4f96c7b7ffa896bb004b/66acb27976c767cc82248fa5ac23dc96.png" alt="User Icon" class="w-8 h-8">
-                                <span class="text-3xl font-bold text-gray-900">450</span>
-                                <span class="text-gray-500">Kullanıcı</span>
+                                <span class="text-[32px] font-semibold text-gray-900 leading-none">450</span>
+                                <span class="text-gray-400 text-[16px] font-medium">Kullanıcı</span>
                             </div>
-                            <div class="h-12 w-px bg-gray-200"></div>
-                            <div class="flex items-center space-x-4">
-                                <img src="https://static.readdy.ai/image/d5ef78e5e20d4f96c7b7ffa896bb004b/994275ae80f338f59eb1e0320b2f275e.png" alt="User Icon" class="w-6 h-6">
-                                <span class="text-3xl font-bold text-gray-900">350</span>
-                                <span class="text-gray-500">Aktif Kullanıcı</span>
-                                <div class="flex items-center text-green-500 text-sm ml-2">
+                            <!-- Ayrım Çizgisi -->
+                            <div class="border-t border-[#E0E8F0]"></div>
+                            <!-- Alt Satır: Aktif Kullanıcı -->
+                            <div class="flex items-center justify-start space-x-3">
+                                <span class="text-[24px] font-semibold text-gray-900 leading-none">350</span>
+                                <span class="text-gray-400 text-[16px] font-medium">Aktif Kullanıcı</span>
+                                <span class="text-green-600 text-sm font-semibold flex items-center space-x-1 ml-2">
                                     <span>+8%</span>
-                                    <i class="ri-arrow-up-line ml-1"></i>
-                                </div>
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M20 13V8H15" stroke="#1B8E20" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                        <path d="M20 8L15 13C14.1174 13.8826 13.6762 14.3238 13.1346 14.3726C13.045 14.3807 12.955 14.3807 12.8654 14.3726C12.3238 14.3238 11.8826 13.8826 11 13C10.1174 12.1174 9.67615 11.6762 9.13457 11.6274C9.04504 11.6193 8.95496 11.6193 8.86543 11.6274C8.32385 11.6762 7.88256 12.1174 7 13L4 16" stroke="#1B8E20" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-xl shadow-sm border-2 border-[#E0E8F0] w-[600px] px-6 py-5 space-y-4 mt-2">
+                            <!-- Üst Satır: Toplam Hak -->
+                            <div class="flex items-center justify-start space-x-3">
+                                <img src="https://static.readdy.ai/image/d5ef78e5e20d4f96c7b7ffa896bb004b/384d224a5b0f0aa50366f906da199ec7.png" alt="Gift Icon" class="w-8 h-8">
+                                <span class="text-[32px] font-semibold text-gray-900 leading-none">2450</span>
+                                <span class="text-gray-400 text-[16px] font-medium">Toplam Hak</span>
+                            </div>
+                            <!-- Ayrım Çizgisi -->
+                            <div class="border-t border-[#E0E8F0]"></div>
+                            <!-- Alt Satır: Kullanılan Hak -->
+                            <div class="flex items-center justify-start space-x-3 pb-3">
+                                <span class="text-[24px] font-semibold text-gray-900 leading-none">350</span>
+                                <span class="text-gray-400 text-[16px] font-medium">Kullanılan Hak</span>
+                                <span class="text-green-600 text-sm font-semibold flex items-center space-x-1 ml-2">
+                                    <span>+8%</span>
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M20 13V8H15" stroke="#1B8E20" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                        <path d="M20 8L15 13C14.1174 13.8826 13.6762 14.3238 13.1346 14.3726C13.045 14.3807 12.955 14.3807 12.8654 14.3726C12.3238 14.3238 11.8826 13.8826 11 13C10.1174 12.1174 9.67615 11.6762 9.13457 11.6274C9.04504 11.6193 8.95496 11.6193 8.86543 11.6274C8.32385 11.6762 7.88256 12.1174 7 13L4 16" stroke="#1B8E20" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                </span>
                             </div>
                         </div>
                     </div>
-                    <div class="bg-white rounded-xl p-6 shadow-sm border-2 border-[#E0E8F0]">
-                        <div class="flex items-center justify-between">
-                            <div class="flex items-center space-x-4">
-                                <div class="w-12 h-12 flex items-center justify-center">
-                                    <img src="https://static.readdy.ai/image/d5ef78e5e20d4f96c7b7ffa896bb004b/384d224a5b0f0aa50366f906da199ec7.png" alt="Gift Icon" class="w-8 h-8">
-                                </div>
-                                <div class="flex items-center space-x-2">
-                                    <span class="text-3xl font-bold text-gray-900">450</span>
-                                    <span class="text-gray-500">Toplam Hak</span>
-                                </div>
-                            </div>
-                            <div class="h-12 w-px bg-gray-200 ml-3"></div>
-                            <div class="flex items-center space-x-2">
-                                <div class="w-12 h-12 flex items-center justify-center">
-                                    <img src="https://static.readdy.ai/image/d5ef78e5e20d4f96c7b7ffa896bb004b/dceb852c01592c1447ecdaae258438c0.png" alt="Gift Icon" class="w-6 h-6">
-                                </div>
-                                <div class="flex items-center space-x-2">
-                                    <span class="text-3xl font-bold text-gray-900">350</span>
-                                    <span class="text-gray-500">Kullanılan Hak</span>
-                                    <div class="flex items-center text-green-500 text-sm ml-2">
-                                        <span>+8%</span>
-                                        <i class="ri-arrow-up-line ml-1"></i>
+                    <div class="bg-white rounded-xl p-6 shadow-sm border-2 border-[#E0E8F0] ml-6" style="width: 65%;">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-6">Görüşme Oranı</h3>
+                        <div class="flex">
+                            <svg width="192" height="192" viewBox="0 0 192 192" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <g clip-path="url(#clip0_3297_2290)">
+                                    <path d="M39.7553 167.251C37.9675 169.516 34.6716 169.913 32.5073 168.005C21.6362 158.419 13.0587 146.48 7.44462 133.069C1.15696 118.048 -1.20682 101.676 0.575596 85.4903C2.35801 69.305 8.22803 53.839 17.6336 40.547C26.0315 28.6789 37.0016 18.8923 49.6982 11.9021C52.2258 10.5105 55.3563 11.6154 56.6084 14.215L68.869 39.6709C70.121 42.2705 69.0135 45.3727 66.5387 46.8563C59.7334 50.9359 53.8325 56.3952 49.2274 62.9031C43.6139 70.8363 40.1104 80.067 39.0466 89.727C37.9828 99.387 39.3936 109.159 43.1463 118.123C46.2248 125.478 50.7963 132.09 56.5508 137.553C58.6434 139.539 59.0493 142.808 57.2615 145.073L39.7553 167.251Z" fill="#9373E7" />
+                                    <path d="M120.695 9.50286C121.5 6.7319 124.404 5.12415 127.127 6.07827C139.905 10.5554 151.611 17.6922 161.461 27.0389C171.311 36.3855 179.052 47.7012 184.193 60.2267C185.288 62.8961 183.835 65.8808 181.11 66.8296L154.427 76.12C151.702 77.0688 148.745 75.6162 147.552 72.989C144.507 66.2811 140.188 60.2079 134.821 55.1146C129.453 50.0213 123.162 46.0274 116.304 43.3374C113.617 42.2838 112.012 39.4077 112.816 36.6367L120.695 9.50286Z" fill="#2D9C63" />
+                                    <path d="M183.029 73.0581C185.815 72.3073 188.697 73.9552 189.295 76.7779C192.18 90.393 192.075 104.495 188.96 118.102C185.844 131.709 179.804 144.452 171.283 155.456C169.516 157.737 166.205 157.967 164.023 156.079L142.657 137.59C140.475 135.702 140.259 132.415 141.941 130.07C146.365 123.901 149.53 116.899 151.232 109.464C152.934 102.03 153.131 94.3486 151.831 86.8689C151.337 84.0261 152.962 81.1607 155.748 80.4099L183.029 73.0581Z" fill="#1645DE" />
+                                    <path d="M159.872 160.566C161.922 162.596 161.946 165.916 159.807 167.853C144.412 181.788 124.87 190.389 104.096 192.282C83.3231 194.175 62.5483 189.247 44.888 178.324C42.434 176.806 41.858 173.536 43.507 171.169L59.6544 147.983C61.3034 145.615 64.5496 145.055 67.0577 146.482C77.1934 152.247 88.8892 154.804 100.584 153.738C112.279 152.672 123.32 148.044 132.247 140.542C134.456 138.686 137.75 138.649 139.8 140.68L159.872 160.566Z" fill="#19B2A7" />
+                                    <path d="M62.6372 12.0104C61.5966 9.31916 62.9311 6.27946 65.675 5.38682C79.7427 0.810241 94.6798 -0.453163 109.316 1.69555C112.171 2.11465 113.997 4.88703 113.423 7.71482L107.805 35.4052C107.231 38.233 104.474 40.0351 101.606 39.7212C94.2407 38.9152 86.7879 39.5456 79.6627 41.5772C76.8879 42.3683 73.8671 41.055 72.8265 38.3638L62.6372 12.0104Z" fill="#FEA400" />
+                                </g>
+                                <defs>
+                                    <clipPath id="clip0_3297_2290">
+                                        <rect width="192" height="192" fill="white" />
+                                    </clipPath>
+                                </defs>
+                            </svg>
+                            <div class="flex-1 space-y-4 ml-16">
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center space-x-2">
+                                        <div class="w-3 h-3 rounded-full" style="background-color: #FD7700"></div>
+                                        <span class="font-semibold text-[14px] leading-4" style="color: #FD7700">Mental Sağlık</span>
                                     </div>
+                                    <span class="font-semibold text-[14px] leading-4" style="color: #121212">200 Görüşme (52.1%)</span>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center space-x-2">
+                                        <div class="w-3 h-3 rounded-full" style="background-color: #2D9C63"></div>
+                                        <span class="font-semibold text-[14px] leading-4" style="color: #2D9C63">Beslenme ve Diyet</span>
+                                    </div>
+                                    <span class="font-semibold text-[14px] leading-4" style="color: #121212">30 Görüşme (52.1%)</span>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center space-x-2">
+                                        <div class="w-3 h-3 rounded-full" style="background-color: #1645DE"></div>
+                                        <span class="font-semibold text-[14px] leading-4" style="color: #1645DE">Doktor Hizmetleri</span>
+                                    </div>
+                                    <span class="font-semibold text-[14px] leading-4" style="color: #121212">30 Görüşme (52.1%)</span>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center space-x-2">
+                                        <div class="w-3 h-3 rounded-full" style="background-color: #19B2A7"></div>
+                                        <span class="font-semibold text-[14px] leading-4" style="color: #19B2A7">Doğum Koçu</span>
+                                    </div>
+                                    <span class="font-semibold text-[14px] leading-4" style="color: #121212">30 Görüşme (52.1%)</span>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center space-x-2">
+                                        <div class="w-3 h-3 rounded-full" style="background-color: #7853E1"></div>
+                                        <span class="font-semibold text-[14px] leading-4" style="color: #7853E1">Emzirme Danışmanı</span>
+                                    </div>
+                                    <span class="font-semibold text-[14px] leading-4" style="color: #121212">30 Görüşme (52.1%)</span>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="space-y-8 mb-8">
-                    <div class="bg-white rounded-xl p-6 shadow-sm border-2 border-[#E0E8F0]">
-                        <div class="mb-6">
-                            <div class="flex w-full space-x-3 mb-4">
-                                <div class="bg-orange-500 h-6 rounded-sm" style="width: 40%"></div>
-                                <div class="bg-green-600 h-6 rounded-sm" style="width: 22%"></div>
-                                <div class="bg-blue-600 h-6 rounded-sm" style="width: 10%"></div>
-                                <div class="bg-teal-500 h-6 rounded-sm" style="width: 12%"></div>
-                                <div class="bg-purple-500 h-6 rounded-sm" style="width: 16%"></div>
-                            </div>
-                        </div>
-                        <div class="space-y-3">
-                            <div class="flex items-center space-x-4">
-                                <div class="flex items-center space-x-2 w-48">
-                                    <div class="w-2 h-2 bg-orange-500 rounded-full"></div>
-                                    <span class="text-sm font-bold text-orange-500">Mental Sağlık</span>
-                                </div>
-                                <span class="text-sm font-bold text-gray-900">200 seans (52.1%)</span>
-                            </div>
-                            <div class="flex items-center space-x-4">
-                                <div class="flex items-center space-x-2 w-48">
-                                    <div class="w-2 h-2 bg-green-600 rounded-full"></div>
-                                    <span class="text-sm font-bold text-green-600">Beslenme ve Diyet</span>
-                                </div>
-                                <span class="text-sm font-bold text-gray-900">30 seans (52.1%)</span>
-                            </div>
-                            <div class="flex items-center space-x-4">
-                                <div class="flex items-center space-x-2 w-48">
-                                    <div class="w-2 h-2 bg-blue-600 rounded-full"></div>
-                                    <span class="text-sm font-bold text-blue-600">Doktor Hizmetleri</span>
-                                </div>
-                                <span class="text-sm font-bold text-gray-900">30 seans (52.1%)</span>
-                            </div>
-                            <div class="flex items-center space-x-4">
-                                <div class="flex items-center space-x-2 w-48">
-                                    <div class="w-2 h-2 bg-teal-500 rounded-full"></div>
-                                    <span class="text-sm font-bold text-teal-500">Doğum Koçu</span>
-                                </div>
-                                <span class="text-sm font-bold text-gray-900">30 seans (52.1%)</span>
-                            </div>
-                            <div class="flex items-center space-x-4">
-                                <div class="flex items-center space-x-2 w-48">
-                                    <div class="w-2 h-2 bg-purple-500 rounded-full"></div>
-                                    <span class="text-sm font-bold text-purple-500">Emzirme Danışmanı</span>
-                                </div>
-                                <span class="text-sm font-bold text-gray-900">30 seans (52.1%)</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="bg-white rounded-xl p-6 shadow-sm mt-8 border-2 border-[#E0E8F0]">
-                        <div class="flex items-center justify-between mb-6">
-                            <h3 class="text-lg font-semibold text-gray-900">Görüşme Sayısı</h3>
-                            <div class="flex bg-white rounded-full border border-gray-200 p-1">
-                                <button class="px-4 py-1.5 bg-black text-white rounded-full text-sm whitespace-nowrap">Aylık</button>
-                                <button class="px-4 py-1.5 text-gray-500 text-sm whitespace-nowrap hover:text-gray-700">Haftalık</button>
-                            </div>
-                        </div>
-                        <div id="viewsChart" style="height: 300px;"></div>
-                    </div>
-                </div>
-                <div class="bg-white rounded-xl p-6 shadow-sm border-2 border-[#E0E8F0]">
+                <div class="bg-white rounded-xl p-6 shadow-sm mt-8 mb-8 border-2 border-[#E0E8F0]">
                     <div class="flex items-center justify-between mb-6">
-                        <h3 class="text-lg font-semibold text-gray-900">Memnuniyet Durumu</h3>
-                        <div class="flex space-x-2">
-                            <button onclick="updateSatisfaction(this, '4.82')" class="satisfaction-btn px-3 py-1 text-gray-600 text-sm hover:bg-gray-100 rounded-md !rounded-button whitespace-nowrap">Tümü</button>
-                            <button onclick="updateSatisfaction(this, '4.52')" class="satisfaction-btn px-3 py-1 bg-gray-900 text-white rounded-md text-sm !rounded-button whitespace-nowrap">Psikolog</button>
-                            <button onclick="updateSatisfaction(this, '4.65')" class="satisfaction-btn px-3 py-1 text-gray-600 text-sm hover:bg-gray-100 rounded-md !rounded-button whitespace-nowrap">Diyetisyen</button>
-                            <button onclick="updateSatisfaction(this, '4.71')" class="satisfaction-btn px-3 py-1 text-gray-600 text-sm hover:bg-gray-100 rounded-md !rounded-button whitespace-nowrap">Kadın
-                                Sağlığı</button>
-                            <button onclick="updateSatisfaction(this, '4.48')" class="satisfaction-btn px-3 py-1 text-gray-600 text-sm hover:bg-gray-100 rounded-md !rounded-button whitespace-nowrap">Doktor
-                                Hizmetleri</button>
+                        <h3 class="text-lg font-semibold text-gray-900">Görüşme Sayısı</h3>
+                        <div class="flex bg-white rounded-full border border-gray-200 p-1">
+                            <button class="px-4 py-1.5 bg-black text-white rounded-full text-sm whitespace-nowrap">Aylık</button>
+                            <button class="px-4 py-1.5 text-gray-500 text-sm whitespace-nowrap hover:text-gray-700">Haftalık</button>
                         </div>
                     </div>
-                    <div class="flex items-center space-x-4 mb-6">
-                        <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
-                            <i class="ri-thumb-up-line text-green-600 text-xl"></i>
+                    <div id="viewsChart2" class="w-full h-[300px]"></div>
+                </div>
+                <div class="flex mb-8">
+                    <div>
+                        <div class="bg-white rounded-xl p-6 shadow-sm border-2 border-[#E0E8F0]" style="width: 500px; height: 210px;">
+                            <h3 class=" fs-14 font-semibold text-[#000000] mb-6">Memnuniyet Oranı</h3>
+                            <!-- Sekmeler -->
+                            <div id="tabGroup" class="flex items-center gap-4 mb-4 flex-nowrap whitespace-nowrap ">
+                                <button class="tab-btn active-tab text-sm font-semibold text-black border-b-2 border-black pb-1" data-score="4.82">Tümü</button>
+                                <button class="tab-btn text-sm text-gray-400 font-medium hover:text-black transition-all" data-score="4.52">Psikolog</button>
+                                <button class="tab-btn text-sm text-gray-400 font-medium hover:text-black transition-all" data-score="4.65">Diyetisyen</button>
+                                <button class="tab-btn text-sm text-gray-400 font-medium hover:text-black transition-all" data-score="4.71">Kadın Sağlığı</button>
+                                <button class="tab-btn text-sm text-gray-400 font-medium hover:text-black transition-all" data-score="4.48">Doktor Hizmetleri</button>
+                            </div>
+                            <!-- Değerler -->
+                            <div class="flex items-center space-x-1 mb-4">
+                                <div class="w-10 h-10 flex items-center justify-center">
+                                    <!-- ikon -->
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M2 12.5C2 11.3954 2.89543 10.5 4 10.5C5.65685 10.5 7 11.8431 7 13.5V17.5C7 19.1569 5.65685 20.5 4 20.5C2.89543 20.5 2 19.6046 2 18.5V12.5Z" stroke="#394355" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                        <path d="M15.4787 7.80626L15.2124 8.66634C14.9942 9.37111 14.8851 9.72349 14.969 10.0018C15.0369 10.2269 15.1859 10.421 15.389 10.5487C15.64 10.7065 16.0197 10.7065 16.7791 10.7065H17.1831C19.7532 10.7065 21.0382 10.7065 21.6452 11.4673C21.7145 11.5542 21.7762 11.6467 21.8296 11.7437C22.2965 12.5921 21.7657 13.7351 20.704 16.0211C19.7297 18.1189 19.2425 19.1678 18.338 19.7852C18.2505 19.8449 18.1605 19.9013 18.0683 19.9541C17.116 20.5 15.9362 20.5 13.5764 20.5H13.0646C10.2057 20.5 8.77628 20.5 7.88814 19.6395C7 18.7789 7 17.3939 7 14.6239V13.6503C7 12.1946 7 11.4668 7.25834 10.8006C7.51668 10.1344 8.01135 9.58664 9.00069 8.49112L13.0921 3.96056C13.1947 3.84694 13.246 3.79012 13.2913 3.75075C13.7135 3.38328 14.3652 3.42464 14.7344 3.84235C14.774 3.8871 14.8172 3.94991 14.9036 4.07554C15.0388 4.27205 15.1064 4.37031 15.1654 4.46765C15.6928 5.33913 15.8524 6.37436 15.6108 7.35715C15.5838 7.46692 15.5488 7.5801 15.4787 7.80626Z" stroke="#394355" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                </div>
+                                <div class="flex justify-center items-center flex-row gap-2">
+                                    <div id="satisfactionValue" class="text-2xl font-bold text-gray-900">4.82%</div>
+                                    <div class="fs-14 text-[#7B8FB0] font-medium">Memnuniyet</div>
+                                </div>
+                            </div>
+                            <!-- Barlar -->
+                            <div class="flex space-x-2" id="satisfaction-bars">
+                                <!-- 5 bar kutusu -->
+                                <div class="bar bg-[#3CBE7A]" style="border-radius:8px; width: 73px; height:24px;"></div>
+                                <div class="bar bg-[#3CBE7A]" style="border-radius:8px; width: 73px; height:24px;"></div>
+                                <div class="bar bg-[#3CBE7A]" style="border-radius:8px; width: 73px; height:24px;"></div>
+                                <div class="bar bg-[#3CBE7A]" style="border-radius:8px; width: 73px; height:24px;"></div>
+                                <div class="bar flex rounded-[8px] overflow-hidden" style="width: 73px; height:24px;">
+                                    <div class="h-full bg-[#3CBE7A]" style="width: 50%"></div>
+                                    <div class="h-full bg-[#E0E8F0] flex-1"></div>
+                                </div>
+                            </div>
                         </div>
-                        <div>
-                            <div class="text-3xl font-bold text-gray-900">4.52%</div>
-                            <div class="text-gray-500">Memnuniyet</div>
+                        <!-- Aktif Tab CSS -->
+                        <style>
+                            .active-tab {
+                                color: #000000 !important;
+                                font-weight: 600;
+                                border-bottom: 2px solid #000000;
+                                padding-bottom: 4px;
+                            }
+                        </style>
+                        <!-- JS -->
+                        <script>
+                            document.querySelectorAll("#tabGroup .tab-btn").forEach((btn) => {
+                                btn.addEventListener("click", () => {
+                                    // Tüm sekmelerden active sınıfını kaldır
+                                    document.querySelectorAll("#tabGroup .tab-btn").forEach((b) =>
+                                        b.classList.remove("active-tab", "text-black", "font-semibold", "border-b-2", "border-black")
+                                    );
+
+                                    // Tıklanana active sınıfı ekle
+                                    btn.classList.add("active-tab", "text-black", "font-semibold", "border-b-2", "border-black");
+
+                                    // Oranı al
+                                    const rate = btn.dataset.score;
+                                    document.getElementById("satisfactionValue").textContent = `${rate}%`;
+
+                                    // Barları güncelle
+                                    const rateNum = parseFloat(rate);
+                                    const fullBars = Math.floor(rateNum);
+                                    const partial = rateNum - fullBars;
+
+                                    const bars = document.querySelectorAll("#satisfaction-bars .bar");
+                                    bars.forEach((bar, index) => {
+                                        bar.innerHTML = ""; // içeriği temizle
+                                        bar.className = "bar"; // classları sıfırla
+                                        bar.style = "border-radius:8px; width: 73px; height:24px;";
+
+                                        if (index < fullBars) {
+                                            bar.classList.add("bg-[#3CBE7A]");
+                                        } else if (index === fullBars && partial > 0) {
+                                            bar.classList.add("flex", "overflow-hidden");
+                                            bar.innerHTML = `
+            <div class="h-full bg-[#3CBE7A]" style="width: ${partial * 100}%"></div>
+            <div class="h-full bg-[#E0E8F0]" style="flex: 1;"></div>
+          `;
+                                        } else {
+                                            bar.classList.add("bg-[#E0E8F0]");
+                                        }
+                                    });
+                                });
+                            });
+                        </script>
+                        <div class="bg-white rounded-xl p-6  shadow-sm border-2 border-[#E0E8F0] mt-4" style="width: 500px; height: 185px;">
+                            <!-- ...İptal Durumları modülü... -->
+                            <h3 class="fs-14 font-semibold text-[#000000] mb-3">İptal Durumları</h3>
+                            <div class="flex items-center justify-center">
+                                <img src="https://static.readdy.ai/image/d5ef78e5e20d4f96c7b7ffa896bb004b/c5221624650b60112907581a26ed6264.png" alt="Cancel Statistics" class="w-[454px] h-auto">
+                            </div>
                         </div>
                     </div>
-                    <div class="flex space-x-2" id="satisfaction-bars">
-                        <div class="h-3 w-24 rounded-full bg-emerald-400"></div>
-                        <div class="h-3 w-24 rounded-full bg-emerald-400"></div>
-                        <div class="h-3 w-24 rounded-full bg-emerald-400"></div>
-                        <div class="h-3 w-24 rounded-full bg-emerald-400"></div>
-                        <div class="h-3 w-24 rounded-full bg-slate-200"></div>
+                    <div class="bg-white rounded-xl p-6 ml-6 shadow-sm border-2 border-[#E0E8F0]" style="width: 68%; height: 370px;">
+                        <h3 class="fs-14 font-semibold text-[#000000] mb-3">Toplam Kullanıcı</h3>
+                        <div id="usageChart" class="w-full h-[280px]"></div>
                     </div>
                 </div>
             </div>
@@ -288,76 +419,191 @@
             });
         }
     </script>
-    <script id="chart-script">
+    <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const chartDom = document.getElementById('viewsChart');
-            const myChart = echarts.init(chartDom);
-            const option = {
-                animation: false,
-                grid: {
-                    left: 0,
-                    right: 0,
-                    top: 20,
-                    bottom: 40,
-                    containLabel: true
-                },
-                xAxis: {
-                    type: 'category',
-                    data: ['Eylül', 'Ekim', 'Kasım', 'Aralık', 'Ocak', 'Şubat', 'Mart'],
-                    axisLine: {
-                        show: false
+            const usageChartElement = document.getElementById('usageChart');
+            if (usageChartElement) {
+                const usageChart = echarts.init(usageChartElement);
+                const usageOption = {
+                    animation: true,
+                    tooltip: {
+                        trigger: 'axis',
+                        backgroundColor: 'rgba(255, 255, 255, 0.95)',
+                        borderColor: '#E5E7EB',
+                        textStyle: {
+                            color: '#1F2937'
+                        }
                     },
-                    axisTick: {
-                        show: false
+                    grid: {
+                        left: '4%',
+                        right: '4%',
+                        top: '10%',
+                        bottom: '18%',
+                        containLabel: true
                     },
-                    axisLabel: {
-                        color: '#6B7280'
-                    }
-                },
-                yAxis: {
-                    type: 'value',
-                    max: 25000,
-                    axisLine: {
-                        show: false
+                    legend: {
+                        data: ['Hak Kullanımı', 'Kupon Kullanımı'],
+                        left: 16,
+                        bottom: 0,
+                        icon: 'circle',
+                        itemWidth: 10,
+                        itemHeight: 10,
+                        textStyle: {
+                            fontSize: 13,
+                            color: '#374151'
+                        }
                     },
-                    axisTick: {
-                        show: false
-                    },
-                    axisLabel: {
-                        color: '#6B7280',
-                        formatter: function(value) {
-                            if (value >= 1000) {
-                                return (value / 1000) + 'k';
+                    xAxis: {
+                        type: 'category',
+                        data: ['Eylül', 'Ekim', 'Kasım', 'Aralık', 'Ocak', 'Şubat', 'Mart'],
+                        axisLabel: {
+                            color: '#6B7280',
+                            fontSize: 13
+                        },
+                        axisTick: {
+                            show: false
+                        },
+                        axisLine: {
+                            lineStyle: {
+                                color: '#E5E7EB'
                             }
-                            return value;
                         }
                     },
-                    splitLine: {
-                        lineStyle: {
-                            color: '#E5E7EB',
-                            width: 1
+                    yAxis: {
+                        type: 'value',
+                        axisLabel: {
+                            color: '#6B7280',
+                            fontSize: 13,
+                            formatter: function(value) {
+                                return value >= 1000 ? value / 1000 + 'k' : value;
+                            }
+                        },
+                        splitLine: {
+                            lineStyle: {
+                                color: '#E5E7EB'
+                            }
                         }
-                    }
-                },
-                series: [{
-                    data: [15000, 18000, 6000, 16000, 12000, 17000, 22000],
-                    type: 'bar',
-                    itemStyle: {
-                        color: '#7B8FB0',
-                        borderRadius: [4, 4, 0, 0]
                     },
-                    barWidth: '25%'
-                }],
-                tooltip: {
-                    trigger: 'axis',
-                    backgroundColor: 'rgba(255, 255, 255, 0.9)',
-                    borderColor: '#E5E7EB',
-                    textStyle: {
-                        color: '#1F2937'
+                    series: [{
+                        name: 'Hak Kullanımı',
+                        type: 'bar',
+                        data: [15000, 18000, 5000, 16000, 12000, 15000, 20000],
+                        barWidth: '25%',
+                        itemStyle: {
+                            color: '#8B5CF6',
+                            borderRadius: [4, 4, 0, 0]
+                        }
+                    }, {
+                        name: 'Kupon Kullanımı',
+                        type: 'bar',
+                        data: [12000, 12000, 22000, 6000, 11000, 13000, 11000],
+                        barWidth: '25%',
+                        itemStyle: {
+                            color: '#F59E0B',
+                            borderRadius: [4, 4, 0, 0]
+                        }
+                    }]
+                };
+                usageChart.setOption(usageOption);
+                window.addEventListener('resize', function() {
+                    usageChart.resize();
+                });
+            }
+        });
+    </script>
+    <!--  aylık haftalık grafik-->
+    <!-- JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const usageChartElement1 = document.getElementById('viewsChart2');
+            if (usageChartElement1) {
+                const usageChart1 = echarts.init(usageChartElement1);
+                usageChart1.setOption({
+                    animation: true,
+                    tooltip: {
+                        trigger: 'axis',
+                        backgroundColor: 'rgba(255, 255, 255, 0.9)',
+                        textStyle: {
+                            color: '#1f2937'
+                        }
+                    },
+                    grid: {
+                        left: '4%',
+                        right: '4%',
+                        top: '10%',
+                        bottom: '10%',
+                        containLabel: true
+                    },
+                    xAxis: {
+                        type: 'category',
+                        data: ['Eylül', 'Ekim', 'Kasım', 'Aralık', 'Ocak', 'Şubat', 'Mart'],
+                        axisLabel: {
+                            color: '#6B7280'
+                        },
+                        axisLine: {
+                            lineStyle: {
+                                color: '#E5E7EB'
+                            }
+                        }
+                    },
+                    yAxis: {
+                        type: 'value',
+                        axisLabel: {
+                            color: '#6B7280',
+                            formatter: value => value >= 1000 ? value / 1000 + 'k' : value
+                        },
+                        splitLine: {
+                            lineStyle: {
+                                color: '#E5E7EB'
+                            }
+                        }
+                    },
+                    series: [{
+                        name: 'Psikolog Görüşmeleri',
+                        type: 'bar',
+                        data: [13000, 16000, 5000, 15000, 11000, 14000, 21000],
+                        barWidth: '20%',
+                        itemStyle: {
+                            color: '#7B8FB0',
+                            borderRadius: [4, 4, 0, 0]
+                        }
+                    }]
+                });
+
+                window.addEventListener('resize', () => usageChart1.resize());
+            }
+        });
+    </script>
+    <script id="satisfaction-script">
+        document.addEventListener('DOMContentLoaded', function() {
+            function updateSatisfaction(button, rate) {
+                try {
+                    document.querySelectorAll('.satisfaction-btn').forEach(btn => {
+                        btn.classList.remove('bg-gray-900', 'text-white');
+                        btn.classList.add('text-gray-600');
+                    });
+                    button.classList.remove('text-gray-600');
+                    button.classList.add('bg-gray-900', 'text-white');
+                    const satisfactionRate = document.querySelector('.text-2xl.font-bold');
+                    if (satisfactionRate) {
+                        satisfactionRate.textContent = rate + '%';
                     }
+                    const rateNum = parseFloat(rate);
+                    const bars = document.querySelectorAll('#satisfaction-bars div');
+                    bars.forEach((bar, index) => {
+                        if (index < Math.floor(rateNum)) {
+                            bar.classList.remove('bg-slate-200');
+                            bar.classList.add('bg-emerald-400');
+                        } else {
+                            bar.classList.remove('bg-emerald-400');
+                            bar.classList.add('bg-slate-200');
+                        }
+                    });
+                } catch (error) {
+                    console.log('Error updating satisfaction:', error);
                 }
-            };
-            myChart.setOption(option);
+            }
+            window.updateSatisfaction = updateSatisfaction;
         });
     </script>
 </body>
