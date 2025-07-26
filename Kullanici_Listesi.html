@@ -59,7 +59,7 @@
                     class="flex items-center space-x-3 px-4 py-3 text-gray-900 hover:bg-gray-50 rounded-lg">
                     <img src="https://static.readdy.ai/image/d5ef78e5e20d4f96c7b7ffa896bb004b/0e0127857fbb04e1630e32c8cfb1d25d.png"
                         alt="Navigation Icons" class="w-6 h-6 object-contain">
-                    <span class=" fs-14 text-black font-semibold ">Kullanım Raporları</span>
+                    <span class=" fs-14 text-black font-semibold ">İstatistikler</span>
                 </a>
                 <a href="#" class="flex items-center space-x-3 px-4 py-3 text-gray-900 hover:bg-gray-50 rounded-lg"
                     style="width:227px; height:56px; padding:16px 8px; border-radius:8px; background:#EEE7FA; opacity:1;">
@@ -384,40 +384,53 @@
                     </button>
                 </div>
             </div>
-            <div class="mb-8">
+            <div class="mb-8 ">
                 <div class="text-[16px] font-semibold mb-4">Paket Bilgileri</div>
-                <div class="flex gap-4">
+                <div class="flex justify-item-center gap-4">
                     <div class="relative">
                         <select class="font-medium text-[14px] font-['Poppins'] appearance-none text-[#7B8FB0]"
                             style="width: 324px; height: 48px; border-radius: 8px; padding-right: 24px; padding-left: 24px; background: #FFFFFF; border: 2px solid #E0E8F0; display: flex; justify-content: space-between;">
                             <option>Hizmet Seç</option>
-                            <option>Hizmet 1</option>
-                            <option>Hizmet 2</option>
-                            <option>Hizmet 3</option>
+                            <option>Tümü</option>
+                            <option>Mental Sağlık</option>
+                            <option>Beslenme ve Diyet</option>
+                            <option>Doktor Hizmetleri</option>
+                            <option>Doğum Koçu</option>
+                            <option>Emzirme Danışmanlığı</option>
+                            
                         </select>
                         <button onclick="" class="absolute right-2 top-1/2 transform -translate-y-1/2">
                             <img src="https://static.readdy.ai/image/d5ef78e5e20d4f96c7b7ffa896bb004b/3db96bd320f44195573c97fdb6303b03.png"
                                 alt="Dropdown" style="width: 20px; height: 20px;">
                         </button>
                     </div>
-                    <div class="relative"
-                        style="width: 130px; height: 48px; border-radius: 8px; padding-right: 24px; padding-left: 24px; background: #FFFFFF; border: 2px solid #E0E8F0; display: flex; justify-content: space-between; align-items: center;">
-                        <span
-                            style="font-family: 'Poppins', sans-serif; font-weight: 500; font-size: 14px; color: #7B8FB0;">0
-                            Hak</span>
+                    <div class="relative">
+                        <select class="font-medium text-[14px] font-['Poppins'] appearance-none text-[#7B8FB0]"
+                            style="width: 130px; height: 48px; border-radius: 8px; padding-right: 24px; padding-left: 24px; background: #FFFFFF; border: 2px solid #E0E8F0; display: flex; justify-content: space-between;">
+                            <option>0 Hak</option>
+                            <option>1 Hak</option>
+                            <option>2 Hak</option>
+                            <option>3 Hak</option>
+                            <option>4 Hak</option>
+                            <option>5 Hak</option>   
+                        </select>
+                        
                         <button onclick="" class="absolute right-6 top-1/2 transform -translate-y-1/2">
                             <img src="https://static.readdy.ai/image/d5ef78e5e20d4f96c7b7ffa896bb004b/3db96bd320f44195573c97fdb6303b03.png"
                                 alt="Dropdown" style="width: 20px; height: 20px;">
                         </button>
                     </div>
-                    <button>
-                        <img src="https://static.readdy.ai/image/d5ef78e5e20d4f96c7b7ffa896bb004b/1bd825f8797f1f200b804294eba0bca3.png"
-                            alt="Add" class="w-4 h-4 object-contain"
-                            style="width:16px; height:16px; min-width:24px; min-height:24px;">
-                    </button>
+                    <div class=" w-6 h-6 flex items-center justify-center mt-3">  
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M12 8V16M16 12H8" stroke="#121212" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12Z" stroke="#121212" stroke-width="1.5"/>
+</svg>
+                    </div>
+                    
+
                 </div>
             </div>
-            <div class="flex gap-4 mt-8">
+            <div class="flex gap-4 mt-7" style="border-top: 2px solid #E0E8F0; padding-top: 24px;">
                 <button onclick="modalKapat()"
                     class="flex items-center justify-center gap-2 text-[#121212] font-semibold text-[16px]"
                     style="width: 263px; height: 48px; border-radius: 32px; padding: 10px 20px; gap: 8px; background: #FFFFFF; border: 2px solid #121212;">Vazgeç</button>
@@ -474,38 +487,51 @@
             </div>
             <div class="mb-8">
                 <div class="text-[16px] font-semibold mb-4">Paket Bilgileri</div>
-                <div class="flex gap-4">
+                <div class="flex justify-item-center gap-4">
                     <div class="relative">
                         <select class="font-medium text-[14px] font-['Poppins'] appearance-none text-[#7B8FB0]"
                             style="width: 324px; height: 48px; border-radius: 8px; padding-right: 24px; padding-left: 24px; background: #FFFFFF; border: 2px solid #E0E8F0; display: flex; justify-content: space-between;">
                             <option>Hizmet Seç</option>
-                            <option>Hizmet 1</option>
-                            <option>Hizmet 2</option>
-                            <option>Hizmet 3</option>
+                            <option>Tümü</option>
+                            <option>Mental Sağlık</option>
+                            <option>Beslenme ve Diyet</option>
+                            <option>Doktor Hizmetleri</option>
+                            <option>Doğum Koçu</option>
+                            <option>Emzirme Danışmanlığı</option>
+                            
                         </select>
                         <button onclick="" class="absolute right-2 top-1/2 transform -translate-y-1/2">
                             <img src="https://static.readdy.ai/image/d5ef78e5e20d4f96c7b7ffa896bb004b/3db96bd320f44195573c97fdb6303b03.png"
                                 alt="Dropdown" style="width: 20px; height: 20px;">
                         </button>
                     </div>
-                    <div class="relative"
-                        style="width: 130px; height: 48px; border-radius: 8px; padding-right: 24px; padding-left: 24px; background: #FFFFFF; border: 2px solid #E0E8F0; display: flex; justify-content: space-between; align-items: center;">
-                        <span
-                            style="font-family: 'Poppins', sans-serif; font-weight: 500; font-size: 14px; color: #7B8FB0;">0
-                            Hak</span>
+                    <div class="relative">
+                        <select class="font-medium text-[14px] font-['Poppins'] appearance-none text-[#7B8FB0]"
+                            style="width: 130px; height: 48px; border-radius: 8px; padding-right: 24px; padding-left: 24px; background: #FFFFFF; border: 2px solid #E0E8F0; display: flex; justify-content: space-between;">
+                            <option>0 Hak</option>
+                            <option>1 Hak</option>
+                            <option>2 Hak</option>
+                            <option>3 Hak</option>
+                            <option>4 Hak</option>
+                            <option>5 Hak</option>   
+                        </select>
+                        
                         <button onclick="" class="absolute right-6 top-1/2 transform -translate-y-1/2">
                             <img src="https://static.readdy.ai/image/d5ef78e5e20d4f96c7b7ffa896bb004b/3db96bd320f44195573c97fdb6303b03.png"
                                 alt="Dropdown" style="width: 20px; height: 20px;">
                         </button>
                     </div>
-                    <button>
-                        <img src="https://static.readdy.ai/image/d5ef78e5e20d4f96c7b7ffa896bb004b/1bd825f8797f1f200b804294eba0bca3.png"
-                            alt="Add" class="w-4 h-4 object-contain"
-                            style="width:16px; height:16px; min-width:24px; min-height:24px;">
-                    </button>
+                    <div class=" w-6 h-6 flex items-center justify-center mt-3">  
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M12 8V16M16 12H8" stroke="#121212" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12Z" stroke="#121212" stroke-width="1.5"/>
+</svg>
+                    </div>
+                    
+
                 </div>
             </div>
-            <div class="flex gap-4 mt-8">
+            <div class="flex gap-4 mt-8" style="border-top: 2px solid #E0E8F0; padding-top: 24px;" >
                 <button onclick="modalKapat()"
                     class="flex items-center justify-center gap-2 text-[#121212] font-semibold text-[16px]"
                     style="width: 263px; height: 48px; border-radius: 32px; padding: 10px 20px; gap: 8px; background: #FFFFFF; border: 2px solid #121212;">Vazgeç</button>
