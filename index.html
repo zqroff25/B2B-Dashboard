@@ -28,6 +28,16 @@
                     },
                     fontFamily: {
                         sans: ['Poppins', 'sans-serif']
+                    },
+                    screens: {
+                        'xs': '475px',
+                        'sm': '640px',
+                        'md': '768px',
+                        'lg': '1024px',
+                        'xl': '1280px',
+                        '2xl': '1536px',
+                        '3xl': '1920px',
+                        '4xl': '2560px'
                     }
                 }
             }
@@ -42,6 +52,57 @@
     <style>
         :where([class^="ri-"])::before {
             content: "\f3c2";
+        }
+
+        /* Basit responsive ayarlar - Kullanici_Listesi.html gibi */
+        body {
+            overflow-x: auto;
+        }
+
+        /* Basit z-index ayarları */
+        aside {
+            z-index: 10;
+        }
+
+        /* Scroll bar stilleri */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #c1c1c1;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #a8a8a8;
+        }
+
+        /* Scrollbar gizleme sınıfı */
+        .scrollbar-hide {
+            -ms-overflow-style: none;  /* Internet Explorer 10+ */
+            scrollbar-width: none;  /* Firefox */
+        }
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;  /* Safari and Chrome */
+        }
+
+        /* TabGroup responsive ayarları */
+        #tabGroup1 {
+            max-width: 100%;
+            overflow-x: auto;
+            overflow-y: hidden;
+        }
+        
+        /* Sayfa taşmasını önleme */
+        .flex.mb-8.gap-6 {
+            max-width: 100%;
+            overflow-x: hidden;
         }
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.5.0/echarts.min.js"></script>
@@ -59,7 +120,7 @@
             <nav class="px-4 space-y-2">
                 <a href="index.html" data-readdy="true"
                     class="flex items-center space-x-3 px-4 py-3 ml-1 text-gray-900 hover:bg-gray-50 rounded-lg"
-                    style="width:227px; height:56px; padding:14px 8px; border-radius:8px; background:#EEE7FA; opacity:1;">
+                    style="width:227px; height:56px; padding:10px 4px; border-radius:8px; background:#EEE7FA; opacity:1;">
                     <img src="https://static.readdy.ai/image/d5ef78e5e20d4f96c7b7ffa896bb004b/0e0127857fbb04e1630e32c8cfb1d25d.png"
                         alt="Navigation Icons" class="w-6 h-6 object-contain ml-2">
                     <span class=" fs-14 text-black font-semibold ">Kullanım Raporları</span>
@@ -84,20 +145,19 @@
                 </a>
             </nav>
         </aside>
-        <main class="ml-64 flex-1 min-h-screen">
-            <div class="p-6 bg-[#FAFAFA]">
+        <main class="flex-1 min-h-screen" style="margin-left: 250px;">
+            <div class="p-6 bg-[#FAFAFA] overflow-x-auto">
                 <div class="flex items-center justify-end mb-3">
                     <img src="https://static.readdy.ai/image/d5ef78e5e20d4f96c7b7ffa896bb004b/0f748dae3ea01706738c73b4ada168e8.png"
                         alt="Eczacibasi" class="w-32 h-auto">
                 </div>
                 <!-- Banner ve Eczacıbaşı logosu hizalı -->
-                <div class="relative mb-4">
+                <div class="relative mb-4" style="z-index: 1;">
                     <div class="rounded-2xl p-2 text-white overflow-hidden h-[140px]"
                         style="background-image: url('https://static.readdy.ai/image/d5ef78e5e20d4f96c7b7ffa896bb004b/554688d5afb3d7f7a14bf48cb293f37f.png'); background-size: contain; background-position: center; background-repeat: no-repeat;">
                         <div class="relative z-10">
                         </div>
                     </div>
-                    <!--<img src="https://static.readdy.ai/image/d5ef78e5e20d4f96c7b7ffa896bb004b/0f748dae3ea01706738c73b4ada168e8.png" alt="Eczacibasi" class="absolute top-2 right-4 h-12"> -->
                 </div>
                 <div class="flex items-center justify-between mb-4 mt-1">
                     <!-- Container -->
@@ -125,20 +185,19 @@
                             <div id="sehirDropdown"
                                 class="absolute top-[60px] left-0 w-full bg-white border border-gray-200 rounded-md shadow-md hidden z-10">
                                 <ul class="py-2">
-                                    <li><button onclick="selectSehir('Tümü')"
-                                            class="w-full text-left px-4 py-2 hover:bg-gray-100">Tümü</button></li>
                                     <li><button onclick="selectSehir('İstanbul')"
                                             class="w-full text-left px-4 py-2 hover:bg-gray-100">İstanbul</button></li>
                                     <li><button onclick="selectSehir('Ankara')"
                                             class="w-full text-left px-4 py-2 hover:bg-gray-100">Ankara</button></li>
                                     <li><button onclick="selectSehir('İzmir')"
                                             class="w-full text-left px-4 py-2 hover:bg-gray-100">İzmir</button></li>
+                                    <li><button onclick="selectSehir('Tümü')"
+                                            class="w-full text-left px-4 py-2 hover:bg-gray-100">Tümü</button></li>
                                 </ul>
                             </div>
                         </div>
 
                         <!-- Bölge Dropdown -->
-
                         <div class="relative" id="dropdownBolgeWrapper">
                             <button onclick="toggleDropdown('bolgeDropdown')"
                                 class="w-[256px] h-[49px] bg-white text-gray-900 px-6 py-2 flex flex-col items-start justify-center shadow-sm hover:shadow-md border-2 border-[#E0E8F0] rounded-[8px]">
@@ -161,9 +220,6 @@
                             <div id="bolgeDropdown"
                                 class="absolute top-[60px] left-0 w-full bg-white border border-gray-200 rounded-md shadow-md hidden z-10">
                                 <ul class="py-2">
-                                    <li><button onclick="selectBolge('Tümü')"
-                                            class="w-full text-left px-4 py-2 hover:bg-gray-100">Tümü</button>
-                                    </li>
                                     <li><button onclick="selectBolge('Marmara')"
                                             class="w-full text-left px-4 py-2 hover:bg-gray-100">Marmara</button></li>
                                     <li><button onclick="selectBolge('Ege')"
@@ -171,7 +227,9 @@
                                     <li><button onclick="selectBolge('İç Anadolu')"
                                             class="w-full text-left px-4 py-2 hover:bg-gray-100">İç Anadolu</button>
                                     </li>
-                                    
+                                    <li><button onclick="selectBolge('Tümü')"
+                                            class="w-full text-left px-4 py-2 hover:bg-gray-100">Tümü</button>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -198,9 +256,6 @@
                             <div id="ekipDropdown"
                                 class="absolute top-[60px] left-0 w-full bg-white border border-gray-200 rounded-md shadow-md hidden z-10">
                                 <ul class="py-2">
-                                     <li><button onclick="selectEkip('Tümü')"
-                                            class="w-full text-left px-4 py-2 hover:bg-gray-100">Tümü</button>
-                                    </li>
                                     <li><button onclick="selectEkip('Tasarım Ekibi')"
                                             class="w-full text-left px-4 py-2 hover:bg-gray-100">Tasarım Ekibi</button>
                                     </li>
@@ -210,7 +265,9 @@
                                     <li><button onclick="selectEkip('Satış Ekibi')"
                                             class="w-full text-left px-4 py-2 hover:bg-gray-100">Satış Ekibi</button>
                                     </li>
-                                   
+                                    <li><button onclick="selectEkip('Tümü')"
+                                            class="w-full text-left px-4 py-2 hover:bg-gray-100">Tümü</button>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -330,35 +387,11 @@
                             </div>
                         </div>
                     </div>
-                    <!--<div class="bg-white rounded-xl p-6 shadow-sm border-2 border-[#E0E8F0] ml-6" style="width: 65%;">
-                        <h3 class="text-lg font-semibold text-gray-900 mb-6">Görüşme Oranı</h3>
-                        <div class="flex">
-                            <svg width="192" height="192" viewBox="0 0 192 192" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <g clip-path="url(#clip0_3297_2290)">
-                                    <path
-                                        d="M39.7553 167.251C37.9675 169.516 34.6716 169.913 32.5073 168.005C21.6362 158.419 13.0587 146.48 7.44462 133.069C1.15696 118.048 -1.20682 101.676 0.575596 85.4903C2.35801 69.305 8.22803 53.839 17.6336 40.547C26.0315 28.6789 37.0016 18.8923 49.6982 11.9021C52.2258 10.5105 55.3563 11.6154 56.6084 14.215L68.869 39.6709C70.121 42.2705 69.0135 45.3727 66.5387 46.8563C59.7334 50.9359 53.8325 56.3952 49.2274 62.9031C43.6139 70.8363 40.1104 80.067 39.0466 89.727C37.9828 99.387 39.3936 109.159 43.1463 118.123C46.2248 125.478 50.7963 132.09 56.5508 137.553C58.6434 139.539 59.0493 142.808 57.2615 145.073L39.7553 167.251Z"
-                                        fill="#9373E7" />
-                                    <path
-                                        d="M120.695 9.50286C121.5 6.7319 124.404 5.12415 127.127 6.07827C139.905 10.5554 151.611 17.6922 161.461 27.0389C171.311 36.3855 179.052 47.7012 184.193 60.2267C185.288 62.8961 183.835 65.8808 181.11 66.8296L154.427 76.12C151.702 77.0688 148.745 75.6162 147.552 72.989C144.507 66.2811 140.188 60.2079 134.821 55.1146C129.453 50.0213 123.162 46.0274 116.304 43.3374C113.617 42.2838 112.012 39.4077 112.816 36.6367L120.695 9.50286Z"
-                                        fill="#2D9C63" />
-                                    <path
-                                        d="M183.029 73.0581C185.815 72.3073 188.697 73.9552 189.295 76.7779C192.18 90.393 192.075 104.495 188.96 118.102C185.844 131.709 179.804 144.452 171.283 155.456C169.516 157.737 166.205 157.967 164.023 156.079L142.657 137.59C140.475 135.702 140.259 132.415 141.941 130.07C146.365 123.901 149.53 116.899 151.232 109.464C152.934 102.03 153.131 94.3486 151.831 86.8689C151.337 84.0261 152.962 81.1607 155.748 80.4099L183.029 73.0581Z"
-                                        fill="#1645DE" />
-                                    <path
-                                        d="M159.872 160.566C161.922 162.596 161.946 165.916 159.807 167.853C144.412 181.788 124.87 190.389 104.096 192.282C83.3231 194.175 62.5483 189.247 44.888 178.324C42.434 176.806 41.858 173.536 43.507 171.169L59.6544 147.983C61.3034 145.615 64.5496 145.055 67.0577 146.482C77.1934 152.247 88.8892 154.804 100.584 153.738C112.279 152.672 123.32 148.044 132.247 140.542C134.456 138.686 137.75 138.649 139.8 140.68L159.872 160.566Z"
-                                        fill="#19B2A7" />
-                                    <path
-                                        d="M62.6372 12.0104C61.5966 9.31916 62.9311 6.27946 65.675 5.38682C79.7427 0.810241 94.6798 -0.453163 109.316 1.69555C112.171 2.11465 113.997 4.88703 113.423 7.71482L107.805 35.4052C107.231 38.233 104.474 40.0351 101.606 39.7212C94.2407 38.9152 86.7879 39.5456 79.6627 41.5772C76.8879 42.3683 73.8671 41.055 72.8265 38.3638L62.6372 12.0104Z"
-                                        fill="#FEA400" />
-                                </g>
-                                <defs>
-                                    <clipPath id="clip0_3297_2290">
-                                        <rect width="192" height="192" fill="white" />
-                                    </clipPath>
-                                </defs>
-                            </svg>
-                            <div class="flex-1 space-y-4 ml-16">
+                    <div class="bg-white rounded-xl shadow-sm border-2 border-[#E0E8F0] ml-6" style="width: 65%;">
+                        <h3 class="text-lg font-semibold text-gray-900 mt-6 ml-6">Tamamlanan Görüşme Oranı</h3>
+                        <div class="flex ml-10">
+                            <div id="donutChart" class="w-[256px] h-[256px] -mt-2"></div>
+                            <div class="flex-1 space-y-4 ml-24 mr-24 mt-10">
                                 <div class="flex items-center justify-between">
                                     <div class="flex items-center space-x-2">
                                         <div class="w-3 h-3 rounded-full" style="background-color: #FD7700"></div>
@@ -366,7 +399,7 @@
                                             Sağlık</span>
                                     </div>
                                     <span class="font-semibold text-[14px] leading-4" style="color: #121212">200 Görüşme
-                                        (52.1%)</span>
+                                        (57.15%)</span>
                                 </div>
                                 <div class="flex items-center justify-between">
                                     <div class="flex items-center space-x-2">
@@ -375,7 +408,7 @@
                                             style="color: #2D9C63">Beslenme ve Diyet</span>
                                     </div>
                                     <span class="font-semibold text-[14px] leading-4" style="color: #121212">30 Görüşme
-                                        (52.1%)</span>
+                                        (8.57%)</span>
                                 </div>
                                 <div class="flex items-center justify-between">
                                     <div class="flex items-center space-x-2">
@@ -384,7 +417,7 @@
                                             Hizmetleri</span>
                                     </div>
                                     <span class="font-semibold text-[14px] leading-4" style="color: #121212">30 Görüşme
-                                        (52.1%)</span>
+                                        (8.57%)</span>
                                 </div>
                                 <div class="flex items-center justify-between">
                                     <div class="flex items-center space-x-2">
@@ -393,7 +426,7 @@
                                             Koçu</span>
                                     </div>
                                     <span class="font-semibold text-[14px] leading-4" style="color: #121212">30 Görüşme
-                                        (52.1%)</span>
+                                        (8.57%)</span>
                                 </div>
                                 <div class="flex items-center justify-between">
                                     <div class="flex items-center space-x-2">
@@ -402,149 +435,301 @@
                                             Danışmanı</span>
                                     </div>
                                     <span class="font-semibold text-[14px] leading-4" style="color: #121212">30 Görüşme
-                                        (52.1%)</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div> -->
-                    <div class="bg-white rounded-xl p-6 shadow-sm border-2 border-[#E0E8F0] ml-6" style="width: 65%;">
-                        <h3 class="text-lg font-semibold text-gray-900 mb-6">Tamamlanan Görüşme Oranı</h3>
-                        <div class="flex ml-10">
-                            <img src="https://static.readdy.ai/image/d5ef78e5e20d4f96c7b7ffa896bb004b/39352a3e052a54a79619ecaa1d82057f.png"
-                                alt="Donut Chart" class="w-[192px] h-[192px] -mt-2">
-                            <div class="flex-1 space-y-4 ml-24 mr-24">
-                                <div class="flex items-center justify-between">
-                                    <div class="flex items-center space-x-2">
-                                        <div class="w-2 h-2 rounded-full" style="background-color: #FD7700"></div>
-                                        <span class="font-semibold text-[14px] leading-4" style="color: #FD7700">Mental
-                                            Sağlık</span>
-                                    </div>
-                                    <span class="font-semibold text-[14px] leading-4" style="color: #121212">200 Görüşme
-                                        (52.1%)</span>
+                                        (8.57%)</span>
                                 </div>
                                 <div class="flex items-center justify-between">
                                     <div class="flex items-center space-x-2">
-                                        <div class="w-2 h-2 rounded-full" style="background-color: #2D9C63"></div>
-                                        <span class="font-semibold text-[14px] leading-4"
-                                            style="color: #2D9C63">Beslenme ve Diyet</span>
-                                    </div>
-                                    <span class="font-semibold text-[14px] leading-4" style="color: #121212">30 Görüşme
-                                        (52.1%)</span>
-                                </div>
-                                <div class="flex items-center justify-between">
-                                    <div class="flex items-center space-x-2">
-                                        <div class="w-2 h-2 rounded-full" style="background-color: #1645DE"></div>
-                                        <span class="font-semibold text-[14px] leading-4" style="color: #1645DE">Doktor
-                                            Hizmetleri</span>
-                                    </div>
-                                    <span class="font-semibold text-[14px] leading-4" style="color: #121212">30 Görüşme
-                                        (52.1%)</span>
-                                </div>
-                                <div class="flex items-center justify-between">
-                                    <div class="flex items-center space-x-2">
-                                        <div class="w-2 h-2 rounded-full" style="background-color: #19B2A7"></div>
-                                        <span class="font-semibold text-[14px] leading-4" style="color: #19B2A7">Doğum
-                                            Koçu</span>
-                                    </div>
-                                    <span class="font-semibold text-[14px] leading-4" style="color: #121212">30 Görüşme
-                                        (52.1%)</span>
-                                </div>
-                                <div class="flex items-center justify-between">
-                                    <div class="flex items-center space-x-2">
-                                        <div class="w-2 h-2 rounded-full" style="background-color: #7853E1"></div>
-                                        <span class="font-semibold text-[14px] leading-4" style="color: #7853E1">Emzirme
-                                            Danışmanı</span>
-                                    </div>
-                                    <span class="font-semibold text-[14px] leading-4" style="color: #121212">30 Görüşme
-                                        (52.1%)</span>
-                                </div>
-                                <div class="flex items-center justify-between">
-                                    <div class="flex items-center space-x-2">
-                                        <div class="w-2 h-2 rounded-full" style="background-color: #E45241"></div>
+                                        <div class="w-3 h-3 rounded-full" style="background-color: #E45241"></div>
                                         <span class="font-['Poppins'] font-semibold text-[12px] leading-4"
                                             style="color: #E45241">Online Fitness ve Yoga Danışmanlığı</span>
                                     </div>
                                     <span class="font-semibold text-[14px] leading-4" style="color: #121212">30 Görüşme
-                                        (52.1%)</span>
+                                        (8.57%)</span>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="bg-white rounded-xl p-6 shadow-sm mt-8 mb-8 border-2 border-[#E0E8F0]">
-                    <div class="mb-8">
-                        <h3 class="text-lg font-semibold text-gray-900 mb-8">Görüşme Sayısı</h3>
+                <div class="flex gap-6 mt-8 mb-8">
+                    <!-- Yeni Checker -->
+                    <div class="bg-white rounded-2xl border-2 border-[#E0E8F0]" style="width: 460px; height: 450px;">
+                        <div class="flex flex-col gap-6">
+                            <h3 class="text-lg font-semibold text-gray-900 mb-50 ml-6 mt-6">Duygu Durum Takibi</h3>
+                            <div class="flex-1 flex items-center justify-center">
+                                <!-- Duygu Durum Grafiği -->
+                                <div class="w-full h-full flex flex-col items-center justify-center bg-white">
+
+                                    <!-- Grafik Alanı -->
+                                    <div class="w-full h-56 flex items-end justify-center gap-12 relative"
+                                        style="margin-top: 90px;">
+
+                                        <!-- Bağlantı çizgileri -->
+
+                                        <!-- Grafik noktaları -->
+                                        <div class="flex flex-col items-center relative z-10">
+                                            <div class="fs-16 font-semibold text-black">4.4</div>
+                                            <div
+                                                class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
+                                                <!-- Mutlu emoji -->
+                                                <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <circle cx="16" cy="16" r="16" fill="#3CBE7A" />
+                                                    <path
+                                                        d="M15.6719 26C21.1947 26 25.6719 21.5228 25.6719 16C25.6719 10.4772 21.1947 6 15.6719 6C10.149 6 5.67188 10.4772 5.67188 16C5.67188 21.5228 10.149 26 15.6719 26Z"
+                                                        stroke="#121212" stroke-width="1.5" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                    <path
+                                                        d="M11.6719 19C12.584 20.2144 14.0362 21 15.6719 21C17.3076 21 18.7598 20.2144 19.6719 19"
+                                                        stroke="#121212" stroke-width="1.5" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                    <path
+                                                        d="M10.6719 13.5C10.6719 12.6716 11.3434 12 12.1719 12C13.0003 12 13.6719 12.6716 13.6719 13.5M17.6719 13.5C17.6719 12.6716 18.3435 12 19.1719 12C20.0003 12 20.6719 12.6716 20.6719 13.5"
+                                                        stroke="#121212" stroke-width="1.5" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                </svg>
+
+                                            </div>
+                                            <div class="w-0.5 bg-[#E0E8F0] " style="height: 225px;"></div>
+                                        </div>
+
+                                        <div class="flex flex-col items-center relative z-10">
+                                            <div class="fs-16 font-semibold text-black">3.7</div>
+                                            <div
+                                                class="w-8 h-8 bg-teal-400 rounded-full flex items-center justify-center ">
+                                                <!-- Hafif mutlu emoji -->
+                                                <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <circle cx="16" cy="16" r="16" fill="#57F8A4" />
+                                                    <path
+                                                        d="M16.3281 26C21.851 26 26.3281 21.5228 26.3281 16C26.3281 10.4772 21.851 6 16.3281 6C10.8053 6 6.32812 10.4772 6.32812 16C6.32812 21.5228 10.8053 26 16.3281 26Z"
+                                                        stroke="#121212" stroke-width="1.5" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                    <path
+                                                        d="M12.3281 19C13.2402 19.8501 14.6924 20.4 16.3281 20.4C17.9638 20.4 19.416 19.8501 20.3281 19"
+                                                        stroke="#121212" stroke-width="1.5" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                    <path d="M12.3371 13H12.3281M20.3281 13H20.3191" stroke="#121212"
+                                                        stroke-width="2" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                </svg>
+
+                                            </div>
+                                            <div class="w-0.5 bg-[#E0E8F0] " style="height: 200px;"></div>
+                                        </div>
+
+                                        <div class="flex flex-col items-center relative z-10">
+                                            <div class="fs-16 font-semibold text-black">2.5</div>
+                                            <div
+                                                class="w-8 h-8 bg-yellow-400 rounded-full flex items-center justify-center">
+                                                <!-- Nötr emoji -->
+                                                <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <circle cx="16" cy="16" r="16" fill="#FED600" />
+                                                    <path
+                                                        d="M16 26C21.5228 26 26 21.5228 26 16C26 10.4772 21.5228 6 16 6C10.4772 6 6 10.4772 6 16C6 21.5228 10.4772 26 16 26Z"
+                                                        stroke="#121212" stroke-width="1.5" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                    <path d="M12.009 13H12M20 13H19.991" stroke="#121212"
+                                                        stroke-width="2" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                    <path d="M13 20H19" stroke="#121212" stroke-width="1.5"
+                                                        stroke-linecap="round" stroke-linejoin="round" />
+                                                </svg>
+
+                                            </div>
+                                            <div class="w-0.5 bg-[#E0E8F0] " style="height: 170px;"></div>
+                                        </div>
+
+                                        <div class="flex flex-col items-center relative z-10">
+                                            <div class="fs-16 font-semibold text-black">4.6</div>
+                                            <div
+                                                class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
+                                                <!-- Mutlu emoji -->
+                                                <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <circle cx="16" cy="16" r="16" fill="#3CBE7A" />
+                                                    <path
+                                                        d="M15.6719 26C21.1947 26 25.6719 21.5228 25.6719 16C25.6719 10.4772 21.1947 6 15.6719 6C10.149 6 5.67188 10.4772 5.67188 16C5.67188 21.5228 10.149 26 15.6719 26Z"
+                                                        stroke="#121212" stroke-width="1.5" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                    <path
+                                                        d="M11.6719 19C12.584 20.2144 14.0362 21 15.6719 21C17.3076 21 18.7598 20.2144 19.6719 19"
+                                                        stroke="#121212" stroke-width="1.5" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                    <path
+                                                        d="M10.6719 13.5C10.6719 12.6716 11.3434 12 12.1719 12C13.0003 12 13.6719 12.6716 13.6719 13.5M17.6719 13.5C17.6719 12.6716 18.3435 12 19.1719 12C20.0003 12 20.6719 12.6716 20.6719 13.5"
+                                                        stroke="#121212" stroke-width="1.5" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                </svg>
+
+                                            </div>
+                                            <div class="w-0.5 bg-[#E0E8F0] " style="height: 250px;"></div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Aylar -->
+                                    <div class="flex justify-center gap-10 mt-2 ml-2 mr-2">
+                                        <button class="text-gray-400 hover:text-gray-600">
+                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M15 18L9 12L15 6" stroke="black" stroke-width="2"
+                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                            </svg>
+                                        </button>
+                                        <span class="text-black fs-12 font-semibold mt-1">Ocak</span>
+                                        <span class="text-black fs-12 font-semibold mt-1">Şubat</span>
+                                        <span class="text-black fs-12 font-semibold mt-1">Mart</span>
+                                        <span class="text-black fs-12 font-semibold mt-1">Nisan</span>
+                                        <button class="text-gray-400 hover:text-gray-600">
+                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M9 18L15 12L9 6" stroke="black" stroke-width="2"
+                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="flex mb-6">
-                        <div class="flex items-center space-x-10 gap-8">
-                            <div id="tabGroup" class="flex items-center gap-5 flex-nowrap whitespace-nowrap ml-3 ">
+                    <!-- Görüşme Sayısı Grafiği -->
+                    <div class="bg-white rounded-xl p-6 shadow-sm border-2 border-[#E0E8F0] flex-1" style="width: 100%;">
+                        <div class="mb-8">
+                            <h3 class="text-lg font-semibold text-gray-900 mb-8">Görüşme Sayısı</h3>
+                        </div>
+
+                        <div class="flex mb-6">
+                            <div class="flex items-center space-x-10 gap-8">
+                                <div id="tabGroup" class="flex items-center gap-5 flex-nowrap whitespace-nowrap ml-3 ">
+                                    <button
+                                        class="tab-btn1 active-tab fs-12 font-semibold text-[#A0B2CD] border-b-2 border-black pb-1"
+                                        data-score="4.82">Tümü</button>
+                                    <button
+                                        class="tab-btn2 fs-12 text-[#A0B2CD] font-medium hover:text-black transition-all"
+                                        data-score="4.52">Psikolog</button>
+                                    <button
+                                        class="tab-btn3 fs-12 text-[#A0B2CD] font-medium hover:text-black transition-all"
+                                        data-score="4.65">Diyetisyen</button>
+                                    <button
+                                        class="tab-btn4 fs-12 text-[#A0B2CD] font-medium hover:text-black transition-all"
+                                        data-score="4.71">Kadın Sağlığı</button>
+                                    <button
+                                        class="tab-btn5 fs-12 text-[#A0B2CD] font-medium hover:text-black transition-all"
+                                        data-score="4.48">Doktor Hizmetleri</button>
+                                    <button
+                                        class="tab-btn6 text-sm text-[#A0B2CD] font-medium hover:text-black transition-all"
+                                        data-score="4.41">Online Fitness ve Yoga Danışmanlığı</button>
+                                </div>
+                            </div>
+                            <div class="flex justify-items-center ml-auto">
+                                <div class="flex items-center justify-start bg-white border border-[#C0D0DF] rounded-full px-1 py-1"
+                                    style="width: 185px; height: 40px;">
+                                    <!-- Aktif Buton -->
+                                    <button
+                                        class="bg-black text-white font-semibold fs-12 rounded-full px-6 h-[30px]  flex items-center justify-center mr-2">
+                                        Aylık
+                                    </button>
+                                    <!-- Pasif Buton -->
+                                    <button class="text-[#7B8FB0] fs-12 font-medium ml-2">
+                                        Haftalık
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="viewsChart2" class="w-[1050px] h-[260px]"></div>
+                    </div>
+                </div>
+                <div class="flex mb-4 gap-6">
+                    <div class="bg-white rounded-xl p-6 shadow-sm border-2 border-[#E0E8F0]"
+                        style="width: 800px; height: 340px;">
+                        <!-- ...İptal Durumları modülü... -->
+                        <h3 class="fs-14 font-semibold text-[#000000] mb-4">İptal Durumları</h3>
+                        <div id="tabGroup3"
+                                class="flex items-center gap-5 mb-3 flex-nowrap whitespace-nowrap overflow-x-auto scrollbar-hide">
                                 <button
                                     class="tab-btn active-tab fs-12 font-semibold text-[#A0B2CD] border-b-2 border-black pb-1"
                                     data-score="4.82">Tümü</button>
-                                <button
-                                    class="tab-btn fs-12 text-[#A0B2CD] font-medium hover:text-black transition-all"
+                                <button class="tab-btn fs-12 text-[#A0B2CD] font-medium hover:text-black transition-all"
                                     data-score="4.52">Psikolog</button>
-                                <button
-                                    class="tab-btn fs-12 text-[#A0B2CD] font-medium hover:text-black transition-all"
+                                <button class="tab-btn fs-12 text-[#A0B2CD] font-medium hover:text-black transition-all"
                                     data-score="4.65">Diyetisyen</button>
-                                <button
-                                    class="tab-btn fs-12 text-[#A0B2CD] font-medium hover:text-black transition-all"
+                                <button class="tab-btn fs-12 text-[#A0B2CD] font-medium hover:text-black transition-all"
                                     data-score="4.71">Kadın Sağlığı</button>
-                                <button
-                                    class="tab-btn fs-12 text-[#A0B2CD] font-medium hover:text-black transition-all"
+                                <button class="tab-btn fs-12 text-[#A0B2CD] font-medium hover:text-black transition-all"
                                     data-score="4.48">Doktor Hizmetleri</button>
                                 <button
                                     class="tab-btn text-sm text-[#A0B2CD] font-medium hover:text-black transition-all"
                                     data-score="4.41">Online Fitness ve Yoga Danışmanlığı</button>
                             </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-6 ml-8">
+                                <div>
+                                    <span class="font-semibold fs-16 text-[#121212] leading-4">2450</span>
+                                    <span class="font-medium fs-14 text-[#7B8FB0]"> Toplam Yapılan Görüşme</span>
+                                </div>
+                                <div style="height: 50px; border: 1px solid#E0E8F0;">
+                                </div>
+
+                                <div>
+                                    <span class="font-semibold fs-16 leading-4" style="color: #FF0044">20</span>
+                                    <span class="font-medium fs-14 text-[#7B8FB0]"> İptal Edilen Görüşme</span>
+
+                                </div>
+                            </div>
+
                         </div>
-                        <div class="flex justify-items-center ml-auto">
-                            <div class="flex items-center justify-start bg-white border border-[#C0D0DF] rounded-full px-1 py-1"
-                                style="width: 185px; height: 40px;">
-                                <!-- Aktif Buton -->
-                                <button
-                                    class="bg-black text-white font-semibold fs-12 rounded-full px-6 h-[30px]  flex items-center justify-center mr-2">
-                                    Aylık
-                                </button>
-                                <!-- Pasif Buton -->
-                                <button class="text-[#7B8FB0] fs-12 font-medium ml-2">
-                                    Haftalık
-                                </button>
+                        <div class="flex items-center justify-start ml-6">
+                            <div id="cancelDonutChart" class="w-[192px] h-[192px] mb-6"></div>
+                            <div class="flex-1 space-y-4 ml-8">
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center space-x-2">
+                                        <div class="w-3 h-3 rounded-full" style="background-color: #394355"></div>
+                                        <span class="font-semibold text-[14px] leading-4" style="color: #394355">HCP
+                                            Kaynaklı</span>
+                                        <span class="font-semibold text-[14px] leading-4 pl-12"
+                                            style="color: #FF0044">2 (10%)</span>
+                                    </div>
+
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center space-x-2">
+                                        <div class="w-3 h-3 rounded-full" style="background-color: #7B8FB0"></div>
+                                        <span class="font-semibold text-[14px] leading-4"
+                                            style="color: #7B8FB0">Kullanıcı Kaynaklı</span>
+                                        <span class="font-semibold text-[14px] leading-4 pl-4"
+                                            style="color: #FF0044">18 (90%)</span>
+                                    </div>
+
+                                </div>
                             </div>
                         </div>
+
                     </div>
-                    <div id="viewsChart2" class="w-full h-[500px]"></div>
-                </div>
-                <div class="flex mb-8">
-                    <div>
-                        <div class="bg-white rounded-xl p-6 shadow-sm border-2 border-[#E0E8F0]"
-                            style="width: 900px; height: 300px;">
-                            <h3 class=" fs-14 font-semibold text-[#000000] mb-10 ml-3">Memnuniyet Oranı</h3>
+                    <div class="bg-white rounded-xl p-6 shadow-sm border-2 border-[#E0E8F0]"
+                        style="width: 765px; height: 244px;">
+                            <h3 class=" fs-14 font-semibold text-[#000000] mb-3 ">Memnuniyet Oranı</h3>
                             <!-- Sekmeler -->
-                            <div id="tabGroup1"
-                                class="flex items-center gap-5 mb-10 flex-nowrap whitespace-nowrap ml-3 ">
+                            <div id="tabGroup1" 
+                                class="flex items-center gap-5 mb-6 flex-nowrap whitespace-nowrap overflow-x-auto scrollbar-hide"
+                                style="min-width: 100%;">
                                 <button
                                     class="tab-btn active-tab fs-12 font-semibold text-[#A0B2CD] border-b-2 border-black pb-1"
                                     data-score="4.82">Tümü</button>
-                                <button
-                                    class="tab-btn fs-12 text-[#A0B2CD] font-medium hover:text-black transition-all"
+                                <button class="tab-btn fs-12 text-[#A0B2CD] font-medium hover:text-black transition-all"
                                     data-score="4.52">Psikolog</button>
-                                <button
-                                    class="tab-btn fs-12 text-[#A0B2CD] font-medium hover:text-black transition-all"
+                                <button class="tab-btn fs-12 text-[#A0B2CD] font-medium hover:text-black transition-all"
                                     data-score="4.65">Diyetisyen</button>
-                                <button
-                                    class="tab-btn fs-12 text-[#A0B2CD] font-medium hover:text-black transition-all"
+                                <button class="tab-btn fs-12 text-[#A0B2CD] font-medium hover:text-black transition-all"
                                     data-score="4.71">Kadın Sağlığı</button>
-                                <button
-                                    class="tab-btn fs-12 text-[#A0B2CD] font-medium hover:text-black transition-all"
+                                <button class="tab-btn fs-12 text-[#A0B2CD] font-medium hover:text-black transition-all"
                                     data-score="4.48">Doktor Hizmetleri</button>
                                 <button
                                     class="tab-btn text-sm text-[#A0B2CD] font-medium hover:text-black transition-all"
                                     data-score="4.41">Online Fitness ve Yoga Danışmanlığı</button>
                             </div>
                             <!-- Değerler -->
-                            <div class="flex items-center space-x-1 mb-10 ml-3">
+                            <div class="flex items-center space-x-1 mb-6 ml-3">
                                 <div class="w-10 h-10 flex items-center justify-center">
                                     <!-- ikon -->
                                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -560,7 +745,7 @@
                                     </svg>
                                 </div>
                                 <div class="flex justify-center items-center flex-row gap-2">
-                                    <div id="satisfactionValue" class="fs-32 font-semibold text-gray-900">4.82%</div>
+                                    <div id="satisfactionValue" class="text-2xl font-bold text-gray-900">4.82%</div>
                                     <div class="fs-14 text-[#7B8FB0] font-medium">Memnuniyet</div>
                                 </div>
                             </div>
@@ -575,7 +760,8 @@
                                 </div>
                                 <div class="bar bg-[#3CBE7A]" style="border-radius:4px; width: 73px; height:24px;">
                                 </div>
-                                <div class="bar flex overflow-hidden" style="border-radius:4px; width: 73px; height:24px;">
+                                <div class="bar flex overflow-hidden"
+                                    style="border-radius:4px; width: 73px; height:24px;">
                                     <div class="h-full bg-[#3CBE7A]" style="width: 50%"></div>
                                     <div class="h-full bg-[#E0E8F0] flex-1"></div>
                                 </div>
@@ -673,388 +859,7 @@
                                 });
                             });
                         </script>
-
                     </div>
-                    <div class="bg-white rounded-xl p-6  shadow-sm border-2 border-[#E0E8F0] ml-6"
-                        style="width: 45%; height: 300px;">
-                        <!-- ...İptal Durumları modülü... -->
-                        <h3 class="fs-14 font-semibold text-[#000000] mb-8">İptal Durumları</h3>
-                        <div class="flex items-center justify-between">
-                            <div class="flex items-center gap-6 mb-2 ml-8">
-                                <div>
-                                    <span class="font-semibold fs-16 text-[#121212] leading-4">2450</span>
-                                    <span class="font-medium fs-14 text-[#7B8FB0]"> Toplam Yapılan Görüşme</span>
-                                </div>
-                                <div style="height: 50px; border: 1px solid#E0E8F0;">
-                                </div>
-
-                                <div>
-                                    <span class="font-semibold fs-16 leading-4" style="color: #FF0044">20</span>
-                                    <span class="font-medium fs-14 text-[#7B8FB0]"> İptal Edilen Görüşme</span>
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="flex items-center justify-start ml-6">
-                            <img src="altgrafik.png" alt="Cancel Statistics" class="w-[454px] h-auto">
-                        </div>
-                    </div>
-                    <!--<div class="bg-white rounded-xl p-6 ml-6 shadow-sm border-2 border-[#E0E8F0]"
-                        style="width: 68%; height: 370px;">
-                        <h3 class="fs-14 font-semibold text-[#000000] mb-3">Toplam Kullanıcı</h3>
-                        <div id="usageChart" class="w-full h-[280px]"></div> 
-                    </div>-->
-                </div>
-            </div>
-            <div class="bg-white rounded-xl pl-10 pr-10 pt-6 pb-6 border-2 border-[#E0E8F0] mb-6 mr-6 ml-6"
-                style="border-radius: 16px; ">
-                <h3 class="fs-14 font-semibold text-[#000000] mb-6">Kullanım Oranı</h3>
-                <div class="overflow-x-auto">
-                    <table class="w-full border-separate border-spacing-y-1">
-                        <tbody>
-                            <tr>
-                                <td class="py-4 font-semibold fs-12" style="color: #FD7700">Mental Sağlık</td>
-                                <td class="py-4 text-center"><button
-                                        class="usage-btn hover:bg-gray-50 px-4 py-1 justify-center fs-14 font-semibold"
-                                        style=" width:71px; height: 34px; border:2px solid #E0E8F0; border-radius: 4px;"
-                                        data-value="67">67</button></td>
-                                <td class="py-4 text-center"><button
-                                        class="usage-btn hover:bg-gray-50 px-4 py-1 justify-center fs-14 font-semibold"
-                                        style=" width:71px; height: 34px; border:2px solid #E0E8F0; border-radius: 4px;"
-                                        data-value="65">65</button></td>
-                                <td class="py-4 text-center"><button
-                                        class="usage-btn hover:bg-gray-50 px-4 py-1 justify-center fs-14 font-semibold"
-                                        style=" width:71px; height: 34px; border:2px solid #E0E8F0; border-radius: 4px;"
-                                        data-value="52">52</button></td>
-                                <td class="py-4 text-center"><button
-                                        class="usage-btn bg-[#FD7700] px-4 py-1 justify-center text-white fs-14 font-semibold"
-                                        style=" width:71px; height: 34px; border:2px solid #FD7700; border-radius: 4px;"
-                                        data-value="41">41</button></td>
-                                <td class="py-4 text-center"><button
-                                        class="usage-btn hover:bg-gray-50 px-4 py-1 justify-center fs-14 font-semibold"
-                                        style=" width:71px; height: 34px; border:2px solid #E0E8F0; border-radius: 4px;"
-                                        data-value="39">39</button></td>
-                                <td class="py-4 text-center"><button
-                                        class="usage-btn hover:bg-gray-50 px-4 py-1 justify-centerfs-14 font-semibold"
-                                        style=" width:71px; height: 34px; border:2px solid #E0E8F0; border-radius: 4px;"
-                                        data-value="16">16</button></td>
-                                <td class="py-4 text-center"><button
-                                        class="usage-btn hover:bg-gray-50 px-4 py-1 justify-center fs-14 font-semibold"
-                                        style=" width:71px; height: 34px; border:2px solid #E0E8F0; border-radius: 4px;"
-                                        data-value="16">16</button></td>
-                                <td class="py-4 text-center"><button
-                                        class="usage-btn hover:bg-gray-50 px-4 py-1 justify-center fs-14 font-semibold"
-                                        style=" width:71px; height: 34px; border:2px solid #E0E8F0; border-radius: 4px;"
-                                        data-value="9">9</button></td>
-                                <td class="py-4 text-center"><button
-                                        class="usage-btn hover:bg-gray-50 px-4 py-1 justify-center fs-14 font-semibold"
-                                        style=" width:71px; height: 34px; border:2px solid #E0E8F0; border-radius: 4px;"
-                                        data-value="5">5</button></td>
-                                <td class="py-4 text-center"><button
-                                        class="usage-btn hover:bg-gray-50 px-4 py-1 justify-center fs-14 font-semibold"
-                                        style=" width:71px; height: 34px; border:2px solid #E0E8F0; border-radius: 4px;"
-                                        data-value="3">3</button></td>
-                                <td class="py-4 text-center"><button
-                                        class="usage-btn hover:bg-gray-50 px-4 py-1 justify-center fs-14 font-semibold"
-                                        style=" width:71px; height: 34px; border:2px solid #E0E8F0; border-radius: 4px;"
-                                        data-value="2">2</button></td>
-                                
-                            </tr>
-                            <tr>
-                                <td class="py-4 text-gray-900 font-semibold fs-12">Beslenme ve Diyet</td>
-                                <td class="py-4 text-center"><button
-                                        class="usage-btn hover:bg-gray-50 px-4 py-1 justify-center fs-14 font-semibold"
-                                        style=" width:71px; height: 34px; border:2px solid #E0E8F0; border-radius: 4px;"
-                                        data-value="34">34</button></td>
-                                <td class="py-4 text-center"><button
-                                        class="usage-btn hover:bg-gray-50 px-4 py-1 justify-center fs-14 font-semibold"
-                                        style=" width:71px; height: 34px; border:2px solid #E0E8F0; border-radius: 4px;"
-                                        data-value="31">31</button></td>
-                                <td class="py-4 text-center"><button
-                                        class="usage-btn hover:bg-gray-50 px-4 py-1 justify-center fs-14 font-semibold"
-                                        style=" width:71px; height: 34px; border:2px solid #E0E8F0; border-radius: 4px;"
-                                        data-value="31">31</button></td>
-                                <td class="py-4 text-center"><button
-                                        class="usage-btn hover:bg-gray-50 px-4 py-1 justify-center fs-14 font-semibold"
-                                        style=" width:71px; height: 34px; border:2px solid #E0E8F0; border-radius: 4px;"
-                                        data-value="25">25</button></td>
-                                <td class="py-4 text-center"><button
-                                        class="usage-btn hover:bg-gray-50 px-4 py-1 justify-center fs-14 font-semibold"
-                                        style=" width:71px; height: 34px; border:2px solid #E0E8F0; border-radius: 4px;"
-                                        data-value="23">23</button></td>
-                                <td class="py-4 text-center"><button
-                                        class="usage-btn hover:bg-gray-50 px-4 py-1 justify-center fs-14 font-semibold"
-                                        style=" width:71px; height: 34px; border:2px solid #E0E8F0; border-radius: 4px;"
-                                        data-value="21">21</button></td>
-                                <td class="py-4 text-center"><button
-                                        class="usage-btn hover:bg-gray-50 px-4 py-1 justify-center fs-14 font-semibold"
-                                        style=" width:71px; height: 34px; border:2px solid #E0E8F0; border-radius: 4px;"
-                                        data-value="14">14</button></td>
-                                <td class="py-4 text-center"><button
-                                        class="usage-btn hover:bg-gray-50 px-4 py-1 justify-center fs-14 font-semibold"
-                                        style=" width:71px; height: 34px; border:2px solid #E0E8F0; border-radius: 4px;"
-                                        data-value="13">13</button></td>
-                                <td class="py-4 text-center"><button
-                                        class="usage-btn hover:bg-gray-50 px-4 py-1 justify-center fs-14 font-semibold"
-                                        style=" width:71px; height: 34px; border:2px solid #E0E8F0; border-radius: 4px;"
-                                        data-value="4">4</button></td>
-                                <td class="py-4 text-center"><button
-                                        class="usage-btn hover:bg-gray-50 px-4 py-1 justify-center fs-14 font-semibold"
-                                        style=" width:71px; height: 34px; border:2px solid #E0E8F0; border-radius: 4px;"
-                                        data-value="2">2</button></td>
-                                <td class="py-4 text-center"><button
-                                        class="usage-btn hover:bg-gray-50 px-4 py-1 justify-center fs-14 font-semibold"
-                                        style=" width:71px; height: 34px; border:2px solid #E0E8F0; border-radius: 4px;"
-                                        data-value="1">1</button></td>
-                            </tr>
-                            <tr>
-                                <td class="py-4 text-gray-900 font-semibold fs-12">Doktor Hizmetleri</td>
-                                <td class="py-4 text-center"><button
-                                        class="usage-btn hover:bg-gray-50 px-4 py-1 justify-center fs-14 font-semibold"
-                                        style=" width:71px; height: 34px; border:2px solid #E0E8F0; border-radius: 4px;"
-                                        data-value="39">39</button></td>
-                                <td class="py-4 text-center"><button
-                                        class="usage-btn hover:bg-gray-50 px-4 py-1 justify-center fs-14 font-semibold"
-                                        style=" width:71px; height: 34px; border:2px solid #E0E8F0; border-radius: 4px;"
-                                        data-value="25">25</button></td>
-                                <td class="py-4 text-center"><button
-                                        class="usage-btn hover:bg-gray-50 px-4 py-1 justify-center fs-14 font-semibold"
-                                        style=" width:71px; height: 34px; border:2px solid #E0E8F0; border-radius: 4px;"
-                                        data-value="16">16</button></td>
-                                <td class="py-4 text-center"><button
-                                        class="usage-btn hover:bg-gray-50 px-4 py-1 justify-center fs-14 font-semibold"
-                                        style=" width:71px; height: 34px; border:2px solid #E0E8F0; border-radius: 4px;"
-                                        data-value="10">10</button></td>
-                                <td class="py-4 text-center"><button
-                                        class="usage-btn hover:bg-gray-50 px-4 py-1 justify-center fs-14 font-semibold"
-                                        style=" width:71px; height: 34px; border:2px solid #E0E8F0; border-radius: 4px;"
-                                        data-value="6">6</button></td>
-                                <td class="py-4 text-center"><button
-                                        class="usage-btn hover:bg-gray-50 px-4 py-1 justify-center fs-14 font-semibold"
-                                        style=" width:71px; height: 34px; border:2px solid #E0E8F0; border-radius: 4px;"
-                                        data-value="3">3</button></td>
-                                <td class="py-4 text-center"><button
-                                        class="usage-btn hover:bg-gray-50 px-4 py-1 justify-center fs-14 font-semibold"
-                                        style=" width:71px; height: 34px; border:2px solid #E0E8F0; border-radius: 4px;"
-                                        data-value="1">1</button></td>
-                                <td class="py-4 text-center"><button
-                                        class="usage-btn hover:bg-gray-50 px-4 py-1 justify-center fs-14 font-semibold"
-                                        style=" width:71px; height: 34px; border:2px solid #E0E8F0; border-radius: 4px;"
-                                        data-value="0">0</button></td>
-                                <td class="py-4 text-center"><button
-                                        class="usage-btn hover:bg-gray-50 px-4 py-1 justify-center fs-14 font-semibold"
-                                        style=" width:71px; height: 34px; border:2px solid #E0E8F0; border-radius: 4px;"
-                                        data-value="0">0</button></td>
-                                <td class="py-4 text-center"><button
-                                        class="usage-btn hover:bg-gray-50 px-4 py-1 justify-center fs-14 font-semibold"
-                                        style=" width:71px; height: 34px; border:2px solid #E0E8F0; border-radius: 4px;"
-                                        data-value="0">0</button></td>
-                                <td class="py-4 text-center"><button
-                                        class="usage-btn hover:bg-gray-50 px-4 py-1 justify-center fs-14 font-semibold"
-                                        style=" width:71px; height: 34px; border:2px solid #E0E8F0; border-radius: 4px;"
-                                        data-value="0">0</button></td>
-                            </tr>
-                            <tr>
-                                <td class="py-4 text-gray-900 font-semibold fs-12">Doğum Koçu</td>
-                                <td class="py-4 text-center"><button
-                                        class="usage-btn hover:bg-gray-50 px-4 py-1 justify-center fs-14 font-semibold"
-                                        style=" width:71px; height: 34px; border:2px solid #E0E8F0; border-radius: 4px;"
-                                        data-value="20">20</button></td>
-                                <td class="py-4 text-center"><button
-                                        class="usage-btn hover:bg-gray-50 px-4 py-1 justify-center fs-14 font-semibold"
-                                        style=" width:71px; height: 34px; border:2px solid #E0E8F0; border-radius: 4px;"
-                                        data-value="21">21</button></td>
-                                <td class="py-4 text-center"><button
-                                        class="usage-btn hover:bg-gray-50 px-4 py-1 justify-center fs-14 font-semibold"
-                                        style=" width:71px; height: 34px; border:2px solid #E0E8F0; border-radius: 4px;"
-                                        data-value="13">13</button></td>
-                                <td class="py-4 text-center"><button
-                                        class="usage-btn hover:bg-gray-50 px-4 py-1 justify-center fs-14 font-semibold"
-                                        style=" width:71px; height: 34px; border:2px solid #E0E8F0; border-radius: 4px;"
-                                        data-value="6">6</button></td>
-                                <td class="py-4 text-center"><button
-                                        class="usage-btn hover:bg-gray-50 px-4 py-1 justify-center fs-14 font-semibold"
-                                        style=" width:71px; height: 34px; border:2px solid #E0E8F0; border-radius: 4px;"
-                                        data-value="4">4</button></td>
-                                <td class="py-4 text-center"><button
-                                        class="usage-btn hover:bg-gray-50 px-4 py-1 justify-center fs-14 font-semibold"
-                                        style=" width:71px; height: 34px; border:2px solid #E0E8F0; border-radius: 4px;"
-                                        data-value="3">3</button></td>
-                                <td class="py-4 text-center"><button
-                                        class="usage-btn hover:bg-gray-50 px-4 py-1 justify-center fs-14 font-semibold"
-                                        style=" width:71px; height: 34px; border:2px solid #E0E8F0; border-radius: 4px;"
-                                        data-value="3">3</button></td>
-                                <td class="py-4 text-center"><button
-                                        class="usage-btn hover:bg-gray-50 px-4 py-1 justify-center fs-14 font-semibold"
-                                        style=" width:71px; height: 34px; border:2px solid #E0E8F0; border-radius: 4px;"
-                                        data-value="3">3</button></td>
-                                <td class="py-4 text-center"><button
-                                        class="usage-btn hover:bg-gray-50 px-4 py-1 justify-center fs-14 font-semibold"
-                                        style=" width:71px; height: 34px; border:2px solid #E0E8F0; border-radius: 4px;"
-                                        data-value="2">2</button></td>
-                                <td class="py-4 text-center"><button
-                                        class="usage-btn hover:bg-gray-50 px-4 py-1 justify-center fs-14 font-semibold"
-                                        style=" width:71px; height: 34px; border:2px solid #E0E8F0; border-radius: 4px;"
-                                        data-value="2">2</button></td>
-                                <td class="py-4 text-center"><button
-                                        class="usage-btn hover:bg-gray-50 px-4 py-1 justify-center fs-14 font-semibold"
-                                        style=" width:71px; height: 34px; border:2px solid #E0E8F0; border-radius: 4px;"
-                                        data-value="2">2</button></td>
-                            </tr>
-                            <tr>
-                                <td class="py-4 text-gray-900 font-semibold fs-12">Emzirme Danışmanı</td>
-                                <td class="py-4 text-center"><button
-                                        class="usage-btn hover:bg-gray-50 px-4 py-1 justify-center fs-14 font-semibold"
-                                        style=" width:71px; height: 34px; border:2px solid #E0E8F0; border-radius: 4px;"
-                                        data-value="25">25</button></td>
-                                <td class="py-4 text-center"><button
-                                        class="usage-btn hover:bg-gray-50 px-4 py-1 justify-center fs-14 font-semibold"
-                                        style=" width:71px; height: 34px; border:2px solid #E0E8F0; border-radius: 4px;"
-                                        data-value="23">23</button></td>
-                                <td class="py-4 text-center"><button
-                                        class="usage-btn hover:bg-gray-50 px-4 py-1 justify-center fs-14 font-semibold"
-                                        style=" width:71px; height: 34px; border:2px solid #E0E8F0; border-radius: 4px;"
-                                        data-value="19">19</button></td>
-                                <td class="py-4 text-center"><button
-                                        class="usage-btn hover:bg-gray-50 px-4 py-1 justify-center fs-14 font-semibold"
-                                        style=" width:71px; height: 34px; border:2px solid #E0E8F0; border-radius: 4px;"
-                                        data-value="13">13</button></td>
-                                <td class="py-4 text-center"><button
-                                        class="usage-btn hover:bg-gray-50 px-4 py-1 justify-center fs-14 font-semibold"
-                                        style=" width:71px; height: 34px; border:2px solid #E0E8F0; border-radius: 4px;"
-                                        data-value="13">13</button></td>
-                                <td class="py-4 text-center"><button
-                                        class="usage-btn hover:bg-gray-50 px-4 py-1 justify-center fs-14 font-semibold"
-                                        style=" width:71px; height: 34px; border:2px solid #E0E8F0; border-radius: 4px;"
-                                        data-value="10">10</button></td>
-                                <td class="py-4 text-center"><button
-                                        class="usage-btn hover:bg-gray-50 px-4 py-1 justify-center fs-14 font-semibold"
-                                        style=" width:71px; height: 34px; border:2px solid #E0E8F0; border-radius: 4px;"
-                                        data-value="6">6</button></td>
-                                <td class="py-4 text-center"><button
-                                        class="usage-btn hover:bg-gray-50 px-4 py-1 justify-center fs-14 font-semibold"
-                                        style=" width:71px; height: 34px; border:2px solid #E0E8F0; border-radius: 4px;"
-                                        data-value="4">4</button></td>
-                                <td class="py-4 text-center"><button
-                                        class="usage-btn hover:bg-gray-50 px-4 py-1 justify-center fs-14 font-semibold"
-                                        style=" width:71px; height: 34px; border:2px solid #E0E8F0; border-radius: 4px;"
-                                        data-value="3">3</button></td>
-                                <td class="py-4 text-center"><button
-                                        class="usage-btn hover:bg-gray-50 px-4 py-1 justify-center fs-14 font-semibold"
-                                        style=" width:71px; height: 34px; border:2px solid #E0E8F0; border-radius: 4px;"
-                                        data-value="3">3</button></td>
-                                <td class="py-4 text-center"><button
-                                        class="usage-btn hover:bg-gray-50 px-4 py-1 justify-center fs-14 font-semibold"
-                                        style=" width:71px; height: 34px; border:2px solid #E0E8F0; border-radius: 4px;"
-                                        data-value="0">0</button></td>
-                            </tr>
-                            <tr>
-                                <td class="py-4 text-gray-900 font-semibold fs-12">Online Fitness ve<br>Yoga Danışmanlığı</td>
-                                <td class="py-4 text-center"><button
-                                        class="usage-btn hover:bg-gray-50 px-4 py-1 justify-center fs-14 font-semibold"
-                                        style=" width:71px; height: 34px; border:2px solid #E0E8F0; border-radius: 4px;"
-                                        data-value="23">23</button></td>
-                                <td class="py-4 text-center"><button
-                                        class="usage-btn hover:bg-gray-50 px-4 py-1 justify-center fs-14 font-semibold"
-                                        style=" width:71px; height: 34px; border:2px solid #E0E8F0; border-radius: 4px;"
-                                        data-value="21">21</button></td>
-                                <td class="py-4 text-center"><button
-                                        class="usage-btn hover:bg-gray-50 px-4 py-1 justify-center fs-14 font-semibold"
-                                        style=" width:71px; height: 34px; border:2px solid #E0E8F0; border-radius: 4px;"
-                                        data-value="13">13</button></td>
-                                <td class="py-4 text-center"><button
-                                        class="usage-btn hover:bg-gray-50 px-4 py-1 justify-center fs-14 font-semibold"
-                                        style=" width:71px; height: 34px; border:2px solid #E0E8F0; border-radius: 4px;"
-                                        data-value="6">6</button></td>
-                                <td class="py-4 text-center"><button
-                                        class="usage-btn hover:bg-gray-50 px-4 py-1 justify-center fs-14 font-semibold"
-                                        style=" width:71px; height: 34px; border:2px solid #E0E8F0; border-radius: 4px;"
-                                        data-value="6">6</button></td>
-                                <td class="py-4 text-center"><button
-                                        class="usage-btn hover:bg-gray-50 px-4 py-1 justify-center fs-14 font-semibold"
-                                        style=" width:71px; height: 34px; border:2px solid #E0E8F0; border-radius: 4px;"
-                                        data-value="2">2</button></td>
-                                <td class="py-4 text-center"><button
-                                        class="usage-btn hover:bg-gray-50 px-4 py-1 justify-center fs-14 font-semibold"
-                                        style=" width:71px; height: 34px; border:2px solid #E0E8F0; border-radius: 4px;"
-                                        data-value="2">2</button></td>
-                                <td class="py-4 text-center"><button
-                                        class="usage-btn hover:bg-gray-50 px-4 py-1 justify-center fs-14 font-semibold"
-                                        style=" width:71px; height: 34px; border:2px solid #E0E8F0; border-radius: 4px;"
-                                        data-value="2">2</button></td>
-                                <td class="py-4 text-center"><button
-                                        class="usage-btn hover:bg-gray-50 px-4 py-1 justify-center fs-14 font-semibold"
-                                        style=" width:71px; height: 34px; border:2px solid #E0E8F0; border-radius: 4px;"
-                                        data-value="2">2</button></td>
-                                <td class="py-4 text-center"><button
-                                        class="usage-btn hover:bg-gray-50 px-4 py-1 justify-center fs-14 font-semibold"
-                                        style=" width:71px; height: 34px; border:2px solid #E0E8F0; border-radius: 4px;"
-                                        data-value="4">4</button></td>
-                                <td class="py-4 text-center"><button
-                                        class="usage-btn hover:bg-gray-50 px-4 py-1 justify-center fs-14 font-semibold"
-                                        style=" width:71px; height: 34px; border:2px solid #E0E8F0; border-radius: 4px;"
-                                        data-value="0">0</button></td>
-                            </tr>
-                            <tr>
-                                <td class="py-4 font-medium" style="color: #FD7700"></td>
-                                <td class="py-4 text-center usage-btn hover:bg-gray-50 px-4 py-1 fs-12 text-[#4F5A76] font-semibold"
-                                    style=" width:71px; height: 50px; justify-content: start;"
-                                    data-value="1.Seans Kullanımı">1.Seans <p class=" fs-11 text-[#4F5A76] font-medium ">
-                                        Kullanımı</p>
-                                </td>
-                                <td class="py-4 text-center usage-btn hover:bg-gray-50 px-4 py-1 fs-12 text-[#4F5A76] font-semibold"
-                                    style=" width:71px; height: 50px; justify-content: start;"
-                                    data-value="1.Seans Kullanımı">2.Seans <p class=" fs-11 text-[#4F5A76] font-medium ">
-                                        Kullanımı</p>
-                                </td>
-                                <td class="py-4 text-center usage-btn hover:bg-gray-50 px-4 py-1 fs-12 text-[#4F5A76] font-semibold"
-                                    style=" width:71px; height: 50px; justify-content: start;"
-                                    data-value="1.Seans Kullanımı">3.Seans <p class=" fs-11 text-[#4F5A76] font-medium ">
-                                        Kullanımı</p>
-                                </td>
-                                <td class="py-4 text-center usage-btn hover:bg-gray-50 px-4 py-1 fs-12 text-[#4F5A76] font-semibold"
-                                    style=" width:71px; height: 50px; justify-content: start;"
-                                    data-value="1.Seans Kullanımı">4.Seans <p class=" fs-11 text-[#4F5A76] font-medium ">
-                                        Kullanımı</p>
-                                </td>
-                                <td class="py-4 text-center usage-btn hover:bg-gray-50 px-4 py-1 fs-12 text-[#4F5A76] font-semibold"
-                                    style=" width:71px; height: 50px; justify-content: start;"
-                                    data-value="1.Seans Kullanımı">5.Seans <p class=" fs-11 text-[#4F5A76] font-medium ">
-                                        Kullanımı</p>
-                                </td>
-                                <td class="py-4 text-center usage-btn hover:bg-gray-50 px-4 py-1 fs-12 text-[#4F5A76] font-semibold"
-                                    style=" width:71px; height: 50px; justify-content: start;"
-                                    data-value="1.Seans Kullanımı">6.Seans <p class=" fs-11 text-[#4F5A76] font-medium ">
-                                        Kullanımı</p>
-                                </td>
-                                <td class="py-4 text-center usage-btn hover:bg-gray-50 px-4 py-1 fs-12 text-[#4F5A76] font-semibold"
-                                    style=" width:71px; height: 50px; justify-content: start;"
-                                    data-value="1.Seans Kullanımı">7.Seans <p class=" fs-11 text-[#4F5A76] font-medium ">
-                                        Kullanımı</p>
-                                </td>
-                                <td class="py-4 text-center usage-btn hover:bg-gray-50 px-4 py-1 fs-12 text-[#4F5A76] font-semibold"
-                                    style=" width:71px; height: 50px; justify-content: start;"
-                                    data-value="1.Seans Kullanımı">10+Seans <p
-                                        class=" fs-11 text-[#4F5A76] font-medium ">Kullanımı</p>
-                                </td>
-                                <td class="py-4 text-center usage-btn hover:bg-gray-50 px-4 py-1 fs-12 text-[#4F5A76] font-semibold"
-                                    style=" width:71px; height: 50px; justify-content: start;"
-                                    data-value="1.Seans Kullanımı">15+Seans <p
-                                        class=" fs-11 text-[#4F5A76] font-medium ">Kullanımı</p>
-                                </td>
-                                <td class="py-4 text-center usage-btn hover:bg-gray-50 px-4 py-1 fs-12 text-[#4F5A76] font-semibold"
-                                    style=" width:71px; height: 50px; justify-content: start; "
-                                    data-value="1.Seans Kullanımı">20+Seans <p
-                                        class=" fs-11 text-[#4F5A76] font-medium ">Kullanımı</p>
-                                </td>
-                                <td class="py-4 text-center usage-btn hover:bg-gray-50 px-4 py-1 fs-12 text-[#4F5A76] font-semibold"
-                                    style=" width:71px; height: 50px; justify-content: start;"
-                                    data-value="1.Seans Kullanımı">30+Seans <p
-                                        class=" fs-11 text-[#4F5A76] font-medium ">Kullanımı</p>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
                 </div>
             </div>
         </main>
@@ -1083,6 +888,147 @@
     </script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
+            // Responsive davranış için window resize event listener
+            function handleResize() {
+                // ECharts grafiklerini yeniden boyutlandır
+                const charts = document.querySelectorAll('[id$="Chart"], [id$="Chart2"], #donutChart, #cancelDonutChart');
+                charts.forEach(chartId => {
+                    const chart = echarts.getInstanceByDom(document.getElementById(chartId.id));
+                    if (chart) {
+                        chart.resize();
+                    }
+                });
+            }
+
+            // Resize event listener ekle
+            window.addEventListener('resize', handleResize);
+
+            // Donut Chart
+            const donutChartElement = document.getElementById('donutChart');
+            if (donutChartElement) {
+                const donutChart = echarts.init(donutChartElement);
+                const donutOption = {
+                    tooltip: {
+                        trigger: 'item',
+                        backgroundColor: 'rgba(255, 255, 255, 0.95)',
+                        borderColor: '#E5E7EB',
+                        borderWidth: 1,
+                        textStyle: {
+                            color: '#1F2937',
+                            fontSize: 14
+                        },
+                        formatter: function (params) {
+                            return `<div style="padding: 8px;">
+                                <div style="font-weight: 600; margin-bottom: 4px;">${params.name}</div>
+                                <div style="display: flex; align-items: center; gap: 8px;">
+                                    <div style="width: 12px; height: 12px; border-radius: 50%; background-color: ${params.color};"></div>
+                                    <span>${params.value} Görüşme</span>
+                                    <span style="font-weight: 600;">(${params.percent}%)</span>
+                                </div>
+                            </div>`;
+                        }
+                    },
+                    legend: {
+                        show: false
+                    },
+                    series: [{
+                        name: 'Tamamlanan Görüşme Oranı',
+                        type: 'pie',
+                        radius: ['40%', '70%'],
+                        center: ['50%', '50%'],
+                        avoidLabelOverlap: false,
+                        itemStyle: {
+                            borderRadius: 4,
+                            borderColor: '#fff',
+                            borderWidth: 2
+                        },
+                        label: {
+                            show: false
+                        },
+                        emphasis: {
+                            label: {
+                                show: false
+                            },
+                            itemStyle: {
+                                shadowBlur: 10,
+                                shadowOffsetX: 0,
+                                shadowColor: 'rgba(0, 0, 0, 0.5)'
+                            }
+                        },
+                        data: [
+                            { value: 200, name: 'Mental Sağlık', itemStyle: { color: '#FD7700' } },
+                            { value: 30, name: 'Beslenme ve Diyet', itemStyle: { color: '#2D9C63' } },
+                            { value: 30, name: 'Doktor Hizmetleri', itemStyle: { color: '#1645DE' } },
+                            { value: 30, name: 'Doğum Koçu', itemStyle: { color: '#19B2A7' } },
+                            { value: 30, name: 'Emzirme Danışmanı', itemStyle: { color: '#7853E1' } },
+                            { value: 30, name: 'Online Fitness ve Yoga Danışmanlığı', itemStyle: { color: '#E45241' } }
+                        ]
+                    }]
+                };
+                donutChart.setOption(donutOption);
+            }
+
+            // İptal Durumları Donut Chart
+            const cancelDonutChartElement = document.getElementById('cancelDonutChart');
+            if (cancelDonutChartElement) {
+                const cancelDonutChart = echarts.init(cancelDonutChartElement);
+                const cancelDonutOption = {
+                    tooltip: {
+                        trigger: 'item',
+                        backgroundColor: 'rgba(255, 255, 255, 0.95)',
+                        borderColor: '#E5E7EB',
+                        borderWidth: 1,
+                        textStyle: {
+                            color: '#1F2937',
+                            fontSize: 14
+                        },
+                        formatter: function (params) {
+                            return `<div style="padding: 8px;">
+                                <div style="font-weight: 600; margin-bottom: 4px;">${params.name}</div>
+                                <div style="display: flex; align-items: center; gap: 8px;">
+                                    <div style="width: 12px; height: 12px; border-radius: 50%; background-color: ${params.color};"></div>
+                                    <span>${params.value} İptal</span>
+                                    <span style="font-weight: 600; color: #FF0044;">(${params.percent}%)</span>
+                                </div>
+                            </div>`;
+                        }
+                    },
+                    legend: {
+                        show: false
+                    },
+                    series: [{
+                        name: 'İptal Durumları',
+                        type: 'pie',
+                        radius: ['35%', '65%'],
+                        center: ['50%', '50%'],
+                        avoidLabelOverlap: false,
+                        itemStyle: {
+                            borderRadius: 4,
+                            borderColor: '#fff',
+                            borderWidth: 2
+                        },
+                        label: {
+                            show: false
+                        },
+                        emphasis: {
+                            label: {
+                                show: false
+                            },
+                            itemStyle: {
+                                shadowBlur: 10,
+                                shadowOffsetX: 0,
+                                shadowColor: 'rgba(0, 0, 0, 0.5)'
+                            }
+                        },
+                        data: [
+                            { value: 18, name: 'Kullanıcı Kaynaklı', itemStyle: { color: '#7B8FB0' } },
+                            { value: 2, name: 'HCP Kaynaklı', itemStyle: { color: '#394355' } }
+                        ]
+                    }]
+                };
+                cancelDonutChart.setOption(cancelDonutOption);
+            }
+
             const usageChartElement = document.getElementById('usageChart');
             if (usageChartElement) {
                 const usageChart = echarts.init(usageChartElement);
