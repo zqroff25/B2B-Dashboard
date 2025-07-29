@@ -46,7 +46,7 @@
 
 <body class="bg-gray-50 min-h-screen font-sans" style="font-family: 'Poppins', sans-serif;">
     <div class="flex">
-        <aside class="w-64 bg-[#FAFAFA] h-screen fixed left-0 top-0">
+        <aside class="w-64 h-screen bg-gray-50 flex flex-col fixed left-0 top-0">
             <div class="p-6">
                 <div class="flex items-center space-x-2">
                     <img src="https://static.readdy.ai/image/d5ef78e5e20d4f96c7b7ffa896bb004b/ccb0b2b2c534e04738a6b0e1744323e0.png" alt="Gensenta" class="h-12">
@@ -70,6 +70,9 @@
                     <span class=" fs-14 text-black font-semibold ">Hesap Ayarları</span>
                 </a>
             </nav>
+            <div class="w-full flex justify-center mb-6 mt-auto">
+                <button id="cikisBtn" class="w-40 py-2 bg-red-600 text-white rounded-lg font-semibold hover:bg-red-700 transition">Çıkış Yap</button>
+            </div>
         </aside>
         <main class="flex-1 min-h-screen" style="margin-left: 250px;">
             <div class="p-6 bg-gray-50">
@@ -1379,4 +1382,40 @@ if (kullaniciSilBtn) {
 }
     </script>
 
+    <!-- Sidebar'ın en altına çıkış butonu -->
+
+    <!-- Çıkış modalı -->
+    <div id="cikisModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-40 hidden">
+        <div class="bg-white rounded-lg shadow-lg p-8 flex flex-col items-center min-w-[320px]">
+            <div class="text-lg font-semibold mb-4 text-[#121212]">Çıkış yapmak istiyor musunuz?</div>
+            <div class="flex gap-4 mt-2">
+                <button id="cikisVazgecBtn" class="px-6 py-2 bg-gray-200 text-[#121212] rounded-lg font-semibold hover:bg-gray-300 transition">Vazgeç</button>
+                <button id="cikisOnayBtn" onclick="window.close()" class="px-6 py-2 bg-red-600 text-white rounded-lg font-semibold hover:bg-red-700 transition">Çıkış Yap</button>
+                
+            </div>
+        </div>
+    </div>
+
+    <script>
+    // Çıkış butonuna basınca modalı aç
+    const cikisBtn = document.getElementById('cikisBtn');
+    const cikisModal = document.getElementById('cikisModal');
+    const cikisOnayBtn = document.getElementById('cikisOnayBtn');
+    const cikisVazgecBtn = document.getElementById('cikisVazgecBtn');
+    if (cikisBtn && cikisModal) {
+        cikisBtn.onclick = function() {
+            cikisModal.classList.remove('hidden');
+        };
+    }
+    if (cikisVazgecBtn && cikisModal) {
+        cikisVazgecBtn.onclick = function() {
+            cikisModal.classList.add('hidden');
+        };
+    }
+    if (cikisOnayBtn) {
+        cikisOnayBtn.onclick = function() {
+            window.close();
+        };
+    }
+    </script>
 </body></html>
