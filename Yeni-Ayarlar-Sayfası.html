@@ -52,18 +52,18 @@
 
 <body class="bg-gray-50 min-h-screen font-sans">
     <div class="flex">
-        <aside class="w-64 bg-[#FAFAFA] h-screen fixed left-0 top-0">
+        <aside class="w-64 h-screen bg-gray-50 flex flex-col fixed left-0 top-0">
             <div class="p-6">
                 <div class="flex items-center space-x-2">
                     <img src="https://static.readdy.ai/image/d5ef78e5e20d4f96c7b7ffa896bb004b/ccb0b2b2c534e04738a6b0e1744323e0.png" alt="Gensenta" class="h-12">
                 </div>
             </div>
             <nav class="px-4 space-y-2">
-                <a href="index.html" data-readdy="true" class="flex items-center space-x-3 px-4 py-3 text-gray-900 hover:bg-gray-50 rounded-lg">
+                <a href="index.html" data-readdy="true" class="flex items-center space-x-3 px-4 py-3 text-gray-900 hover:bg-gray-50 rounded-lg" >
                     <img src="https://static.readdy.ai/image/d5ef78e5e20d4f96c7b7ffa896bb004b/0e0127857fbb04e1630e32c8cfb1d25d.png" alt="Navigation Icons" class="w-6 h-6 object-contain">
                     <span class=" fs-14 text-black font-semibold ">Kullanım Raporları</span>
                 </a>
-                <a href="Kullanici_Listesi.html" class="flex items-center space-x-3 px-4 py-3 text-gray-900 hover:bg-gray-50 rounded-lg">
+                <a href="Kullanici_Listesi.html" class="flex items-center space-x-3 px-4 py-3 text-gray-900 hover:bg-gray-50 rounded-lg" >
                     <img src="https://static.readdy.ai/image/d5ef78e5e20d4f96c7b7ffa896bb004b/5f94f499b4dc1f2f687bc36cfdca0562.png" alt="Navigation Icons" class="w-6 h-6 object-contain">
                     <span class=" fs-14 text-black font-semibold ">Kullanıcı Listesi</span>
                 </a>
@@ -71,11 +71,14 @@
                     <img src="https://static.readdy.ai/image/d5ef78e5e20d4f96c7b7ffa896bb004b/9689c8baeebc623103ff203b0e85d6f2.png" alt="Navigation Icons" class="w-6 h-6 object-contain">
                     <span class=" fs-14 text-black font-semibold ">Paketler</span>
                 </a>
-                <a href="#" class="flex items-center gap-2 text-black rounded-lg ml-2" style="width:227px; height:56px; padding:16px 8px; border-radius:8px; background:#EEE7FA; opacity:1;">
+                <a href="Yeni-Ayarlar-Sayfası.html" class="flex items-center space-x-3 px-4 py-3 text-gray-900 hover:bg-gray-50 rounded-lg " style="width:227px; height:56px; padding:16px 8px; border-radius:8px; background:#EEE7FA; opacity:1;">
                     <img src="https://static.readdy.ai/image/d5ef78e5e20d4f96c7b7ffa896bb004b/0fce52ba3ea7a53b517342c076eb57f6.png" alt="Navigation Icons" class="w-6 h-6 object-contain">
                     <span class=" fs-14 text-black font-semibold ">Hesap Ayarları</span>
                 </a>
             </nav>
+            <div class="w-full flex justify-center mb-6 mt-auto">
+                <button id="cikisBtn" class="w-40 py-2 bg-red-600 text-white rounded-lg font-semibold hover:bg-red-700 transition">Çıkış Yap</button>
+            </div>
         </aside>
         <main class="flex-1 min-h-screen" style="margin-left: 243px;">
             <div class="p-6 bg-[#FAFAFA]">
@@ -191,6 +194,39 @@
                 input.addEventListener('focus', showProfileButtons);
             });
         });
+    </script>
+    <div id="cikisModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-40 hidden">
+        <div class="bg-white rounded-lg shadow-lg p-8 flex flex-col items-center min-w-[320px]">
+            <div class="text-lg font-semibold mb-4 text-[#121212]">Çıkış yapmak istiyor musunuz?</div>
+            <div class="flex gap-4 mt-2">
+                <button id="cikisVazgecBtn" class="px-6 py-2 bg-gray-200 text-[#121212] rounded-lg font-semibold hover:bg-gray-300 transition">Vazgeç</button>
+                <button id="cikisOnayBtn" class="px-6 py-2 bg-red-600 text-white rounded-lg font-semibold hover:bg-red-700 transition">Çıkış Yap</button>
+                
+            </div>
+        </div>
+    </div>
+
+    <script>
+    // Çıkış butonuna basınca modalı aç
+    const cikisBtn = document.getElementById('cikisBtn');
+    const cikisModal = document.getElementById('cikisModal');
+    const cikisOnayBtn = document.getElementById('cikisOnayBtn');
+    const cikisVazgecBtn = document.getElementById('cikisVazgecBtn');
+    if (cikisBtn && cikisModal) {
+        cikisBtn.onclick = function() {
+            cikisModal.classList.remove('hidden');
+        };
+    }
+    if (cikisVazgecBtn && cikisModal) {
+        cikisVazgecBtn.onclick = function() {
+            cikisModal.classList.add('hidden');
+        };
+    }
+    if (cikisOnayBtn) {
+        cikisOnayBtn.onclick = function() {
+            window.close();
+        };
+    }
     </script>
 </body>
 
