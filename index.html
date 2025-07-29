@@ -28,16 +28,6 @@
                     },
                     fontFamily: {
                         sans: ['Poppins', 'sans-serif']
-                    },
-                    screens: {
-                        'xs': '475px',
-                        'sm': '640px',
-                        'md': '768px',
-                        'lg': '1024px',
-                        'xl': '1280px',
-                        '2xl': '1536px',
-                        '3xl': '1920px',
-                        '4xl': '2560px'
                     }
                 }
             }
@@ -45,64 +35,12 @@
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.5.0/echarts.min.js"></script>
     <style>
         :where([class^="ri-"])::before {
             content: "\f3c2";
-        }
-
-        /* Basit responsive ayarlar - Kullanici_Listesi.html gibi */
-        body {
-            overflow-x: auto;
-        }
-
-        /* Basit z-index ayarları */
-        aside {
-            z-index: 10;
-        }
-
-        /* Scroll bar stilleri */
-        ::-webkit-scrollbar {
-            width: 8px;
-            height: 8px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: #f1f1f1;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: #c1c1c1;
-            border-radius: 4px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: #a8a8a8;
-        }
-
-        /* Scrollbar gizleme sınıfı */
-        .scrollbar-hide {
-            -ms-overflow-style: none;  /* Internet Explorer 10+ */
-            scrollbar-width: none;  /* Firefox */
-        }
-        .scrollbar-hide::-webkit-scrollbar {
-            display: none;  /* Safari and Chrome */
-        }
-
-        /* TabGroup responsive ayarları */
-        #tabGroup1 {
-            max-width: 100%;
-            overflow-x: auto;
-            overflow-y: hidden;
-        }
-        
-        /* Sayfa taşmasını önleme */
-        .flex.mb-8.gap-6 {
-            max-width: 100%;
-            overflow-x: hidden;
         }
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.5.0/echarts.min.js"></script>
@@ -113,161 +51,113 @@
         <aside class="w-64 bg-[#FAFAFA] h-screen fixed left-0 top-0">
             <div class="p-6">
                 <div class="flex items-center space-x-2">
-                    <img src="https://static.readdy.ai/image/d5ef78e5e20d4f96c7b7ffa896bb004b/ccb0b2b2c534e04738a6b0e1744323e0.png"
-                        alt="Gensenta" class="h-12">
+                    <img src="https://static.readdy.ai/image/d5ef78e5e20d4f96c7b7ffa896bb004b/ccb0b2b2c534e04738a6b0e1744323e0.png" alt="Gensenta" class="h-12">
                 </div>
             </div>
             <nav class="px-4 space-y-2">
-                <a href="index.html" data-readdy="true"
-                    class="flex items-center space-x-3 px-4 py-3 ml-1 text-gray-900 hover:bg-gray-50 rounded-lg"
-                    style="width:227px; height:56px; padding:10px 4px; border-radius:8px; background:#EEE7FA; opacity:1;">
-                    <img src="https://static.readdy.ai/image/d5ef78e5e20d4f96c7b7ffa896bb004b/0e0127857fbb04e1630e32c8cfb1d25d.png"
-                        alt="Navigation Icons" class="w-6 h-6 object-contain ml-2">
+                <a href="index.html" data-readdy="true" class="flex items-center space-x-3 px-4 py-3 ml-1 text-gray-900 hover:bg-gray-50 rounded-lg" style="width:227px; height:56px; padding:14px 8px; border-radius:8px; background:#EEE7FA; opacity:1;">
+                    <img src="https://static.readdy.ai/image/d5ef78e5e20d4f96c7b7ffa896bb004b/0e0127857fbb04e1630e32c8cfb1d25d.png" alt="Navigation Icons" class="w-6 h-6 object-contain ml-2">
                     <span class=" fs-14 text-black font-semibold ">Kullanım Raporları</span>
                 </a>
-                <a href="Kullanici_Listesi.html"
-                    class="flex items-center space-x-3 px-4 py-3 text-gray-900 hover:bg-gray-50 rounded-lg">
-                    <img src="https://static.readdy.ai/image/d5ef78e5e20d4f96c7b7ffa896bb004b/5f94f499b4dc1f2f687bc36cfdca0562.png"
-                        alt="Navigation Icons" class="w-6 h-6 object-contain">
+                <a href="Kullanici_Listesi.html" class="flex items-center space-x-3 px-4 py-3 text-gray-900 hover:bg-gray-50 rounded-lg">
+                    <img src="https://static.readdy.ai/image/d5ef78e5e20d4f96c7b7ffa896bb004b/5f94f499b4dc1f2f687bc36cfdca0562.png" alt="Navigation Icons" class="w-6 h-6 object-contain">
                     <span class=" fs-14 text-black font-semibold ">Kullanıcı Listesi</span>
                 </a>
-                <a href="Paket-Yönetimi-Sayfası.html"
-                    class="flex items-center space-x-3 px-4 py-3 text-gray-900 hover:bg-gray-50 rounded-lg">
-                    <img src="https://static.readdy.ai/image/d5ef78e5e20d4f96c7b7ffa896bb004b/9689c8baeebc623103ff203b0e85d6f2.png"
-                        alt="Navigation Icons" class="w-6 h-6 object-contain">
+                <a href="Paket-Yönetimi-Sayfası.html" class="flex items-center space-x-3 px-4 py-3 text-gray-900 hover:bg-gray-50 rounded-lg">
+                    <img src="https://static.readdy.ai/image/d5ef78e5e20d4f96c7b7ffa896bb004b/9689c8baeebc623103ff203b0e85d6f2.png" alt="Navigation Icons" class="w-6 h-6 object-contain">
                     <span class=" fs-14 text-black font-semibold ">Paketler</span>
                 </a>
-                <a href="Yeni-Ayarlar-Sayfası.html"
-                    class="flex items-center space-x-3 px-4 py-3 text-gray-900 hover:bg-gray-50 rounded-lg">
-                    <img src="https://static.readdy.ai/image/d5ef78e5e20d4f96c7b7ffa896bb004b/0fce52ba3ea7a53b517342c076eb57f6.png"
-                        alt="Navigation Icons" class="w-6 h-6 object-contain">
+                <a href="Yeni-Ayarlar-Sayfası.html" class="flex items-center space-x-3 px-4 py-3 text-gray-900 hover:bg-gray-50 rounded-lg">
+                    <img src="https://static.readdy.ai/image/d5ef78e5e20d4f96c7b7ffa896bb004b/0fce52ba3ea7a53b517342c076eb57f6.png" alt="Navigation Icons" class="w-6 h-6 object-contain">
                     <span class=" fs-14 text-black font-semibold ">Hesap Ayarları</span>
                 </a>
             </nav>
         </aside>
-        <main class="flex-1 min-h-screen" style="margin-left: 250px;">
-            <div class="p-6 bg-[#FAFAFA] overflow-x-auto">
-                <div class="flex items-center justify-end mb-3">
-                    <img src="https://static.readdy.ai/image/d5ef78e5e20d4f96c7b7ffa896bb004b/0f748dae3ea01706738c73b4ada168e8.png"
-                        alt="Eczacibasi" class="w-32 h-auto">
+        <main class="ml-60 flex-1 min-h-screen mr-12">
+            <div class="p-6 bg-[#FAFAFA]">
+                <div class="flex items-center justify-end">
+                    <img src="https://static.readdy.ai/image/d5ef78e5e20d4f96c7b7ffa896bb004b/0f748dae3ea01706738c73b4ada168e8.png" alt="Eczacibasi" class="w-32 h-auto">
                 </div>
                 <!-- Banner ve Eczacıbaşı logosu hizalı -->
-                <div class="relative mb-4" style="z-index: 1;">
-                    <div class="rounded-2xl p-2 text-white overflow-hidden h-[140px]"
-                        style="background-image: url('https://static.readdy.ai/image/d5ef78e5e20d4f96c7b7ffa896bb004b/554688d5afb3d7f7a14bf48cb293f37f.png'); background-size: contain; background-position: center; background-repeat: no-repeat;">
+                <div class="relative mb-4">
+                    <div class="rounded-2xl p-2 text-white overflow-hidden h-[140px]" style="background-image: url('https://static.readdy.ai/image/d5ef78e5e20d4f96c7b7ffa896bb004b/554688d5afb3d7f7a14bf48cb293f37f.png'); background-size: contain; background-position: center; background-repeat: no-repeat;">
                         <div class="relative z-10">
                         </div>
                     </div>
+                    <!--<img src="https://static.readdy.ai/image/d5ef78e5e20d4f96c7b7ffa896bb004b/0f748dae3ea01706738c73b4ada168e8.png" alt="Eczacibasi" class="absolute top-2 right-4 h-12"> -->
                 </div>
-                <div class="flex items-center justify-between mb-4 mt-1">
+                <div class="flex items-center justify-between mb-4">
                     <!-- Container -->
                     <div class="flex gap-4">
                         <!-- Şehir Dropdown -->
                         <div class="relative" id="dropdownSehirWrapper">
-                            <button onclick="toggleDropdown('sehirDropdown')"
-                                class="w-[256px] h-[49px] bg-white text-gray-900 px-6 py-2 flex flex-col items-start justify-center shadow-sm hover:shadow-md border-2 border-[#E0E8F0] rounded-[8px]">
+                            <button onclick="toggleDropdown('sehirDropdown')" class="w-[256px] h-[49px] bg-white text-gray-900 px-6 py-2 flex flex-col items-start justify-center shadow-sm hover:shadow-md border-2 border-[#E0E8F0] rounded-[8px]">
                                 <span class="text-xs text-gray-500">Şehir</span>
                                 <div class="flex items-center justify-between w-full">
                                     <span class="text-base font-medium" id="selectedSehir">Tümü</span>
                                     <div class="w-5 h-5 flex items-center justify-center">
                                         <!-- SVG ok -->
-                                        <svg width="24" height="25" viewBox="0 0 24 25" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M18 9.50017C18 9.50017 13.5811 15.5001 12 15.5001C10.4188 15.5001 6 9.50012 6 9.50012"
-                                                stroke="#121212" stroke-width="1.5" stroke-linecap="round"
-                                                stroke-linejoin="round" />
+                                        <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M18 9.50017C18 9.50017 13.5811 15.5001 12 15.5001C10.4188 15.5001 6 9.50012 6 9.50012" stroke="#121212" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                                         </svg>
                                     </div>
                                 </div>
                             </button>
                             <!-- Açılır Liste -->
-                            <div id="sehirDropdown"
-                                class="absolute top-[60px] left-0 w-full bg-white border border-gray-200 rounded-md shadow-md hidden z-10">
+                            <div id="sehirDropdown" class="absolute top-[60px] left-0 w-full bg-white border border-gray-200 rounded-md shadow-md hidden z-10">
                                 <ul class="py-2">
-                                    <li><button onclick="selectSehir('İstanbul')"
-                                            class="w-full text-left px-4 py-2 hover:bg-gray-100">İstanbul</button></li>
-                                    <li><button onclick="selectSehir('Ankara')"
-                                            class="w-full text-left px-4 py-2 hover:bg-gray-100">Ankara</button></li>
-                                    <li><button onclick="selectSehir('İzmir')"
-                                            class="w-full text-left px-4 py-2 hover:bg-gray-100">İzmir</button></li>
-                                    <li><button onclick="selectSehir('Tümü')"
-                                            class="w-full text-left px-4 py-2 hover:bg-gray-100">Tümü</button></li>
+                                    <li><button onclick="selectSehir('İstanbul')" class="w-full text-left px-4 py-2 hover:bg-gray-100">İstanbul</button></li>
+                                    <li><button onclick="selectSehir('Ankara')" class="w-full text-left px-4 py-2 hover:bg-gray-100">Ankara</button></li>
+                                    <li><button onclick="selectSehir('İzmir')" class="w-full text-left px-4 py-2 hover:bg-gray-100">İzmir</button></li>
+                                    <li><button onclick="selectSehir('Tümü')" class="w-full text-left px-4 py-2 hover:bg-gray-100">Tümü</button></li>
                                 </ul>
                             </div>
                         </div>
-
                         <!-- Bölge Dropdown -->
                         <div class="relative" id="dropdownBolgeWrapper">
-                            <button onclick="toggleDropdown('bolgeDropdown')"
-                                class="w-[256px] h-[49px] bg-white text-gray-900 px-6 py-2 flex flex-col items-start justify-center shadow-sm hover:shadow-md border-2 border-[#E0E8F0] rounded-[8px]">
+                            <button onclick="toggleDropdown('bolgeDropdown')" class="w-[256px] h-[49px] bg-white text-gray-900 px-6 py-2 flex flex-col items-start justify-center shadow-sm hover:shadow-md border-2 border-[#E0E8F0] rounded-[8px]">
                                 <span class="text-xs text-gray-500">Bölge</span>
                                 <div class="flex items-center justify-between w-full">
                                     <span class="text-base font-medium" id="selectedBolge">Tümü</span>
                                     <div class="w-5 h-5 flex items-center justify-center">
                                         <!-- SVG ok -->
-                                        <svg width="24" height="25" viewBox="0 0 24 25" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M18 9.50017C18 9.50017 13.5811 15.5001 12 15.5001C10.4188 15.5001 6 9.50012 6 9.50012"
-                                                stroke="#121212" stroke-width="1.5" stroke-linecap="round"
-                                                stroke-linejoin="round" />
+                                        <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M18 9.50017C18 9.50017 13.5811 15.5001 12 15.5001C10.4188 15.5001 6 9.50012 6 9.50012" stroke="#121212" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                                         </svg>
                                     </div>
                                 </div>
                             </button>
                             <!-- Açılır Liste -->
-                            <div id="bolgeDropdown"
-                                class="absolute top-[60px] left-0 w-full bg-white border border-gray-200 rounded-md shadow-md hidden z-10">
+                            <div id="bolgeDropdown" class="absolute top-[60px] left-0 w-full bg-white border border-gray-200 rounded-md shadow-md hidden z-10">
                                 <ul class="py-2">
-                                    <li><button onclick="selectBolge('Marmara')"
-                                            class="w-full text-left px-4 py-2 hover:bg-gray-100">Marmara</button></li>
-                                    <li><button onclick="selectBolge('Ege')"
-                                            class="w-full text-left px-4 py-2 hover:bg-gray-100">Ege</button></li>
-                                    <li><button onclick="selectBolge('İç Anadolu')"
-                                            class="w-full text-left px-4 py-2 hover:bg-gray-100">İç Anadolu</button>
-                                    </li>
-                                    <li><button onclick="selectBolge('Tümü')"
-                                            class="w-full text-left px-4 py-2 hover:bg-gray-100">Tümü</button>
-                                    </li>
+                                    <li><button onclick="selectBolge('Marmara')" class="w-full text-left px-4 py-2 hover:bg-gray-100">Marmara</button></li>
+                                    <li><button onclick="selectBolge('Ege')" class="w-full text-left px-4 py-2 hover:bg-gray-100">Ege</button></li>
+                                    <li><button onclick="selectBolge('İç Anadolu')" class="w-full text-left px-4 py-2 hover:bg-gray-100">İç Anadolu</button></li>
+                                    <li><button onclick="selectBolge('Tümü')" class="w-full text-left px-4 py-2 hover:bg-gray-100">Tümü</button></li>
                                 </ul>
                             </div>
                         </div>
                         <!-- Ekip Dropdown -->
                         <div class="relative" id="dropdownEkipWrapper">
-                            <button onclick="toggleDropdown('ekipDropdown')"
-                                class="w-[256px] h-[49px] bg-white text-gray-900 px-6 py-2 flex flex-col items-start justify-center shadow-sm hover:shadow-md border-2 border-[#E0E8F0] rounded-[8px]">
+                            <button onclick="toggleDropdown('ekipDropdown')" class="w-[256px] h-[49px] bg-white text-gray-900 px-6 py-2 flex flex-col items-start justify-center shadow-sm hover:shadow-md border-2 border-[#E0E8F0] rounded-[8px]">
                                 <span class="text-xs text-gray-500">Ekip</span>
                                 <div class="flex items-center justify-between w-full">
                                     <span class="text-base font-medium" id="selectedEkip">Tümü</span>
                                     <div class="w-5 h-5 flex items-center justify-center">
                                         <!-- SVG ok -->
-                                        <svg width="24" height="25" viewBox="0 0 24 25" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M18 9.50017C18 9.50017 13.5811 15.5001 12 15.5001C10.4188 15.5001 6 9.50012 6 9.50012"
-                                                stroke="#121212" stroke-width="1.5" stroke-linecap="round"
-                                                stroke-linejoin="round" />
+                                        <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M18 9.50017C18 9.50017 13.5811 15.5001 12 15.5001C10.4188 15.5001 6 9.50012 6 9.50012" stroke="#121212" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                                         </svg>
                                     </div>
                                 </div>
                             </button>
                             <!-- Açılır Liste -->
-                            <div id="ekipDropdown"
-                                class="absolute top-[60px] left-0 w-full bg-white border border-gray-200 rounded-md shadow-md hidden z-10">
+                            <div id="ekipDropdown" class="absolute top-[60px] left-0 w-full bg-white border border-gray-200 rounded-md shadow-md hidden z-10">
                                 <ul class="py-2">
-                                    <li><button onclick="selectEkip('Tasarım Ekibi')"
-                                            class="w-full text-left px-4 py-2 hover:bg-gray-100">Tasarım Ekibi</button>
-                                    </li>
-                                    <li><button onclick="selectEkip('Yazılım Ekibi')"
-                                            class="w-full text-left px-4 py-2 hover:bg-gray-100">Yazılım Ekibi</button>
-                                    </li>
-                                    <li><button onclick="selectEkip('Satış Ekibi')"
-                                            class="w-full text-left px-4 py-2 hover:bg-gray-100">Satış Ekibi</button>
-                                    </li>
-                                    <li><button onclick="selectEkip('Tümü')"
-                                            class="w-full text-left px-4 py-2 hover:bg-gray-100">Tümü</button>
-                                    </li>
+                                    <li><button onclick="selectEkip('Tasarım Ekibi')" class="w-full text-left px-4 py-2 hover:bg-gray-100">Tasarım Ekibi</button></li>
+                                    <li><button onclick="selectEkip('Yazılım Ekibi')" class="w-full text-left px-4 py-2 hover:bg-gray-100">Yazılım Ekibi</button></li>
+                                    <li><button onclick="selectEkip('Satış Ekibi')" class="w-full text-left px-4 py-2 hover:bg-gray-100">Satış Ekibi</button></li>
+                                    <li><button onclick="selectEkip('Tümü')" class="w-full text-left px-4 py-2 hover:bg-gray-100">Tümü</button></li>
                                 </ul>
                             </div>
                         </div>
@@ -287,13 +177,14 @@
                             document.getElementById("selectedEkip").textContent = value;
                             document.getElementById("ekipDropdown").classList.add("hidden");
                         }
+
                         function selectBolge(value) {
                             document.getElementById("selectedBolge").textContent = value;
                             document.getElementById("bolgeDropdown").classList.add("hidden");
                         }
 
                         // Dışarı tıklanınca kapanma
-                        document.addEventListener("click", function (e) {
+                        document.addEventListener("click", function(e) {
                             if (!document.getElementById("dropdownSehirWrapper").contains(e.target)) {
                                 document.getElementById("sehirDropdown").classList.add("hidden");
                             }
@@ -306,92 +197,72 @@
                         });
                     </script>
                     <div class="flex items-center space-x-4">
-                        <button
-                            class="bg-white text-gray-700 px-6 py-3 rounded-full flex items-center space-x-3 border border-black hover:bg-gray-50"
-                            style="width: 167px; height: 40px;">
+                        <button class="bg-white text-gray-700 px-6 py-3 rounded-full flex items-center space-x-3 border border-black hover:bg-gray-50" style="width: 167px; height: 40px;">
                             <span class="text-gray-600">Dışa Aktar</span>
                             <div class="w-5 h-5 flex items-center justify-center">
-                                <img src="https://static.readdy.ai/image/d5ef78e5e20d4f96c7b7ffa896bb004b/336c2c72307ad0fb2020fc3a6d80e112.png"
-                                    alt="Export" class="w-4 h-4">
+                                <img src="https://static.readdy.ai/image/d5ef78e5e20d4f96c7b7ffa896bb004b/336c2c72307ad0fb2020fc3a6d80e112.png" alt="Export" class="w-4 h-4">
                             </div>
                         </button>
-                        <button
-                            class="bg-[#7853E1] text-white px-8 py-3 rounded-full flex items-center space-x-3 hover:bg-[#6D28D9]"
-                            style="width: 195px; height: 40px;">
+                        <button class="bg-[#7853E1] text-white px-8 py-3 rounded-full flex items-center space-x-3 hover:bg-[#6D28D9]" style="width: 195px; height: 40px;">
                             <span>Çözüm Ekibi</span>
                             <div class="w-5 h-5 flex items-center justify-center">
-                                <img src="https://static.readdy.ai/image/d5ef78e5e20d4f96c7b7ffa896bb004b/b0f9ebd82903c72b2ae64d0e35e05ad6.png"
-                                    alt="Solution Team" class="w-5 h-5">
+                                <img src="https://static.readdy.ai/image/d5ef78e5e20d4f96c7b7ffa896bb004b/b0f9ebd82903c72b2ae64d0e35e05ad6.png" alt="Solution Team" class="w-5 h-5">
                             </div>
                         </button>
                     </div>
                 </div>
                 <div class="flex mb-8">
                     <div class="space-y-4">
-                        <div
-                            class="bg-white rounded-xl shadow-sm border-2 border-[#E0E8F0] w-[600px] px-6 py-5 space-y-4 mb-2">
+                        <div class="bg-white rounded-xl shadow-sm border-2 border-[#E0E8F0] w-[500px] px-6 py-5 space-y-4 mb-2">
                             <!-- Üst Satır: Toplam Kullanıcı -->
-                            <div class="flex items-center justify-start space-x-3">
-                                <img src="https://static.readdy.ai/image/d5ef78e5e20d4f96c7b7ffa896bb004b/66acb27976c767cc82248fa5ac23dc96.png"
-                                    alt="User Icon" class="w-8 h-8">
+                            <div class="flex items-center justify-start space-x-3 pt-6 pb-2">
+                                <img src="https://static.readdy.ai/image/d5ef78e5e20d4f96c7b7ffa896bb004b/66acb27976c767cc82248fa5ac23dc96.png" alt="User Icon" class="w-8 h-8">
                                 <span class="text-[32px] font-semibold text-gray-900 leading-none">450</span>
                                 <span class="text-gray-400 text-[16px] font-medium">Kullanıcı</span>
                             </div>
                             <!-- Ayrım Çizgisi -->
                             <div class="border-t border-[#E0E8F0]"></div>
                             <!-- Alt Satır: Aktif Kullanıcı -->
-                            <div class="flex items-center justify-start space-x-3">
+                            <div class="flex items-center justify-start space-x-3 pt-2">
                                 <span class="text-[24px] font-semibold text-gray-900 leading-none">350</span>
                                 <span class="text-gray-400 text-[16px] font-medium">Aktif Kullanıcı</span>
                                 <span class="text-green-600 text-sm font-semibold flex items-center space-x-1 ml-2">
                                     <span>+8%</span>
-                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M20 13V8H15" stroke="#1B8E20" stroke-width="1.5" stroke-linecap="round"
-                                            stroke-linejoin="round" />
-                                        <path
-                                            d="M20 8L15 13C14.1174 13.8826 13.6762 14.3238 13.1346 14.3726C13.045 14.3807 12.955 14.3807 12.8654 14.3726C12.3238 14.3238 11.8826 13.8826 11 13C10.1174 12.1174 9.67615 11.6762 9.13457 11.6274C9.04504 11.6193 8.95496 11.6193 8.86543 11.6274C8.32385 11.6762 7.88256 12.1174 7 13L4 16"
-                                            stroke="#1B8E20" stroke-width="1.5" stroke-linecap="round"
-                                            stroke-linejoin="round" />
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M20 13V8H15" stroke="#1B8E20" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                        <path d="M20 8L15 13C14.1174 13.8826 13.6762 14.3238 13.1346 14.3726C13.045 14.3807 12.955 14.3807 12.8654 14.3726C12.3238 14.3238 11.8826 13.8826 11 13C10.1174 12.1174 9.67615 11.6762 9.13457 11.6274C9.04504 11.6193 8.95496 11.6193 8.86543 11.6274C8.32385 11.6762 7.88256 12.1174 7 13L4 16" stroke="#1B8E20" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                                     </svg>
                                 </span>
                             </div>
                         </div>
-                        <div
-                            class="bg-white rounded-xl shadow-sm border-2 border-[#E0E8F0] w-[600px] px-6 py-5 space-y-4 mt-2">
+                        <div class="bg-white rounded-xl shadow-sm border-2 border-[#E0E8F0] w-[500px]  px-6 py-5 space-y-4 mt-2">
                             <!-- Üst Satır: Toplam Hak -->
-                            <div class="flex items-center justify-start space-x-3">
-                                <img src="https://static.readdy.ai/image/d5ef78e5e20d4f96c7b7ffa896bb004b/384d224a5b0f0aa50366f906da199ec7.png"
-                                    alt="Gift Icon" class="w-8 h-8">
+                            <div class="flex items-center justify-start space-x-3 pt-6 pb-2">
+                                <img src="https://static.readdy.ai/image/d5ef78e5e20d4f96c7b7ffa896bb004b/384d224a5b0f0aa50366f906da199ec7.png" alt="Gift Icon" class="w-8 h-8">
                                 <span class="text-[32px] font-semibold text-gray-900 leading-none">2450</span>
                                 <span class="text-gray-400 text-[16px] font-medium">Toplam Hak</span>
                             </div>
                             <!-- Ayrım Çizgisi -->
                             <div class="border-t border-[#E0E8F0]"></div>
                             <!-- Alt Satır: Kullanılan Hak -->
-                            <div class="flex items-center justify-start space-x-3 pb-3">
+                            <div class="flex items-center justify-start space-x-3 pt-2">
                                 <span class="text-[24px] font-semibold text-gray-900 leading-none">350</span>
                                 <span class="text-gray-400 text-[16px] font-medium">Kullanılan Hak</span>
                                 <span class="text-green-600 text-sm font-semibold flex items-center space-x-1 ml-2">
                                     <span>+8%</span>
-                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M20 13V8H15" stroke="#1B8E20" stroke-width="1.5" stroke-linecap="round"
-                                            stroke-linejoin="round" />
-                                        <path
-                                            d="M20 8L15 13C14.1174 13.8826 13.6762 14.3238 13.1346 14.3726C13.045 14.3807 12.955 14.3807 12.8654 14.3726C12.3238 14.3238 11.8826 13.8826 11 13C10.1174 12.1174 9.67615 11.6762 9.13457 11.6274C9.04504 11.6193 8.95496 11.6193 8.86543 11.6274C8.32385 11.6762 7.88256 12.1174 7 13L4 16"
-                                            stroke="#1B8E20" stroke-width="1.5" stroke-linecap="round"
-                                            stroke-linejoin="round" />
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M20 13V8H15" stroke="#1B8E20" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                        <path d="M20 8L15 13C14.1174 13.8826 13.6762 14.3238 13.1346 14.3726C13.045 14.3807 12.955 14.3807 12.8654 14.3726C12.3238 14.3238 11.8826 13.8826 11 13C10.1174 12.1174 9.67615 11.6762 9.13457 11.6274C9.04504 11.6193 8.95496 11.6193 8.86543 11.6274C8.32385 11.6762 7.88256 12.1174 7 13L4 16" stroke="#1B8E20" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                                     </svg>
                                 </span>
                             </div>
                         </div>
                     </div>
-                    <div class="bg-white rounded-xl shadow-sm border-2 border-[#E0E8F0] ml-6" style="width: 65%;">
-                        <h3 class="text-lg font-semibold text-gray-900 mt-6 ml-6">Tamamlanan Görüşme Oranı</h3>
-                        <div class="flex ml-10">
-                            <div id="donutChart" class="w-[256px] h-[256px] -mt-2"></div>
-                            <div class="flex-1 space-y-4 ml-24 mr-24 mt-10">
+                    <div class="bg-white rounded-xl p-6 shadow-sm border-2 border-[#E0E8F0] ml-3" style="width: 70%; height: 360px;">
+                        <h3 class="text-lg font-semibold text-gray-900 mt-3 ml-3">Tamamlanan Görüşme Oranı</h3>
+                        <div class="flex mt-6">
+                            <div id="donutChart" class="w-[256px] h-[256px] "></div>
+                            <div class="flex-1 space-y-3  mt-8 gap-2 ml-6 ">
                                 <div class="flex items-center justify-between">
                                     <div class="flex items-center space-x-2">
                                         <div class="w-3 h-3 rounded-full" style="background-color: #FD7700"></div>
@@ -404,8 +275,7 @@
                                 <div class="flex items-center justify-between">
                                     <div class="flex items-center space-x-2">
                                         <div class="w-3 h-3 rounded-full" style="background-color: #2D9C63"></div>
-                                        <span class="font-semibold text-[14px] leading-4"
-                                            style="color: #2D9C63">Beslenme ve Diyet</span>
+                                        <span class="font-semibold text-[14px] leading-4" style="color: #2D9C63">Beslenme ve Diyet</span>
                                     </div>
                                     <span class="font-semibold text-[14px] leading-4" style="color: #121212">30 Görüşme
                                         (8.57%)</span>
@@ -439,141 +309,186 @@
                                 </div>
                                 <div class="flex items-center justify-between">
                                     <div class="flex items-center space-x-2">
-                                        <div class="w-3 h-3 rounded-full" style="background-color: #E45241"></div>
-                                        <span class="font-['Poppins'] font-semibold text-[12px] leading-4"
-                                            style="color: #E45241">Online Fitness ve Yoga Danışmanlığı</span>
+                                        <div class="w-3 h-3 rounded-full whitespace-nowrap" style="background-color: #E45241"></div>
+                                        <span class="font-semibold text-[14px] leading-4" style="color: #E45241">Online Fitness ve Yoga Danışmanlığı</span>
                                     </div>
-                                    <span class="font-semibold text-[14px] leading-4" style="color: #121212">30 Görüşme
+                                    <span class="font-semibold text-[14px] leading-4 whitespace-nowrap" style="color: #121212">30 Görüşme
                                         (8.57%)</span>
                                 </div>
                             </div>
                         </div>
+                        <script>
+                            // Donut Chart
+                            const donutChartElement = document.getElementById('donutChart');
+                            if (donutChartElement) {
+                                const donutChart = echarts.init(donutChartElement);
+                                const donutOption = {
+                                    tooltip: {
+                                        trigger: 'item',
+                                        backgroundColor: 'rgba(255, 255, 255, 0.95)',
+                                        borderColor: '#E5E7EB',
+                                        borderWidth: 1,
+                                        textStyle: {
+                                            color: '#1F2937',
+                                            fontSize: 14
+                                        },
+                                        formatter: function(params) {
+                                            return `<div style="padding: 8px;">
+                                <div style="font-weight: 600; margin-bottom: 4px;">${params.name}</div>
+                                <div style="display: flex; align-items: center; gap: 8px;">
+                                    <div style="width: 12px; height: 12px; border-radius: 50%; background-color: ${params.color};"></div>
+                                    <span>${params.value} Görüşme</span>
+                                    <span style="font-weight: 600;">(${params.percent}%)</span>
+                                </div>
+                            </div>`;
+                                        }
+                                    },
+                                    legend: {
+                                        show: false
+                                    },
+                                    series: [{
+                                        name: 'Tamamlanan Görüşme Oranı',
+                                        type: 'pie',
+                                        radius: ['40%', '70%'],
+                                        center: ['50%', '50%'],
+                                        avoidLabelOverlap: false,
+                                        itemStyle: {
+                                            borderRadius: 4,
+                                            borderColor: '#fff',
+                                            borderWidth: 2
+                                        },
+                                        label: {
+                                            show: false
+                                        },
+                                        emphasis: {
+                                            label: {
+                                                show: false
+                                            },
+                                            itemStyle: {
+                                                shadowBlur: 10,
+                                                shadowOffsetX: 0,
+                                                shadowColor: 'rgba(0, 0, 0, 0.5)'
+                                            }
+                                        },
+                                        data: [{
+                                                value: 200,
+                                                name: 'Mental Sağlık',
+                                                itemStyle: {
+                                                    color: '#FD7700'
+                                                }
+                                            },
+                                            {
+                                                value: 30,
+                                                name: 'Beslenme ve Diyet',
+                                                itemStyle: {
+                                                    color: '#2D9C63'
+                                                }
+                                            },
+                                            {
+                                                value: 30,
+                                                name: 'Doktor Hizmetleri',
+                                                itemStyle: {
+                                                    color: '#1645DE'
+                                                }
+                                            },
+                                            {
+                                                value: 30,
+                                                name: 'Doğum Koçu',
+                                                itemStyle: {
+                                                    color: '#19B2A7'
+                                                }
+                                            },
+                                            {
+                                                value: 30,
+                                                name: 'Emzirme Danışmanı',
+                                                itemStyle: {
+                                                    color: '#7853E1'
+                                                }
+                                            },
+                                            {
+                                                value: 30,
+                                                name: 'Online Fitness ve Yoga Danışmanlığı',
+                                                itemStyle: {
+                                                    color: '#E45241'
+                                                }
+                                            }
+                                        ]
+                                    }]
+                                };
+                                donutChart.setOption(donutOption);
+                            }
+                        </script>
                     </div>
                 </div>
-                <div class="flex gap-6 mt-8 mb-8">
-                    <!-- Yeni Checker -->
-                    <div class="bg-white rounded-2xl border-2 border-[#E0E8F0]" style="width: 460px; height: 450px;">
+                <div class="flex gap-3 mb-6">
+                    <div class="bg-white rounded-2xl border-2 border-[#E0E8F0]" style="width: 500px; height: 450px;">
                         <div class="flex flex-col gap-6">
                             <h3 class="text-lg font-semibold text-gray-900 mb-50 ml-6 mt-6">Duygu Durum Takibi</h3>
                             <div class="flex-1 flex items-center justify-center">
                                 <!-- Duygu Durum Grafiği -->
                                 <div class="w-full h-full flex flex-col items-center justify-center bg-white">
-
                                     <!-- Grafik Alanı -->
-                                    <div class="w-full h-56 flex items-end justify-center gap-12 relative"
-                                        style="margin-top: 90px;">
-
+                                    <div class="w-full h-56 flex items-end justify-center gap-12 relative" style="margin-top: 90px;">
                                         <!-- Bağlantı çizgileri -->
-
                                         <!-- Grafik noktaları -->
                                         <div class="flex flex-col items-center relative z-10">
                                             <div class="fs-16 font-semibold text-black">4.4</div>
-                                            <div
-                                                class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
+                                            <div class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
                                                 <!-- Mutlu emoji -->
-                                                <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
-                                                    xmlns="http://www.w3.org/2000/svg">
+                                                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                     <circle cx="16" cy="16" r="16" fill="#3CBE7A" />
-                                                    <path
-                                                        d="M15.6719 26C21.1947 26 25.6719 21.5228 25.6719 16C25.6719 10.4772 21.1947 6 15.6719 6C10.149 6 5.67188 10.4772 5.67188 16C5.67188 21.5228 10.149 26 15.6719 26Z"
-                                                        stroke="#121212" stroke-width="1.5" stroke-linecap="round"
-                                                        stroke-linejoin="round" />
-                                                    <path
-                                                        d="M11.6719 19C12.584 20.2144 14.0362 21 15.6719 21C17.3076 21 18.7598 20.2144 19.6719 19"
-                                                        stroke="#121212" stroke-width="1.5" stroke-linecap="round"
-                                                        stroke-linejoin="round" />
-                                                    <path
-                                                        d="M10.6719 13.5C10.6719 12.6716 11.3434 12 12.1719 12C13.0003 12 13.6719 12.6716 13.6719 13.5M17.6719 13.5C17.6719 12.6716 18.3435 12 19.1719 12C20.0003 12 20.6719 12.6716 20.6719 13.5"
-                                                        stroke="#121212" stroke-width="1.5" stroke-linecap="round"
-                                                        stroke-linejoin="round" />
+                                                    <path d="M15.6719 26C21.1947 26 25.6719 21.5228 25.6719 16C25.6719 10.4772 21.1947 6 15.6719 6C10.149 6 5.67188 10.4772 5.67188 16C5.67188 21.5228 10.149 26 15.6719 26Z" stroke="#121212" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                                    <path d="M11.6719 19C12.584 20.2144 14.0362 21 15.6719 21C17.3076 21 18.7598 20.2144 19.6719 19" stroke="#121212" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                                    <path d="M10.6719 13.5C10.6719 12.6716 11.3434 12 12.1719 12C13.0003 12 13.6719 12.6716 13.6719 13.5M17.6719 13.5C17.6719 12.6716 18.3435 12 19.1719 12C20.0003 12 20.6719 12.6716 20.6719 13.5" stroke="#121212" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                                                 </svg>
-
                                             </div>
                                             <div class="w-0.5 bg-[#E0E8F0] " style="height: 225px;"></div>
                                         </div>
-
                                         <div class="flex flex-col items-center relative z-10">
                                             <div class="fs-16 font-semibold text-black">3.7</div>
-                                            <div
-                                                class="w-8 h-8 bg-teal-400 rounded-full flex items-center justify-center ">
+                                            <div class="w-8 h-8 bg-teal-400 rounded-full flex items-center justify-center ">
                                                 <!-- Hafif mutlu emoji -->
-                                                <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
-                                                    xmlns="http://www.w3.org/2000/svg">
+                                                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                     <circle cx="16" cy="16" r="16" fill="#57F8A4" />
-                                                    <path
-                                                        d="M16.3281 26C21.851 26 26.3281 21.5228 26.3281 16C26.3281 10.4772 21.851 6 16.3281 6C10.8053 6 6.32812 10.4772 6.32812 16C6.32812 21.5228 10.8053 26 16.3281 26Z"
-                                                        stroke="#121212" stroke-width="1.5" stroke-linecap="round"
-                                                        stroke-linejoin="round" />
-                                                    <path
-                                                        d="M12.3281 19C13.2402 19.8501 14.6924 20.4 16.3281 20.4C17.9638 20.4 19.416 19.8501 20.3281 19"
-                                                        stroke="#121212" stroke-width="1.5" stroke-linecap="round"
-                                                        stroke-linejoin="round" />
-                                                    <path d="M12.3371 13H12.3281M20.3281 13H20.3191" stroke="#121212"
-                                                        stroke-width="2" stroke-linecap="round"
-                                                        stroke-linejoin="round" />
+                                                    <path d="M16.3281 26C21.851 26 26.3281 21.5228 26.3281 16C26.3281 10.4772 21.851 6 16.3281 6C10.8053 6 6.32812 10.4772 6.32812 16C6.32812 21.5228 10.8053 26 16.3281 26Z" stroke="#121212" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                                    <path d="M12.3281 19C13.2402 19.8501 14.6924 20.4 16.3281 20.4C17.9638 20.4 19.416 19.8501 20.3281 19" stroke="#121212" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                                    <path d="M12.3371 13H12.3281M20.3281 13H20.3191" stroke="#121212" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                                                 </svg>
-
                                             </div>
                                             <div class="w-0.5 bg-[#E0E8F0] " style="height: 200px;"></div>
                                         </div>
-
                                         <div class="flex flex-col items-center relative z-10">
                                             <div class="fs-16 font-semibold text-black">2.5</div>
-                                            <div
-                                                class="w-8 h-8 bg-yellow-400 rounded-full flex items-center justify-center">
+                                            <div class="w-8 h-8 bg-yellow-400 rounded-full flex items-center justify-center">
                                                 <!-- Nötr emoji -->
-                                                <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
-                                                    xmlns="http://www.w3.org/2000/svg">
+                                                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                     <circle cx="16" cy="16" r="16" fill="#FED600" />
-                                                    <path
-                                                        d="M16 26C21.5228 26 26 21.5228 26 16C26 10.4772 21.5228 6 16 6C10.4772 6 6 10.4772 6 16C6 21.5228 10.4772 26 16 26Z"
-                                                        stroke="#121212" stroke-width="1.5" stroke-linecap="round"
-                                                        stroke-linejoin="round" />
-                                                    <path d="M12.009 13H12M20 13H19.991" stroke="#121212"
-                                                        stroke-width="2" stroke-linecap="round"
-                                                        stroke-linejoin="round" />
-                                                    <path d="M13 20H19" stroke="#121212" stroke-width="1.5"
-                                                        stroke-linecap="round" stroke-linejoin="round" />
+                                                    <path d="M16 26C21.5228 26 26 21.5228 26 16C26 10.4772 21.5228 6 16 6C10.4772 6 6 10.4772 6 16C6 21.5228 10.4772 26 16 26Z" stroke="#121212" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                                    <path d="M12.009 13H12M20 13H19.991" stroke="#121212" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                                    <path d="M13 20H19" stroke="#121212" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                                                 </svg>
-
                                             </div>
                                             <div class="w-0.5 bg-[#E0E8F0] " style="height: 170px;"></div>
                                         </div>
-
                                         <div class="flex flex-col items-center relative z-10">
                                             <div class="fs-16 font-semibold text-black">4.6</div>
-                                            <div
-                                                class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
+                                            <div class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
                                                 <!-- Mutlu emoji -->
-                                                <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
-                                                    xmlns="http://www.w3.org/2000/svg">
+                                                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                     <circle cx="16" cy="16" r="16" fill="#3CBE7A" />
-                                                    <path
-                                                        d="M15.6719 26C21.1947 26 25.6719 21.5228 25.6719 16C25.6719 10.4772 21.1947 6 15.6719 6C10.149 6 5.67188 10.4772 5.67188 16C5.67188 21.5228 10.149 26 15.6719 26Z"
-                                                        stroke="#121212" stroke-width="1.5" stroke-linecap="round"
-                                                        stroke-linejoin="round" />
-                                                    <path
-                                                        d="M11.6719 19C12.584 20.2144 14.0362 21 15.6719 21C17.3076 21 18.7598 20.2144 19.6719 19"
-                                                        stroke="#121212" stroke-width="1.5" stroke-linecap="round"
-                                                        stroke-linejoin="round" />
-                                                    <path
-                                                        d="M10.6719 13.5C10.6719 12.6716 11.3434 12 12.1719 12C13.0003 12 13.6719 12.6716 13.6719 13.5M17.6719 13.5C17.6719 12.6716 18.3435 12 19.1719 12C20.0003 12 20.6719 12.6716 20.6719 13.5"
-                                                        stroke="#121212" stroke-width="1.5" stroke-linecap="round"
-                                                        stroke-linejoin="round" />
+                                                    <path d="M15.6719 26C21.1947 26 25.6719 21.5228 25.6719 16C25.6719 10.4772 21.1947 6 15.6719 6C10.149 6 5.67188 10.4772 5.67188 16C5.67188 21.5228 10.149 26 15.6719 26Z" stroke="#121212" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                                    <path d="M11.6719 19C12.584 20.2144 14.0362 21 15.6719 21C17.3076 21 18.7598 20.2144 19.6719 19" stroke="#121212" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                                    <path d="M10.6719 13.5C10.6719 12.6716 11.3434 12 12.1719 12C13.0003 12 13.6719 12.6716 13.6719 13.5M17.6719 13.5C17.6719 12.6716 18.3435 12 19.1719 12C20.0003 12 20.6719 12.6716 20.6719 13.5" stroke="#121212" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                                                 </svg>
-
                                             </div>
                                             <div class="w-0.5 bg-[#E0E8F0] " style="height: 250px;"></div>
                                         </div>
                                     </div>
-
                                     <!-- Aylar -->
-                                    <div class="flex justify-center gap-10 mt-2 ml-2 mr-2">
+                                    <div class="flex justify-center gap-8 mt-2 ml-2 mr-2">
                                         <button class="text-gray-400 hover:text-gray-600">
-                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M15 18L9 12L15 6" stroke="black" stroke-width="2"
-                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M15 18L9 12L15 6" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                                             </svg>
                                         </button>
                                         <span class="text-black fs-12 font-semibold mt-1">Ocak</span>
@@ -581,189 +496,257 @@
                                         <span class="text-black fs-12 font-semibold mt-1">Mart</span>
                                         <span class="text-black fs-12 font-semibold mt-1">Nisan</span>
                                         <button class="text-gray-400 hover:text-gray-600">
-                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M9 18L15 12L9 6" stroke="black" stroke-width="2"
-                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M9 18L15 12L9 6" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                                             </svg>
                                         </button>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-
-                    <!-- Görüşme Sayısı Grafiği -->
-                    <div class="bg-white rounded-xl p-6 shadow-sm border-2 border-[#E0E8F0] flex-1" style="width: 100%;">
-                        <div class="mb-8">
-                            <h3 class="text-lg font-semibold text-gray-900 mb-8">Görüşme Sayısı</h3>
-                        </div>
-
-                        <div class="flex mb-6">
-                            <div class="flex items-center space-x-10 gap-8">
-                                <div id="tabGroup" class="flex items-center gap-5 flex-nowrap whitespace-nowrap ml-3 ">
-                                    <button
-                                        class="tab-btn1 active-tab fs-12 font-semibold text-[#A0B2CD] border-b-2 border-black pb-1"
-                                        data-score="4.82">Tümü</button>
-                                    <button
-                                        class="tab-btn2 fs-12 text-[#A0B2CD] font-medium hover:text-black transition-all"
-                                        data-score="4.52">Psikolog</button>
-                                    <button
-                                        class="tab-btn3 fs-12 text-[#A0B2CD] font-medium hover:text-black transition-all"
-                                        data-score="4.65">Diyetisyen</button>
-                                    <button
-                                        class="tab-btn4 fs-12 text-[#A0B2CD] font-medium hover:text-black transition-all"
-                                        data-score="4.71">Kadın Sağlığı</button>
-                                    <button
-                                        class="tab-btn5 fs-12 text-[#A0B2CD] font-medium hover:text-black transition-all"
-                                        data-score="4.48">Doktor Hizmetleri</button>
-                                    <button
-                                        class="tab-btn6 text-sm text-[#A0B2CD] font-medium hover:text-black transition-all"
-                                        data-score="4.41">Online Fitness ve Yoga Danışmanlığı</button>
+                        <!--</div>
+                    <div class="bg-white rounded-xl p-6 shadow-sm mb-8 border-2 border-[#E0E8F0]" style="width: 70%; height: 450px;">
+                        <h3 class="text-lg font-semibold text-gray-900 ">Görüşme Sayısı</h3>
+                        <div class="flex mb-6 mt-6">
+                            <div class="flex items-center space-x-10 gap-8 overflow-hidden relative" style="width: 70%;">
+                                <div class="slider-container overflow-x-auto scrollbar-hide" style="width: 90%;">
+                                    <div id="tabGroup" class="flex items-center gap-5 flex-nowrap whitespace-nowrap ml-3 min-w-max">
+                                        <button class="tab-btn1 active-tab fs-12 font-semibold text-[#A0B2CD] border-b-2 border-black pb-1" data-score="4.82">Tümü</button>
+                                        <button class="tab-btn2 fs-12 text-[#A0B2CD] font-medium hover:text-black transition-all" data-score="4.52">Psikolog</button>
+                                        <button class="tab-btn3 fs-12 text-[#A0B2CD] font-medium hover:text-black transition-all" data-score="4.65">Diyetisyen</button>
+                                        <button class="tab-btn4 fs-12 text-[#A0B2CD] font-medium hover:text-black transition-all" data-score="4.71">Kadın Sağlığı</button>
+                                        <button class="tab-btn5 fs-12 text-[#A0B2CD] font-medium hover:text-black transition-all" data-score="4.48">Doktor Hizmetleri</button>
+                                        <button class="tab-btn6 fs-12 text-[#A0B2CD] font-medium hover:text-black transition-all" data-score="4.41">Online Fitness ve Yoga Danışmanlığı</button>
+                                    </div>
                                 </div>
+                                <button class="slider-nav slider-prev absolute left-0 bg-white bg-opacity-70 px-2 py-1 rounded-full hidden">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M15 18L9 12L15 6" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                </button>
+                                <button class="slider-nav slider-next absolute right-0 bg-white bg-opacity-70 px-2 py-1 rounded-full">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M9 18L15 12L9 6" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                </button>
                             </div>
                             <div class="flex justify-items-center ml-auto">
-                                <div class="flex items-center justify-start bg-white border border-[#C0D0DF] rounded-full px-1 py-1"
-                                    style="width: 185px; height: 40px;">
-                                    <!-- Aktif Buton -->
-                                    <button
-                                        class="bg-black text-white font-semibold fs-12 rounded-full px-6 h-[30px]  flex items-center justify-center mr-2">
+                                <div class="flex items-center justify-start bg-white border border-[#C0D0DF] rounded-full px-1 py-1" style="width: 185px; height: 40px;">
+                                   
+                                    <button class="bg-black text-white font-semibold fs-12 rounded-full px-6 h-[30px]  flex items-center justify-center mr-2">
                                         Aylık
                                     </button>
-                                    <!-- Pasif Buton -->
+                                    
                                     <button class="text-[#7B8FB0] fs-12 font-medium ml-2">
                                         Haftalık
                                     </button>
                                 </div>
                             </div>
                         </div>
-                        <div id="viewsChart2" class="w-[1050px] h-[260px]"></div>
+                        <div id="viewsChart2" style="width: 80%; height: 300px;"></div>
+                    </div>-->
+                    </div>
+                    <div class="bg-white rounded-xl p-6 shadow-sm border-2 border-[#E0E8F0]" style="width: 68%; height: 450px;">
+                        <h3 class="fs-14 font-semibold text-[#000000] mb-16">Görüşme Sayısı</h3>
+                        <div id="usageChart" class="w-full h-[280px]"></div>
                     </div>
                 </div>
-                <div class="flex mb-4 gap-6">
-                    <div class="bg-white rounded-xl p-6 shadow-sm border-2 border-[#E0E8F0]"
-                        style="width: 800px; height: 340px;">
-                        <!-- ...İptal Durumları modülü... -->
-                        <h3 class="fs-14 font-semibold text-[#000000] mb-4">İptal Durumları</h3>
-                        <div id="tabGroup3"
-                                class="flex items-center gap-5 mb-3 flex-nowrap whitespace-nowrap overflow-x-auto scrollbar-hide">
-                                <button
-                                    class="tab-btn active-tab fs-12 font-semibold text-[#A0B2CD] border-b-2 border-black pb-1"
-                                    data-score="4.82">Tümü</button>
-                                <button class="tab-btn fs-12 text-[#A0B2CD] font-medium hover:text-black transition-all"
-                                    data-score="4.52">Psikolog</button>
-                                <button class="tab-btn fs-12 text-[#A0B2CD] font-medium hover:text-black transition-all"
-                                    data-score="4.65">Diyetisyen</button>
-                                <button class="tab-btn fs-12 text-[#A0B2CD] font-medium hover:text-black transition-all"
-                                    data-score="4.71">Kadın Sağlığı</button>
-                                <button class="tab-btn fs-12 text-[#A0B2CD] font-medium hover:text-black transition-all"
-                                    data-score="4.48">Doktor Hizmetleri</button>
-                                <button
-                                    class="tab-btn text-sm text-[#A0B2CD] font-medium hover:text-black transition-all"
-                                    data-score="4.41">Online Fitness ve Yoga Danışmanlığı</button>
+                <script>
+                    document.addEventListener('DOMContentLoaded', function() {
+                        const usageChartElement1 = document.getElementById('viewsChart2');
+                        if (usageChartElement1) {
+                            const usageChart1 = echarts.init(usageChartElement1);
+                            usageChart1.setOption({
+                                animation: true,
+                                tooltip: {
+                                    trigger: 'axis',
+                                    backgroundColor: 'rgba(255, 255, 255, 0.9)',
+                                    textStyle: {
+                                        color: '#1f2937'
+                                    }
+                                },
+                                grid: {
+                                    left: '4%',
+                                    right: '4%',
+                                    top: '10%',
+                                    bottom: '10%',
+                                    containLabel: true
+                                },
+                                xAxis: {
+                                    type: 'category',
+                                    data: ['Eylül', 'Ekim', 'Kasım', 'Aralık', 'Ocak', 'Şubat', 'Mart'],
+                                    axisLabel: {
+                                        color: '#6B7280'
+                                    },
+                                    axisLine: {
+                                        lineStyle: {
+                                            color: '#E5E7EB'
+                                        }
+                                    }
+                                },
+                                yAxis: {
+                                    type: 'value',
+                                    axisLabel: {
+                                        color: '#6B7280',
+                                        formatter: value => value >= 1000 ? value / 1000 + 'k' : value
+                                    },
+                                    splitLine: {
+                                        lineStyle: {
+                                            color: '#E5E7EB'
+                                        }
+                                    }
+                                },
+                                series: [{
+                                    name: 'Psikolog Görüşmeleri',
+                                    type: 'bar',
+                                    data: [13000, 16000, 5000, 15000, 11000, 14000, 21000],
+                                    barWidth: '20%',
+                                    itemStyle: {
+                                        color: '#7B8FB0',
+                                        borderRadius: [4, 4, 0, 0]
+                                    }
+                                }]
+                            });
+
+                            window.addEventListener('resize', () => usageChart1.resize());
+                        }
+                    });
+                </script>
+                <style>
+                    .scrollbar-hide::-webkit-scrollbar {
+                        display: none;
+                    }
+
+                    .scrollbar-hide {
+                        -ms-overflow-style: none;
+                        scrollbar-width: none;
+                    }
+                </style>
+                <script>
+                    document.addEventListener('DOMContentLoaded', function() {
+                        const sliderContainer = document.querySelector('.slider-container');
+                        const prevButton = document.querySelector('.slider-prev');
+                        const nextButton = document.querySelector('.slider-next');
+
+                        if (sliderContainer && prevButton && nextButton) {
+                            // İlk yüklemede "Online Fitness" sekmesinin gizli olmasını sağla
+                            // ve sağ ok butonunu göster
+                            function initSlider() {
+                                // Doktor Hizmetleri sekmesinin genişliğini ve konumunu al
+                                //const doctorTab = document.querySelector('.tab-btn5');
+                                //const fitnessTab = document.querySelector('.tab-btn6');
+
+                                if (doctorTab && fitnessTab) {
+                                    // Slider container'ın genişliğini Doktor Hizmetleri sekmesinin bitiş noktasına göre ayarla
+                                    const doctorTabRect = doctorTab.getBoundingClientRect();
+                                    const containerRect = sliderContainer.getBoundingClientRect();
+
+                                    // Sağ ok butonunu her zaman göster
+                                    nextButton.classList.remove('hidden');
+
+                                    // Slider'ı başlangıçta Doktor Hizmetleri sekmesinin sonuna kadar göster
+                                    sliderContainer.style.width = (doctorTabRect.right - containerRect.left) + 'px';
+                                }
+                            }
+
+                            // Kaydırma miktarı
+                            const scrollAmount = 150;
+
+                            // İleri kaydırma
+                            nextButton.addEventListener('click', function() {
+                                // Kaydırma yapıldığında tam genişliği göster
+                                sliderContainer.style.width = '100%';
+
+                                sliderContainer.scrollBy({
+                                    left: scrollAmount,
+                                    behavior: 'smooth'
+                                });
+                                checkButtonVisibility();
+                            });
+
+                            // Geri kaydırma
+                            prevButton.addEventListener('click', function() {
+                                sliderContainer.scrollBy({
+                                    left: -scrollAmount,
+                                    behavior: 'smooth'
+                                });
+                                checkButtonVisibility();
+
+                                // Eğer en başa geldiyse ve Doktor Hizmetleri görünüyorsa
+                                // slider genişliğini tekrar sınırla
+                                if (sliderContainer.scrollLeft <= 0) {
+                                    setTimeout(initSlider, 300); // Animasyon bittikten sonra
+                                }
+                            });
+
+                            // Kaydırma butonlarının görünürlüğünü kontrol et
+                            function checkButtonVisibility() {
+                                prevButton.classList.toggle('hidden', sliderContainer.scrollLeft <= 0);
+
+                                // Sağ ok her zaman görünür olsun, sadece en sona gelindiğinde gizlensin
+                                const isAtEnd = sliderContainer.scrollLeft + sliderContainer.clientWidth >= sliderContainer.scrollWidth - 5;
+                                nextButton.classList.toggle('hidden', isAtEnd);
+                            }
+
+                            // Sayfa yüklendiğinde slider'ı başlat
+                            initSlider();
+
+                            // Kaydırma olayında butonların görünürlüğünü kontrol et
+                            sliderContainer.addEventListener('scroll', checkButtonVisibility);
+
+                            // Pencere yeniden boyutlandırıldığında slider'ı yeniden başlat
+                            window.addEventListener('resize', initSlider);
+                        }
+                    });
+                </script>
+                <div class="flex mb-8">
+                    <div>
+                        <div class="bg-white rounded-xl p-6 shadow-sm border-2 border-[#E0E8F0]" style="width: 610px; height: 370px;">
+                            <h3 class="fs-14 font-semibold text-[#000000] mb-4">İptal Durumları</h3>
+                            <div id="tabGroup3" class="flex items-center gap-5 mb-3 flex-nowrap whitespace-nowrap overflow-x-auto scrollbar-hide">
+                                <button class="tab-btn active-tab fs-12 font-semibold text-[#A0B2CD] border-b-2 border-black pb-1" data-score="4.82">Tümü</button>
+                                <button class="tab-btn fs-12 text-[#A0B2CD] font-medium hover:text-black transition-all" data-score="4.52">Psikolog</button>
+                                <button class="tab-btn fs-12 text-[#A0B2CD] font-medium hover:text-black transition-all" data-score="4.65">Diyetisyen</button>
+                                <button class="tab-btn fs-12 text-[#A0B2CD] font-medium hover:text-black transition-all" data-score="4.71">Kadın Sağlığı</button>
+                                <button class="tab-btn fs-12 text-[#A0B2CD] font-medium hover:text-black transition-all" data-score="4.48">Doktor Hizmetleri</button>
+                                <button class="tab-btn text-sm text-[#A0B2CD] font-medium hover:text-black transition-all" data-score="4.41">Online Fitness ve Yoga Danışmanlığı</button>
                             </div>
-                        <div class="flex items-center justify-between">
-                            <div class="flex items-center gap-6 ml-8">
-                                <div>
-                                    <span class="font-semibold fs-16 text-[#121212] leading-4">2450</span>
-                                    <span class="font-medium fs-14 text-[#7B8FB0]"> Toplam Yapılan Görüşme</span>
-                                </div>
-                                <div style="height: 50px; border: 1px solid#E0E8F0;">
-                                </div>
-
-                                <div>
-                                    <span class="font-semibold fs-16 leading-4" style="color: #FF0044">20</span>
-                                    <span class="font-medium fs-14 text-[#7B8FB0]"> İptal Edilen Görüşme</span>
-
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="flex items-center justify-start ml-6">
-                            <div id="cancelDonutChart" class="w-[192px] h-[192px] mb-6"></div>
-                            <div class="flex-1 space-y-4 ml-8">
-                                <div class="flex items-center justify-between">
-                                    <div class="flex items-center space-x-2">
-                                        <div class="w-3 h-3 rounded-full" style="background-color: #394355"></div>
-                                        <span class="font-semibold text-[14px] leading-4" style="color: #394355">HCP
-                                            Kaynaklı</span>
-                                        <span class="font-semibold text-[14px] leading-4 pl-12"
-                                            style="color: #FF0044">2 (10%)</span>
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center gap-6 ml-8">
+                                    <div>
+                                        <span class="font-semibold fs-16 text-[#121212] leading-4">2450</span>
+                                        <span class="font-medium fs-14 text-[#7B8FB0]">
+                                            Toplam Yapılan Görüşme
+                                        </span>
                                     </div>
-
-                                </div>
-                                <div class="flex items-center justify-between">
-                                    <div class="flex items-center space-x-2">
-                                        <div class="w-3 h-3 rounded-full" style="background-color: #7B8FB0"></div>
-                                        <span class="font-semibold text-[14px] leading-4"
-                                            style="color: #7B8FB0">Kullanıcı Kaynaklı</span>
-                                        <span class="font-semibold text-[14px] leading-4 pl-4"
-                                            style="color: #FF0044">18 (90%)</span>
+                                    <div style="height: 50px; border: 1px solid#E0E8F0;">
                                     </div>
-
+                                    <div>
+                                        <span class="font-semibold fs-16 leading-4" style="color: #FF0044">20</span>
+                                        <span class="font-medium fs-14 text-[#7B8FB0]">
+                                            İptal Edilen Görüşme
+                                        </span>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-
-                    </div>
-                    <div class="bg-white rounded-xl p-6 shadow-sm border-2 border-[#E0E8F0]"
-                        style="width: 765px; height: 244px;">
-                            <h3 class=" fs-14 font-semibold text-[#000000] mb-3 ">Memnuniyet Oranı</h3>
-                            <!-- Sekmeler -->
-                            <div id="tabGroup1" 
-                                class="flex items-center gap-5 mb-6 flex-nowrap whitespace-nowrap overflow-x-auto scrollbar-hide"
-                                style="min-width: 100%;">
-                                <button
-                                    class="tab-btn active-tab fs-12 font-semibold text-[#A0B2CD] border-b-2 border-black pb-1"
-                                    data-score="4.82">Tümü</button>
-                                <button class="tab-btn fs-12 text-[#A0B2CD] font-medium hover:text-black transition-all"
-                                    data-score="4.52">Psikolog</button>
-                                <button class="tab-btn fs-12 text-[#A0B2CD] font-medium hover:text-black transition-all"
-                                    data-score="4.65">Diyetisyen</button>
-                                <button class="tab-btn fs-12 text-[#A0B2CD] font-medium hover:text-black transition-all"
-                                    data-score="4.71">Kadın Sağlığı</button>
-                                <button class="tab-btn fs-12 text-[#A0B2CD] font-medium hover:text-black transition-all"
-                                    data-score="4.48">Doktor Hizmetleri</button>
-                                <button
-                                    class="tab-btn text-sm text-[#A0B2CD] font-medium hover:text-black transition-all"
-                                    data-score="4.41">Online Fitness ve Yoga Danışmanlığı</button>
-                            </div>
-                            <!-- Değerler -->
-                            <div class="flex items-center space-x-1 mb-6 ml-3">
-                                <div class="w-10 h-10 flex items-center justify-center">
-                                    <!-- ikon -->
-                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M2 12.5C2 11.3954 2.89543 10.5 4 10.5C5.65685 10.5 7 11.8431 7 13.5V17.5C7 19.1569 5.65685 20.5 4 20.5C2.89543 20.5 2 19.6046 2 18.5V12.5Z"
-                                            stroke="#394355" stroke-width="1.5" stroke-linecap="round"
-                                            stroke-linejoin="round" />
-                                        <path
-                                            d="M15.4787 7.80626L15.2124 8.66634C14.9942 9.37111 14.8851 9.72349 14.969 10.0018C15.0369 10.2269 15.1859 10.421 15.389 10.5487C15.64 10.7065 16.0197 10.7065 16.7791 10.7065H17.1831C19.7532 10.7065 21.0382 10.7065 21.6452 11.4673C21.7145 11.5542 21.7762 11.6467 21.8296 11.7437C22.2965 12.5921 21.7657 13.7351 20.704 16.0211C19.7297 18.1189 19.2425 19.1678 18.338 19.7852C18.2505 19.8449 18.1605 19.9013 18.0683 19.9541C17.116 20.5 15.9362 20.5 13.5764 20.5H13.0646C10.2057 20.5 8.77628 20.5 7.88814 19.6395C7 18.7789 7 17.3939 7 14.6239V13.6503C7 12.1946 7 11.4668 7.25834 10.8006C7.51668 10.1344 8.01135 9.58664 9.00069 8.49112L13.0921 3.96056C13.1947 3.84694 13.246 3.79012 13.2913 3.75075C13.7135 3.38328 14.3652 3.42464 14.7344 3.84235C14.774 3.8871 14.8172 3.94991 14.9036 4.07554C15.0388 4.27205 15.1064 4.37031 15.1654 4.46765C15.6928 5.33913 15.8524 6.37436 15.6108 7.35715C15.5838 7.46692 15.5488 7.5801 15.4787 7.80626Z"
-                                            stroke="#394355" stroke-width="1.5" stroke-linecap="round"
-                                            stroke-linejoin="round" />
-                                    </svg>
-                                </div>
-                                <div class="flex justify-center items-center flex-row gap-2">
-                                    <div id="satisfactionValue" class="text-2xl font-bold text-gray-900">4.82%</div>
-                                    <div class="fs-14 text-[#7B8FB0] font-medium">Memnuniyet</div>
-                                </div>
-                            </div>
-                            <!-- Barlar -->
-                            <div class="flex space-x-2 ml-3" id="satisfaction-bars">
-                                <!-- 5 bar kutusu -->
-                                <div class="bar bg-[#3CBE7A]" style="border-radius:4px; width: 73px; height:24px;">
-                                </div>
-                                <div class="bar bg-[#3CBE7A]" style="border-radius:4px; width: 73px; height:24px;">
-                                </div>
-                                <div class="bar bg-[#3CBE7A]" style="border-radius:4px; width: 73px; height:24px;">
-                                </div>
-                                <div class="bar bg-[#3CBE7A]" style="border-radius:4px; width: 73px; height:24px;">
-                                </div>
-                                <div class="bar flex overflow-hidden"
-                                    style="border-radius:4px; width: 73px; height:24px;">
-                                    <div class="h-full bg-[#3CBE7A]" style="width: 50%"></div>
-                                    <div class="h-full bg-[#E0E8F0] flex-1"></div>
+                            <div class="flex items-center justify-start ml-6">
+                                <div id="cancelDonutChart" class="w-[192px] h-[192px] mb-6"></div>
+                                <div class="flex-1 space-y-4 ml-8">
+                                    <div class="flex items-center justify-between">
+                                        <div class="flex items-center space-x-2">
+                                            <div class="w-3 h-3 rounded-full" style="background-color: #394355"></div>
+                                            <span class="font-semibold text-[14px] leading-4" style="color: #394355">HCP
+                                                Kaynaklı</span>
+                                            <span class="font-semibold text-[14px] leading-4 pl-12" style="color: #FF0044">2 (10%)</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center justify-between">
+                                        <div class="flex items-center space-x-2">
+                                            <div class="w-3 h-3 rounded-full" style="background-color: #7B8FB0"></div>
+                                            <span class="font-semibold text-[14px] leading-4" style="color: #7B8FB0">Kullanıcı Kaynaklı</span>
+                                            <span class="font-semibold text-[14px] leading-4 pl-4" style="color: #FF0044">18 (90%)</span>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -817,48 +800,173 @@
                                     });
                                 });
                             });
-                        </script>
-                        <script>
-                            document.querySelectorAll("#tabGroup1 .tab-btn").forEach((btn) => {
-                                btn.addEventListener("click", () => {
-                                    // Tüm sekmelerden active sınıfını kaldır
-                                    document.querySelectorAll("#tabGroup1 .tab-btn").forEach((b) =>
-                                        b.classList.remove("active-tab", "text-black", "font-semibold", "border-b-2", "border-black")
-                                    );
-
-                                    // Tıklanana active sınıfı ekle
-                                    btn.classList.add("active-tab", "text-black", "font-semibold", "border-b-2", "border-black");
-
-                                    // Oranı al
-                                    const rate = btn.dataset.score;
-                                    document.getElementById("satisfactionValue").textContent = `${rate}%`;
-
-                                    // Barları güncelle
-                                    const rateNum = parseFloat(rate);
-                                    const fullBars = Math.floor(rateNum);
-                                    const partial = rateNum - fullBars;
-
-                                    const bars = document.querySelectorAll("#satisfaction-bars .bar");
-                                    bars.forEach((bar, index) => {
-                                        bar.innerHTML = ""; // içeriği temizle
-                                        bar.className = "bar"; // classları sıfırla
-                                        bar.style = "border-radius:8px; width: 73px; height:24px;";
-
-                                        if (index < fullBars) {
-                                            bar.classList.add("bg-[#3CBE7A]");
-                                        } else if (index === fullBars && partial > 0) {
-                                            bar.classList.add("flex", "overflow-hidden");
-                                            bar.innerHTML = `
-            <div class="h-full bg-[#3CBE7A]" style="width: ${partial * 100}%"></div>
-            <div class="h-full bg-[#E0E8F0]" style="flex: 1;"></div>
-          `;
-                                        } else {
-                                            bar.classList.add("bg-[#E0E8F0]");
+                            const cancelDonutChartElement = document.getElementById('cancelDonutChart');
+                            if (cancelDonutChartElement) {
+                                const cancelDonutChart = echarts.init(cancelDonutChartElement);
+                                const cancelDonutOption = {
+                                    tooltip: {
+                                        trigger: 'item',
+                                        backgroundColor: 'rgba(255, 255, 255, 0.95)',
+                                        borderColor: '#E5E7EB',
+                                        borderWidth: 1,
+                                        textStyle: {
+                                            color: '#1F2937',
+                                            fontSize: 14
+                                        },
+                                        formatter: function(params) {
+                                            return `<div style="padding: 8px;">
+                                                <div style="font-weight: 600; margin-bottom: 4px;">${params.name}</div>
+                                                <div style="display: flex; align-items: center; gap: 8px;">
+                                                    <div style="width: 12px; height: 12px; border-radius: 50%; background-color: ${params.color};"></div>
+                                                    <span>${params.value} İptal</span>
+                                                    <span style="font-weight: 600; color: #FF0044;">(${params.percent}%)</span>
+                                                </div>
+                                            </div>`;
                                         }
+                                    },
+                                    legend: {
+                                        show: false
+                                    },
+                                    series: [{
+                                        name: 'İptal Durumları',
+                                        type: 'pie',
+                                        radius: ['35%', '65%'],
+                                        center: ['50%', '50%'],
+                                        avoidLabelOverlap: false,
+                                        itemStyle: {
+                                            borderRadius: 4,
+                                            borderColor: '#fff',
+                                            borderWidth: 2
+                                        },
+                                        label: {
+                                            show: false
+                                        },
+                                        emphasis: {
+                                            label: {
+                                                show: false
+                                            },
+                                            itemStyle: {
+                                                shadowBlur: 10,
+                                                shadowOffsetX: 0,
+                                                shadowColor: 'rgba(0, 0, 0, 0.5)'
+                                            }
+                                        },
+                                        data: [{
+                                                value: 18,
+                                                name: 'Kullanıcı Kaynaklı',
+                                                itemStyle: {
+                                                    color: '#7B8FB0'
+                                                }
+                                            },
+                                            {
+                                                value: 2,
+                                                name: 'HCP Kaynaklı',
+                                                itemStyle: {
+                                                    color: '#394355'
+                                                }
+                                            }
+                                        ]
+                                    }]
+                                };
+                                cancelDonutChart.setOption(cancelDonutOption);
+                            }
+                        </script>
+                    </div>
+                    <div class="bg-white rounded-xl p-6 ml-3 shadow-sm border-2 border-[#E0E8F0]" style="width: 60%; height: 240px;">
+                        <h3 class=" fs-14 font-semibold text-[#000000] mb-3 ">Memnuniyet Oranı</h3>
+                        <!-- Sekmeler -->
+                        <div class="relative overflow-hidden" style="width: 515px;">
+                            <div class="slider-container overflow-x-auto scrollbar-hide" style="width: 515px;">
+                                <div id="tabGroup3" class="flex items-center gap-5 mb-3 flex-nowrap whitespace-nowrap ml-3 min-w-max">
+                                    <button class="tab-btn active-tab fs-12 font-semibold text-[#A0B2CD] border-b-2 border-black pb-1" data-score="4.82">Tümü</button>
+                                    <button class="tab-btn fs-12 text-[#A0B2CD] font-medium hover:text-black transition-all" data-score="4.52">Psikolog</button>
+                                    <button class="tab-btn fs-12 text-[#A0B2CD] font-medium hover:text-black transition-all" data-score="4.65">Diyetisyen</button>
+                                    <button class="tab-btn fs-12 text-[#A0B2CD] font-medium hover:text-black transition-all" data-score="4.71">Kadın Sağlığı</button>
+                                    <button class="tab-btn fs-12 text-[#A0B2CD] font-medium hover:text-black transition-all" data-score="4.48">Doktor Hizmetleri</button>
+                                    <button class="tab-btn fs-12 text-[#A0B2CD] font-medium hover:text-black transition-all" data-score="4.41">Online Fitness ve Yoga Danışmanlığı</button>
+                                </div>
+                            </div>
+                            <style>
+                                .active-tab {
+                                    color: #000000 !important;
+                                    font-weight: 600;
+                                    border-bottom: 2px solid #000000;
+                                    padding-bottom: 4px;
+                                }
+                            </style>
+                            <!-- JS -->
+                            <script>
+                                document.querySelectorAll("#tabGroup .tab-btn").forEach((btn) => {
+                                    btn.addEventListener("click", () => {
+                                        // Tüm sekmelerden active sınıfını kaldır
+                                        document.querySelectorAll("#tabGroup .tab-btn").forEach((b) =>
+                                            b.classList.remove("active-tab", "text-black", "font-semibold", "border-b-2", "border-black")
+                                        );
+
+                                        // Tıklanana active sınıfı ekle
+                                        btn.classList.add("active-tab", "text-black", "font-semibold", "border-b-2", "border-black");
+
+                                        // Oranı al
+                                        const rate = btn.dataset.score;
+                                        document.getElementById("satisfactionValue").textContent = `${rate}%`;
+
+                                        // Barları güncelle
+                                        const rateNum = parseFloat(rate);
+                                        const fullBars = Math.floor(rateNum);
+                                        const partial = rateNum - fullBars;
+
+                                        const bars = document.querySelectorAll("#satisfaction-bars .bar");
+                                        bars.forEach((bar, index) => {
+                                            bar.innerHTML = ""; // içeriği temizle
+                                            bar.className = "bar"; // classları sıfırla
+                                            bar.style = "border-radius:8px; width: 73px; height:24px;";
+
+                                            if (index < fullBars) {
+                                                bar.classList.add("bg-[#3CBE7A]");
+                                            } else if (index === fullBars && partial > 0) {
+                                                bar.classList.add("flex", "overflow-hidden");
+                                                bar.innerHTML = `
+                <div class="h-full bg-[#3CBE7A]" style="width: ${partial * 100}%"></div>
+                <div class="h-full bg-[#E0E8F0]" style="flex: 1;"></div>
+              `;
+                                            } else {
+                                                bar.classList.add("bg-[#E0E8F0]");
+                                            }
+                                        });
                                     });
                                 });
-                            });
-                        </script>
+                            </script>
+                        </div>
+                        <!-- Değerler -->
+                        <div class="flex items-center space-x-1 mb-6 ml-3">
+                            <div class="w-10 h-10 flex items-center justify-center">
+                                <!-- ikon -->
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M2 12.5C2 11.3954 2.89543 10.5 4 10.5C5.65685 10.5 7 11.8431 7 13.5V17.5C7 19.1569 5.65685 20.5 4 20.5C2.89543 20.5 2 19.6046 2 18.5V12.5Z" stroke="#394355" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M15.4787 7.80626L15.2124 8.66634C14.9942 9.37111 14.8851 9.72349 14.969 10.0018C15.0369 10.2269 15.1859 10.421 15.389 10.5487C15.64 10.7065 16.0197 10.7065 16.7791 10.7065H17.1831C19.7532 10.7065 21.0382 10.7065 21.6452 11.4673C21.7145 11.5542 21.7762 11.6467 21.8296 11.7437C22.2965 12.5921 21.7657 13.7351 20.704 16.0211C19.7297 18.1189 19.2425 19.1678 18.338 19.7852C18.2505 19.8449 18.1605 19.9013 18.0683 19.9541C17.116 20.5 15.9362 20.5 13.5764 20.5H13.0646C10.2057 20.5 8.77628 20.5 7.88814 19.6395C7 18.7789 7 17.3939 7 14.6239V13.6503C7 12.1946 7 11.4668 7.25834 10.8006C7.51668 10.1344 8.01135 9.58664 9.00069 8.49112L13.0921 3.96056C13.1947 3.84694 13.246 3.79012 13.2913 3.75075C13.7135 3.38328 14.3652 3.42464 14.7344 3.84235C14.774 3.8871 14.8172 3.94991 14.9036 4.07554C15.0388 4.27205 15.1064 4.37031 15.1654 4.46765C15.6928 5.33913 15.8524 6.37436 15.6108 7.35715C15.5838 7.46692 15.5488 7.5801 15.4787 7.80626Z" stroke="#394355" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </div>
+                            <div class="flex justify-center items-center flex-row gap-2">
+                                <div id="satisfactionValue" class="text-2xl font-bold text-gray-900">4.82%</div>
+                                <div class="fs-14 text-[#7B8FB0] font-medium">Memnuniyet</div>
+                            </div>
+                        </div>
+                        <!-- Barlar -->
+                        <div class="flex space-x-2 ml-3" id="satisfaction-bars">
+                            <!-- 5 bar kutusu -->
+                            <div class="bar bg-[#3CBE7A]" style="border-radius:4px; width: 73px; height:24px;">
+                            </div>
+                            <div class="bar bg-[#3CBE7A]" style="border-radius:4px; width: 73px; height:24px;">
+                            </div>
+                            <div class="bar bg-[#3CBE7A]" style="border-radius:4px; width: 73px; height:24px;">
+                            </div>
+                            <div class="bar bg-[#3CBE7A]" style="border-radius:4px; width: 73px; height:24px;">
+                            </div>
+                            <div class="bar flex overflow-hidden" style="border-radius:4px; width: 73px; height:24px;">
+                                <div class="h-full bg-[#3CBE7A]" style="width: 50%"></div>
+                                <div class="h-full bg-[#E0E8F0] flex-1"></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -887,147 +995,8 @@
         }
     </script>
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            // Responsive davranış için window resize event listener
-            function handleResize() {
-                // ECharts grafiklerini yeniden boyutlandır
-                const charts = document.querySelectorAll('[id$="Chart"], [id$="Chart2"], #donutChart, #cancelDonutChart');
-                charts.forEach(chartId => {
-                    const chart = echarts.getInstanceByDom(document.getElementById(chartId.id));
-                    if (chart) {
-                        chart.resize();
-                    }
-                });
-            }
+        document.addEventListener('DOMContentLoaded', function() {
 
-            // Resize event listener ekle
-            window.addEventListener('resize', handleResize);
-
-            // Donut Chart
-            const donutChartElement = document.getElementById('donutChart');
-            if (donutChartElement) {
-                const donutChart = echarts.init(donutChartElement);
-                const donutOption = {
-                    tooltip: {
-                        trigger: 'item',
-                        backgroundColor: 'rgba(255, 255, 255, 0.95)',
-                        borderColor: '#E5E7EB',
-                        borderWidth: 1,
-                        textStyle: {
-                            color: '#1F2937',
-                            fontSize: 14
-                        },
-                        formatter: function (params) {
-                            return `<div style="padding: 8px;">
-                                <div style="font-weight: 600; margin-bottom: 4px;">${params.name}</div>
-                                <div style="display: flex; align-items: center; gap: 8px;">
-                                    <div style="width: 12px; height: 12px; border-radius: 50%; background-color: ${params.color};"></div>
-                                    <span>${params.value} Görüşme</span>
-                                    <span style="font-weight: 600;">(${params.percent}%)</span>
-                                </div>
-                            </div>`;
-                        }
-                    },
-                    legend: {
-                        show: false
-                    },
-                    series: [{
-                        name: 'Tamamlanan Görüşme Oranı',
-                        type: 'pie',
-                        radius: ['40%', '70%'],
-                        center: ['50%', '50%'],
-                        avoidLabelOverlap: false,
-                        itemStyle: {
-                            borderRadius: 4,
-                            borderColor: '#fff',
-                            borderWidth: 2
-                        },
-                        label: {
-                            show: false
-                        },
-                        emphasis: {
-                            label: {
-                                show: false
-                            },
-                            itemStyle: {
-                                shadowBlur: 10,
-                                shadowOffsetX: 0,
-                                shadowColor: 'rgba(0, 0, 0, 0.5)'
-                            }
-                        },
-                        data: [
-                            { value: 200, name: 'Mental Sağlık', itemStyle: { color: '#FD7700' } },
-                            { value: 30, name: 'Beslenme ve Diyet', itemStyle: { color: '#2D9C63' } },
-                            { value: 30, name: 'Doktor Hizmetleri', itemStyle: { color: '#1645DE' } },
-                            { value: 30, name: 'Doğum Koçu', itemStyle: { color: '#19B2A7' } },
-                            { value: 30, name: 'Emzirme Danışmanı', itemStyle: { color: '#7853E1' } },
-                            { value: 30, name: 'Online Fitness ve Yoga Danışmanlığı', itemStyle: { color: '#E45241' } }
-                        ]
-                    }]
-                };
-                donutChart.setOption(donutOption);
-            }
-
-            // İptal Durumları Donut Chart
-            const cancelDonutChartElement = document.getElementById('cancelDonutChart');
-            if (cancelDonutChartElement) {
-                const cancelDonutChart = echarts.init(cancelDonutChartElement);
-                const cancelDonutOption = {
-                    tooltip: {
-                        trigger: 'item',
-                        backgroundColor: 'rgba(255, 255, 255, 0.95)',
-                        borderColor: '#E5E7EB',
-                        borderWidth: 1,
-                        textStyle: {
-                            color: '#1F2937',
-                            fontSize: 14
-                        },
-                        formatter: function (params) {
-                            return `<div style="padding: 8px;">
-                                <div style="font-weight: 600; margin-bottom: 4px;">${params.name}</div>
-                                <div style="display: flex; align-items: center; gap: 8px;">
-                                    <div style="width: 12px; height: 12px; border-radius: 50%; background-color: ${params.color};"></div>
-                                    <span>${params.value} İptal</span>
-                                    <span style="font-weight: 600; color: #FF0044;">(${params.percent}%)</span>
-                                </div>
-                            </div>`;
-                        }
-                    },
-                    legend: {
-                        show: false
-                    },
-                    series: [{
-                        name: 'İptal Durumları',
-                        type: 'pie',
-                        radius: ['35%', '65%'],
-                        center: ['50%', '50%'],
-                        avoidLabelOverlap: false,
-                        itemStyle: {
-                            borderRadius: 4,
-                            borderColor: '#fff',
-                            borderWidth: 2
-                        },
-                        label: {
-                            show: false
-                        },
-                        emphasis: {
-                            label: {
-                                show: false
-                            },
-                            itemStyle: {
-                                shadowBlur: 10,
-                                shadowOffsetX: 0,
-                                shadowColor: 'rgba(0, 0, 0, 0.5)'
-                            }
-                        },
-                        data: [
-                            { value: 18, name: 'Kullanıcı Kaynaklı', itemStyle: { color: '#7B8FB0' } },
-                            { value: 2, name: 'HCP Kaynaklı', itemStyle: { color: '#394355' } }
-                        ]
-                    }]
-                };
-                cancelDonutChart.setOption(cancelDonutOption);
-            }
 
             const usageChartElement = document.getElementById('usageChart');
             if (usageChartElement) {
@@ -1049,18 +1018,7 @@
                         bottom: '18%',
                         containLabel: true
                     },
-                    legend: {
-                        data: ['Hak Kullanımı', 'Kupon Kullanımı'],
-                        left: 16,
-                        bottom: 0,
-                        icon: 'circle',
-                        itemWidth: 10,
-                        itemHeight: 10,
-                        textStyle: {
-                            fontSize: 13,
-                            color: '#374151'
-                        }
-                    },
+
                     xAxis: {
                         type: 'category',
                         data: ['Eylül', 'Ekim', 'Kasım', 'Aralık', 'Ocak', 'Şubat', 'Mart'],
@@ -1082,7 +1040,7 @@
                         axisLabel: {
                             color: '#6B7280',
                             fontSize: 13,
-                            formatter: function (value) {
+                            formatter: function(value) {
                                 return value >= 1000 ? value / 1000 + 'k' : value;
                             }
                         },
@@ -1098,22 +1056,13 @@
                         data: [15000, 18000, 5000, 16000, 12000, 15000, 20000],
                         barWidth: '25%',
                         itemStyle: {
-                            color: '#8B5CF6',
-                            borderRadius: [4, 4, 0, 0]
-                        }
-                    }, {
-                        name: 'Kupon Kullanımı',
-                        type: 'bar',
-                        data: [12000, 12000, 22000, 6000, 11000, 13000, 11000],
-                        barWidth: '25%',
-                        itemStyle: {
-                            color: '#F59E0B',
+                            color: '#7B8FB0',
                             borderRadius: [4, 4, 0, 0]
                         }
                     }]
                 };
                 usageChart.setOption(usageOption);
-                window.addEventListener('resize', function () {
+                window.addEventListener('resize', function() {
                     usageChart.resize();
                 });
             }
@@ -1122,7 +1071,7 @@
     <!--  aylık haftalık grafik-->
     <!-- JavaScript -->
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', function() {
             const usageChartElement1 = document.getElementById('viewsChart2');
             if (usageChartElement1) {
                 const usageChart1 = echarts.init(usageChartElement1);
@@ -1183,7 +1132,7 @@
         });
     </script>
     <script id="satisfaction-script">
-        document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', function() {
             function updateSatisfaction(button, rate) {
                 try {
                     document.querySelectorAll('.satisfaction-btn').forEach(btn => {
@@ -1214,6 +1163,57 @@
             window.updateSatisfaction = updateSatisfaction;
         });
     </script>
+    <script>
+        document.querySelectorAll("#tabGroup2 .tab-btn").forEach((btn) => {
+            btn.addEventListener("click", () => {
+                // Tüm sekmelerden active sınıfını kaldır
+                document.querySelectorAll("#tabGroup2 .tab-btn").forEach((b) =>
+                    b.classList.remove("active-tab", "text-black", "font-semibold", "border-b-2", "border-black")
+                );
+
+                // Tıklanana active sınıfı ekle
+                btn.classList.add("active-tab", "text-black", "font-semibold", "border-b-2", "border-black");
+
+                // Oranı al
+                const rate = btn.dataset.score;
+                document.getElementById("satisfactionValue").textContent = `${rate}%`;
+
+                // Barları güncelle
+                const rateNum = parseFloat(rate);
+                const fullBars = Math.floor(rateNum);
+                const partial = rateNum - fullBars;
+
+                const bars = document.querySelectorAll("#satisfaction-bars .bar");
+                bars.forEach((bar, index) => {
+                    bar.innerHTML = ""; // içeriği temizle
+                    bar.className = "bar"; // classları sıfırla
+                    bar.style = "border-radius:4px; width: 73px; height:24px;";
+
+                    if (index < fullBars) {
+                        bar.classList.add("bg-[#3CBE7A]");
+                    } else if (index === fullBars && partial > 0) {
+                        bar.classList.add("flex", "overflow-hidden");
+                        bar.innerHTML = `
+        <div class="h-full bg-[#3CBE7A]" style="width: ${partial * 100}%"></div>
+        <div class="h-full bg-[#E0E8F0] flex-1"></div>
+      `;
+                    } else {
+                        bar.classList.add("bg-[#E0E8F0]");
+                    }
+                });
+            });
+        });
+    </script>
+    <style>
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
 </body>
 
 </html>
