@@ -89,8 +89,8 @@
                     <h1 class="fs-16 font-semibold text-gray-900 mb-8 ml-4">Hesap Ayarları</h1>
                     <div class=" mb-6">
                         <div class="flex">
-                            <button class="mx-4 py-2 text-black border-b-2 border-black fs-16 font-semibold">Profil Bilgileri</button>
-                            <button class="mx-4 py-2 text-[#A0B2CD] hover:text-gray-700 fs-16 font-semibold">Şifre Bilgileri</button>
+                            <button id="profileTabBtn" class="mx-4 py-2 text-black border-b-2 border-black fs-14 font-semibold">Profil Bilgileri</button>
+                            <button id="passwordTabBtn" class="mx-4 py-2 text-[#A0B2CD] hover:text-gray-700 fs-14 font-semibold">Şifre Bilgileri</button>
                         </div>
                     </div>
                     <div id="profileForm">
@@ -147,11 +147,21 @@
                 </div>
             </div>
         </main>
+        <div id="cikisModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-40 hidden">
+            <div class="bg-white rounded-lg shadow-lg p-8 flex flex-col items-center min-w-[320px]">
+                <div class="text-lg font-semibold mb-4 text-[#121212]">Çıkış yapmak istiyor musunuz?</div>
+                <div class="flex gap-4 mt-2">
+                    <button id="cikisVazgecBtn" class="px-6 py-2 bg-gray-200 text-[#121212] rounded-lg font-semibold hover:bg-gray-300 transition">Vazgeç</button>
+                    <button id="cikisOnayBtn" class="px-6 py-2 bg-red-600 text-white rounded-lg font-semibold hover:bg-red-700 transition">Çıkış Yap</button>
+                    
+                </div>
+            </div>
+        </div>
     </div>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const profileTab = document.querySelector('button:first-of-type');
-            const passwordTab = document.querySelector('button:last-of-type');
+            const profileTab = document.getElementById('profileTabBtn');
+            const passwordTab = document.getElementById('passwordTabBtn');
             const profileForm = document.getElementById('profileForm');
             const passwordForm = document.getElementById('passwordForm');
             const togglePasswordIcons = document.querySelectorAll('#passwordForm img');
@@ -194,19 +204,7 @@
                 input.addEventListener('focus', showProfileButtons);
             });
         });
-    </script>
-    <div id="cikisModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-40 hidden">
-        <div class="bg-white rounded-lg shadow-lg p-8 flex flex-col items-center min-w-[320px]">
-            <div class="text-lg font-semibold mb-4 text-[#121212]">Çıkış yapmak istiyor musunuz?</div>
-            <div class="flex gap-4 mt-2">
-                <button id="cikisVazgecBtn" class="px-6 py-2 bg-gray-200 text-[#121212] rounded-lg font-semibold hover:bg-gray-300 transition">Vazgeç</button>
-                <button id="cikisOnayBtn" class="px-6 py-2 bg-red-600 text-white rounded-lg font-semibold hover:bg-red-700 transition">Çıkış Yap</button>
-                
-            </div>
-        </div>
-    </div>
 
-    <script>
     // Çıkış butonuna basınca modalı aç
     const cikisBtn = document.getElementById('cikisBtn');
     const cikisModal = document.getElementById('cikisModal');
