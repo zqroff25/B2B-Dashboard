@@ -467,7 +467,7 @@
             </form>
             <div class="flex justify-center gap-3">
                 <button type="button" onclick="closeModal()" class="px-6 py-2 text-sm bg-white text-gray-700 border border-gray-300 rounded-lg hover:bg-gray-50" style="width: 225px; height: 48px; border-radius: 32px; border:2px solid #121212;">Vazgeç</button>
-                <button id="ekibeEkleKaydetBtn" onclick=" modalKapat(), ekibeEkleOnayModalAc()" class="px-6 py-2 text-sm bg-black text-white rounded-lg hover:bg-black/90" style="width: 225px; height: 48px; border-radius: 32px; border:2px solid #121212;">Kaydet</button>
+                <button id="ekibeEkleKaydetBtn" onclick="ekipKaydet()" class="px-6 py-2 text-sm bg-black text-white rounded-lg hover:bg-black/90" style="width: 225px; height: 48px; border-radius: 32px; border:2px solid #121212;">Kaydet</button>
             </div>
         </div>
     </div>
@@ -491,17 +491,23 @@
         </div>
     </div>
     <script>
-        const candidateNames = [
-            "Mona Lisa",
-            "Leonardo Da Vinci",
-            "Albert Einstein",
-            "Marie Curie",
-            "Mona Lovelace",
-            "Ada Curie",
-            "Ada Einstein",
-            "Marie Lovelace",
-            "Ada Lovelace"
+        // Ekipleri tutacak dizi
+        window.ekipler = [
+            { id: 1, isim: "Pazarlama Ekibi", uyeler: [] },
+            { id: 2, isim: "Tasarım Ekibi", uyeler: [] },
+            { id: 3, isim: "Yazılım Ekibi", uyeler: [] }
         ];
+
+        // Kullanıcı isimlerini candidate olarak kullan
+        function getKullaniciAdlari() {
+            if (window.kullanicilar && window.kullanicilar.length > 0) {
+                return window.kullanicilar.map(k => k.isim);
+            }
+            return [
+                "Barış Atakan Elbasan"
+              
+            ];
+        }
         const candidateList = document.getElementById("candidateList");
         const selectedList = document.getElementById("selectedMembers");
         const teamModal = document.getElementById("teamModal");
@@ -510,6 +516,8 @@
         function openModal() {
             teamModal.classList.remove("hidden");
             document.body.style.overflow = "hidden";
+            // Modal açıldığında kullanıcı listesini yenile
+            renderCandidates();
         }
 
         function closeModal() {
@@ -519,6 +527,41 @@
             selectedList.innerHTML = "";
             candidateList.innerHTML = "";
             renderCandidates(); // yeniden yükle
+        }
+
+        // Dropdown'ları güncelleyen fonksiyon
+        function ekipDropdownlariniGuncelle() {
+            // Kullanıcı ekleme modalındaki dropdown'ı güncelle
+            const kullaniciEkleSelect = document.querySelector('#kullaniciEkleModal select');
+            if (kullaniciEkleSelect) {
+                // Mevcut seçenekleri temizle (ilk seçenek hariç)
+                const ilkSecenek = kullaniciEkleSelect.options[0];
+                kullaniciEkleSelect.innerHTML = '';
+                kullaniciEkleSelect.appendChild(ilkSecenek);
+                
+                // Yeni ekipleri ekle
+                window.ekipler.forEach(ekip => {
+                    const option = document.createElement('option');
+                    option.value = ekip.isim;
+                    option.textContent = ekip.isim;
+                    kullaniciEkleSelect.appendChild(option);
+                });
+            }
+
+            // Kullanıcı düzenleme modalındaki dropdown'ı güncelle
+            const duzenleSelect = document.querySelector('#duzenleModal select');
+            if (duzenleSelect) {
+                const ilkSecenek = duzenleSelect.options[0];
+                duzenleSelect.innerHTML = '';
+                duzenleSelect.appendChild(ilkSecenek);
+                
+                window.ekipler.forEach(ekip => {
+                    const option = document.createElement('option');
+                    option.value = ekip.isim;
+                    option.textContent = ekip.isim;
+                    duzenleSelect.appendChild(option);
+                });
+            }
         }
 
         function createCandidateItem(name) {
@@ -565,20 +608,94 @@
         }
 
         function renderCandidates() {
-            candidateNames.forEach(name => {
+            candidateList.innerHTML = '';
+            const kullaniciAdlari = getKullaniciAdlari();
+            kullaniciAdlari.forEach(name => {
                 candidateList.appendChild(createCandidateItem(name));
             });
         }
 
         renderCandidates();
 
+        // Sayfa yüklendiğinde dropdown'ları ve butonları başlat
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                ekipDropdownlariniGuncelle();
+                ekipButonlariniGuncelle();
+            }, 500);
+        });
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            ekipDropdownlariniGuncelle();
+            ekipButonlariniGuncelle();
+        });
+
+        // Ekip butonlarını güncelleyen fonksiyon
+        function ekipButonlariniGuncelle() {
+            const ekipContainer = document.querySelector('.flex.items-center.space-x-6.mb-6');
+            if (!ekipContainer) return;
+
+            // Tüm Ekipler butonunu ve Ekip Ekle butonunu kaydet
+            const tumuEkiplerBtn = ekipContainer.querySelector('button');
+            const ekipEkleBtn = document.getElementById('ekipEkleBtn');
+            
+            // Container'ı temizle
+            ekipContainer.innerHTML = '';
+            
+            // Tüm Ekipler butonunu geri ekle
+            ekipContainer.appendChild(tumuEkiplerBtn);
+
+            // Tüm ekipleri ekle (varsayılan ekipler dahil)
+            window.ekipler.forEach((ekip, index) => {
+                const button = document.createElement('button');
+                button.className = 'w-[162px] h-[48px] px-6 py-2 text-sm font-medium text-gray-900 bg-white border-2 border-[#E0E8F0] rounded-[8px] opacity-40 !rounded-button whitespace-nowrap flex flex-col items-start justify-center';
+                button.innerHTML = `
+                    <span class="fs-11 font-regular leading-none">Ekip ${index + 1}</span>
+                    <span class="fs-14 font-semibold leading-none mt-1">${ekip.isim}</span>
+                `;
+                ekipContainer.appendChild(button);
+            });
+
+            // Ekip Ekle butonunu en sona ekle
+            ekipContainer.appendChild(ekipEkleBtn);
+        }
+
+        // Gerçek ekip kaydetme işlevi
+        function ekipKaydet() {
+            const teamName = document.getElementById("teamName").value.trim();
+            const members = Array.from(selectedList.querySelectorAll("span")).map(span => span.textContent);
+            
+            if (!teamName) {
+                alert("Lütfen ekip ismi girin!");
+                return;
+            }
+
+            if (members.length === 0) {
+                alert("Lütfen en az bir üye seçin!");
+                return;
+            }
+
+            // Yeni ekip oluştur
+            const yeniEkip = {
+                id: Date.now(),
+                isim: teamName,
+                uyeler: members
+            };
+
+            // Ekipler listesine ekle
+            window.ekipler.push(yeniEkip);
+            
+            // Dropdown'ları ve butonları güncelle
+            ekipDropdownlariniGuncelle();
+            ekipButonlariniGuncelle();
+            
+            alert(`"${teamName}" ekibi başarıyla oluşturuldu!`);
+            closeModal();
+        }
+
         teamForm.addEventListener("submit", function (e) {
             e.preventDefault();
-            const teamName = document.getElementById("teamName").value;
-            const members = Array.from(selectedList.querySelectorAll("span")).map(span => span.textContent);
-            console.log("Yeni Ekip:", {teamName, members});
-            alert("Ekip kaydedildi!");
-            closeModal();
+            ekipKaydet();
         });
     </script>
     <script>
@@ -612,16 +729,16 @@
 
         function duzenleModalAc() {
             document.getElementById('duzenleModal').classList.remove('hidden');
+            ekipDropdownlariniGuncelle();
         }
 
         function duzenleModalKapat() {
-            alert('Değişiklikler Kaydedildi !');
-            document.getElementById('duzenleModal').classList.add('hidden');
+            kullaniciDuzenlemesiniKaydet();
         }
 
         function modalAc() {
             document.getElementById('kullaniciEkleModal').classList.remove('hidden');
-
+            ekipDropdownlariniGuncelle();
         }
 
         function teamModalKapat() {
@@ -630,6 +747,8 @@
 
         function ekipModalAc() {
             document.getElementById('teamModal').classList.remove('hidden');
+            // Modal açıldığında kullanıcı listesini yenile
+            renderCandidates();
         }
 
         function deleteModalAc() {
@@ -721,7 +840,10 @@
         function confirmAddUser() {
             confirmModal.classList.add('hidden');
             alert('Kullanıcı eklendi');
-            // Burada kullanıcı ekleme işlemi yapılabilir
+            // Ekip modalındaki aday listesini güncelle
+            if (typeof renderCandidates === 'function') {
+                renderCandidates();
+            }
         }
 
         function kullaniciSil() { // kullaniciSilBtn.classList.add('hidden');
@@ -884,6 +1006,13 @@
                 select.focus();
                 select.click();
             }
+
+            // Düzenle modalı için dropdown toggle fonksiyonu
+            function toggleSelectEdit(button) {
+                const select = button.previousElementSibling;
+                select.focus();
+                select.click();
+            }
         });
     </script>
     <script>
@@ -969,9 +1098,10 @@
                  </button>
                  <button onclick="removeServiceRow('${newRowId}')" class="w-6 h-6 flex items-center justify-center mt-3 bg-white  cursor-pointer">
                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                         <path d="M16 12H8" stroke="#121212" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                         <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12Z" stroke="#121212" stroke-width="1.5"/>
-                     </svg>
+<path d="M16 12H8" stroke="#121212" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#121212" stroke-width="1.5"/>
+</svg>
+
                  </button>
              </div>
          `;
@@ -1035,9 +1165,10 @@
                  </button>
                  <button onclick="removeServiceRowEdit('${newRowId}')" class="w-6 h-6 flex items-center justify-center mt-3 bg-white  cursor-pointer">
                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                         <path d="M16 12H8" stroke="#121212" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                         <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12Z" stroke="#121212" stroke-width="1.5"/>
-                     </svg>
+<path d="M16 12H8" stroke="#121212" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#121212" stroke-width="1.5"/>
+</svg>
+
                  </button>
              </div>
          `;
@@ -1077,8 +1208,12 @@
         }
     </script>
     <script>
+        // Düzenlenmekte olan kullanıcının indexini tutacak değişken
+        window.duzenlenecekKullaniciIndex = null;
+
         // Kullanıcıyı düzenle fonksiyonu
         function duzenleKullanici(index) {
+            window.duzenlenecekKullaniciIndex = index;
             const kullanici = window.kullanicilar[index];
             document.getElementById('duzenleModal').classList.remove('hidden');
             const modal = document.getElementById('duzenleModal');
@@ -1156,9 +1291,10 @@
                             </button>
                             <button onclick="removeServiceRowEdit('${newRowId}')" class="w-6 h-6 flex items-center justify-center mt-3 bg-white  cursor-pointer">
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M16 12H8" stroke="#121212" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                    <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12Z" stroke="#121212" stroke-width="1.5"/>
-                                </svg>
+<path d="M16 12H8" stroke="#121212" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#121212" stroke-width="1.5"/>
+</svg>
+
                             </button>
                         </div>
                     `;
@@ -1168,6 +1304,71 @@
                 // Hiç paket yoksa bir satır ekle
                 addNewServiceRowEdit();
             }
+        }
+
+        // Kullanıcı düzenlemesini kaydet fonksiyonu
+        function kullaniciDuzenlemesiniKaydet() {
+            if (window.duzenlenecekKullaniciIndex === null) {
+                alert('Hata: Düzenlenecek kullanıcı bulunamadı!');
+                return;
+            }
+
+            const modal = document.getElementById('duzenleModal');
+            const inputs = modal.querySelectorAll('input');
+            const selectEkip = modal.querySelector('select'); 
+            const selectSehir = modal.querySelectorAll('select')[1];
+
+            // Form verilerini topla
+            const isim = inputs[0].value.trim();
+            const tc = inputs[1].value.trim();
+            const telefon = inputs[2].value.trim();
+            const mail = inputs[3].value.trim();
+            const ekip = selectEkip ? selectEkip.value : '';
+            const sehir = selectSehir ? selectSehir.value : '';
+
+            // Paket satırlarını bul ve işle
+            const paketSatirlari = modal.querySelectorAll('#serviceRowsContainerEdit > div');
+            let paketler = [];
+            
+            paketSatirlari.forEach(row => {
+                const selects = row.querySelectorAll('select');
+                if (selects.length >= 2) {
+                    const hizmet = selects[0].value;
+                    const hak = selects[1].value;
+                    if (hizmet !== 'Hizmet Seç' && hak !== '0 Hak') {
+                        paketler.push({ hizmet, hak });
+                    }
+                }
+            });
+
+            // Doğrulama
+            if (!isim || !telefon || !mail) {
+                alert('Lütfen zorunlu alanları (İsim, Telefon, E-posta) doldurun!');
+                return;
+            }
+
+            if (paketler.length === 0) {
+                alert('Lütfen en az bir paket bilgisi ekleyin!');
+                return;
+            }
+
+            // Kullanıcı bilgilerini güncelle
+            const kullanici = window.kullanicilar[window.duzenlenecekKullaniciIndex];
+            kullanici.isim = isim;
+            kullanici.tc = tc;
+            kullanici.telefon = telefon;
+            kullanici.mail = mail;
+            kullanici.ekip = ekip !== 'Ekip Seç' ? ekip : kullanici.ekip;
+            kullanici.sehir = sehir !== 'Bölge Seç' ? sehir : kullanici.sehir;
+            kullanici.paketler = paketler;
+
+            // Tabloyu güncelle
+            window.tabloyuGuncelle();
+
+            // Modal'ı kapat ve değişkeni sıfırla
+            alert('Kullanıcı bilgileri başarıyla güncellendi!');
+            document.getElementById('duzenleModal').classList.add('hidden');
+            window.duzenlenecekKullaniciIndex = null;
         }
     </script>
     <script>
@@ -1236,29 +1437,9 @@
                 { hizmet: "Beslenme ve Diyet", hak: "1 Hak" }
             ],
             aktiflik: "Aktif"
-        },
-        {
-            isim: " Zakir YILDIZ",
-            tc: "11111111111",
-            telefon: "+905066666666",
-            mail: "zqr7@mailora.net",
-            sehir: "Bilecik",
-            paketler: [
-                { hizmet: "Online Fitness ve Yoga Danışmanlığı", hak: "1 Hak" }
-            ],
-            aktiflik: "Aktif"
-        },
-        {
-            isim: "Aslı KAYA",
-            tc: "11111111111",
-            telefon: "+905066666666",
-            mail: "zeynep.kaya@mailora.net",
-            sehir: "Bursa",
-            paketler: [
-                { hizmet: "Online Fitness ve Yoga Danışmanlığı", hak: "1 Hak" }
-            ],
-            aktiflik: "Aktif"
         }
+        
+        
        
     ];
     window.tabloyuGuncelle = function() {
@@ -1330,12 +1511,19 @@
                 tc,
                 telefon,
                 mail,
+                ekip: selectEkip.value !== 'Ekip Seç' ? selectEkip.value : '',
                 sehir,
                 paketler,
                 aktiflik: 'Aktif'
             });
             window.tabloyuGuncelle();
             document.getElementById('kullaniciEkleModal').classList.add('hidden');
+            
+            // Ekip modalındaki aday listesini güncelle
+            if (typeof renderCandidates === 'function') {
+                renderCandidates();
+            }
+            
             inputs.forEach(input => input.value = '');
             selectEkip.selectedIndex = 0;
             selectSehir.selectedIndex = 0;
@@ -1375,6 +1563,11 @@ if (kullaniciSilBtn) {
         if (window.silinecekKullaniciIndex !== null && window.kullanicilar && window.kullanicilar.length > window.silinecekKullaniciIndex) {
             window.kullanicilar.splice(window.silinecekKullaniciIndex, 1);
             window.tabloyuGuncelle();
+            
+            // Ekip modalındaki aday listesini güncelle
+            if (typeof renderCandidates === 'function') {
+                renderCandidates();
+            }
         }
         document.getElementById('DeleteModal').classList.add('hidden');
         window.silinecekKullaniciIndex = null;
