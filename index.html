@@ -187,7 +187,7 @@
         <aside id="sidebar" class="w-50 min-h-screen bg-gray-50 flex flex-col fixed left-0 top-0 z-40 transform -translate-x-full lg:translate-x-0 transition-transform duration-300 lg:sticky lg:top-0 lg:transform-none lg:min-h-screen">
             <div class="p-6">
                 <div class="flex items-center justify-between">
-                    <div class="flex items-center space-x-2">
+                    <div class="flex items-center space-x-2" style="width:208px;">
                         <img src="https://static.readdy.ai/image/d5ef78e5e20d4f96c7b7ffa896bb004b/ccb0b2b2c534e04738a6b0e1744323e0.png" alt="Gensenta" class="h-10 lg:h-12">
                     </div>
                     <button id="closeSidebarBtn" class="lg:hidden p-1">
@@ -198,7 +198,7 @@
                 </div>
             </div>
             <nav class="px-2 space-y-2 flex-1 pl-3">
-                <a href="index.html" data-readdy="true" class="flex items-center space-x-2 px-4 py-3 text-gray-900 hover:bg-gray-50 rounded-lg w-full" style="min-height:50px; padding:16px 8px; border-radius:8px; background:#EEE7FA; opacity:1;">
+                <a href="index.html" data-readdy="true" class="flex items-center space-x-2 px-4 py-3 text-gray-900 hover:bg-gray-50 rounded-lg w-full" style=" width:210px; min-height:56px; padding:16px 8px; border-radius:8px; background:#EEE7FA; opacity:1;">
                     <img src="https://static.readdy.ai/image/d5ef78e5e20d4f96c7b7ffa896bb004b/0e0127857fbb04e1630e32c8cfb1d25d.png" alt="Navigation Icons" class="w-6 h-6 object-contain flex-shrink-0">
                     <span class="fs-16 text-black font-semibold truncate">Kullanım Raporları</span>
                 </a>
@@ -250,10 +250,11 @@
                             </button>
                             <div id="sehirDropdown" class="absolute top-[60px] left-0 w-full bg-white border border-gray-200 rounded-md shadow-md hidden z-20">
                                 <ul class="py-2">
+                                    <li><button onclick="selectSehir('Tümü')" class="w-full text-left px-4 py-2 hover:bg-gray-100">Tümü</button></li>
                                     <li><button onclick="selectSehir('İstanbul')" class="w-full text-left px-4 py-2 hover:bg-gray-100">İstanbul</button></li>
                                     <li><button onclick="selectSehir('Ankara')" class="w-full text-left px-4 py-2 hover:bg-gray-100">Ankara</button></li>
                                     <li><button onclick="selectSehir('İzmir')" class="w-full text-left px-4 py-2 hover:bg-gray-100">İzmir</button></li>
-                                    <li><button onclick="selectSehir('Tümü')" class="w-full text-left px-4 py-2 hover:bg-gray-100">Tümü</button></li>
+                                    
                                 </ul>
                             </div>
                         </div>
@@ -272,10 +273,11 @@
                             </button>
                             <div id="bolgeDropdown" class="absolute top-[60px] left-0 w-full bg-white border border-gray-200 rounded-md shadow-md hidden z-20">
                                 <ul class="py-2">
+                                    <li><button onclick="selectBolge('Tümü')" class="w-full text-left px-4 py-2 hover:bg-gray-100">Tümü</button></li>
                                     <li><button onclick="selectBolge('Şişli')" class="w-full text-left px-4 py-2 hover:bg-gray-100">Şişli</button></li>
                                     <li><button onclick="selectBolge('Beykoz')" class="w-full text-left px-4 py-2 hover:bg-gray-100">Beykoz</button></li>
                                     <li><button onclick="selectBolge('Ümraniye')" class="w-full text-left px-4 py-2 hover:bg-gray-100">Ümraniye</button></li>
-                                    <li><button onclick="selectBolge('Tümü')" class="w-full text-left px-4 py-2 hover:bg-gray-100">Tümü</button></li>
+                                    
                                 </ul>
                             </div>
                         </div>
@@ -294,27 +296,33 @@
                             </button>
                             <div id="ekipDropdown" class="absolute top-[60px] left-0 w-full bg-white border border-gray-200 rounded-md shadow-md hidden z-20">
                                 <ul class="py-2">
+                                    <li><button onclick="selectEkip('Tümü')" class="w-full text-left px-4 py-2 hover:bg-gray-100">Tümü</button></li>
                                     <li><button onclick="selectEkip('Tasarım Ekibi')" class="w-full text-left px-4 py-2 hover:bg-gray-100">Tasarım Ekibi</button></li>
                                     <li><button onclick="selectEkip('Yazılım Ekibi')" class="w-full text-left px-4 py-2 hover:bg-gray-100">Yazılım Ekibi</button></li>
                                     <li><button onclick="selectEkip('Satış Ekibi')" class="w-full text-left px-4 py-2 hover:bg-gray-100">Satış Ekibi</button></li>
-                                    <li><button onclick="selectEkip('Tümü')" class="w-full text-left px-4 py-2 hover:bg-gray-100">Tümü</button></li>
+                                    
                                 </ul>
                             </div>
                         </div>
                     </div>
 
                     <div class="flex flex-col sm:flex-row items-stretch sm:items-center sm:space-x-4 w-full lg:w-auto">
-                        <button class="bg-white text-gray-700 px-4 lg:px-6 py-3 rounded-full flex items-center justify-center space-x-2 lg:space-x-3 border border-black hover:bg-gray-50 min-h-[40px] flex-1 sm:flex-none">
+                        <button class="bg-[#FAFAFA] text-gray-700 px-4 lg:px-6 py-3 rounded-full flex items-center justify-center space-x-2 lg:space-x-3 border-2 border-[#7B8FB0] hover:bg-gray-50 min-h-[40px] flex-1 sm:flex-none">
                             <span class="text-gray-600 text-sm lg:text-base">Dışa Aktar</span>
                             <div class="w-4 h-4 lg:w-5 lg:h-5 flex items-center justify-center flex-shrink-0">
                                 <img src="https://static.readdy.ai/image/d5ef78e5e20d4f96c7b7ffa896bb004b/336c2c72307ad0fb2020fc3a6d80e112.png" alt="Export" class="w-full h-full">
                             </div>
                         </button>
                         <div class="relative w-full sm:w-auto">
-                            <button id="cozumEkibiBtn" class="bg-[#7853E1] text-white px-4 lg:px-8 py-3 rounded-full flex items-center justify-center space-x-2 lg:space-x-3 hover:bg-[#6D28D9] min-h-[40px] flex-1 sm:flex-none w-full sm:w-auto">
-                                <span class="text-sm lg:text-base">Çözüm Ekibi</span>
+                            <button id="cozumEkibiBtn" class=" bg-[#FAFAFA]text-white px-4 lg:px-8 py-3 rounded-full flex items-center justify-center space-x-2 lg:space-x-3  border-2 border-[#7853E1] min-h-[40px] flex-1 sm:flex-none w-full sm:w-auto">
+                                <span class="text-sm text-[#7853E1] lg:text-base">Çözüm Ekibi</span>
                                 <div class="w-4 h-4 lg:w-5 lg:h-5 flex items-center justify-center flex-shrink-0">
-                                    <img src="https://static.readdy.ai/image/d5ef78e5e20d4f96c7b7ffa896bb004b/b0f9ebd82903c72b2ae64d0e35e05ad6.png" alt="Solution Team" class="w-full h-full">
+                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M14.168 11.9204C14.168 11.6323 14.168 11.4883 14.2113 11.36C14.3373 10.987 14.6695 10.8423 15.0022 10.6907C15.3763 10.5203 15.5633 10.4351 15.7486 10.4201C15.9591 10.4031 16.1698 10.4485 16.3496 10.5494C16.5881 10.6831 16.7543 10.9374 16.9246 11.1441C17.7107 12.099 18.1037 12.5765 18.2476 13.103C18.3636 13.5278 18.3636 13.9721 18.2476 14.397C18.0378 15.1649 17.3751 15.8086 16.8845 16.4045C16.6336 16.7092 16.5081 16.8616 16.3496 16.9505C16.1698 17.0515 15.9591 17.0968 15.7486 17.0798C15.5633 17.0648 15.3763 16.9796 15.0022 16.8092C14.6695 16.6576 14.3373 16.513 14.2113 16.14C14.168 16.0116 14.168 15.8676 14.168 15.5795V11.9204Z" stroke="#7853E1" stroke-width="1.25"/>
+                                        <path d="M5.83464 11.9206C5.83464 11.5579 5.82445 11.2319 5.53123 10.9769C5.42458 10.8841 5.28318 10.8197 5.00039 10.6909C4.62631 10.5206 4.43927 10.4354 4.25394 10.4204C3.69789 10.3754 3.39874 10.7549 3.07808 11.1444C2.29193 12.0992 1.89885 12.5766 1.75502 13.1031C1.63895 13.5281 1.63895 13.9724 1.75502 14.3972C1.9648 15.1651 2.62757 15.8088 3.11814 16.4047C3.42738 16.7803 3.72278 17.123 4.25394 17.0801C4.43927 17.0651 4.62631 16.9798 5.00039 16.8095C5.28318 16.6806 5.42458 16.6162 5.53123 16.5235C5.82445 16.2685 5.83464 15.9426 5.83464 15.5798V11.9206Z" stroke="#7853E1" stroke-width="1.25"/>
+                                        <path d="M15.8346 10.4166V8.74996C15.8346 5.5283 13.223 2.91663 10.0013 2.91663C6.77964 2.91663 4.16797 5.5283 4.16797 8.74996V10.4166" stroke="#7853E1" stroke-width="1.25" stroke-linecap="square" stroke-linejoin="round"/>
+                                        </svg>
+                                        
                                 </div>
                             </button>
                             
