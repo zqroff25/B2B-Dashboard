@@ -210,23 +210,23 @@
             <nav class="px-2 space-y-2 flex-1 pl-3">
                 <a href="index.html" data-readdy="true" class="flex items-center space-x-2 px-4 py-3 text-gray-900 hover:bg-gray-50 rounded-lg w-full" style=" width:210px; min-height:56px; padding:16px 8px; border-radius:8px; background:#EEE7FA; opacity:1;">
                     <img src="https://static.readdy.ai/image/d5ef78e5e20d4f96c7b7ffa896bb004b/0e0127857fbb04e1630e32c8cfb1d25d.png" alt="Navigation Icons" class="w-6 h-6 object-contain flex-shrink-0">
-                    <span class=" text-black font-semibold truncate" style="font-size: 16px;">Kullanım Raporları</span>
+                    <span class=" text-black font-semibold truncate" style="font-size: 14px;">Kullanım Raporları</span>
                 </a>
                 <a href="Kullanici_Listesi.html" class="flex items-center space-x-3 px-4 py-3 text-gray-900 hover:bg-gray-50 rounded-lg w-full" >
                     <img src="https://static.readdy.ai/image/d5ef78e5e20d4f96c7b7ffa896bb004b/5f94f499b4dc1f2f687bc36cfdca0562.png" alt="Navigation Icons" class="w-6 h-6 object-contain flex-shrink-0">
-                    <span class="text-[16px] text-black font-semibold truncate">Kullanıcı Listesi</span>
+                    <span class="text-[14px] text-black font-semibold truncate">Kullanıcı Listesi</span>
                 </a>
                 <a href="Paket-Yönetimi-Sayfası.html" class="flex items-center space-x-3 px-4 py-3 text-gray-900 hover:bg-gray-50 rounded-lg w-full">
                     <img src="https://static.readdy.ai/image/d5ef78e5e20d4f96c7b7ffa896bb004b/9689c8baeebc623103ff203b0e85d6f2.png" alt="Navigation Icons" class="w-6 h-6 object-contain flex-shrink-0">
-                    <span class="text-[16px] text-black font-semibold truncate">Paketler</span>
+                    <span class="text-[14px] text-black font-semibold truncate">Paketler</span>
                 </a>
                 <a href="Yeni-Ayarlar-Sayfası.html" class="flex items-center space-x-3 px-4 py-3 text-gray-900 hover:bg-gray-50 rounded-lg w-full">
                     <img src="https://static.readdy.ai/image/d5ef78e5e20d4f96c7b7ffa896bb004b/0fce52ba3ea7a53b517342c076eb57f6.png" alt="Navigation Icons" class="w-6 h-6 object-contain flex-shrink-0">
-                    <span class="text-[16px] text-black font-semibold truncate">Hesap Ayarları</span>
+                    <span class="text-[14px] text-black font-semibold truncate">Hesap Ayarları</span>
                 </a>
             </nav>
             <div class="w-full flex justify-center mb-6 mt-auto">
-                <button id="cikisBtn" class="w-[140px] h-[40px] py-1 bg-[#FAFAFA]   rounded-lg border-2 border-[#E0E8F0] font-semibold text-[#121212] text-[16px]">Çıkış Yap</button>
+                <button id="cikisBtn" class="w-[140px] h-[40px] py-1 bg-[#FAFAFA]   rounded-lg border-2 border-[#E0E8F0] font-semibold text-[#121212] text-[12px]">Çıkış Yap</button>
             </div>
         </aside>    
        
@@ -244,9 +244,9 @@
                 </div>
                 <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-4 mt-1 gap-4">
                     <!-- Dropdown Container -->
-                    <div class="flex flex-col sm:flex-row gap-4 w-full lg:w-auto">
+                    <div class="flex flex-col sm:flex-row gap-4 w-full lg:w-auto" style="margin-top: 5px;">
                         <!-- Şehir Dropdown -->
-                        <div class="relative flex-1 sm:flex-none" id="dropdownSehirWrapper">
+                        <div class="relative flex-1 sm:flex-none" id="dropdownSehirWrapper" style="margin-top: 3px;">
                             <button onclick="toggleDropdown('sehirDropdown')" class="w-full sm:w-48 mg:w-50 h-[49px] bg-white text-gray-900 px-4 lg:px-6 py-2 flex flex-col items-start justify-center shadow-sm hover:shadow-md border-2 border-[#E0E8F0] rounded-[8px]">
                                 <span class="font-regular text-[11px]">Şehir</span>
                                 <div class="flex items-center justify-between w-full">
@@ -269,7 +269,7 @@
                             </div>
                         </div>
                         <!-- Bölge Dropdown -->
-                        <div class="relative flex-1 sm:flex-none" id="dropdownBolgeWrapper">
+                        <div class="relative flex-1 sm:flex-none" id="dropdownBolgeWrapper" style="margin-top: 3px;">
                             <button onclick="toggleDropdown('bolgeDropdown')" class="w-full sm:w-48 mg:w-50 h-[49px] bg-white text-gray-900 px-4 lg:px-6 py-2 flex flex-col items-start justify-center shadow-sm hover:shadow-md border-2 border-[#E0E8F0] rounded-[8px]">
                                 <span class="font-regular text-[11px]">Bölge/Ofis</span>
                                 <div class="flex items-center justify-between w-full">
@@ -292,7 +292,7 @@
                             </div>
                         </div>
                         <!-- Ekip Dropdown -->
-                        <div class="relative flex-1 sm:flex-none" id="dropdownEkipWrapper">
+                        <div class="relative flex-1 sm:flex-none" id="dropdownEkipWrapper"style="margin-top: 3px;">
                             <button onclick="toggleDropdown('ekipDropdown')" class="w-full sm:w-48 mg:w-50 h-[49px] bg-white text-gray-900 px-4 lg:px-6 py-2 flex flex-col items-start justify-center shadow-sm hover:shadow-md border-2 border-[#E0E8F0] rounded-[8px]">
                                 <span class="font-regular text-[11px]">Ekip</span>
                                 <div class="flex items-center justify-between w-full">
@@ -317,14 +317,14 @@
                     </div>
 
                     <div class="flex flex-col sm:flex-row items-stretch sm:items-center sm:space-x-4 w-full lg:w-auto">
-                        <button class="bg-[#FAFAFA] text-gray-700 px-4 lg:px-6  rounded-full flex items-center justify-center space-x-2 lg:space-x-3 border-2 border-[#7B8FB0] hover:bg-gray-50 flex-1 sm:flex-none" style="height: 40px; width: 167px;">
+                        <button class="bg-[#FAFAFA] text-gray-700 px-4 lg:px-6  rounded-full flex items-center justify-center space-x-2 lg:space-x-3 border-2 border-[#7B8FB0] hover:bg-gray-50 flex-1 sm:flex-none" style="height: 41px; width: 167px;">
                             <span class="text-gray-600 lg:text-base" style="font-size: 14px;">Dışa Aktar</span>
                             <div class="w-4 h-4 lg:w-5 lg:h-5 flex items-center justify-center flex-shrink-0">
                                 <img src="https://static.readdy.ai/image/d5ef78e5e20d4f96c7b7ffa896bb004b/336c2c72307ad0fb2020fc3a6d80e112.png" alt="Export" class="w-full h-full">
                             </div>
                         </button>
                         <div class="relative w-full sm:w-auto">
-                            <button id="cozumEkibiBtn" class=" bg-[#FAFAFA]text-white px-4 lg:px-8 py-3 rounded-full flex items-center justify-center space-x-2 lg:space-x-3  border-2 border-[#7853E1] min-h-[40px] flex-1 sm:flex-none w-full sm:w-auto" style="height: 40px; width: 195px;">
+                            <button id="cozumEkibiBtn" class=" bg-[#FAFAFA]text-white px-4 lg:px-8 py-3 rounded-full flex items-center justify-center space-x-2 lg:space-x-3  border-2 border-[#7853E1] min-h-[40px] flex-1 sm:flex-none w-full sm:w-auto" style="height: 41px; width: 195px;">
                                 <span class="text-[#7853E1] lg:text-base" style="font-size: 14px;">Çözüm Ekibi</span>
                                 <div class="w-4 h-4 lg:w-5 lg:h-5 flex items-center justify-center flex-shrink-0">
                                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -417,7 +417,7 @@
                             <h3 class="text-[14px] font-semibold text-[#121212] mb-4 lg:mb-6">Tamamlanan Görüşme Oranı</h3>
                             <div class="flex flex-col lg:flex-row items-center lg:items-start gap-6">
                                 <div id="donutChart" class=" flex-shrink-0" style="width: 260px; height: 260px;"></div>
-                                <div id="donutLegend" class="flex-1 space-y-3 lg:space-y-5 w-full lg:w-auto ml-20 pr-10">
+                                <div id="donutLegend" class="flex-1 space-y-3 mt-8 lg:space-y-5 w-full lg:w-auto">
                                     <div class="flex items-center justify-between">
                                         <div class="flex items-center space-x-2">
                                             <div class="w-3 h-3 rounded-full" style="background-color: #FD7700"></div>
@@ -465,7 +465,7 @@
                                     <div class="flex items-center justify-between">
                                         <div class="flex items-center space-x-2">
                                             <div class="w-3 h-3 rounded-full whitespace-nowrap" style="background-color: #E45241"></div>
-                                            <span class="font-semibold text-[14px] leading-4" style="color: #E45241">Online Fitness ve Yoga Danışmanlığı</span>
+                                            <span class="font-semibold text-[14px] leading-4" style="color: #E45241">Spor Danışmanı</span>
                                         </div>
                                         <span id="onlineFitness" class="font-medium text-[14px] leading-4 whitespace-nowrap" style="color: #121212">30 Görüşme
                                                                                         (8.57%)</span>
@@ -483,37 +483,37 @@
                     <div class="bg-white rounded-xl p-6 shadow-sm border-2 border-[#E0E8F0]" style="width: 100%; height: 450px;">
                         <h3 class="text-[14px] font-semibold text-[#000000] mb-6">Görüşme Sayısı</h3>
                         <div class="flex mb-6">
-                            
-                            <div class="flex justify-items-center ml-auto">
-                                <div class="relative flex-1 sm:flex-none mr-4" id="dropdownCategoryGorusmeSayisiWrapper">
-                                    <button onclick="toggleDropdown('dropdownCategoryGorusmeSayisi')" class="w-full sm:w-48 mg:w-50 h-[49px] bg-white text-gray-900 px-4 lg:px-6 py-2 flex flex-col items-start justify-center shadow-sm hover:shadow-md border-2 border-[#E0E8F0] rounded-full">
-                                        <span class="font-regular text-[11px]">Kategori</span>
-                                        <div class="flex items-center justify-between w-full">
-                                            <span class="fs-14 font-semibold truncate" id="selectedKategori">Tümü</span>
-                                            <div class="w-5 h-5 flex items-center justify-center flex-shrink-0">
-                                                <svg width="24" height="25" viewbox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M18 9.50017C18 9.50017 13.5811 15.5001 12 15.5001C10.4188 15.5001 6 9.50012 6 9.50012" stroke="#121212" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                                </svg>
-                                            </div>
+                            <div class="relative flex-1 sm:flex-none mr-4" id="dropdownCategoryGorusmeSayisiWrapper">
+                                <button onclick="toggleDropdown('dropdownCategoryGorusmeSayisi')" class="w-[220px] h-[32px] bg-white text-gray-900 px-4 lg:px-6 py-2 flex flex-col items-start justify-center shadow-sm hover:shadow-md border-2 border-[#E0E8F0] rounded-full">
+
+                                    <div class="flex items-center justify-between w-full">
+                                        <span class="fs-14 font-semibold truncate" id="selectedKategori">Emzirme Danışmanı</span>
+                                        <div class="w-5 h-5 flex items-center justify-center flex-shrink-0">
+                                            <svg width="24" height="25" viewbox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M18 9.50017C18 9.50017 13.5811 15.5001 12 15.5001C10.4188 15.5001 6 9.50012 6 9.50012" stroke="#121212" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                            </svg>
                                         </div>
-                                    </button>
-                                    <div id="dropdownCategoryGorusmeSayisi" class="absolute top-[60px] left-0 w-full bg-white border border-gray-200 rounded-md shadow-md hidden z-20">
-                                        <ul class="py-2">
-                                            <li><button onclick="selectCategoryGorusmeSayisi('Tümü')" class="w-full text-left px-4 py-2 hover:bg-gray-100">Tümü</button></li>
-                                            <li><button onclick="selectCategoryGorusmeSayisi('Mental Sağlık')" class="w-full text-left px-4 py-2 hover:bg-gray-100">Mental Sağlık</button></li>
-                                            <li><button onclick="selectCategoryGorusmeSayisi('Beslenme ve Diyet')" class="w-full text-left px-4 py-2 hover:bg-gray-100">Beslenme ve Diyet</button></li>
-                                            <li><button onclick="selectCategoryGorusmeSayisi('Doktor Hizmetleri')" class="w-full text-left px-4 py-2 hover:bg-gray-100">Doktor Hizmetleri</button></li>
-                                            <li><button onclick="selectCategoryGorusmeSayisi('Doğum Koçu')" class="w-full text-left px-4 py-2 hover:bg-gray-100">Doğum Koçu</button></li>
-                                            <li><button onclick="selectCategoryGorusmeSayisi('Emzirme Danışmanı')" class="w-full text-left px-4 py-2 hover:bg-gray-100">Emzirme Danışmanı</button></li>
-                                            <li><button onclick="selectCategoryGorusmeSayisi('Spor Danışmanı')" class="w-full text-left px-4 py-2 hover:bg-gray-100">Spor Danışmanı</button></li>
-                                            
-                                        </ul>
                                     </div>
+                                </button>
+                                <div id="dropdownCategoryGorusmeSayisi" class="absolute top-[60px] left-0 w-full bg-white border border-gray-200 rounded-md shadow-md hidden z-20">
+                                    <ul class="py-2">
+                                        <li><button onclick="selectCategoryGorusmeSayisi('Tümü')" class="w-full text-left px-4 py-2 hover:bg-gray-100">Tümü</button></li>
+                                        <li><button onclick="selectCategoryGorusmeSayisi('Mental Sağlık')" class="w-full text-left px-4 py-2 hover:bg-gray-100">Mental Sağlık</button></li>
+                                        <li><button onclick="selectCategoryGorusmeSayisi('Beslenme ve Diyet')" class="w-full text-left px-4 py-2 hover:bg-gray-100">Beslenme ve Diyet</button></li>
+                                        <li><button onclick="selectCategoryGorusmeSayisi('Doktor Hizmetleri')" class="w-full text-left px-4 py-2 hover:bg-gray-100">Doktor Hizmetleri</button></li>
+                                        <li><button onclick="selectCategoryGorusmeSayisi('Doğum Koçu')" class="w-full text-left px-4 py-2 hover:bg-gray-100">Doğum Koçu</button></li>
+                                        <li><button onclick="selectCategoryGorusmeSayisi('Emzirme Danışmanı')" class="w-full text-left px-4 py-2 hover:bg-gray-100">Emzirme Danışmanı</button></li>
+                                        <li><button onclick="selectCategoryGorusmeSayisi('Spor Danışmanı')" class="w-full text-left px-4 py-2 hover:bg-gray-100">Spor Danışmanı</button></li>
+                                        
+                                    </ul>
                                 </div>
+                            </div>
+                            <div class="flex justify-items-center ml-auto">
+                                
                                 <div
-                                    class="flex items-center justify-start bg-white border border-[#C0D0DF] rounded-full px-1 py-1" style="width: 192px; height: 49px;">
+                                    class="flex items-center justify-start bg-white border border-[#C0D0DF] rounded-full px-1 py-1" style="width: 185px; height: 40px;">
                                     <!-- Aktif Buton -->
-                                    <button class="bg-black text-white font-semibold fs-12 rounded-full px-6 h-[39px]  flex items-center justify-center mr-2">
+                                    <button class="bg-black text-white font-semibold fs-12 rounded-full px-6 h-[30px]  flex items-center justify-center mr-2">
                                         Aylık
                                     </button>
                                     <!-- Pasif Buton -->
@@ -539,7 +539,7 @@
                                     <div class="w-full h-56 flex items-end justify-center gap-8 relative" style="margin-top: 70px;">
                                         <!-- Bağlantı çizgileri -->
                                         <!-- Grafik noktaları -->
-                                            <div class="flex flex-col items-center relative z-10"> <div class="fs-16 font-semibold text-black">4.4</div>
+                                            <div class="flex flex-col items-center relative z-10"> <div class="fs-16 font-semibold text-[#E0E8F0]">4.4</div>
                                             <div
                                                 class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
                                                 <!-- Mutlu emoji -->
@@ -553,7 +553,7 @@
                                             <div class="w-0.5 bg-[#E0E8F0] " style="height: 225px;"></div>
                                         </div>
                                         <div class="flex flex-col items-center relative z-10">
-                                            <div class="fs-16 font-semibold text-black">3.7</div>
+                                            <div class="fs-16 font-semibold text-[#E0E8F0]">3.7</div>
                                             <div
                                                 class="w-8 h-8 bg-teal-400 rounded-full flex items-center justify-center ">
                                                 <!-- Hafif mutlu emoji -->
@@ -567,7 +567,7 @@
                                             <div class="w-0.5 bg-[#E0E8F0] " style="height: 200px;"></div>
                                         </div>
                                         <div class="flex flex-col items-center relative z-10">
-                                            <div class="fs-16 font-semibold text-black">2.5</div>
+                                            <div class="fs-16 font-semibold text-[#E0E8F0]">2.5</div>
                                             <div
                                                 class="w-8 h-8 bg-yellow-400 rounded-full flex items-center justify-center">
                                                 <!-- Nötr emoji -->
@@ -581,7 +581,7 @@
                                             <div class="w-0.5 bg-[#E0E8F0] " style="height: 170px;"></div>
                                         </div>
                                         <div class="flex flex-col items-center relative z-10">
-                                            <div class="fs-16 font-semibold text-black">4.6</div>
+                                            <div class=" font-semibold text-black " style="font-size: 20px;"">4.6</div>
                                             <div
                                                 class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
                                                 <!-- Mutlu emoji -->
@@ -624,35 +624,35 @@
                 <div class="flex flex-col lg:flex-row gap-4 lg:gap-6 mt-6 mb-6">
                     <div class="w-full lg:w-[50%] flex flex-col gap-4 lg:gap-6 min-w-0">
                         <div class="bg-white rounded-xl p-4 lg:p-6 shadow-sm border-2 border-[#E0E8F0] min-h-[350px]">
-                            <div class="flex items-center justify-between">
+                            <div class="flex items-center justify-between mb-10">
                                 <h3 class=" text-[14px] font-semibold text-[#000000]  ">Memnuniyet Oranı</h3>
-                                <div class="relative flex-1 sm:flex-none" id="dropdownCategoryMemnuniyetOraniWrapper">
-                                    <button onclick="toggleDropdown('dropdownCategoryMemnuniyetOrani')" class="w-full sm:w-48 mg:w-50 h-[49px] bg-white text-gray-900 px-4 lg:px-6 py-2 flex flex-col items-start justify-center shadow-sm hover:shadow-md border-2 border-[#E0E8F0] rounded-full">
-                                        <span class="font-regular text-[11px]">Kategori</span>
-                                        <div class="flex items-center justify-between w-full">
-                                            <span class="fs-14 font-semibold truncate" id="selectedKategori">Tümü</span>
-                                            <div class="w-5 h-5 flex items-center justify-center flex-shrink-0">
-                                                <svg width="24" height="25" viewbox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M18 9.50017C18 9.50017 13.5811 15.5001 12 15.5001C10.4188 15.5001 6 9.50012 6 9.50012" stroke="#121212" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                                </svg>
-                                            </div>
+                            </div>
+                            <div class="relative flex-1 sm:flex-none mr-4" id="dropdownCategoryMemnuniyetOraniWrapper">
+                                <button onclick="toggleDropdown('dropdownCategoryMemnuniyetOrani')" class="w-[220px] h-[32px] bg-white text-gray-900 px-4 lg:px-6 py-2 flex flex-col items-start justify-center shadow-sm hover:shadow-md border-2 border-[#E0E8F0] rounded-full">
+                                    
+                                    <div class="flex items-center justify-between w-full">
+                                        <span class="fs-14 font-semibold truncate" id="selectedKategori">Tümü</span>
+                                        <div class="w-5 h-5 flex items-center justify-center flex-shrink-0">
+                                            <svg width="24" height="25" viewbox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M18 9.50017C18 9.50017 13.5811 15.5001 12 15.5001C10.4188 15.5001 6 9.50012 6 9.50012" stroke="#121212" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                            </svg>
                                         </div>
-                                    </button>
-                                    <div id="dropdownCategoryMemnuniyetOrani" class="absolute top-[60px] left-0 w-full bg-white border border-gray-200 rounded-md shadow-md hidden z-20">
-                                        <ul class="py-2">
-                                            <li><button onclick="selectCategoryMemnuniyetOrani('Tümü')" class="w-full text-left px-4 py-2 hover:bg-gray-100">Tümü</button></li>
-                                            <li><button onclick="selectCategoryMemnuniyetOrani('Mental Sağlık')" class="w-full text-left px-4 py-2 hover:bg-gray-100">Mental Sağlık</button></li>
-                                            <li><button onclick="selectCategoryMemnuniyetOrani('Beslenme ve Diyet')" class="w-full text-left px-4 py-2 hover:bg-gray-100">Beslenme ve Diyet</button></li>
-                                            <li><button onclick="selectCategoryMemnuniyetOrani('Doktor Hizmetleri')" class="w-full text-left px-4 py-2 hover:bg-gray-100">Doktor Hizmetleri</button></li>
-                                            <li><button onclick="selectCategoryMemnuniyetOrani('Doğum Koçu')" class="w-full text-left px-4 py-2 hover:bg-gray-100">Doğum Koçu</button></li>
-                                            <li><button onclick="selectCategoryMemnuniyetOrani('Emzirme Danışmanı')" class="w-full text-left px-4 py-2 hover:bg-gray-100">Emzirme Danışmanı</button></li>
-                                            <li><button onclick="selectCategoryMemnuniyetOrani('Spor Danışmanı')" class="w-full text-left px-4 py-2 hover:bg-gray-100">Spor Danışmanı</button></li>
-                                            
-                                        </ul>
                                     </div>
+                                </button>
+                                <div id="dropdownCategoryMemnuniyetOrani" class="absolute top-[60px] left-0 w-[220px] bg-white border border-gray-200 rounded-md shadow-md hidden z-20">
+                                    <ul class="py-2">
+                                        <li><button onclick="selectCategoryMemnuniyetOrani('Tümü')" class="w-full text-left px-4 py-2 hover:bg-gray-100">Tümü</button></li>
+                                        <li><button onclick="selectCategoryMemnuniyetOrani('Mental Sağlık')" class="w-full text-left px-4 py-2 hover:bg-gray-100">Mental Sağlık</button></li>
+                                        <li><button onclick="selectCategoryMemnuniyetOrani('Beslenme ve Diyet')" class="w-full text-left px-4 py-2 hover:bg-gray-100">Beslenme ve Diyet</button></li>
+                                        <li><button onclick="selectCategoryMemnuniyetOrani('Doktor Hizmetleri')" class="w-full text-left px-4 py-2 hover:bg-gray-100">Doktor Hizmetleri</button></li>
+                                        <li><button onclick="selectCategoryMemnuniyetOrani('Doğum Koçu')" class="w-full text-left px-4 py-2 hover:bg-gray-100">Doğum Koçu</button></li>
+                                        <li><button onclick="selectCategoryMemnuniyetOrani('Emzirme Danışmanı')" class="w-full text-left px-4 py-2 hover:bg-gray-100">Emzirme Danışmanı</button></li>
+                                        <li><button onclick="selectCategoryMemnuniyetOrani('Spor Danışmanı')" class="w-full text-left px-4 py-2 hover:bg-gray-100">Spor Danışmanı</button></li>
+                                        
+                                    </ul>
                                 </div>
                             </div>
-                            <div class=" flex items-center justify-start gap-3 mb-10" style="margin-top: 60px;">
+                            <div class=" flex items-center justify-start gap-3 mb-10" style="margin-top: 30px;">
                                 <!-- ikon -->
                                 <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M2 12.5C2 11.3954 2.89543 10.5 4 10.5C5.65685 10.5 7 11.8431 7 13.5V17.5C7 19.1569 5.65685 20.5 4 20.5C2.89543 20.5 2 19.6046 2 18.5V12.5Z" stroke="#394355" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -680,33 +680,34 @@
                         </div>
                         
                     </div>
-                    <div class="bg-white rounded-xl shadow-sm border-2 border-[#E0E8F0] w-full lg:w-[50%] min-h-[355px]">
+                    <div class="bg-white rounded-xl shadow-sm border-2 border-[#E0E8F0] w-full lg:w-[50%] min-h-[350px]">
                         <div class="flex items-center justify-between p-4 lg:p-6">
-                            <h3 class=" text-[14px] font-semibold text-[#000000] mb-3 ">İptal Durumları</h3>
-                            <div class="relative flex-1 sm:flex-none mr-4" id="dropdownCategoryIptalDurumlariWrapper">
-                                <button onclick="toggleDropdown('dropdownCategoryIptalDurumlari')" class="w-full sm:w-48 mg:w-50 h-[49px] bg-white text-gray-900 px-4 lg:px-6 py-2 flex flex-col items-start justify-center shadow-sm hover:shadow-md border-2 border-[#E0E8F0] rounded-full">
-                                    <span class="font-regular text-[11px]">Kategori</span>
-                                    <div class="flex items-center justify-between w-full">
-                                        <span class="fs-14 font-semibold truncate" id="selectedKategori">Tümü</span>
-                                        <div class="w-5 h-5 flex items-center justify-center flex-shrink-0">
-                                            <svg width="24" height="25" viewbox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M18 9.50017C18 9.50017 13.5811 15.5001 12 15.5001C10.4188 15.5001 6 9.50012 6 9.50012" stroke="#121212" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                            </svg>
-                                        </div>
+                            <h3 class=" text-[14px] font-semibold text-[#000000] ">İptal Durumları</h3>
+
+                        </div>
+                        <div class="relative flex-1 sm:flex-none mr-4 ml-3" id="dropdownCategoryIptalDurumlariWrapper">
+                            <button onclick="toggleDropdown('dropdownCategoryIptalDurumlari')" class="w-[220px] h-[32px] bg-white text-gray-900 px-4 lg:px-6 py-2 flex flex-col items-start justify-center shadow-sm hover:shadow-md border-2 border-[#E0E8F0] rounded-full">
+                                
+                                <div class="flex items-center justify-between w-full">
+                                    <span class="fs-14 font-semibold truncate" id="selectedKategori">Tümü</span>
+                                    <div class="w-5 h-5 flex items-center justify-center flex-shrink-0">
+                                        <svg width="24" height="25" viewbox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M18 9.50017C18 9.50017 13.5811 15.5001 12 15.5001C10.4188 15.5001 6 9.50012 6 9.50012" stroke="#121212" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
                                     </div>
-                                </button>
-                                <div id="dropdownCategoryIptalDurumlari" class="absolute top-[60px] left-0 w-full bg-white border border-gray-200 rounded-md shadow-md hidden z-20">
-                                    <ul class="py-2">
-                                        <li><button onclick="selectCategoryIptalDurumlari('Tümü')" class="w-full text-left px-4 py-2 hover:bg-gray-100">Tümü</button></li>
-                                        <li><button onclick="selectCategoryIptalDurumlari('Mental Sağlık')" class="w-full text-left px-4 py-2 hover:bg-gray-100">Mental Sağlık</button></li>
-                                        <li><button onclick="selectCategoryIptalDurumlari('Beslenme ve Diyet')" class="w-full text-left px-4 py-2 hover:bg-gray-100">Beslenme ve Diyet</button></li>
-                                        <li><button onclick="selectCategoryIptalDurumlari('Doktor Hizmetleri')" class="w-full text-left px-4 py-2 hover:bg-gray-100">Doktor Hizmetleri</button></li>
-                                        <li><button onclick="selectCategoryIptalDurumlari('Doğum Koçu')" class="w-full text-left px-4 py-2 hover:bg-gray-100">Doğum Koçu</button></li>
-                                        <li><button onclick="selectCategoryIptalDurumlari('Emzirme Danışmanı')" class="w-full text-left px-4 py-2 hover:bg-gray-100">Emzirme Danışmanı</button></li>
-                                        <li><button onclick="selectCategoryIptalDurumlari('Spor Danışmanı')" class="w-full text-left px-4 py-2 hover:bg-gray-100">Spor Danışmanı</button></li>
-                                        
-                                    </ul>
                                 </div>
+                            </button>
+                            <div id="dropdownCategoryIptalDurumlari" class="absolute top-[60px] left-0 w-[220px] bg-white border border-gray-200 rounded-md shadow-md hidden z-20">
+                                <ul class="py-2">
+                                    <li><button onclick="selectCategoryIptalDurumlari('Tümü')" class="w-full text-left px-4 py-2 hover:bg-gray-100">Tümü</button></li>
+                                    <li><button onclick="selectCategoryIptalDurumlari('Mental Sağlık')" class="w-full text-left px-4 py-2 hover:bg-gray-100">Mental Sağlık</button></li>
+                                    <li><button onclick="selectCategoryIptalDurumlari('Beslenme ve Diyet')" class="w-full text-left px-4 py-2 hover:bg-gray-100">Beslenme ve Diyet</button></li>
+                                    <li><button onclick="selectCategoryIptalDurumlari('Doktor Hizmetleri')" class="w-full text-left px-4 py-2 hover:bg-gray-100">Doktor Hizmetleri</button></li>
+                                    <li><button onclick="selectCategoryIptalDurumlari('Doğum Koçu')" class="w-full text-left px-4 py-2 hover:bg-gray-100">Doğum Koçu</button></li>
+                                    <li><button onclick="selectCategoryIptalDurumlari('Emzirme Danışmanı')" class="w-full text-left px-4 py-2 hover:bg-gray-100">Emzirme Danışmanı</button></li>
+                                    <li><button onclick="selectCategoryIptalDurumlari('Spor Danışmanı')" class="w-full text-left px-4 py-2 hover:bg-gray-100">Spor Danışmanı</button></li>
+                                    
+                                </ul>
                             </div>
                         </div>
                         <div class="flex items-center justify-between ml-4">
@@ -729,7 +730,7 @@
                             </div>
                         </div>
                         <div class="flex items-center justify-start">
-                            <div id="cancelDonutChart" class="w-[180px] h-[180px] ml-4"></div>
+                            <div id="cancelDonutChart" class="w-[192px] h-[192px] ml-4"></div>
                             <div class="flex-1 space-y-4">
                                 <div class="flex items-center justify-between">
                                     <div class="flex items-center space-x-2">
