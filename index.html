@@ -1,93 +1,76 @@
 <!DOCTYPE html>
 <html lang="tr">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gensenta - B2B Sağlık Dashboard</title>
-    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#8B5CF6',
-                        secondary: '#10B981'
-                    },
-                    borderRadius: {
-                        'none': '0px',
-                        'sm': '4px',
-                        DEFAULT: '8px',
-                        'md': '12px',
-                        'mg': '6px',
-                        'lg': '16px',
-                        'xl': '20px',
-                        '2xl': '24px',
-                        '3xl': '32px',
-                        'full': '9999px',
-                        'button': '8px'
-                    },
-                    fontFamily: {
-                        sans: ['Poppins', 'sans-serif']
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Gensenta - B2B Sağlık Dashboard</title>
+        <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+        <script>
+            tailwind.config = {
+                theme: {
+                    extend: {
+                        colors: {
+                            primary: '#8B5CF6',
+                            secondary: '#10B981'
+                        },
+                        borderRadius: {
+                            'none': '0px',
+                            'sm': '4px',
+                            DEFAULT: '8px',
+                            'md': '12px',
+                            'mg': '6px',
+                            'lg': '16px',
+                            'xl': '20px',
+                            '2xl': '24px',
+                            '3xl': '32px',
+                            'full': '9999px',
+                            'button': '8px'
+                        },
+                        fontFamily: {
+                            sans: ['Poppins', 'sans-serif']
+                        }
                     }
                 }
             }
-        }
-    </script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.5.0/echarts.min.js"></script>
-    <style>
-         :where([class^="ri-"])::before {
+        </script>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.5.0/echarts.min.js"></script>
+            <style>
+        :where([class^="ri-"])::before {
             content: "\f3c2";
         }
+        
         /* Custom font sizes for responsive design */
+        .fs-12 { font-size: 12px; }
+        .fs-14 { font-size: 14px; }
+        .fs-16 { font-size: 16px; }
         
-        .fs-12 {
-            font-size: 12px;
-        }
-        
-        .fs-14 {
-            font-size: 14px;
-        }
-        
-        .fs-16 {
-            font-size: 16px;
-        }
         /* Responsive text adjustments */
-        
         @media (max-width: 640px) {
-            .fs-12 {
-                font-size: 11px;
-            }
-            .fs-14 {
-                font-size: 13px;
-            }
-            .fs-16 {
-                font-size: 15px;
-            }
+            .fs-12 { font-size: 11px; }
+            .fs-14 { font-size: 13px; }
+            .fs-16 { font-size: 15px; }
         }
-        /* Scrollbar hide utility */
         
+        /* Scrollbar hide utility */
         .scrollbar-hide::-webkit-scrollbar {
             display: none;
         }
-        
         .scrollbar-hide {
             -ms-overflow-style: none;
             scrollbar-width: none;
         }
-        /* Ensure charts are responsive */
         
-        #donutChart,
-        #usageChart,
-        #cancelDonutChart {
+        /* Ensure charts are responsive */
+        #donutChart, #usageChart, #cancelDonutChart {
             max-width: 100%;
         }
-        /* Sidebar transitions and sticky behavior */
         
+        /* Sidebar transitions and sticky behavior */
         #sidebar {
             transition: all 0.3s ease-in-out;
         }
@@ -97,8 +80,8 @@
                 box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
             }
         }
-        /* Sticky sidebar on desktop */
         
+        /* Sticky sidebar on desktop */
         @media (min-width: 1024px) {
             #sidebar {
                 position: sticky !important;
@@ -108,30 +91,34 @@
                 scrollbar-width: thin;
                 scrollbar-color: #cbd5e1 transparent;
             }
+            
             /* Custom scrollbar for webkit browsers */
             #sidebar::-webkit-scrollbar {
                 width: 6px;
             }
+            
             #sidebar::-webkit-scrollbar-track {
                 background: transparent;
             }
+            
             #sidebar::-webkit-scrollbar-thumb {
                 background-color: #cbd5e1;
                 border-radius: 3px;
             }
+            
             #sidebar::-webkit-scrollbar-thumb:hover {
                 background-color: #94a3b8;
             }
         }
-        /* Fix overflow issues on small screens */
         
+        /* Fix overflow issues on small screens */
         @media (max-width: 640px) {
             .overflow-x-auto {
                 -webkit-overflow-scrolling: touch;
             }
         }
-        /* Çözüm Ekibi Dropdown Animation */
         
+        /* Çözüm Ekibi Dropdown Animation */
         #cozumEkibiDropdown {
             transition: all 0.3s ease-in-out;
             transform-origin: top right;
@@ -151,8 +138,8 @@
                 transform: translateY(0) scale(1);
             }
         }
-        /* Responsive dropdown positioning */
         
+        /* Responsive dropdown positioning */
         @media (max-width: 640px) {
             #cozumEkibiDropdown {
                 right: 0;
@@ -172,8 +159,8 @@
                 padding: 16px;
             }
         }
-        /* Ensure dropdown doesn't overflow on very small screens */
         
+        /* Ensure dropdown doesn't overflow on very small screens */
         @media (max-width: 360px) {
             #cozumEkibiDropdown {
                 width: calc(100vw - 16px);
@@ -199,18 +186,19 @@
     <div class="flex">
         <aside id="sidebar" class="w-50 min-h-screen bg-gray-50 flex flex-col fixed left-0 top-0 z-40 transform -translate-x-full lg:translate-x-0 transition-transform duration-300 lg:sticky lg:top-0 lg:transform-none lg:min-h-screen">
             <div class="p-6">
-                <div class="flex items-center justify-between">
-                    <div class="flex items-center space-x-2" style="width:208px; height:32px; padding-bottom: 6px;">
-                        <svg width="123" height="29" viewBox="0 0 123 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M0.00109661 19.1447C0.0975274 26.2019 5.42979 31.6772 13.8855 31.7677C18.0936 31.8163 21.4218 30.5676 23.7752 28.0568C24.2411 27.5515 24.1165 26.7536 23.4948 26.4078L19.3539 24.1269C18.9604 23.8994 18.456 23.9238 18.1245 24.1926C17.0985 24.9459 15.616 25.4625 13.9216 25.4487C11.6126 25.4192 9.62797 24.7907 8.46495 23.1114C8.15059 22.676 8.49848 22.0927 9.0501 22.0994L24.5745 22.2748C25.1262 22.2815 25.5999 21.9114 25.6717 21.3735C25.7439 20.7381 25.7766 20.1092 25.7859 19.4647C25.6738 12.3322 20.239 6.95177 13.0282 6.8708C5.20303 6.77401 -0.0875246 12.1253 0.00109661 19.1447ZM8.06158 15.8516C8.89257 14.0587 10.6124 13.1134 13.0632 13.1391C14.9861 13.1737 16.939 13.9438 17.9673 15.957C18.2029 16.4053 17.863 16.929 17.3507 16.9157L8.72954 16.8134C8.20152 16.8222 7.84793 16.2958 8.06158 15.8516Z" fill="#121212"/>
-                            <path d="M26.4433 9.12223C26.1759 8.5987 26.1256 8.15159 26.293 7.7809C26.4599 7.41056 26.8572 7.22522 27.4853 7.22522H32.6157C32.9631 7.22522 33.267 7.3149 33.5277 7.49361C33.7882 7.67249 33.9717 7.92795 34.0788 8.26001C34.3058 8.93722 34.5562 9.69714 34.8304 10.5401C35.104 11.3833 35.3914 12.2487 35.6922 13.1365C35.9927 14.0246 36.29 14.9059 36.584 15.7806C36.8777 16.6559 37.1482 17.4607 37.3954 18.195C37.6425 18.9298 37.8629 19.5684 38.0568 20.1112C38.2505 20.6542 38.3941 21.0404 38.4878 21.2704L42.7364 8.26001C42.91 7.85137 43.1072 7.57684 43.3277 7.43608C43.5481 7.29567 43.8588 7.22522 44.2595 7.22522H49.5303C49.9177 7.22522 50.2116 7.27015 50.412 7.3595C50.6124 7.44902 50.7458 7.57021 50.8129 7.72339C50.8796 7.8769 50.893 8.05254 50.853 8.25048C50.8129 8.44859 50.7458 8.65623 50.6527 8.87305L41.1131 30.7361C40.9658 30.966 40.7926 31.1608 40.592 31.3204C40.3915 31.4803 40.091 31.56 39.6903 31.56H37.3054C36.7708 31.56 36.3934 31.4866 36.1731 31.3395C35.9525 31.193 35.7888 30.9917 35.682 30.7361L26.4433 9.12223Z" fill="#121212"/>
-                            <path d="M54.4987 8.71832C54.4987 8.30967 54.6188 7.9584 54.8593 7.66463C55.0998 7.3707 55.4738 7.22382 55.9817 7.22382H60.571C60.7314 7.22382 60.9048 7.25923 61.0921 7.32918C61.2788 7.39946 61.4528 7.50176 61.6131 7.63587C61.7735 7.76998 61.9103 7.92657 62.0239 8.10511C62.1373 8.28416 62.1943 8.48838 62.1943 8.71832V30.083C62.1943 30.5687 62.0541 30.9356 61.7735 31.1848C61.4928 31.4339 61.0921 31.5583 60.571 31.5583H55.9817C54.9928 31.5583 54.4987 31.0668 54.4987 30.083V8.71832ZM54.4987 1.47543C54.4987 0.938974 54.6188 0.559265 54.8593 0.335456C55.0998 0.112158 55.4738 0 55.9817 0H60.6311C61.0985 0 61.4759 0.112158 61.7634 0.335456C62.0505 0.559265 62.1943 0.938974 62.1943 1.47543V4.02055C62.1943 4.17391 62.1574 4.34001 62.0841 4.51871C62.0106 4.69776 61.907 4.87034 61.7735 5.03612C61.6398 5.2024 61.4759 5.33958 61.2825 5.44799C61.0886 5.55674 60.8716 5.61086 60.6311 5.61086H55.9817C54.9928 5.61086 54.4987 5.08105 54.4987 4.02055V1.47543Z" fill="#121212"/>
-                            <path d="M69.3525 3.42935C69.3525 3.03348 69.4895 2.73648 69.7634 2.53837C70.037 2.34043 70.4279 2.15202 70.9358 1.97298L75.485 0.459416C75.5518 0.446822 75.6154 0.440186 75.6753 0.440186H75.8458C76.3398 0.440186 76.6705 0.577533 76.8378 0.85206C77.0047 1.1271 77.0882 1.48774 77.0882 1.93485L77.0682 7.20415H79.8139C80.2413 7.20415 80.5886 7.32566 80.856 7.56802C81.123 7.81089 81.2568 8.17495 81.2568 8.66017V12.3584C81.2568 12.8948 81.123 13.2876 80.856 13.5368C80.5886 13.786 80.2413 13.9104 79.8139 13.9104H77.0682L77.0882 30.0824C77.0882 30.568 76.9411 30.9351 76.6474 31.1841C76.3534 31.4333 75.946 31.5579 75.4248 31.5579H70.8957C69.8669 31.5579 69.3525 31.0662 69.3525 30.0824L69.3325 13.9104H67.2685C66.2393 13.9104 65.7252 13.3932 65.7252 12.3584V8.66017C65.7252 7.68955 66.2393 7.20415 67.2685 7.20415H69.3325L69.3525 3.42935Z" fill="#121212"/>
-                            <path d="M90.4449 19.4112C90.4449 20.254 90.582 21.0431 90.8559 21.7774C91.1296 22.5123 91.5204 23.1474 92.0283 23.6839C92.536 24.2206 93.147 24.6454 93.8618 24.9584C94.5764 25.2715 95.3682 25.4277 96.237 25.4277C97.1318 25.4277 97.9634 25.2715 98.7319 24.9584C99.5 24.6454 100.168 24.2206 100.736 23.6839C101.304 23.1474 101.748 22.5123 102.069 21.7774C102.389 21.0431 102.55 20.254 102.55 19.4112C102.55 18.5937 102.389 17.8143 102.069 17.0735C101.748 16.3328 101.304 15.6813 100.736 15.1189C100.168 14.557 99.5 14.1131 98.7319 13.7873C97.9634 13.4616 97.1318 13.2987 96.237 13.2987C95.3682 13.2987 94.5764 13.4616 93.8618 13.7873C93.147 14.1131 92.536 14.557 92.0283 15.1189C91.5204 15.6813 91.1296 16.3328 90.8559 17.0735C90.582 17.8143 90.4449 18.5937 90.4449 19.4112ZM110.185 30.1414C110.185 30.3587 110.145 30.5661 110.065 30.7641C109.985 30.9623 109.851 31.1185 109.664 31.2335C109.517 31.3743 109.343 31.4634 109.143 31.5018C108.943 31.5402 108.769 31.5593 108.622 31.5593H104.674C104.393 31.5593 104.166 31.5243 103.993 31.4539C103.819 31.3838 103.679 31.2847 103.572 31.1569C103.465 31.0294 103.374 30.8728 103.301 30.6875C103.228 30.5024 103.151 30.3012 103.071 30.0838L102.81 29.2216C102.449 29.5664 102.039 29.905 101.578 30.237C101.117 30.5695 100.609 30.8666 100.055 31.1281C99.5 31.39 98.9054 31.6006 98.2709 31.7605C97.6364 31.9201 96.9784 32.0001 96.2969 32.0001C95.0809 32.0001 93.9154 31.853 92.8 31.5593C91.6841 31.2654 90.6419 30.8471 89.6735 30.3042C88.7046 29.7613 87.8262 29.1097 87.0381 28.3499C86.2496 27.5899 85.5718 26.7435 85.0039 25.811C84.436 24.8786 83.9985 23.8727 83.6913 22.7929C83.3838 21.7137 83.2303 20.5866 83.2303 19.4112C83.2303 17.6357 83.571 15.9845 84.2523 14.4579C84.9338 12.9318 85.8623 11.6029 87.0381 10.4724C88.2137 9.34196 89.5964 8.45422 91.1866 7.80899C92.7765 7.16413 94.4798 6.84143 96.2969 6.84143C97.1251 6.84143 97.8967 6.93096 98.6115 7.10966C99.3264 7.28853 99.981 7.53124 100.576 7.83777C101.17 8.14446 101.708 8.51174 102.189 8.93961C102.67 9.36766 103.091 9.83059 103.452 10.3288L104.033 8.58509C104.166 8.26597 104.276 8.00727 104.363 7.80899C104.45 7.61123 104.544 7.46419 104.644 7.36836C104.744 7.27254 104.868 7.20888 105.015 7.17671C105.162 7.14506 105.369 7.12889 105.636 7.12889H108.622C108.769 7.12889 108.943 7.14795 109.143 7.18625C109.343 7.22454 109.517 7.31423 109.664 7.45448C109.851 7.59523 109.985 7.75487 110.065 7.93358C110.145 8.11263 110.185 8.3167 110.185 8.5468V30.1414Z" fill="#121212"/>
-                            <path d="M114.9 1.4562C114.9 1.04773 115.007 0.702742 115.221 0.421578C115.434 0.140754 115.802 0 116.323 0H121.233C121.367 0 121.507 0.0352313 121.654 0.105352C121.801 0.175814 121.938 0.274868 122.065 0.402516C122.192 0.530333 122.298 0.683509 122.386 0.862387C122.472 1.04126 122.516 1.2392 122.516 1.4562V30.083C122.516 30.5687 122.372 30.9356 122.085 31.1848C121.797 31.4339 121.426 31.5583 120.972 31.5583H116.323C115.802 31.5583 115.434 31.4339 115.221 31.1848C115.007 30.9356 114.9 30.5687 114.9 30.083V1.4562Z" fill="#121212"/>
-                            <path d="M69.3788 1.4562C69.3788 1.04773 69.4857 0.702742 69.6994 0.421578C69.9131 0.140754 70.2807 0 70.8018 0H75.7117C75.8452 0 75.9856 0.0352313 76.1325 0.105352C76.2794 0.175814 76.4163 0.274868 76.5434 0.402516C76.6703 0.530333 76.7771 0.683509 76.8641 0.862387C76.9509 1.04126 76.9943 1.2392 76.9943 1.4562V30.083C76.9943 30.5687 76.8507 30.9356 76.5636 31.1848C76.2761 31.4339 75.9053 31.5583 75.451 31.5583H70.8018C70.2807 31.5583 69.9131 31.4339 69.6994 31.1848C69.4857 30.9356 69.3788 30.5687 69.3788 30.083V1.4562Z" fill="#121212"/>
-                            <path d="M102.784 8.25477C102.784 7.93855 102.887 7.67151 103.095 7.45383C103.302 7.23648 103.659 7.12756 104.164 7.12756H108.926C109.055 7.12756 109.192 7.15496 109.334 7.20925C109.477 7.26356 109.61 7.34031 109.733 7.43903C109.856 7.53808 109.959 7.65671 110.044 7.79507C110.128 7.93362 110.17 8.08679 110.17 8.25477V30.4141C110.17 30.79 110.031 31.0741 109.752 31.2669C109.473 31.4597 109.114 31.5562 108.673 31.5562H104.164C103.659 31.5562 103.302 31.4597 103.095 31.2669C102.887 31.0741 102.784 30.79 102.784 30.4141V8.25477Z" fill="#121212"/>
-                            </svg>                    
+                <div class="flex items-center justify-between pl-2">
+                    <div class="flex items-center space-x-2" style="width:208px;">
+                        <svg width="123" height="33" viewBox="0 0 123 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0.00109661 19.4133C0.0975274 26.4704 5.42979 31.9458 13.8855 32.0363C18.0936 32.0849 21.4218 30.8361 23.7752 28.3254C24.2411 27.8201 24.1165 27.0222 23.4948 26.6764L19.3539 24.3954C18.9604 24.1679 18.456 24.1924 18.1245 24.4612C17.0985 25.2144 15.616 25.7311 13.9216 25.7173C11.6126 25.6878 9.62797 25.0593 8.46495 23.38C8.15059 22.9445 8.49848 22.3613 9.0501 22.368L24.5745 22.5434C25.1262 22.5501 25.5999 22.1799 25.6717 21.6421C25.7439 21.0067 25.7766 20.3777 25.7859 19.7333C25.6738 12.6008 20.239 7.22032 13.0282 7.13935C5.20303 7.04256 -0.0875246 12.3939 0.00109661 19.4133ZM8.06158 16.1201C8.89257 14.3273 10.6124 13.382 13.0632 13.4077C14.9861 13.4423 16.939 14.2123 17.9673 16.2256C18.2029 16.6739 17.863 17.1975 17.3507 17.1842L8.72954 17.0819C8.20152 17.0908 7.84793 16.5644 8.06158 16.1201Z" fill="#121212"/>
+                            <path d="M26.4422 9.39078C26.1748 8.86725 26.1245 8.42015 26.2919 8.04946C26.4588 7.67912 26.8561 7.49377 27.4842 7.49377H32.6146C32.962 7.49377 33.2659 7.58346 33.5266 7.76217C33.7871 7.94105 33.9706 8.1965 34.0777 8.52856C34.3047 9.20577 34.5551 9.9657 34.8293 10.8087C35.1029 11.6518 35.3903 12.5173 35.6911 13.405C35.9916 14.2931 36.2889 15.1744 36.5829 16.0492C36.8766 16.9245 37.1471 17.7293 37.3943 18.4636C37.6414 19.1984 37.8618 19.837 38.0557 20.3797C38.2494 20.9228 38.393 21.309 38.4867 21.5389L42.7353 8.52856C42.9089 8.11992 43.1061 7.8454 43.3266 7.70464C43.547 7.56422 43.8577 7.49377 44.2584 7.49377H49.5292C49.9166 7.49377 50.2105 7.53871 50.4109 7.62805C50.6113 7.71757 50.7447 7.83876 50.8118 7.99194C50.8785 8.14546 50.8919 8.32109 50.8519 8.51904C50.8118 8.71715 50.7447 8.92478 50.6516 9.14161L41.112 31.0046C40.9647 31.2346 40.7915 31.4293 40.5909 31.5889C40.3904 31.7489 40.0899 31.8285 39.6892 31.8285H37.3043C36.7697 31.8285 36.3923 31.7551 36.172 31.6081C35.9514 31.4616 35.7877 31.2602 35.6809 31.0046L26.4422 9.39078Z" fill="#121212"/>
+                            <path d="M54.5 8.98688C54.5 8.57823 54.6201 8.22695 54.8606 7.93318C55.1011 7.63926 55.4752 7.49238 55.983 7.49238H60.5724C60.7327 7.49238 60.9061 7.52779 61.0935 7.59773C61.2802 7.66801 61.4541 7.77031 61.6144 7.90442C61.7748 8.03854 61.9117 8.19512 62.0252 8.37366C62.1386 8.55271 62.1956 8.75694 62.1956 8.98688V30.3515C62.1956 30.8373 62.0554 31.2042 61.7748 31.4534C61.4942 31.7024 61.0935 31.8269 60.5724 31.8269H55.983C54.9941 31.8269 54.5 31.3354 54.5 30.3515V8.98688ZM54.5 1.74399C54.5 1.20753 54.6201 0.82782 54.8606 0.60401C55.1011 0.380713 55.4752 0.268555 55.983 0.268555H60.6324C61.0999 0.268555 61.4773 0.380713 61.7647 0.60401C62.0519 0.82782 62.1956 1.20753 62.1956 1.74399V4.2891C62.1956 4.44246 62.1587 4.60856 62.0854 4.78727C62.012 4.96632 61.9083 5.13889 61.7748 5.30467C61.6411 5.47095 61.4773 5.60814 61.2839 5.71655C61.09 5.8253 60.8729 5.87942 60.6324 5.87942H55.983C54.9941 5.87942 54.5 5.3496 54.5 4.2891V1.74399Z" fill="#121212"/>
+                            <path d="M69.3538 3.6979C69.3538 3.30203 69.4908 3.00503 69.7647 2.80692C70.0383 2.60898 70.4293 2.42058 70.9371 2.24153L75.4864 0.72797C75.5531 0.715377 75.6167 0.70874 75.6766 0.70874H75.8472C76.3411 0.70874 76.6719 0.846088 76.8391 1.12061C77.006 1.39565 77.0895 1.7563 77.0895 2.2034L77.0696 7.4727H79.8152C80.2426 7.4727 80.59 7.59421 80.8573 7.83657C81.1243 8.07945 81.2582 8.4435 81.2582 8.92872V12.6269C81.2582 13.1634 81.1243 13.5562 80.8573 13.8054C80.59 14.0545 80.2426 14.179 79.8152 14.179H77.0696L77.0895 30.351C77.0895 30.8365 76.9424 31.2036 76.6487 31.4527C76.3547 31.7019 75.9473 31.8265 75.4262 31.8265H70.8971C69.8682 31.8265 69.3538 31.3348 69.3538 30.351L69.3338 14.179H67.2698C66.2407 14.179 65.7266 13.6617 65.7266 12.6269V8.92872C65.7266 7.9581 66.2407 7.4727 67.2698 7.4727H69.3338L69.3538 3.6979Z" fill="#121212"/>
+                            <path d="M90.4451 19.6797C90.4451 20.5226 90.5821 21.3117 90.856 22.046C91.1297 22.7809 91.5205 23.416 92.0284 23.9525C92.5361 24.4891 93.1471 24.914 93.862 25.2269C94.5765 25.5401 95.3683 25.6963 96.2371 25.6963C97.132 25.6963 97.9636 25.5401 98.7321 25.2269C99.5001 24.914 100.168 24.4891 100.736 23.9525C101.304 23.416 101.748 22.7809 102.069 22.046C102.39 21.3117 102.55 20.5226 102.55 19.6797C102.55 18.8622 102.39 18.0828 102.069 17.3421C101.748 16.6014 101.304 15.9499 100.736 15.3875C100.168 14.8255 99.5001 14.3816 98.7321 14.0559C97.9636 13.7301 97.132 13.5672 96.2371 13.5672C95.3683 13.5672 94.5765 13.7301 93.862 14.0559C93.1471 14.3816 92.5361 14.8255 92.0284 15.3875C91.5205 15.9499 91.1297 16.6014 90.856 17.3421C90.5821 18.0828 90.4451 18.8622 90.4451 19.6797ZM110.185 30.41C110.185 30.6272 110.145 30.8347 110.065 31.0327C109.985 31.2308 109.851 31.3871 109.664 31.502C109.517 31.6428 109.344 31.732 109.143 31.7704C108.943 31.8087 108.769 31.8278 108.622 31.8278H104.674C104.394 31.8278 104.166 31.7928 103.993 31.7225C103.819 31.6523 103.679 31.5533 103.572 31.4254C103.465 31.2979 103.375 31.1414 103.301 30.9561C103.228 30.7709 103.151 30.5697 103.071 30.3523L102.81 29.4902C102.45 29.835 102.039 30.1736 101.578 30.5055C101.117 30.838 100.609 31.1351 100.055 31.3967C99.5001 31.6586 98.9055 31.8691 98.271 32.029C97.6365 32.1887 96.9785 32.2686 96.297 32.2686C95.081 32.2686 93.9155 32.1215 92.8001 31.8278C91.6842 31.534 90.642 31.1157 89.6737 30.5728C88.7047 30.0299 87.8263 29.3783 87.0382 28.6184C86.2497 27.8584 85.5719 27.0121 85.004 26.0796C84.4361 25.1471 83.9987 24.1413 83.6914 23.0614C83.3839 21.9822 83.2305 20.8551 83.2305 19.6797C83.2305 17.9043 83.5711 16.2531 84.2524 14.7265C84.9339 13.2003 85.8624 11.8714 87.0382 10.741C88.2138 9.61051 89.5965 8.72278 91.1867 8.07755C92.7766 7.43268 94.4799 7.10999 96.297 7.10999C97.1253 7.10999 97.8968 7.19952 98.6116 7.37821C99.3265 7.55709 99.9811 7.7998 100.576 8.10632C101.17 8.41301 101.708 8.78029 102.189 9.20816C102.67 9.63622 103.091 10.0991 103.452 10.5973L104.033 8.85365C104.166 8.53453 104.277 8.27583 104.363 8.07755C104.45 7.87979 104.544 7.73274 104.644 7.63691C104.744 7.5411 104.868 7.47743 105.015 7.44527C105.162 7.41362 105.369 7.39744 105.636 7.39744H108.622C108.769 7.39744 108.943 7.41651 109.143 7.45481C109.344 7.49309 109.517 7.58279 109.664 7.72303C109.851 7.86378 109.985 8.02342 110.065 8.20213C110.145 8.38118 110.185 8.58525 110.185 8.81535V30.41Z" fill="#121212"/>
+                            <path d="M114.898 1.72476C114.898 1.31629 115.005 0.971297 115.219 0.690133C115.433 0.409308 115.8 0.268555 116.321 0.268555H121.231C121.365 0.268555 121.505 0.303786 121.652 0.373907C121.799 0.444369 121.936 0.543423 122.063 0.671071C122.19 0.798888 122.297 0.952064 122.384 1.13094C122.47 1.30982 122.514 1.50776 122.514 1.72476V30.3515C122.514 30.8373 122.37 31.2042 122.083 31.4534C121.796 31.7024 121.425 31.8269 120.971 31.8269H116.321C115.8 31.8269 115.433 31.7024 115.219 31.4534C115.005 31.2042 114.898 30.8373 114.898 30.3515V1.72476Z" fill="#121212"/>
+                            <path d="M69.3789 1.72476C69.3789 1.31629 69.4858 0.971297 69.6994 0.690133C69.9131 0.409308 70.2808 0.268555 70.8019 0.268555H75.7118C75.8453 0.268555 75.9857 0.303786 76.1326 0.373907C76.2795 0.444369 76.4164 0.543423 76.5435 0.671071C76.6703 0.798888 76.7772 0.952064 76.8642 1.13094C76.9509 1.30982 76.9944 1.50776 76.9944 1.72476V30.3515C76.9944 30.8373 76.8508 31.2042 76.5636 31.4534C76.2762 31.7024 75.9053 31.8269 75.4511 31.8269H70.8019C70.2808 31.8269 69.9131 31.7024 69.6994 31.4534C69.4858 31.2042 69.3789 30.8373 69.3789 30.3515V1.72476Z" fill="#121212"/>
+                            <path d="M102.785 8.52332C102.785 8.20711 102.889 7.94006 103.096 7.72238C103.303 7.50504 103.66 7.39612 104.165 7.39612H108.927C109.057 7.39612 109.193 7.42352 109.336 7.47781C109.478 7.53211 109.611 7.60886 109.734 7.70758C109.857 7.80664 109.961 7.92526 110.045 8.06362C110.129 8.20217 110.171 8.35535 110.171 8.52332V30.6826C110.171 31.0586 110.032 31.3427 109.754 31.5354C109.475 31.7282 109.115 31.8247 108.675 31.8247H104.165C103.66 31.8247 103.303 31.7282 103.096 31.5354C102.889 31.3427 102.785 31.0586 102.785 30.6826V8.52332Z" fill="#121212"/>
+                            </svg>
+                            
                     </div>
                     <button id="closeSidebarBtn" class="lg:hidden p-1">
                         <svg width="24" height="24" fill="none" stroke="currentColor">
@@ -220,49 +208,49 @@
                 </div>
             </div>
             <nav class="px-2 space-y-2 flex-1 pl-3">
-                <a href="index.html" data-readdy="true" class="flex items-center space-x-2 px-4 py-3 text-gray-900 hover:bg-gray-50 rounded-lg w-full" style=" width:215px; height:56px; padding:16px 8px; border-radius:8px; background:#EEE7FA; opacity:1;">
+                <a href="index.html" data-readdy="true" class="flex items-center space-x-2 px-4 py-3 text-gray-900 hover:bg-gray-50 rounded-lg w-full" style=" width:210px; min-height:56px; padding:16px 8px; border-radius:8px; background:#EEE7FA; opacity:1;">
                     <img src="https://static.readdy.ai/image/d5ef78e5e20d4f96c7b7ffa896bb004b/0e0127857fbb04e1630e32c8cfb1d25d.png" alt="Navigation Icons" class="w-6 h-6 object-contain flex-shrink-0">
-                    <span class=" text-black font-semibold " style="font-size: 16px;">Kullanım Raporları</span>
+                    <span class=" text-black font-semibold truncate" style="font-size: 16px;">Kullanım Raporları</span>
                 </a>
-                <a href="Kullanici_Listesi.html" class="flex items-center space-x-3 px-4 py-3 text-gray-900 hover:bg-gray-50 rounded-lg w-full">
+                <a href="Kullanici_Listesi.html" class="flex items-center space-x-3 px-4 py-3 text-gray-900 hover:bg-gray-50 rounded-lg w-full" >
                     <img src="https://static.readdy.ai/image/d5ef78e5e20d4f96c7b7ffa896bb004b/5f94f499b4dc1f2f687bc36cfdca0562.png" alt="Navigation Icons" class="w-6 h-6 object-contain flex-shrink-0">
-                    <span class=" text-black font-semibold " style="font-size: 16px;">Kullanıcı Listesi</span>
+                    <span class="text-[16px] text-black font-semibold truncate">Kullanıcı Listesi</span>
                 </a>
                 <a href="Paket-Yönetimi-Sayfası.html" class="flex items-center space-x-3 px-4 py-3 text-gray-900 hover:bg-gray-50 rounded-lg w-full">
                     <img src="https://static.readdy.ai/image/d5ef78e5e20d4f96c7b7ffa896bb004b/9689c8baeebc623103ff203b0e85d6f2.png" alt="Navigation Icons" class="w-6 h-6 object-contain flex-shrink-0">
-                    <span class=" text-black font-semibold " style="font-size: 16px;">Paketler</span>
+                    <span class="text-[16px] text-black font-semibold truncate">Paketler</span>
                 </a>
                 <a href="Yeni-Ayarlar-Sayfası.html" class="flex items-center space-x-3 px-4 py-3 text-gray-900 hover:bg-gray-50 rounded-lg w-full">
                     <img src="https://static.readdy.ai/image/d5ef78e5e20d4f96c7b7ffa896bb004b/0fce52ba3ea7a53b517342c076eb57f6.png" alt="Navigation Icons" class="w-6 h-6 object-contain flex-shrink-0">
-                    <span class=" text-black font-semibold " style="font-size: 16px;">Hesap Ayarları</span>
+                    <span class="text-[16px] text-black font-semibold truncate">Hesap Ayarları</span>
                 </a>
             </nav>
-            <div class="w-full flex justify-center mb-6 mt-auto px-4">
-                <button id="cikisBtn" class="w-[140px] h-[40px] py-1 bg-[#FAFAFA]   rounded-lg border-2 border-[#E0E8F0] font-semibold text-[#121212]">Çıkış Yap</button>
+            <div class="w-full flex justify-center mb-6 mt-auto">
+                <button id="cikisBtn" class="w-[140px] h-[40px] py-1 bg-[#FAFAFA]   rounded-lg border-2 border-[#E0E8F0] font-semibold text-[#121212] text-[16px]">Çıkış Yap</button>
             </div>
-        </aside>
-
+        </aside>    
+       
         <main class=" flex-1 min-h-screen">
             <div class="pb-4 bg-[#FAFAFA] pt-6 pr-6">
                 <div class="flex items-center justify-end">
                     <img src="https://static.readdy.ai/image/d5ef78e5e20d4f96c7b7ffa896bb004b/0f748dae3ea01706738c73b4ada168e8.png" alt="Eczacibasi" class="w-24 lg:w-32 h-auto">
                 </div>
                 <!-- Banner ve Eczacıbaşı logosu hizalı -->
-                <div class="relative mb-1">
+                <div class="relative mb-4">
                     <div class="rounded-2xl p-2 text-white overflow-hidden h-[140px]" style="background-image: url('https://static.readdy.ai/image/d5ef78e5e20d4f96c7b7ffa896bb004b/554688d5afb3d7f7a14bf48cb293f37f.png'); background-size: contain; background-position: center; background-repeat: no-repeat;">
                         <div class="relative z-10"></div>
                     </div>
                     <!--<img src="https://static.readdy.ai/image/d5ef78e5e20d4f96c7b7ffa896bb004b/0f748dae3ea01706738c73b4ada168e8.png" alt="Eczacibasi" class="absolute top-2 right-4 h-12"> -->
                 </div>
-                <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-4 gap-4">
+                <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-4 mt-1 gap-4">
                     <!-- Dropdown Container -->
                     <div class="flex flex-col sm:flex-row gap-4 w-full lg:w-auto">
                         <!-- Şehir Dropdown -->
                         <div class="relative flex-1 sm:flex-none" id="dropdownSehirWrapper">
-                            <button onclick="toggleDropdown('sehirDropdown')" class="w-full sm:w-48 mg:w-50 h-[52px] bg-white text-gray-900 px-4 lg:px-6 py-2 flex flex-col items-start justify-center shadow-sm hover:shadow-md border-2 border-[#E0E8F0] rounded-[8px]">
+                            <button onclick="toggleDropdown('sehirDropdown')" class="w-full sm:w-48 mg:w-50 h-[49px] bg-white text-gray-900 px-4 lg:px-6 py-2 flex flex-col items-start justify-center shadow-sm hover:shadow-md border-2 border-[#E0E8F0] rounded-[8px]">
                                 <span class="font-regular text-[11px]">Şehir</span>
                                 <div class="flex items-center justify-between w-full">
-                                    <span class="fs-14 font-semibold truncate" id="selectedSehir">Tümü</span>
+                                    <span class="text-[14px] font-semibold truncate" id="selectedSehir">Tümü</span>
                                     <div class="w-5 h-5 flex items-center justify-center flex-shrink-0">
                                         <svg width="24" height="25" viewbox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M18 9.50017C18 9.50017 13.5811 15.5001 12 15.5001C10.4188 15.5001 6 9.50012 6 9.50012" stroke="#121212" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -276,13 +264,13 @@
                                     <li><button onclick="selectSehir('İstanbul')" class="w-full text-left px-4 py-2 hover:bg-gray-100">İstanbul</button></li>
                                     <li><button onclick="selectSehir('Ankara')" class="w-full text-left px-4 py-2 hover:bg-gray-100">Ankara</button></li>
                                     <li><button onclick="selectSehir('İzmir')" class="w-full text-left px-4 py-2 hover:bg-gray-100">İzmir</button></li>
-
+                                    
                                 </ul>
                             </div>
                         </div>
                         <!-- Bölge Dropdown -->
                         <div class="relative flex-1 sm:flex-none" id="dropdownBolgeWrapper">
-                            <button onclick="toggleDropdown('bolgeDropdown')" class="w-full sm:w-48 mg:w-50 h-[52px] bg-white text-gray-900 px-4 lg:px-6 py-2 flex flex-col items-start justify-center shadow-sm hover:shadow-md border-2 border-[#E0E8F0] rounded-[8px]">
+                            <button onclick="toggleDropdown('bolgeDropdown')" class="w-full sm:w-48 mg:w-50 h-[49px] bg-white text-gray-900 px-4 lg:px-6 py-2 flex flex-col items-start justify-center shadow-sm hover:shadow-md border-2 border-[#E0E8F0] rounded-[8px]">
                                 <span class="font-regular text-[11px]">Bölge/Ofis</span>
                                 <div class="flex items-center justify-between w-full">
                                     <span class="fs-14 font-semibold truncate" id="selectedBolge">Tümü</span>
@@ -299,13 +287,13 @@
                                     <li><button onclick="selectBolge('Şişli')" class="w-full text-left px-4 py-2 hover:bg-gray-100">Şişli</button></li>
                                     <li><button onclick="selectBolge('Beykoz')" class="w-full text-left px-4 py-2 hover:bg-gray-100">Beykoz</button></li>
                                     <li><button onclick="selectBolge('Ümraniye')" class="w-full text-left px-4 py-2 hover:bg-gray-100">Ümraniye</button></li>
-
+                                    
                                 </ul>
                             </div>
                         </div>
                         <!-- Ekip Dropdown -->
                         <div class="relative flex-1 sm:flex-none" id="dropdownEkipWrapper">
-                            <button onclick="toggleDropdown('ekipDropdown')" class="w-full sm:w-48 mg:w-50 h-[52px] bg-white text-gray-900 px-4 lg:px-6 py-2 flex flex-col items-start justify-center shadow-sm hover:shadow-md border-2 border-[#E0E8F0] rounded-[8px]">
+                            <button onclick="toggleDropdown('ekipDropdown')" class="w-full sm:w-48 mg:w-50 h-[49px] bg-white text-gray-900 px-4 lg:px-6 py-2 flex flex-col items-start justify-center shadow-sm hover:shadow-md border-2 border-[#E0E8F0] rounded-[8px]">
                                 <span class="font-regular text-[11px]">Ekip</span>
                                 <div class="flex items-center justify-between w-full">
                                     <span class="fs-14 font-semibold truncate" id="selectedEkip">Tümü</span>
@@ -322,22 +310,22 @@
                                     <li><button onclick="selectEkip('Tasarım Ekibi')" class="w-full text-left px-4 py-2 hover:bg-gray-100">Tasarım Ekibi</button></li>
                                     <li><button onclick="selectEkip('Yazılım Ekibi')" class="w-full text-left px-4 py-2 hover:bg-gray-100">Yazılım Ekibi</button></li>
                                     <li><button onclick="selectEkip('Satış Ekibi')" class="w-full text-left px-4 py-2 hover:bg-gray-100">Satış Ekibi</button></li>
-
+                                    
                                 </ul>
                             </div>
                         </div>
                     </div>
 
                     <div class="flex flex-col sm:flex-row items-stretch sm:items-center sm:space-x-4 w-full lg:w-auto">
-                        <button class="bg-[#FAFAFA] text-gray-700 px-4 lg:px-6 py-3 rounded-full flex items-center justify-center space-x-2 lg:space-x-3 border-2 border-[#7B8FB0] hover:bg-gray-50 min-h-[40px] flex-1 sm:flex-none">
-                            <span class="text-gray-600 text-sm lg:text-base">Dışa Aktar</span>
+                        <button class="bg-[#FAFAFA] text-gray-700 px-4 lg:px-6  rounded-full flex items-center justify-center space-x-2 lg:space-x-3 border-2 border-[#7B8FB0] hover:bg-gray-50 flex-1 sm:flex-none" style="height: 40px; width: 167px;">
+                            <span class="text-gray-600 lg:text-base" style="font-size: 14px;">Dışa Aktar</span>
                             <div class="w-4 h-4 lg:w-5 lg:h-5 flex items-center justify-center flex-shrink-0">
                                 <img src="https://static.readdy.ai/image/d5ef78e5e20d4f96c7b7ffa896bb004b/336c2c72307ad0fb2020fc3a6d80e112.png" alt="Export" class="w-full h-full">
                             </div>
                         </button>
                         <div class="relative w-full sm:w-auto">
-                            <button id="cozumEkibiBtn" class=" bg-[#FAFAFA]text-white px-4 lg:px-8 py-3 rounded-full flex items-center justify-center space-x-2 lg:space-x-3  border-2 border-[#7853E1] min-h-[40px] flex-1 sm:flex-none w-full sm:w-auto">
-                                <span class="text-sm text-[#7853E1] lg:text-base">Çözüm Ekibi</span>
+                            <button id="cozumEkibiBtn" class=" bg-[#FAFAFA]text-white px-4 lg:px-8 py-3 rounded-full flex items-center justify-center space-x-2 lg:space-x-3  border-2 border-[#7853E1] min-h-[40px] flex-1 sm:flex-none w-full sm:w-auto" style="height: 40px; width: 195px;">
+                                <span class="text-[#7853E1] lg:text-base" style="font-size: 14px;">Çözüm Ekibi</span>
                                 <div class="w-4 h-4 lg:w-5 lg:h-5 flex items-center justify-center flex-shrink-0">
                                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M14.168 11.9204C14.168 11.6323 14.168 11.4883 14.2113 11.36C14.3373 10.987 14.6695 10.8423 15.0022 10.6907C15.3763 10.5203 15.5633 10.4351 15.7486 10.4201C15.9591 10.4031 16.1698 10.4485 16.3496 10.5494C16.5881 10.6831 16.7543 10.9374 16.9246 11.1441C17.7107 12.099 18.1037 12.5765 18.2476 13.103C18.3636 13.5278 18.3636 13.9721 18.2476 14.397C18.0378 15.1649 17.3751 15.8086 16.8845 16.4045C16.6336 16.7092 16.5081 16.8616 16.3496 16.9505C16.1698 17.0515 15.9591 17.0968 15.7486 17.0798C15.5633 17.0648 15.3763 16.9796 15.0022 16.8092C14.6695 16.6576 14.3373 16.513 14.2113 16.14C14.168 16.0116 14.168 15.8676 14.168 15.5795V11.9204Z" stroke="#7853E1" stroke-width="1.25"/>
@@ -347,7 +335,7 @@
                                         
                                 </div>
                             </button>
-
+                            
                             <!-- Çözüm Ekibi Dropdown Card -->
                             <div id="cozumEkibiDropdown" class="absolute top-full right-0 mt-2 w-[330px] bg-white border-2 border-[#7853E1] rounded-2xl p-6 shadow-lg hidden z-50">
                                 <div class="space-y-4">
@@ -356,13 +344,13 @@
                                         <span class="text-[#7B8FB0] text-sm font-medium">Destek Uzmanı</span>
                                         <p class="text-[#121212] font-semibold text-base">Muhammed Ali Soysal</p>
                                     </div>
-
+                                    
                                     <!-- E-Posta -->
                                     <div>
                                         <span class="text-[#7B8FB0] text-sm font-medium">E-Posta</span>
                                         <p class="text-[#121212] font-semibold fs-14 underline">muhammed.soysal@eczacibasi.com.tr</p>
                                     </div>
-
+                                    
                                     <!-- Telefon -->
                                     <div>
                                         <span class="text-[#7B8FB0] text-sm font-medium">Telefon</span>
@@ -375,10 +363,11 @@
                 </div>
                 <div class="flex flex-col xl:flex-row gap-4 lg:gap-6">
                     <!-- SOL KOLON -->
-                    <div class="w-full xl:w-[33%] flex flex-col gap-4 lg:gap-6 min-w-0">
+                    <div class="w-full xl:w-[40%] flex flex-col gap-4 lg:gap-6 min-w-0">
                         <!-- Kullanıcı ve Haklar -->
                         <div class="space-y-4">
-                            <div class="bg-white rounded-xl shadow-sm border-2 border-[#E0E8F0] w-full px-6 py-5 space-y-4 mb-2">
+                            <div
+                                class="bg-white rounded-xl shadow-sm border-2 border-[#E0E8F0] w-full px-6 py-5 space-y-4 mb-2">
                                 <!-- Üst Satır: Toplam Kullanıcı -->
                                 <div class="flex items-center justify-start space-x-3 pt-6 pb-2">
                                     <img src="https://static.readdy.ai/image/d5ef78e5e20d4f96c7b7ffa896bb004b/66acb27976c767cc82248fa5ac23dc96.png" alt="User Icon" class="w-8 h-8">
@@ -391,7 +380,7 @@
                                     <span class="fs-14 text-[#7B8FB0] font-medium">Aktif Kullanıcı</span>
                                     <span class="text-green-600 text-sm font-semibold flex items-center space-x-1 ml-2">
                                         <span>+8%</span>
-                                    <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M20 13V8H15" stroke="#1B8E20" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                             <path d="M20 8L15 13C14.1174 13.8826 13.6762 14.3238 13.1346 14.3726C13.045 14.3807 12.955 14.3807 12.8654 14.3726C12.3238 14.3238 11.8826 13.8826 11 13C10.1174 12.1174 9.67615 11.6762 9.13457 11.6274C9.04504 11.6193 8.95496 11.6193 8.86543 11.6274C8.32385 11.6762 7.88256 12.1174 7 13L4 16" stroke="#1B8E20" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                         </svg>
@@ -410,7 +399,7 @@
                                     <span class="fs-14 text-[#7B8FB0] font-medium">Kullanılan Hak</span>
                                     <span class="text-green-600 text-sm font-semibold flex items-center space-x-1 ml-2">
                                         <span>+8%</span>
-                                    <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M20 13V8H15" stroke="#1B8E20" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                             <path d="M20 8L15 13C14.1174 13.8826 13.6762 14.3238 13.1346 14.3726C13.045 14.3807 12.955 14.3807 12.8654 14.3726C12.3238 14.3238 11.8826 13.8826 11 13C10.1174 12.1174 9.67615 11.6762 9.13457 11.6274C9.04504 11.6193 8.95496 11.6193 8.86543 11.6274C8.32385 11.6762 7.88256 12.1174 7 13L4 16" stroke="#1B8E20" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                         </svg>
@@ -419,16 +408,16 @@
                             </div>
                         </div>
                         <!-- Duygu Durum Takibi -->
-
+                        
                     </div>
                     <!-- SOL KOLON son-->
                     <!-- SAĞ KOLON -->
                     <div class="w-full xl:w-[67%] flex flex-col gap-4 lg:gap-6 min-w-0">
                         <div class="bg-white rounded-xl p-4 lg:p-6 shadow-sm border-2 border-[#E0E8F0] min-h-[360px]">
-                            <h3 class="fs-14 font-semibold text-[#121212] mb-4 lg:mb-6">Tamamlanan Görüşme Oranı</h3>
+                            <h3 class="text-[14px] font-semibold text-[#121212] mb-4 lg:mb-6">Tamamlanan Görüşme Oranı</h3>
                             <div class="flex flex-col lg:flex-row items-center lg:items-start gap-6">
                                 <div id="donutChart" class=" flex-shrink-0" style="width: 260px; height: 260px;"></div>
-                                <div id="donutLegend" class="flex-1 space-y-3 mt-8 lg:space-y-5 w-full lg:w-auto">
+                                <div id="donutLegend" class="flex-1 space-y-3 lg:space-y-5 w-full lg:w-auto ml-20 pr-10">
                                     <div class="flex items-center justify-between">
                                         <div class="flex items-center space-x-2">
                                             <div class="w-3 h-3 rounded-full" style="background-color: #FD7700"></div>
@@ -476,43 +465,55 @@
                                     <div class="flex items-center justify-between">
                                         <div class="flex items-center space-x-2">
                                             <div class="w-3 h-3 rounded-full whitespace-nowrap" style="background-color: #E45241"></div>
-                                            <span class="font-semibold text-[14px] leading-4" style="color: #E45241">Spor Danışmanı</span>
+                                            <span class="font-semibold text-[14px] leading-4" style="color: #E45241">Online Fitness ve Yoga Danışmanlığı</span>
                                         </div>
                                         <span id="onlineFitness" class="font-medium text-[14px] leading-4 whitespace-nowrap" style="color: #121212">30 Görüşme
                                                                                         (8.57%)</span>
                                     </div>
                                 </div>
                             </div>
-
+                            
                         </div>
-
+                        
                     </div>
                     <!-- SAĞ KOLON son-->
                 </div>
 
                 <div class="flex flex-col lg:flex-row gap-4 lg:gap-6 mt-6">
                     <div class="bg-white rounded-xl p-6 shadow-sm border-2 border-[#E0E8F0]" style="width: 100%; height: 450px;">
-                        <h3 class="fs-14 font-semibold text-[#000000] mb-6">Görüşme Sayısı</h3>
+                        <h3 class="text-[14px] font-semibold text-[#000000] mb-6">Görüşme Sayısı</h3>
                         <div class="flex mb-6">
-                            <div class="flex items-center space-x-10">
-                                <!-- Slider Container -->
-                                <div class="slider-container" style="position: relative; width: 100%; max-width: 600px; overflow: hidden;">
-                                    <div id="tabGroup3" class="flex items-center gap-4 flex-nowrap whitespace-nowrap overflow-x-auto scrollbar-hide" style="scrollbar-width: none; -ms-overflow-style: none; padding-bottom: 8px; scroll-behavior: smooth;">
-                                        <button style="font-size: 14px;" class="tab-btn active-tab font-semibold text-[#121212] border-b-2 border-black pb-1 flex-shrink-0" data-score="4.82">Tümü</button>
-                                        <button style="font-size: 14px;" class="tab-btn text-[#A0B2CD] font-medium hover:text-black transition-all flex-shrink-0" data-score="4.52">Psikolog</button>
-                                        <button style="font-size: 14px;" class="tab-btn text-[#A0B2CD] font-medium hover:text-black transition-all flex-shrink-0" data-score="4.65">Diyetisyen</button>
-                                        <button style="font-size: 14px;" class="tab-btn text-[#A0B2CD] font-medium hover:text-black transition-all flex-shrink-0" data-score="4.48">Doktor Hizmetleri</button>
-                                        <button class="tab-btn fs-12 text-[#A0B2CD] font-medium hover:text-black transition-all flex-shrink-0" data-score="4.48">Doğum Koçu</button>
-                                        <button class="tab-btn fs-12 text-[#A0B2CD] font-medium hover:text-black transition-all flex-shrink-0" data-score="4.48">Emzirme Danışmanı</button>
-                                        <button class="tab-btn fs-12 text-[#A0B2CD] font-medium hover:text-black transition-all flex-shrink-0" data-score="4.48">Spor Danışmanı</button>
+                            
+                            <div class="flex justify-items-center ml-auto">
+                                <div class="relative flex-1 sm:flex-none mr-4" id="dropdownCategoryGorusmeSayisiWrapper">
+                                    <button onclick="toggleDropdown('dropdownCategoryGorusmeSayisi')" class="w-full sm:w-48 mg:w-50 h-[49px] bg-white text-gray-900 px-4 lg:px-6 py-2 flex flex-col items-start justify-center shadow-sm hover:shadow-md border-2 border-[#E0E8F0] rounded-full">
+                                        <span class="font-regular text-[11px]">Kategori</span>
+                                        <div class="flex items-center justify-between w-full">
+                                            <span class="fs-14 font-semibold truncate" id="selectedKategori">Tümü</span>
+                                            <div class="w-5 h-5 flex items-center justify-center flex-shrink-0">
+                                                <svg width="24" height="25" viewbox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M18 9.50017C18 9.50017 13.5811 15.5001 12 15.5001C10.4188 15.5001 6 9.50012 6 9.50012" stroke="#121212" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </button>
+                                    <div id="dropdownCategoryGorusmeSayisi" class="absolute top-[60px] left-0 w-full bg-white border border-gray-200 rounded-md shadow-md hidden z-20">
+                                        <ul class="py-2">
+                                            <li><button onclick="selectCategoryGorusmeSayisi('Tümü')" class="w-full text-left px-4 py-2 hover:bg-gray-100">Tümü</button></li>
+                                            <li><button onclick="selectCategoryGorusmeSayisi('Mental Sağlık')" class="w-full text-left px-4 py-2 hover:bg-gray-100">Mental Sağlık</button></li>
+                                            <li><button onclick="selectCategoryGorusmeSayisi('Beslenme ve Diyet')" class="w-full text-left px-4 py-2 hover:bg-gray-100">Beslenme ve Diyet</button></li>
+                                            <li><button onclick="selectCategoryGorusmeSayisi('Doktor Hizmetleri')" class="w-full text-left px-4 py-2 hover:bg-gray-100">Doktor Hizmetleri</button></li>
+                                            <li><button onclick="selectCategoryGorusmeSayisi('Doğum Koçu')" class="w-full text-left px-4 py-2 hover:bg-gray-100">Doğum Koçu</button></li>
+                                            <li><button onclick="selectCategoryGorusmeSayisi('Emzirme Danışmanı')" class="w-full text-left px-4 py-2 hover:bg-gray-100">Emzirme Danışmanı</button></li>
+                                            <li><button onclick="selectCategoryGorusmeSayisi('Spor Danışmanı')" class="w-full text-left px-4 py-2 hover:bg-gray-100">Spor Danışmanı</button></li>
+                                            
+                                        </ul>
                                     </div>
                                 </div>
-                            </div>
-
-                            <div class="flex justify-items-center ml-auto">
-                                <div class="flex items-center justify-start bg-white border border-[#C0D0DF] rounded-full px-1 py-1" style="width: 185px; height: 40px;">
+                                <div
+                                    class="flex items-center justify-start bg-white border border-[#C0D0DF] rounded-full px-1 py-1" style="width: 192px; height: 49px;">
                                     <!-- Aktif Buton -->
-                                    <button class="bg-black text-white font-semibold fs-12 rounded-full px-6 h-[30px]  flex items-center justify-center mr-2">
+                                    <button class="bg-black text-white font-semibold fs-12 rounded-full px-6 h-[39px]  flex items-center justify-center mr-2">
                                         Aylık
                                     </button>
                                     <!-- Pasif Buton -->
@@ -528,17 +529,19 @@
 
                     <div class="bg-white rounded-2xl border-2 border-[#E0E8F0] w-[360px] h-[450px] flex flex-col">
                         <div class="flex flex-col gap-6 flex-1 mb-6">
-                            <h3 class="fs-14 font-semibold text-[#121212] mb-6 ml-6 mt-6">Duygu Durum Takibi</h3>
-                            <div class="flex-1 flex items-center justify-center">
+                            <h3 class="text-[14px] font-semibold text-[#121212] mb-6 ml-6 mt-6">Duygu Durum Takibi</h3>
+                            <div
+                                class="flex-1 flex items-center justify-center">
                                 <!-- Duygu Durum Grafiği -->
-                                <div class="w-full h-full flex flex-col items-center justify-center bg-white">
+                                <div
+                                    class="w-full h-full flex flex-col items-center justify-center bg-white">
                                     <!-- Grafik Alanı -->
                                     <div class="w-full h-56 flex items-end justify-center gap-8 relative" style="margin-top: 70px;">
                                         <!-- Bağlantı çizgileri -->
                                         <!-- Grafik noktaları -->
-                                        <div class="flex flex-col items-center relative z-10">
-                                            <div class="fs-16 font-semibold text-black">4.4</div>
-                                            <div class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
+                                            <div class="flex flex-col items-center relative z-10"> <div class="fs-16 font-semibold text-black">4.4</div>
+                                            <div
+                                                class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
                                                 <!-- Mutlu emoji -->
                                                 <svg width="32" height="32" viewbox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                     <circle cx="16" cy="16" r="16" fill="#3CBE7A"/>
@@ -551,7 +554,8 @@
                                         </div>
                                         <div class="flex flex-col items-center relative z-10">
                                             <div class="fs-16 font-semibold text-black">3.7</div>
-                                            <div class="w-8 h-8 bg-teal-400 rounded-full flex items-center justify-center ">
+                                            <div
+                                                class="w-8 h-8 bg-teal-400 rounded-full flex items-center justify-center ">
                                                 <!-- Hafif mutlu emoji -->
                                                 <svg width="32" height="32" viewbox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                     <circle cx="16" cy="16" r="16" fill="#57F8A4"/>
@@ -564,7 +568,8 @@
                                         </div>
                                         <div class="flex flex-col items-center relative z-10">
                                             <div class="fs-16 font-semibold text-black">2.5</div>
-                                            <div class="w-8 h-8 bg-yellow-400 rounded-full flex items-center justify-center">
+                                            <div
+                                                class="w-8 h-8 bg-yellow-400 rounded-full flex items-center justify-center">
                                                 <!-- Nötr emoji -->
                                                 <svg width="32" height="32" viewbox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                     <circle cx="16" cy="16" r="16" fill="#FED600"/>
@@ -576,8 +581,9 @@
                                             <div class="w-0.5 bg-[#E0E8F0] " style="height: 170px;"></div>
                                         </div>
                                         <div class="flex flex-col items-center relative z-10">
-                                            <div class=" font-semibold text-black" style="font-size: 20px;">4.6</div>
-                                            <div class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
+                                            <div class="fs-16 font-semibold text-black">4.6</div>
+                                            <div
+                                                class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
                                                 <!-- Mutlu emoji -->
                                                 <svg width="32" height="32" viewbox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                     <circle cx="16" cy="16" r="16" fill="#3CBE7A"/>
@@ -600,7 +606,7 @@
                                         <span class="text-[#A0B2CD] fs-12 font-regular mt-1">Ocak</span>
                                         <span class="text-[#A0B2CD] fs-12 font-regular mt-1">Şubat</span>
                                         <span class="text-[#121212] fs-12 font-semibold mt-1">Mart</span>
-
+                                        
                                         <button class="text-gray-400 hover:text-gray-600">
                                             <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <path d="M9 18L15 12L9 6" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -615,31 +621,36 @@
 
                 </div>
 
-                <div class="flex flex-col lg:flex-row gap-4 lg:gap-6 mt-6">
+                <div class="flex flex-col lg:flex-row gap-4 lg:gap-6 mt-6 mb-6">
                     <div class="w-full lg:w-[50%] flex flex-col gap-4 lg:gap-6 min-w-0">
                         <div class="bg-white rounded-xl p-4 lg:p-6 shadow-sm border-2 border-[#E0E8F0] min-h-[350px]">
-                            <h3 class=" font-semibold text-[#000000] mb-3" style="font-size: 16px;">Memnuniyet Oranı</h3>
-                            <div class="flex items-center space-x-1 mb-3" style="margin-top: 30px;">
-                                <div class="flex items-center space-x-5">
-                                    <!-- Slider Container -->
-                                    <div class="slider-container" style="position: relative; width: 100%; max-width: 500px; overflow: hidden;">
-                                        <div id="tabGroup3" class="flex items-center gap-4 flex-nowrap whitespace-nowrap overflow-x-auto scrollbar-hide" style="scrollbar-width: none; -ms-overflow-style: none; padding-bottom: 8px; scroll-behavior: smooth;">
-                                            <button style="font-size: 14px;" class="tab-btn active-tab font-semibold text-[#121212] border-b-2 border-black pb-1 flex-shrink-0" data-score="4.82">Tümü</button>
-                                            <button style="font-size: 14px;" class="tab-btn text-[#A0B2CD] font-medium hover:text-black transition-all flex-shrink-0" data-score="4.52">Psikolog</button>
-                                            <button style="font-size: 14px;" class="tab-btn text-[#A0B2CD] font-medium hover:text-black transition-all flex-shrink-0" data-score="4.65">Diyetisyen</button>
-                                            <button style="font-size: 14px;" class="tab-btn text-[#A0B2CD] font-medium hover:text-black transition-all flex-shrink-0" data-score="4.48">Doktor Hizmetleri</button>
-                                            <button class="tab-btn fs-12 text-[#A0B2CD] font-medium hover:text-black transition-all flex-shrink-0" data-score="4.48">Doğum Koçu</button>
-                                            <button class="tab-btn fs-12 text-[#A0B2CD] font-medium hover:text-black transition-all flex-shrink-0" data-score="4.48">Emzirme Danışmanı</button>
-                                            <button class="tab-btn fs-12 text-[#A0B2CD] font-medium hover:text-black transition-all flex-shrink-0" data-score="4.48">Spor Danışmanı</button>
+                            <div class="flex items-center justify-between">
+                                <h3 class=" text-[14px] font-semibold text-[#000000]  ">Memnuniyet Oranı</h3>
+                                <div class="relative flex-1 sm:flex-none" id="dropdownCategoryMemnuniyetOraniWrapper">
+                                    <button onclick="toggleDropdown('dropdownCategoryMemnuniyetOrani')" class="w-full sm:w-48 mg:w-50 h-[49px] bg-white text-gray-900 px-4 lg:px-6 py-2 flex flex-col items-start justify-center shadow-sm hover:shadow-md border-2 border-[#E0E8F0] rounded-full">
+                                        <span class="font-regular text-[11px]">Kategori</span>
+                                        <div class="flex items-center justify-between w-full">
+                                            <span class="fs-14 font-semibold truncate" id="selectedKategori">Tümü</span>
+                                            <div class="w-5 h-5 flex items-center justify-center flex-shrink-0">
+                                                <svg width="24" height="25" viewbox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M18 9.50017C18 9.50017 13.5811 15.5001 12 15.5001C10.4188 15.5001 6 9.50012 6 9.50012" stroke="#121212" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg>
+                                            </div>
                                         </div>
+                                    </button>
+                                    <div id="dropdownCategoryMemnuniyetOrani" class="absolute top-[60px] left-0 w-full bg-white border border-gray-200 rounded-md shadow-md hidden z-20">
+                                        <ul class="py-2">
+                                            <li><button onclick="selectCategoryMemnuniyetOrani('Tümü')" class="w-full text-left px-4 py-2 hover:bg-gray-100">Tümü</button></li>
+                                            <li><button onclick="selectCategoryMemnuniyetOrani('Mental Sağlık')" class="w-full text-left px-4 py-2 hover:bg-gray-100">Mental Sağlık</button></li>
+                                            <li><button onclick="selectCategoryMemnuniyetOrani('Beslenme ve Diyet')" class="w-full text-left px-4 py-2 hover:bg-gray-100">Beslenme ve Diyet</button></li>
+                                            <li><button onclick="selectCategoryMemnuniyetOrani('Doktor Hizmetleri')" class="w-full text-left px-4 py-2 hover:bg-gray-100">Doktor Hizmetleri</button></li>
+                                            <li><button onclick="selectCategoryMemnuniyetOrani('Doğum Koçu')" class="w-full text-left px-4 py-2 hover:bg-gray-100">Doğum Koçu</button></li>
+                                            <li><button onclick="selectCategoryMemnuniyetOrani('Emzirme Danışmanı')" class="w-full text-left px-4 py-2 hover:bg-gray-100">Emzirme Danışmanı</button></li>
+                                            <li><button onclick="selectCategoryMemnuniyetOrani('Spor Danışmanı')" class="w-full text-left px-4 py-2 hover:bg-gray-100">Spor Danışmanı</button></li>
+                                            
+                                        </ul>
                                     </div>
-                                    <!--<button class="text-gray-400 hover:text-gray-600 mr-6">
-                                        <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M9 18L15 12L9 6" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                        </svg>
-                                    </button>-->
                                 </div>
-
                             </div>
                             <div class=" flex items-center justify-start gap-3 mb-10" style="margin-top: 60px;">
                                 <!-- ikon -->
@@ -667,25 +678,39 @@
                                 </div>
                             </div>
                         </div>
+                        
                     </div>
-                    <div class="bg-white rounded-xl shadow-sm border-2 border-[#E0E8F0] w-full lg:w-[50%]" style="height: 350px; overflow: hidden;">
-                        <h3 class="fs-16 font-semibold text-[#000000] mb-6  ml-6 mt-6">İptal Durumları</h3>
-                        <div class="flex items-center justify-between ml-4">
-                            <div class="flex items-center space-x-5 mb-3">
-                                <!-- Slider Container -->
-                                <div class="slider-container" style="position: relative; width: 100%; max-width: 500px; overflow: hidden;">
-                                    <div id="tabGroup3" class="flex items-center gap-4 flex-nowrap whitespace-nowrap overflow-x-auto scrollbar-hide" style="scrollbar-width: none; -ms-overflow-style: none; padding-bottom: 8px; scroll-behavior: smooth;">
-                                        <button style="font-size: 14px;" class="tab-btn active-tab font-semibold text-[#121212] border-b-2 border-black pb-1 flex-shrink-0" data-score="4.82">Tümü</button>
-                                        <button style="font-size: 14px;" class="tab-btn text-[#A0B2CD] font-medium hover:text-black transition-all flex-shrink-0" data-score="4.52">Psikolog</button>
-                                        <button style="font-size: 14px;" class="tab-btn text-[#A0B2CD] font-medium hover:text-black transition-all flex-shrink-0" data-score="4.65">Diyetisyen</button>
-                                        <button style="font-size: 14px;" class="tab-btn text-[#A0B2CD] font-medium hover:text-black transition-all flex-shrink-0" data-score="4.48">Doktor Hizmetleri</button>
-                                        <button class="tab-btn fs-12 text-[#A0B2CD] font-medium hover:text-black transition-all flex-shrink-0" data-score="4.48">Doğum Koçu</button>
-                                        <button class="tab-btn fs-12 text-[#A0B2CD] font-medium hover:text-black transition-all flex-shrink-0" data-score="4.48">Emzirme Danışmanı</button>
-                                        <button class="tab-btn fs-12 text-[#A0B2CD] font-medium hover:text-black transition-all flex-shrink-0" data-score="4.48">Spor Danışmanı</button>
+                    <div class="bg-white rounded-xl shadow-sm border-2 border-[#E0E8F0] w-full lg:w-[50%] min-h-[355px]">
+                        <div class="flex items-center justify-between p-4 lg:p-6">
+                            <h3 class=" text-[14px] font-semibold text-[#000000] mb-3 ">İptal Durumları</h3>
+                            <div class="relative flex-1 sm:flex-none mr-4" id="dropdownCategoryIptalDurumlariWrapper">
+                                <button onclick="toggleDropdown('dropdownCategoryIptalDurumlari')" class="w-full sm:w-48 mg:w-50 h-[49px] bg-white text-gray-900 px-4 lg:px-6 py-2 flex flex-col items-start justify-center shadow-sm hover:shadow-md border-2 border-[#E0E8F0] rounded-full">
+                                    <span class="font-regular text-[11px]">Kategori</span>
+                                    <div class="flex items-center justify-between w-full">
+                                        <span class="fs-14 font-semibold truncate" id="selectedKategori">Tümü</span>
+                                        <div class="w-5 h-5 flex items-center justify-center flex-shrink-0">
+                                            <svg width="24" height="25" viewbox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M18 9.50017C18 9.50017 13.5811 15.5001 12 15.5001C10.4188 15.5001 6 9.50012 6 9.50012" stroke="#121212" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                            </svg>
+                                        </div>
                                     </div>
+                                </button>
+                                <div id="dropdownCategoryIptalDurumlari" class="absolute top-[60px] left-0 w-full bg-white border border-gray-200 rounded-md shadow-md hidden z-20">
+                                    <ul class="py-2">
+                                        <li><button onclick="selectCategoryIptalDurumlari('Tümü')" class="w-full text-left px-4 py-2 hover:bg-gray-100">Tümü</button></li>
+                                        <li><button onclick="selectCategoryIptalDurumlari('Mental Sağlık')" class="w-full text-left px-4 py-2 hover:bg-gray-100">Mental Sağlık</button></li>
+                                        <li><button onclick="selectCategoryIptalDurumlari('Beslenme ve Diyet')" class="w-full text-left px-4 py-2 hover:bg-gray-100">Beslenme ve Diyet</button></li>
+                                        <li><button onclick="selectCategoryIptalDurumlari('Doktor Hizmetleri')" class="w-full text-left px-4 py-2 hover:bg-gray-100">Doktor Hizmetleri</button></li>
+                                        <li><button onclick="selectCategoryIptalDurumlari('Doğum Koçu')" class="w-full text-left px-4 py-2 hover:bg-gray-100">Doğum Koçu</button></li>
+                                        <li><button onclick="selectCategoryIptalDurumlari('Emzirme Danışmanı')" class="w-full text-left px-4 py-2 hover:bg-gray-100">Emzirme Danışmanı</button></li>
+                                        <li><button onclick="selectCategoryIptalDurumlari('Spor Danışmanı')" class="w-full text-left px-4 py-2 hover:bg-gray-100">Spor Danışmanı</button></li>
+                                        
+                                    </ul>
                                 </div>
-
                             </div>
+                        </div>
+                        <div class="flex items-center justify-between ml-4">
+                            
 
                         </div>
                         <div class="flex items-center gap-4 ml-6">
@@ -703,8 +728,8 @@
                                 </span>
                             </div>
                         </div>
-                        <div class="flex items-center justify-start z-10" style="margin-left: 30px;">
-                            <div id="cancelDonutChart" class="w-[180px] h-[180px]"></div>
+                        <div class="flex items-center justify-start">
+                            <div id="cancelDonutChart" class="w-[180px] h-[180px] ml-4"></div>
                             <div class="flex-1 space-y-4">
                                 <div class="flex items-center justify-between">
                                     <div class="flex items-center space-x-2">
@@ -728,78 +753,78 @@
             </div>
         </main>
     </div>
-    <div id="cikisModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-30 hidden backdrop-blur-sm hidden" style="backdrop-filter: blur(10px);">
+    <div id="cikisModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-40 hidden">
         <div class="bg-white rounded-lg shadow-lg p-8 flex flex-col items-center min-w-[320px]">
             <div class="text-lg font-semibold mb-4 text-[#121212]">Çıkış yapmak istiyor musunuz?</div>
             <div class="flex gap-4 mt-2">
                 <button id="cikisVazgecBtn" class="px-6 py-2 bg-gray-200 text-[#121212] rounded-lg font-semibold hover:bg-gray-300 transition">Vazgeç</button>
                 <button id="cikisOnayBtn" class="px-6 py-2 bg-red-600 text-white rounded-lg font-semibold hover:bg-red-700 transition">Çıkış Yap</button>
-
+                
             </div>
         </div>
     </div>
-
+    
     <script>
-        // Mobile sidebar functionality
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const sidebar = document.getElementById('sidebar');
-        const mobileOverlay = document.getElementById('mobileOverlay');
-        const closeSidebarBtn = document.getElementById('closeSidebarBtn');
+    // Mobile sidebar functionality
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const sidebar = document.getElementById('sidebar');
+    const mobileOverlay = document.getElementById('mobileOverlay');
+    const closeSidebarBtn = document.getElementById('closeSidebarBtn');
 
-        function openSidebar() {
-            sidebar.classList.remove('-translate-x-full');
-            mobileOverlay.classList.remove('hidden');
-            document.body.style.overflow = 'hidden';
-        }
+    function openSidebar() {
+        sidebar.classList.remove('-translate-x-full');
+        mobileOverlay.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+    }
 
-        function closeSidebar() {
-            sidebar.classList.add('-translate-x-full');
-            mobileOverlay.classList.add('hidden');
-            document.body.style.overflow = '';
-        }
+    function closeSidebar() {
+        sidebar.classList.add('-translate-x-full');
+        mobileOverlay.classList.add('hidden');
+        document.body.style.overflow = '';
+    }
 
-        if (mobileMenuBtn) {
-            mobileMenuBtn.addEventListener('click', openSidebar);
-        }
+    if (mobileMenuBtn) {
+        mobileMenuBtn.addEventListener('click', openSidebar);
+    }
 
-        if (closeSidebarBtn) {
-            closeSidebarBtn.addEventListener('click', closeSidebar);
-        }
+    if (closeSidebarBtn) {
+        closeSidebarBtn.addEventListener('click', closeSidebar);
+    }
 
-        if (mobileOverlay) {
-            mobileOverlay.addEventListener('click', closeSidebar);
-        }
+    if (mobileOverlay) {
+        mobileOverlay.addEventListener('click', closeSidebar);
+    }
 
-        // Close sidebar when clicking nav links on mobile
-        const navLinks = sidebar.querySelectorAll('nav a');
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                if (window.innerWidth < 1024) {
-                    closeSidebar();
-                }
-            });
+    // Close sidebar when clicking nav links on mobile
+    const navLinks = sidebar.querySelectorAll('nav a');
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            if (window.innerWidth < 1024) {
+                closeSidebar();
+            }
         });
+    });
 
-        // Çıkış butonuna basınca modalı aç
-        const cikisBtn = document.getElementById('cikisBtn');
-        const cikisModal = document.getElementById('cikisModal');
-        const cikisOnayBtn = document.getElementById('cikisOnayBtn');
-        const cikisVazgecBtn = document.getElementById('cikisVazgecBtn');
-        if (cikisBtn && cikisModal) {
-            cikisBtn.onclick = function() {
-                cikisModal.classList.remove('hidden');
-            };
-        }
-        if (cikisVazgecBtn && cikisModal) {
-            cikisVazgecBtn.onclick = function() {
-                cikisModal.classList.add('hidden');
-            };
-        }
-        if (cikisOnayBtn) {
-            cikisOnayBtn.onclick = function() {
-                window.close();
-            };
-        }
+    // Çıkış butonuna basınca modalı aç
+    const cikisBtn = document.getElementById('cikisBtn');
+    const cikisModal = document.getElementById('cikisModal');
+    const cikisOnayBtn = document.getElementById('cikisOnayBtn');
+    const cikisVazgecBtn = document.getElementById('cikisVazgecBtn');
+    if (cikisBtn && cikisModal) {
+        cikisBtn.onclick = function() {
+            cikisModal.classList.remove('hidden');
+        };
+    }
+    if (cikisVazgecBtn && cikisModal) {
+        cikisVazgecBtn.onclick = function() {
+            cikisModal.classList.add('hidden');
+        };
+    }
+    if (cikisOnayBtn) {
+        cikisOnayBtn.onclick = function() {
+            window.close();
+        };
+    }
     </script>
 
     <script>
@@ -844,7 +869,7 @@
     </script>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const usageChartElement1 = document.getElementById('viewsChart2');
             if (usageChartElement1) {
                 const usageChart1 = echarts.init(usageChartElement1);
@@ -896,24 +921,26 @@
                             }
                         }
                     },
-                    series: [{
-                        name: 'Psikolog Görüşmeleri',
-                        type: 'bar',
-                        data: [
-                            13000,
-                            16000,
-                            5000,
-                            15000,
-                            11000,
-                            14000,
-                            21000
-                        ],
-                        barWidth: '20%',
-                        itemStyle: {
-                            color: '#7B8FB0',
-                            borderRadius: [4, 4, 0, 0]
+                    series: [
+                        {
+                            name: 'Psikolog Görüşmeleri',
+                            type: 'bar',
+                            data: [
+                                13000,
+                                16000,
+                                5000,
+                                15000,
+                                11000,
+                                14000,
+                                21000
+                            ],
+                            barWidth: '20%',
+                            itemStyle: {
+                                color: '#7B8FB0',
+                                borderRadius: [4, 4, 0, 0]
+                            }
                         }
-                    }]
+                    ]
                 });
 
                 window.addEventListener('resize', () => usageChart1.resize());
@@ -930,14 +957,11 @@
                         backgroundColor: 'rgba(255, 255, 255, 0.95)',
                         borderColor: '#E5E7EB',
                         borderWidth: 1,
-                        position: 'inside',
-                        //confine: true,
-                        extraCssText: 'z-index: 9999; position: inside;',
                         textStyle: {
                             color: '#1F2937',
                             fontSize: 14
                         },
-                        formatter: function(params) {
+                        formatter: function (params) {
                             return `<div style="padding: 8px;">
                                 <div style="font-weight: 600; margin-bottom: 4px;">${
                                 params.name
@@ -959,55 +983,59 @@
                     legend: {
                         show: false
                     },
-                    series: [{
-                        name: 'İptal Durumları',
-                        type: 'pie',
-                        radius: [
-                            '45%', '85%'
-                        ],
-                        center: [
-                            '50%', '50%'
-                        ],
-                        avoidLabelOverlap: false,
-                        itemStyle: {
-                            borderRadius: 8,
-                            borderColor: '#fff',
-                            borderWidth: 2
-                        },
-                        label: {
-                            show: false
-                        },
-                        emphasis: {
+                    series: [
+                        {
+                            name: 'İptal Durumları',
+                            type: 'pie',
+                            radius: [
+                                '45%', '85%'
+                            ],
+                            center: [
+                                '50%', '50%'
+                            ],
+                            avoidLabelOverlap: false,
+                            itemStyle: {
+                                borderRadius: 8,
+                                borderColor: '#fff',
+                                borderWidth: 2
+                            },
                             label: {
                                 show: false
                             },
-                            itemStyle: {
-                                shadowBlur: 10,
-                                shadowOffsetX: 0,
-                                shadowColor: 'rgba(0, 0, 0, 0.5)'
-                            }
-                        },
-                        data: [{
-                            value: 18,
-                            name: 'Kullanıcı Kaynaklı',
-                            itemStyle: {
-                                color: '#7B8FB0'
-                            }
-                        }, {
-                            value: 2,
-                            name: 'HCP Kaynaklı',
-                            itemStyle: {
-                                color: '#394355'
-                            }
-                        }]
-                    }]
+                            emphasis: {
+                                label: {
+                                    show: false
+                                },
+                                itemStyle: {
+                                    shadowBlur: 10,
+                                    shadowOffsetX: 0,
+                                    shadowColor: 'rgba(0, 0, 0, 0.5)'
+                                }
+                            },
+                            data: [
+                                {
+                                    value: 18,
+                                    name: 'Kullanıcı Kaynaklı',
+                                    itemStyle: {
+                                        color: '#7B8FB0'
+                                    }
+                                }, {
+                                    value: 2,
+                                    name: 'HCP Kaynaklı',
+                                    itemStyle: {
+                                        color: '#394355'
+                                    }
+                                }
+                            ]
+                        }
+                    ]
                 };
                 cancelDonutChart.setOption(cancelDonutOption);
             }
         });
     </script>
     <script id="satisfaction-script">
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             function updateSatisfaction(button, rate) {
                 try {
                     document.querySelectorAll('.satisfaction-btn').forEach(btn => {
@@ -1073,7 +1101,7 @@
     </script>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
 
 
             const usageChartElement = document.getElementById('usageChart');
@@ -1110,24 +1138,8 @@
                             'Mart'
                         ],
                         axisLabel: {
-                            color: '#A0B2CD',
-                            fontSize: 12,
-                            fontWeight: 'regular',
-                            fontFamily: 'Poppins, sans-serif',
-                            formatter: function(value, index) {
-                                if (value === 'Mart') {
-                                    return '{a|' + value + '}';
-                                }
-                                return value;
-                            },
-                            rich: {
-                                a: {
-                                    color: '#121212',
-                                    fontSize: 12,
-                                    fontWeight: 600,
-                                    fontFamily: 'Poppins, sans-serif'
-                                }
-                            }
+                            color: '#6B7280',
+                            fontSize: 13
                         },
                         axisTick: {
                             show: false
@@ -1143,7 +1155,7 @@
                         axisLabel: {
                             color: '#6B7280',
                             fontSize: 13,
-                            formatter: function(value) {
+                            formatter: function (value) {
                                 return value >= 1000 ? value / 1000 + 'k' : value;
                             }
                         },
@@ -1153,27 +1165,29 @@
                             }
                         }
                     },
-                    series: [{
-                        name: 'Görüşme Sayısı',
-                        type: 'bar',
-                        data: [
-                            15000,
-                            18000,
-                            5000,
-                            16000,
-                            12000,
-                            15000,
-                            20000
-                        ],
-                        barWidth: '25%',
-                        itemStyle: {
-                            color: '#7B8FB0',
-                            borderRadius: [4, 4, 0, 0]
+                    series: [
+                        {
+                            name: 'Görüşme Sayısı',
+                            type: 'bar',
+                            data: [
+                                15000,
+                                18000,
+                                5000,
+                                16000,
+                                12000,
+                                15000,
+                                20000
+                            ],
+                            barWidth: '25%',
+                            itemStyle: {
+                                color: '#7B8FB0',
+                                borderRadius: [4, 4, 0, 0]
+                            }
                         }
-                    }]
+                    ]
                 };
                 usageChart.setOption(usageOption);
-                window.addEventListener('resize', function() {
+                window.addEventListener('resize', function () {
                     usageChart.resize();
                 });
             }
@@ -1196,7 +1210,7 @@
                         color: '#1F2937',
                         fontSize: 14
                     },
-                    formatter: function(params) {
+                    formatter: function (params) {
                         return `<div style="padding: 8px;">
         <div style="font-weight: 600; margin-bottom: 4px;">${
                             params.name
@@ -1218,72 +1232,79 @@
                 legend: {
                     show: false
                 },
-                series: [{
-                    name: 'Tamamlanan Görüşme Oranı',
-                    type: 'pie',
-                    radius: [
-                        '40%', '70%'
-                    ],
-                    center: [
-                        '50%', '50%'
-                    ],
-                    avoidLabelOverlap: false,
-                    itemStyle: {
-                        borderRadius: 8,
-                        borderColor: '#fff',
-                        borderWidth: 2
-                    },
-                    label: {
-                        show: false
-                    },
-                    emphasis: {
+                series: [
+                    {
+                        name: 'Tamamlanan Görüşme Oranı',
+                        type: 'pie',
+                        radius: [
+                            '45%', '80%'
+                        ],
+                        center: [
+                            '50%', '50%'
+                        ],
+                        avoidLabelOverlap: false,
+                        itemStyle: {
+                            borderRadius: 8,
+                            borderColor: '#fff',
+                            borderWidth: 2
+                        },
                         label: {
                             show: false
                         },
-                        itemStyle: {
-                            shadowBlur: 10,
-                            shadowOffsetX: 0,
-                            shadowColor: 'rgba(0, 0, 0, 0.5)'
-                        }
-                    },
-                    data: [{
-                        value: 200,
-                        name: 'Mental Sağlık',
-                        itemStyle: {
-                            color: '#FD7700'
-                        }
-                    }, {
-                        value: 30,
-                        name: 'Beslenme ve Diyet',
-                        itemStyle: {
-                            color: '#2D9C63'
-                        }
-                    }, {
-                        value: 30,
-                        name: 'Doktor Hizmetleri',
-                        itemStyle: {
-                            color: '#1645DE'
-                        }
-                    }, {
-                        value: 30,
-                        name: 'Doğum Koçu',
-                        itemStyle: {
-                            color: '#19B2A7'
-                        }
-                    }, {
-                        value: 30,
-                        name: 'Emzirme Danışmanı',
-                        itemStyle: {
-                            color: '#7853E1'
-                        }
-                    }, {
-                        value: 30,
-                        name: 'Online Fitness ve Yoga Danışmanlığı',
-                        itemStyle: {
-                            color: '#E45241'
-                        }
-                    }]
-                }]
+                        emphasis: {
+                            label: {
+                                show: false
+                            },
+                            itemStyle: {
+                                shadowBlur: 10,
+                                shadowOffsetX: 0,
+                                shadowColor: 'rgba(0, 0, 0, 0.5)'
+                            }
+                        },
+                        data: [
+                            {
+                                value: 200,
+                                name: 'Mental Sağlık',
+                                itemStyle: {
+                                    color: '#FD7700'
+                                }
+                            },
+                            {
+                                value: 30,
+                                name: 'Beslenme ve Diyet',
+                                itemStyle: {
+                                    color: '#2D9C63'
+                                }
+                            },
+                            {
+                                value: 30,
+                                name: 'Doktor Hizmetleri',
+                                itemStyle: {
+                                    color: '#1645DE'
+                                }
+                            },
+                            {
+                                value: 30,
+                                name: 'Doğum Koçu',
+                                itemStyle: {
+                                    color: '#19B2A7'
+                                }
+                            }, {
+                                value: 30,
+                                name: 'Emzirme Danışmanı',
+                                itemStyle: {
+                                    color: '#7853E1'
+                                }
+                            }, {
+                                value: 30,
+                                name: 'Online Fitness ve Yoga Danışmanlığı',
+                                itemStyle: {
+                                    color: '#E45241'
+                                }
+                            }
+                        ]
+                    }
+                ]
             };
             donutChart.setOption(donutOption);
         }
@@ -1324,716 +1345,248 @@
         // Farklı kombinasyonlar için veri setleri
         const chartData = {
             'Tümü_Tümü_Tümü': {
-                kullanici: 450,
-                aktifKullanici: 350,
-                toplamHak: 2450,
-                kullanilanHak: 350,
-                donutData: [{
-                    value: 200,
-                    name: 'Mental Sağlık',
-                    color: '#FD7700'
-                }, {
-                    value: 30,
-                    name: 'Beslenme ve Diyet',
-                    color: '#2D9C63'
-                }, {
-                    value: 30,
-                    name: 'Doktor Hizmetleri',
-                    color: '#1645DE'
-                }, {
-                    value: 30,
-                    name: 'Doğum Koçu',
-                    color: '#19B2A7'
-                }, {
-                    value: 30,
-                    name: 'Emzirme Danışmanı',
-                    color: '#7853E1'
-                }, {
-                    value: 30,
-                    name: 'Online Fitness ve Yoga Danışmanlığı',
-                    color: '#E45241'
-                }],
+                kullanici: 450, aktifKullanici: 350, toplamHak: 2450, kullanilanHak: 350,
+                donutData: [
+                    {value: 200, name: 'Mental Sağlık', color: '#FD7700'},
+                    {value: 30, name: 'Beslenme ve Diyet', color: '#2D9C63'},
+                    {value: 30, name: 'Doktor Hizmetleri', color: '#1645DE'},
+                    {value: 30, name: 'Doğum Koçu', color: '#19B2A7'},
+                    {value: 30, name: 'Emzirme Danışmanı', color: '#7853E1'},
+                    {value: 30, name: 'Online Fitness ve Yoga Danışmanlığı', color: '#E45241'}
+                ],
                 barData: [15000, 18000, 5000, 16000, 12000, 15000, 20000],
-                cancelData: [{
-                    value: 18,
-                    name: 'Kullanıcı Kaynaklı'
-                }, {
-                    value: 2,
-                    name: 'HCP Kaynaklı'
-                }]
+                cancelData: [{value: 18, name: 'Kullanıcı Kaynaklı'}, {value: 2, name: 'HCP Kaynaklı'}]
             },
             'İstanbul_Tümü_Tümü': {
-                kullanici: 180,
-                aktifKullanici: 140,
-                toplamHak: 980,
-                kullanilanHak: 140,
-                donutData: [{
-                    value: 50,
-                    name: 'Mental Sağlık',
-                    color: '#FD7700'
-                }, {
-                    value: 35,
-                    name: 'Beslenme ve Diyet',
-                    color: '#2D9C63'
-                }, {
-                    value: 25,
-                    name: 'Doktor Hizmetleri',
-                    color: '#1645DE'
-                }, {
-                    value: 15,
-                    name: 'Doğum Koçu',
-                    color: '#19B2A7'
-                }, {
-                    value: 10,
-                    name: 'Emzirme Danışmanı',
-                    color: '#7853E1'
-                }, {
-                    value: 5,
-                    name: 'Online Fitness ve Yoga Danışmanlığı',
-                    color: '#E45241'
-                }],
+                kullanici: 180, aktifKullanici: 140, toplamHak: 980, kullanilanHak: 140,
+                donutData: [
+                    {value: 50, name: 'Mental Sağlık', color: '#FD7700'},
+                    {value: 35, name: 'Beslenme ve Diyet', color: '#2D9C63'},
+                    {value: 25, name: 'Doktor Hizmetleri', color: '#1645DE'},
+                    {value: 15, name: 'Doğum Koçu', color: '#19B2A7'},
+                    {value: 10, name: 'Emzirme Danışmanı', color: '#7853E1'},
+                    {value: 5, name: 'Online Fitness ve Yoga Danışmanlığı', color: '#E45241'}
+                ],
                 barData: [6000, 7200, 2000, 6400, 4800, 6000, 8000],
-                cancelData: [{
-                    value: 7,
-                    name: 'Kullanıcı Kaynaklı'
-                }, {
-                    value: 1,
-                    name: 'HCP Kaynaklı'
-                }]
+                cancelData: [{value: 7, name: 'Kullanıcı Kaynaklı'}, {value: 1, name: 'HCP Kaynaklı'}]
             },
             'Ankara_Tümü_Tümü': {
-                kullanici: 135,
-                aktifKullanici: 105,
-                toplamHak: 735,
-                kullanilanHak: 105,
-                donutData: [{
-                    value: 30,
-                    name: 'Mental Sağlık',
-                    color: '#FD7700'
-                }, {
-                    value: 15,
-                    name: 'Beslenme ve Diyet',
-                    color: '#2D9C63'
-                }, {
-                    value: 40,
-                    name: 'Doktor Hizmetleri',
-                    color: '#1645DE'
-                }, {
-                    value: 25,
-                    name: 'Doğum Koçu',
-                    color: '#19B2A7'
-                }, {
-                    value: 20,
-                    name: 'Emzirme Danışmanı',
-                    color: '#7853E1'
-                }, {
-                    value: 10,
-                    name: 'Online Fitness ve Yoga Danışmanlığı',
-                    color: '#E45241'
-                }],
+                kullanici: 135, aktifKullanici: 105, toplamHak: 735, kullanilanHak: 105,
+                donutData: [
+                    {value: 30, name: 'Mental Sağlık', color: '#FD7700'},
+                    {value: 15, name: 'Beslenme ve Diyet', color: '#2D9C63'},
+                    {value: 40, name: 'Doktor Hizmetleri', color: '#1645DE'},
+                    {value: 25, name: 'Doğum Koçu', color: '#19B2A7'},
+                    {value: 20, name: 'Emzirme Danışmanı', color: '#7853E1'},
+                    {value: 10, name: 'Online Fitness ve Yoga Danışmanlığı', color: '#E45241'}
+                ],
                 barData: [4500, 5400, 1500, 4800, 3600, 4500, 6000],
-                cancelData: [{
-                    value: 6,
-                    name: 'Kullanıcı Kaynaklı'
-                }, {
-                    value: 1,
-                    name: 'HCP Kaynaklı'
-                }]
+                cancelData: [{value: 6, name: 'Kullanıcı Kaynaklı'}, {value: 1, name: 'HCP Kaynaklı'}]
             },
             'İzmir_Tümü_Tümü': {
-                kullanici: 135,
-                aktifKullanici: 105,
-                toplamHak: 735,
-                kullanilanHak: 105,
-                donutData: [{
-                    value: 25,
-                    name: 'Mental Sağlık',
-                    color: '#FD7700'
-                }, {
-                    value: 20,
-                    name: 'Beslenme ve Diyet',
-                    color: '#2D9C63'
-                }, {
-                    value: 15,
-                    name: 'Doktor Hizmetleri',
-                    color: '#1645DE'
-                }, {
-                    value: 35,
-                    name: 'Doğum Koçu',
-                    color: '#19B2A7'
-                }, {
-                    value: 30,
-                    name: 'Emzirme Danışmanı',
-                    color: '#7853E1'
-                }, {
-                    value: 25,
-                    name: 'Online Fitness ve Yoga Danışmanlığı',
-                    color: '#E45241'
-                }],
+                kullanici: 135, aktifKullanici: 105, toplamHak: 735, kullanilanHak: 105,
+                donutData: [
+                    {value: 25, name: 'Mental Sağlık', color: '#FD7700'},
+                    {value: 20, name: 'Beslenme ve Diyet', color: '#2D9C63'},
+                    {value: 15, name: 'Doktor Hizmetleri', color: '#1645DE'},
+                    {value: 35, name: 'Doğum Koçu', color: '#19B2A7'},
+                    {value: 30, name: 'Emzirme Danışmanı', color: '#7853E1'},
+                    {value: 25, name: 'Online Fitness ve Yoga Danışmanlığı', color: '#E45241'}
+                ],
                 barData: [4500, 5400, 1500, 4800, 3600, 4500, 6000],
-                cancelData: [{
-                    value: 5,
-                    name: 'Kullanıcı Kaynaklı'
-                }, {
-                    value: 0,
-                    name: 'HCP Kaynaklı'
-                }],
+                cancelData: [{value: 5, name: 'Kullanıcı Kaynaklı'}, {value: 0, name: 'HCP Kaynaklı'}],
                 toplamGorusme: 825,
                 iptalGorusme: 5
             },
             // Ekip seçimlerine göre veriler
             'Tümü_Tümü_Tasarım Ekibi': {
-                kullanici: 150,
-                aktifKullanici: 117,
-                toplamHak: 817,
-                kullanilanHak: 117,
-                donutData: [{
-                    value: 80,
-                    name: 'Mental Sağlık',
-                    color: '#FD7700'
-                }, {
-                    value: 5,
-                    name: 'Beslenme ve Diyet',
-                    color: '#2D9C63'
-                }, {
-                    value: 8,
-                    name: 'Doktor Hizmetleri',
-                    color: '#1645DE'
-                }, {
-                    value: 3,
-                    name: 'Doğum Koçu',
-                    color: '#19B2A7'
-                }, {
-                    value: 2,
-                    name: 'Emzirme Danışmanı',
-                    color: '#7853E1'
-                }, {
-                    value: 22,
-                    name: 'Online Fitness ve Yoga Danışmanlığı',
-                    color: '#E45241'
-                }],
+                kullanici: 150, aktifKullanici: 117, toplamHak: 817, kullanilanHak: 117,
+                donutData: [
+                    {value: 80, name: 'Mental Sağlık', color: '#FD7700'},
+                    {value: 5, name: 'Beslenme ve Diyet', color: '#2D9C63'},
+                    {value: 8, name: 'Doktor Hizmetleri', color: '#1645DE'},
+                    {value: 3, name: 'Doğum Koçu', color: '#19B2A7'},
+                    {value: 2, name: 'Emzirme Danışmanı', color: '#7853E1'},
+                    {value: 22, name: 'Online Fitness ve Yoga Danışmanlığı', color: '#E45241'}
+                ],
                 barData: [5000, 6000, 1667, 5333, 4000, 5000, 6667],
-                cancelData: [{
-                    value: 6,
-                    name: 'Kullanıcı Kaynaklı'
-                }, {
-                    value: 1,
-                    name: 'HCP Kaynaklı'
-                }]
+                cancelData: [{value: 6, name: 'Kullanıcı Kaynaklı'}, {value: 1, name: 'HCP Kaynaklı'}]
             },
             'Tümü_Tümü_Yazılım Ekibi': {
-                kullanici: 150,
-                aktifKullanici: 117,
-                toplamHak: 817,
-                kullanilanHak: 117,
-                donutData: [{
-                    value: 85,
-                    name: 'Mental Sağlık',
-                    color: '#FD7700'
-                }, {
-                    value: 25,
-                    name: 'Beslenme ve Diyet',
-                    color: '#2D9C63'
-                }, {
-                    value: 15,
-                    name: 'Doktor Hizmetleri',
-                    color: '#1645DE'
-                }, {
-                    value: 5,
-                    name: 'Doğum Koçu',
-                    color: '#19B2A7'
-                }, {
-                    value: 3,
-                    name: 'Emzirme Danışmanı',
-                    color: '#7853E1'
-                }, {
-                    value: 7,
-                    name: 'Online Fitness ve Yoga Danışmanlığı',
-                    color: '#E45241'
-                }],
+                kullanici: 150, aktifKullanici: 117, toplamHak: 817, kullanilanHak: 117,
+                donutData: [
+                    {value: 85, name: 'Mental Sağlık', color: '#FD7700'},
+                    {value: 25, name: 'Beslenme ve Diyet', color: '#2D9C63'},
+                    {value: 15, name: 'Doktor Hizmetleri', color: '#1645DE'},
+                    {value: 5, name: 'Doğum Koçu', color: '#19B2A7'},
+                    {value: 3, name: 'Emzirme Danışmanı', color: '#7853E1'},
+                    {value: 7, name: 'Online Fitness ve Yoga Danışmanlığı', color: '#E45241'}
+                ],
                 barData: [5000, 6000, 1667, 5333, 4000, 5000, 6667],
-                cancelData: [{
-                    value: 6,
-                    name: 'Kullanıcı Kaynaklı'
-                }, {
-                    value: 1,
-                    name: 'HCP Kaynaklı'
-                }]
+                cancelData: [{value: 6, name: 'Kullanıcı Kaynaklı'}, {value: 1, name: 'HCP Kaynaklı'}]
             },
             'Tümü_Tümü_Satış Ekibi': {
-                kullanici: 150,
-                aktifKullanici: 116,
-                toplamHak: 816,
-                kullanilanHak: 116,
-                donutData: [{
-                    value: 45,
-                    name: 'Mental Sağlık',
-                    color: '#FD7700'
-                }, {
-                    value: 35,
-                    name: 'Beslenme ve Diyet',
-                    color: '#2D9C63'
-                }, {
-                    value: 30,
-                    name: 'Doktor Hizmetleri',
-                    color: '#1645DE'
-                }, {
-                    value: 15,
-                    name: 'Doğum Koçu',
-                    color: '#19B2A7'
-                }, {
-                    value: 10,
-                    name: 'Emzirme Danışmanı',
-                    color: '#7853E1'
-                }, {
-                    value: 25,
-                    name: 'Online Fitness ve Yoga Danışmanlığı',
-                    color: '#E45241'
-                }],
-
+                kullanici: 150, aktifKullanici: 116, toplamHak: 816, kullanilanHak: 116,
+                donutData: [
+                    {value: 45, name: 'Mental Sağlık', color: '#FD7700'},
+                    {value: 35, name: 'Beslenme ve Diyet', color: '#2D9C63'},
+                    {value: 30, name: 'Doktor Hizmetleri', color: '#1645DE'},
+                    {value: 15, name: 'Doğum Koçu', color: '#19B2A7'},
+                    {value: 10, name: 'Emzirme Danışmanı', color: '#7853E1'},
+                    {value: 25, name: 'Online Fitness ve Yoga Danışmanlığı', color: '#E45241'}
+                ],
+                
                 barData: [5000, 6000, 1667, 5333, 4000, 5000, 6667],
-                cancelData: [{
-                    value: 6,
-                    name: 'Kullanıcı Kaynaklı'
-                }, {
-                    value: 0,
-                    name: 'HCP Kaynaklı'
-                }]
+                cancelData: [{value: 6, name: 'Kullanıcı Kaynaklı'}, {value: 0, name: 'HCP Kaynaklı'}]
             },
             // Şehir + Ekip kombinasyonları
             'İstanbul_Tümü_Tasarım Ekibi': {
-                kullanici: 60,
-                aktifKullanici: 47,
-                toplamHak: 327,
-                kullanilanHak: 47,
-                donutData: [{
-                    value: 30,
-                    name: 'Mental Sağlık',
-                    color: '#FD7700'
-                }, {
-                    value: 8,
-                    name: 'Beslenme ve Diyet',
-                    color: '#2D9C63'
-                }, {
-                    value: 6,
-                    name: 'Doktor Hizmetleri',
-                    color: '#1645DE'
-                }, {
-                    value: 2,
-                    name: 'Doğum Koçu',
-                    color: '#19B2A7'
-                }, {
-                    value: 1,
-                    name: 'Emzirme Danışmanı',
-                    color: '#7853E1'
-                }, {
-                    value: 13,
-                    name: 'Online Fitness ve Yoga Danışmanlığı',
-                    color: '#E45241'
-                }],
+                kullanici: 60, aktifKullanici: 47, toplamHak: 327, kullanilanHak: 47,
+                donutData: [
+                    {value: 30, name: 'Mental Sağlık', color: '#FD7700'},
+                    {value: 8, name: 'Beslenme ve Diyet', color: '#2D9C63'},
+                    {value: 6, name: 'Doktor Hizmetleri', color: '#1645DE'},
+                    {value: 2, name: 'Doğum Koçu', color: '#19B2A7'},
+                    {value: 1, name: 'Emzirme Danışmanı', color: '#7853E1'},
+                    {value: 13, name: 'Online Fitness ve Yoga Danışmanlığı', color: '#E45241'}
+                ],
                 barData: [2000, 2400, 667, 2133, 1600, 2000, 2667],
-                cancelData: [{
-                    value: 3,
-                    name: 'Kullanıcı Kaynaklı'
-                }, {
-                    value: 0,
-                    name: 'HCP Kaynaklı'
-                }]
+                cancelData: [{value: 3, name: 'Kullanıcı Kaynaklı'}, {value: 0, name: 'HCP Kaynaklı'}]
             },
             // Bölge kombinasyonları
             'Tümü_Şişli_Tümü': {
-                kullanici: 90,
-                aktifKullanici: 70,
-                toplamHak: 490,
-                kullanilanHak: 70,
-                donutData: [{
-                    value: 20,
-                    name: 'Mental Sağlık',
-                    color: '#FD7700'
-                }, {
-                    value: 15,
-                    name: 'Beslenme ve Diyet',
-                    color: '#2D9C63'
-                }, {
-                    value: 35,
-                    name: 'Doktor Hizmetleri',
-                    color: '#1645DE'
-                }, {
-                    value: 18,
-                    name: 'Doğum Koçu',
-                    color: '#19B2A7'
-                }, {
-                    value: 12,
-                    name: 'Emzirme Danışmanı',
-                    color: '#7853E1'
-                }, {
-                    value: 10,
-                    name: 'Online Fitness ve Yoga Danışmanlığı',
-                    color: '#E45241'
-                }],
+                kullanici: 90, aktifKullanici: 70, toplamHak: 490, kullanilanHak: 70,
+                donutData: [
+                    {value: 20, name: 'Mental Sağlık', color: '#FD7700'},
+                    {value: 15, name: 'Beslenme ve Diyet', color: '#2D9C63'},
+                    {value: 35, name: 'Doktor Hizmetleri', color: '#1645DE'},
+                    {value: 18, name: 'Doğum Koçu', color: '#19B2A7'},
+                    {value: 12, name: 'Emzirme Danışmanı', color: '#7853E1'},
+                    {value: 10, name: 'Online Fitness ve Yoga Danışmanlığı', color: '#E45241'}
+                ],
                 barData: [3000, 3600, 1000, 3200, 2400, 3000, 4000],
-                cancelData: [{
-                    value: 4,
-                    name: 'Kullanıcı Kaynaklı'
-                }, {
-                    value: 1,
-                    name: 'HCP Kaynaklı'
-                }]
+                cancelData: [{value: 4, name: 'Kullanıcı Kaynaklı'}, {value: 1, name: 'HCP Kaynaklı'}]
             },
             'İstanbul_Beykoz_Tümü': {
-                kullanici: 150,
-                aktifKullanici: 116,
-                toplamHak: 816,
-                kullanilanHak: 116,
-                donutData: [{
-                    value: 45,
-                    name: 'Mental Sağlık',
-                    color: '#FD7700'
-                }, {
-                    value: 35,
-                    name: 'Beslenme ve Diyet',
-                    color: '#2D9C63'
-                }, {
-                    value: 30,
-                    name: 'Doktor Hizmetleri',
-                    color: '#1645DE'
-                }, {
-                    value: 15,
-                    name: 'Doğum Koçu',
-                    color: '#19B2A7'
-                }, {
-                    value: 10,
-                    name: 'Emzirme Danışmanı',
-                    color: '#7853E1'
-                }, {
-                    value: 25,
-                    name: 'Online Fitness ve Yoga Danışmanlığı',
-                    color: '#E45241'
-                }],
-
+                kullanici: 150, aktifKullanici: 116, toplamHak: 816, kullanilanHak: 116,
+                donutData: [
+                    {value: 45, name: 'Mental Sağlık', color: '#FD7700'},
+                    {value: 35, name: 'Beslenme ve Diyet', color: '#2D9C63'},
+                    {value: 30, name: 'Doktor Hizmetleri', color: '#1645DE'},
+                    {value: 15, name: 'Doğum Koçu', color: '#19B2A7'},
+                    {value: 10, name: 'Emzirme Danışmanı', color: '#7853E1'},
+                    {value: 25, name: 'Online Fitness ve Yoga Danışmanlığı', color: '#E45241'}
+                ],
+                
                 barData: [5000, 6000, 1667, 5333, 4000, 5000, 6667],
-                cancelData: [{
-                    value: 6,
-                    name: 'Kullanıcı Kaynaklı'
-                }, {
-                    value: 0,
-                    name: 'HCP Kaynaklı'
-                }]
+                cancelData: [{value: 6, name: 'Kullanıcı Kaynaklı'}, {value: 0, name: 'HCP Kaynaklı'}]
             },
             'İstanbul_Ümraniye_Tümü': {
-                kullanici: 90,
-                aktifKullanici: 70,
-                toplamHak: 490,
-                kullanilanHak: 70,
-                donutData: [{
-                    value: 20,
-                    name: 'Mental Sağlık',
-                    color: '#FD7700'
-                }, {
-                    value: 15,
-                    name: 'Beslenme ve Diyet',
-                    color: '#2D9C63'
-                }, {
-                    value: 35,
-                    name: 'Doktor Hizmetleri',
-                    color: '#1645DE'
-                }, {
-                    value: 18,
-                    name: 'Doğum Koçu',
-                    color: '#19B2A7'
-                }, {
-                    value: 12,
-                    name: 'Emzirme Danışmanı',
-                    color: '#7853E1'
-                }, {
-                    value: 10,
-                    name: 'Online Fitness ve Yoga Danışmanlığı',
-                    color: '#E45241'
-                }],
+                kullanici: 90, aktifKullanici: 70, toplamHak: 490, kullanilanHak: 70,
+                donutData: [
+                    {value: 20, name: 'Mental Sağlık', color: '#FD7700'},
+                    {value: 15, name: 'Beslenme ve Diyet', color: '#2D9C63'},
+                    {value: 35, name: 'Doktor Hizmetleri', color: '#1645DE'},
+                    {value: 18, name: 'Doğum Koçu', color: '#19B2A7'},
+                    {value: 12, name: 'Emzirme Danışmanı', color: '#7853E1'},
+                    {value: 10, name: 'Online Fitness ve Yoga Danışmanlığı', color: '#E45241'}
+                ],
                 barData: [3000, 3600, 1000, 3200, 2400, 3000, 4000],
-                cancelData: [{
-                    value: 4,
-                    name: 'Kullanıcı Kaynaklı'
-                }, {
-                    value: 1,
-                    name: 'HCP Kaynaklı'
-                }]
+                cancelData: [{value: 4, name: 'Kullanıcı Kaynaklı'}, {value: 1, name: 'HCP Kaynaklı'}]
             },
             'İstanbul_Şişli_Tümü': {
-                kullanici: 60,
-                aktifKullanici: 47,
-                toplamHak: 327,
-                kullanilanHak: 47,
-                donutData: [{
-                    value: 30,
-                    name: 'Mental Sağlık',
-                    color: '#FD7700'
-                }, {
-                    value: 8,
-                    name: 'Beslenme ve Diyet',
-                    color: '#2D9C63'
-                }, {
-                    value: 6,
-                    name: 'Doktor Hizmetleri',
-                    color: '#1645DE'
-                }, {
-                    value: 2,
-                    name: 'Doğum Koçu',
-                    color: '#19B2A7'
-                }, {
-                    value: 1,
-                    name: 'Emzirme Danışmanı',
-                    color: '#7853E1'
-                }, {
-                    value: 13,
-                    name: 'Online Fitness ve Yoga Danışmanlığı',
-                    color: '#E45241'
-                }],
+                kullanici: 60, aktifKullanici: 47, toplamHak: 327, kullanilanHak: 47,
+                donutData: [
+                    {value: 30, name: 'Mental Sağlık', color: '#FD7700'},
+                    {value: 8, name: 'Beslenme ve Diyet', color: '#2D9C63'},
+                    {value: 6, name: 'Doktor Hizmetleri', color: '#1645DE'},
+                    {value: 2, name: 'Doğum Koçu', color: '#19B2A7'},
+                    {value: 1, name: 'Emzirme Danışmanı', color: '#7853E1'},
+                    {value: 13, name: 'Online Fitness ve Yoga Danışmanlığı', color: '#E45241'}
+                ],
                 barData: [2000, 2400, 667, 2133, 1600, 2000, 2667],
-                cancelData: [{
-                    value: 3,
-                    name: 'Kullanıcı Kaynaklı'
-                }, {
-                    value: 0,
-                    name: 'HCP Kaynaklı'
-                }]
+                cancelData: [{value: 3, name: 'Kullanıcı Kaynaklı'}, {value: 0, name: 'HCP Kaynaklı'}]
             },
             'İzmir_Tümü_Yazılım Ekibi': {
-                kullanici: 150,
-                aktifKullanici: 116,
-                toplamHak: 816,
-                kullanilanHak: 116,
-                donutData: [{
-                    value: 45,
-                    name: 'Mental Sağlık',
-                    color: '#FD7700'
-                }, {
-                    value: 35,
-                    name: 'Beslenme ve Diyet',
-                    color: '#2D9C63'
-                }, {
-                    value: 30,
-                    name: 'Doktor Hizmetleri',
-                    color: '#1645DE'
-                }, {
-                    value: 15,
-                    name: 'Doğum Koçu',
-                    color: '#19B2A7'
-                }, {
-                    value: 10,
-                    name: 'Emzirme Danışmanı',
-                    color: '#7853E1'
-                }, {
-                    value: 25,
-                    name: 'Online Fitness ve Yoga Danışmanlığı',
-                    color: '#E45241'
-                }],
-
+                kullanici: 150, aktifKullanici: 116, toplamHak: 816, kullanilanHak: 116,
+                donutData: [
+                    {value: 45, name: 'Mental Sağlık', color: '#FD7700'},
+                    {value: 35, name: 'Beslenme ve Diyet', color: '#2D9C63'},
+                    {value: 30, name: 'Doktor Hizmetleri', color: '#1645DE'},
+                    {value: 15, name: 'Doğum Koçu', color: '#19B2A7'},
+                    {value: 10, name: 'Emzirme Danışmanı', color: '#7853E1'},
+                    {value: 25, name: 'Online Fitness ve Yoga Danışmanlığı', color: '#E45241'}
+                ],
+                
                 barData: [5000, 6000, 1667, 5333, 4000, 5000, 6667],
-                cancelData: [{
-                    value: 6,
-                    name: 'Kullanıcı Kaynaklı'
-                }, {
-                    value: 0,
-                    name: 'HCP Kaynaklı'
-                }]
+                cancelData: [{value: 6, name: 'Kullanıcı Kaynaklı'}, {value: 0, name: 'HCP Kaynaklı'}]
             },
-            'İzmir_Tümü_Satış Ekibi': {
-                kullanici: 90,
-                aktifKullanici: 70,
-                toplamHak: 490,
-                kullanilanHak: 70,
-                donutData: [{
-                    value: 20,
-                    name: 'Mental Sağlık',
-                    color: '#FD7700'
-                }, {
-                    value: 15,
-                    name: 'Beslenme ve Diyet',
-                    color: '#2D9C63'
-                }, {
-                    value: 35,
-                    name: 'Doktor Hizmetleri',
-                    color: '#1645DE'
-                }, {
-                    value: 18,
-                    name: 'Doğum Koçu',
-                    color: '#19B2A7'
-                }, {
-                    value: 12,
-                    name: 'Emzirme Danışmanı',
-                    color: '#7853E1'
-                }, {
-                    value: 10,
-                    name: 'Online Fitness ve Yoga Danışmanlığı',
-                    color: '#E45241'
-                }],
-                barData: [3000, 3600, 1000, 3200, 2400, 3000, 4000],
-                cancelData: [{
-                    value: 4,
-                    name: 'Kullanıcı Kaynaklı'
-                }, {
-                    value: 1,
-                    name: 'HCP Kaynaklı'
-                }]
-            },
-            'İzmir_Tümü_Tasarım Ekibi': {
-                kullanici: 60,
-                aktifKullanici: 47,
-                toplamHak: 327,
-                kullanilanHak: 47,
-                donutData: [{
-                    value: 30,
-                    name: 'Mental Sağlık',
-                    color: '#FD7700'
-                }, {
-                    value: 8,
-                    name: 'Beslenme ve Diyet',
-                    color: '#2D9C63'
-                }, {
-                    value: 6,
-                    name: 'Doktor Hizmetleri',
-                    color: '#1645DE'
-                }, {
-                    value: 2,
-                    name: 'Doğum Koçu',
-                    color: '#19B2A7'
-                }, {
-                    value: 1,
-                    name: 'Emzirme Danışmanı',
-                    color: '#7853E1'
-                }, {
-                    value: 13,
-                    name: 'Online Fitness ve Yoga Danışmanlığı',
-                    color: '#E45241'
-                }],
-                barData: [2000, 2400, 667, 2133, 1600, 2000, 2667],
-                cancelData: [{
-                    value: 3,
-                    name: 'Kullanıcı Kaynaklı'
-                }, {
-                    value: 0,
-                    name: 'HCP Kaynaklı'
-                }]
-            },
-            'Ankara_Tümü_Yazılım Ekibi': {
-                kullanici: 150,
-                aktifKullanici: 116,
-                toplamHak: 816,
-                kullanilanHak: 116,
-                donutData: [{
-                    value: 45,
-                    name: 'Mental Sağlık',
-                    color: '#FD7700'
-                }, {
-                    value: 35,
-                    name: 'Beslenme ve Diyet',
-                    color: '#2D9C63'
-                }, {
-                    value: 30,
-                    name: 'Doktor Hizmetleri',
-                    color: '#1645DE'
-                }, {
-                    value: 15,
-                    name: 'Doğum Koçu',
-                    color: '#19B2A7'
-                }, {
-                    value: 10,
-                    name: 'Emzirme Danışmanı',
-                    color: '#7853E1'
-                }, {
-                    value: 25,
-                    name: 'Online Fitness ve Yoga Danışmanlığı',
-                    color: '#E45241'
-                }],
-
+                'İzmir_Tümü_Satış Ekibi': {
+                    kullanici: 90, aktifKullanici: 70, toplamHak: 490, kullanilanHak: 70,
+                    donutData: [
+                        {value: 20, name: 'Mental Sağlık', color: '#FD7700'},
+                        {value: 15, name: 'Beslenme ve Diyet', color: '#2D9C63'},
+                        {value: 35, name: 'Doktor Hizmetleri', color: '#1645DE'},
+                        {value: 18, name: 'Doğum Koçu', color: '#19B2A7'},
+                        {value: 12, name: 'Emzirme Danışmanı', color: '#7853E1'},
+                        {value: 10, name: 'Online Fitness ve Yoga Danışmanlığı', color: '#E45241'}
+                    ],
+                    barData: [3000, 3600, 1000, 3200, 2400, 3000, 4000],
+                    cancelData: [{value: 4, name: 'Kullanıcı Kaynaklı'}, {value: 1, name: 'HCP Kaynaklı'}]
+                },
+                'İzmir_Tümü_Tasarım Ekibi': {
+                    kullanici: 60, aktifKullanici: 47, toplamHak: 327, kullanilanHak: 47,
+                    donutData: [
+                        {value: 30, name: 'Mental Sağlık', color: '#FD7700'},
+                        {value: 8, name: 'Beslenme ve Diyet', color: '#2D9C63'},
+                        {value: 6, name: 'Doktor Hizmetleri', color: '#1645DE'},
+                        {value: 2, name: 'Doğum Koçu', color: '#19B2A7'},
+                        {value: 1, name: 'Emzirme Danışmanı', color: '#7853E1'},
+                        {value: 13, name: 'Online Fitness ve Yoga Danışmanlığı', color: '#E45241'}
+                    ],
+                    barData: [2000, 2400, 667, 2133, 1600, 2000, 2667],
+                    cancelData: [{value: 3, name: 'Kullanıcı Kaynaklı'}, {value: 0, name: 'HCP Kaynaklı'}]
+                },
+                'Ankara_Tümü_Yazılım Ekibi': {
+                kullanici: 150, aktifKullanici: 116, toplamHak: 816, kullanilanHak: 116,
+                donutData: [
+                    {value: 45, name: 'Mental Sağlık', color: '#FD7700'},
+                    {value: 35, name: 'Beslenme ve Diyet', color: '#2D9C63'},
+                    {value: 30, name: 'Doktor Hizmetleri', color: '#1645DE'},
+                    {value: 15, name: 'Doğum Koçu', color: '#19B2A7'},
+                    {value: 10, name: 'Emzirme Danışmanı', color: '#7853E1'},
+                    {value: 25, name: 'Online Fitness ve Yoga Danışmanlığı', color: '#E45241'}
+                ],
+                
                 barData: [5000, 6000, 1667, 5333, 4000, 5000, 6667],
-                cancelData: [{
-                    value: 6,
-                    name: 'Kullanıcı Kaynaklı'
-                }, {
-                    value: 0,
-                    name: 'HCP Kaynaklı'
-                }]
+                cancelData: [{value: 6, name: 'Kullanıcı Kaynaklı'}, {value: 0, name: 'HCP Kaynaklı'}]
             },
-            'Ankara_Tümü_Satış Ekibi': {
-                kullanici: 90,
-                aktifKullanici: 70,
-                toplamHak: 490,
-                kullanilanHak: 70,
-                donutData: [{
-                    value: 20,
-                    name: 'Mental Sağlık',
-                    color: '#FD7700'
-                }, {
-                    value: 15,
-                    name: 'Beslenme ve Diyet',
-                    color: '#2D9C63'
-                }, {
-                    value: 35,
-                    name: 'Doktor Hizmetleri',
-                    color: '#1645DE'
-                }, {
-                    value: 18,
-                    name: 'Doğum Koçu',
-                    color: '#19B2A7'
-                }, {
-                    value: 12,
-                    name: 'Emzirme Danışmanı',
-                    color: '#7853E1'
-                }, {
-                    value: 10,
-                    name: 'Online Fitness ve Yoga Danışmanlığı',
-                    color: '#E45241'
-                }],
-                barData: [3000, 3600, 1000, 3200, 2400, 3000, 4000],
-                cancelData: [{
-                    value: 4,
-                    name: 'Kullanıcı Kaynaklı'
-                }, {
-                    value: 1,
-                    name: 'HCP Kaynaklı'
-                }]
-            },
-            'Ankara_Tümü_Tasarım Ekibi': {
-                kullanici: 60,
-                aktifKullanici: 47,
-                toplamHak: 327,
-                kullanilanHak: 47,
-                donutData: [{
-                    value: 30,
-                    name: 'Mental Sağlık',
-                    color: '#FD7700'
-                }, {
-                    value: 8,
-                    name: 'Beslenme ve Diyet',
-                    color: '#2D9C63'
-                }, {
-                    value: 6,
-                    name: 'Doktor Hizmetleri',
-                    color: '#1645DE'
-                }, {
-                    value: 2,
-                    name: 'Doğum Koçu',
-                    color: '#19B2A7'
-                }, {
-                    value: 1,
-                    name: 'Emzirme Danışmanı',
-                    color: '#7853E1'
-                }, {
-                    value: 13,
-                    name: 'Online Fitness ve Yoga Danışmanlığı',
-                    color: '#E45241'
-                }],
-                barData: [2000, 2400, 667, 2133, 1600, 2000, 2667],
-                cancelData: [{
-                    value: 3,
-                    name: 'Kullanıcı Kaynaklı'
-                }, {
-                    value: 0,
-                    name: 'HCP Kaynaklı'
-                }]
-            },
+                'Ankara_Tümü_Satış Ekibi': {
+                    kullanici: 90, aktifKullanici: 70, toplamHak: 490, kullanilanHak: 70,
+                    donutData: [
+                        {value: 20, name: 'Mental Sağlık', color: '#FD7700'},
+                        {value: 15, name: 'Beslenme ve Diyet', color: '#2D9C63'},
+                        {value: 35, name: 'Doktor Hizmetleri', color: '#1645DE'},
+                        {value: 18, name: 'Doğum Koçu', color: '#19B2A7'},
+                        {value: 12, name: 'Emzirme Danışmanı', color: '#7853E1'},
+                        {value: 10, name: 'Online Fitness ve Yoga Danışmanlığı', color: '#E45241'}
+                    ],
+                    barData: [3000, 3600, 1000, 3200, 2400, 3000, 4000],
+                    cancelData: [{value: 4, name: 'Kullanıcı Kaynaklı'}, {value: 1, name: 'HCP Kaynaklı'}]
+                },
+                'Ankara_Tümü_Tasarım Ekibi': {
+                    kullanici: 60, aktifKullanici: 47, toplamHak: 327, kullanilanHak: 47,
+                    donutData: [
+                        {value: 30, name: 'Mental Sağlık', color: '#FD7700'},
+                        {value: 8, name: 'Beslenme ve Diyet', color: '#2D9C63'},
+                        {value: 6, name: 'Doktor Hizmetleri', color: '#1645DE'},
+                        {value: 2, name: 'Doğum Koçu', color: '#19B2A7'},
+                        {value: 1, name: 'Emzirme Danışmanı', color: '#7853E1'},
+                        {value: 13, name: 'Online Fitness ve Yoga Danışmanlığı', color: '#E45241'}
+                    ],
+                    barData: [2000, 2400, 667, 2133, 1600, 2000, 2667],
+                    cancelData: [{value: 3, name: 'Kullanıcı Kaynaklı'}, {value: 0, name: 'HCP Kaynaklı'}]
+                },
         };
 
 
@@ -2050,7 +1603,7 @@
             const hcpSourcePercentageEl = document.getElementById('hcpSourcePercentage');
             const userSourceCountEl = document.getElementById('userSourceCount');
             const userSourcePercentageEl = document.getElementById('userSourcePercentage');
-
+            
             if (totalUsersEl) totalUsersEl.textContent = data.kullanici;
             if (activeUsersEl) activeUsersEl.textContent = data.aktifKullanici;
             if (totalRightsEl) totalRightsEl.textContent = data.toplamHak;
@@ -2073,13 +1626,9 @@
                             borderColor: '#fff',
                             borderWidth: 2
                         },
-                        label: {
-                            show: false
-                        },
+                        label: { show: false },
                         emphasis: {
-                            label: {
-                                show: false
-                            },
+                            label: { show: false },
                             itemStyle: {
                                 shadowBlur: 10,
                                 shadowOffsetX: 0,
@@ -2089,14 +1638,12 @@
                         data: donutData.map(item => ({
                             value: item.value,
                             name: item.name,
-                            itemStyle: {
-                                color: item.color
-                            }
+                            itemStyle: { color: item.color }
                         }))
                     }]
                 };
                 window.donutChart.setOption(newOption);
-
+                
                 // Legend değerlerini de güncelle
                 updateDonutLegend(donutData);
             }
@@ -2105,7 +1652,7 @@
         // Donut chart legend'ını güncelle
         function updateDonutLegend(donutData) {
             const total = donutData.reduce((sum, item) => sum + item.value, 0);
-
+            
             // Kategori adlarını ID'lere eşleştir
             const legendMap = {
                 'Mental Sağlık': 'mentalSaglik',
@@ -2115,7 +1662,7 @@
                 'Emzirme Danışmanı': 'emzirmeDanismani',
                 'Online Fitness ve Yoga Danışmanlığı': 'onlineFitness'
             };
-
+            
             donutData.forEach((item) => {
                 const elementId = legendMap[item.name];
                 if (elementId) {
@@ -2152,15 +1699,12 @@
         function updateCancelChart(cancelData) {
             const cancelChartElement = document.getElementById('cancelDonutChart');
             if (cancelChartElement && window.cancelDonutChart) {
-                const colors = {
-                    'Kullanıcı Kaynaklı': '#7B8FB0',
-                    'HCP Kaynaklı': '#394355'
-                };
+                const colors = {'Kullanıcı Kaynaklı': '#7B8FB0', 'HCP Kaynaklı': '#394355'};
                 const newOption = {
                     series: [{
                         name: 'İptal Durumları',
                         type: 'pie',
-                        radius: ['45%', '85%'],
+                        radius: ['35%', '65%'],
                         center: ['50%', '50%'],
                         avoidLabelOverlap: false,
                         itemStyle: {
@@ -2168,13 +1712,9 @@
                             borderColor: '#fff',
                             borderWidth: 2
                         },
-                        label: {
-                            show: false
-                        },
+                        label: { show: false },
                         emphasis: {
-                            label: {
-                                show: false
-                            },
+                            label: { show: false },
                             itemStyle: {
                                 shadowBlur: 10,
                                 shadowOffsetX: 0,
@@ -2184,9 +1724,7 @@
                         data: cancelData.map(item => ({
                             value: item.value,
                             name: item.name,
-                            itemStyle: {
-                                color: colors[item.name]
-                            }
+                            itemStyle: { color: colors[item.name] }
                         }))
                     }]
                 };
@@ -2198,16 +1736,16 @@
         function updateChartsData() {
             const key = `${currentSehir}_${currentBolge}_${currentEkip}`;
             const data = chartData[key] || chartData['Tümü_Tümü_Tümü'];
-
+            
             // Kullanıcı sayılarını güncelle
             updateUserStats(data);
-
+            
             // Donut chart'ı güncelle
             updateDonutChart(data.donutData);
-
+            
             // Bar chart'ı güncelle
             updateBarChart(data.barData);
-
+            
             // Cancel donut chart'ı güncelle
             updateCancelChart(data.cancelData);
         }
@@ -2215,16 +1753,16 @@
         // Çözüm Ekibi Dropdown Functionality
         const cozumEkibiBtn = document.getElementById('cozumEkibiBtn');
         const cozumEkibiDropdown = document.getElementById('cozumEkibiDropdown');
-
+        
         if (cozumEkibiBtn && cozumEkibiDropdown) {
             cozumEkibiBtn.addEventListener('click', function(e) {
                 e.stopPropagation();
                 cozumEkibiDropdown.classList.toggle('hidden');
             });
         }
-
+        
         // Dışarı tıklanınca kapanma
-        document.addEventListener("click", function(e) {
+        document.addEventListener("click", function (e) {
             if (!document.getElementById("dropdownSehirWrapper").contains(e.target)) {
                 document.getElementById("sehirDropdown").classList.add("hidden");
             }
@@ -2234,13 +1772,60 @@
             if (!document.getElementById("dropdownBolgeWrapper").contains(e.target)) {
                 document.getElementById("bolgeDropdown").classList.add("hidden");
             }
+            if (!document.getElementById("dropdownCategoryGorusmeSayisiWrapper").contains(e.target)) {
+                document.getElementById("dropdownCategoryGorusmeSayisi").classList.add("hidden");
+            }
             // Çözüm Ekibi dropdown'ını kapat
             if (cozumEkibiDropdown && !cozumEkibiBtn.contains(e.target)) {
                 cozumEkibiDropdown.classList.add("hidden");
             }
         });
     </script>
+    <script>
+                // Mevcut seçimleri takip etmek için global değişkenler
+        let currentCategoryGorusmeSayisi = 'Tümü';
+        let currentCategoryMemnuniyetOrani = 'Tümü';
+        let currentCategoryIptalDurumlari = 'Tümü';
+
+        function toggleDropdown(id) {
+            const dropdown = document.getElementById(id);
+            dropdown.classList.toggle("hidden");
+        }
+
+        function selectCategoryGorusmeSayisi(value) {
+            document.getElementById("selectedCategoryGorusmeSayisi").textContent = value;
+            document.getElementById("dropdownCategoryGorusmeSayisi").classList.add("hidden");
+            currentCategoryGorusmeSayisi = value;
+            updateChartsData();
+        }
+        function selectCategoryMemnuniyetOrani(value) {
+            document.getElementById("selectedCategoryMemnuniyetOrani").textContent = value;
+            document.getElementById("dropdownCategoryMemnuniyetOrani").classList.add("hidden");
+            currentCategoryMemnuniyetOrani = value;
+            updateChartsData();
+        }
+
+        function selectCategoryIptalDurumlari(value) {
+            document.getElementById("selectedCategoryIptalDurumlari").textContent = value;
+            document.getElementById("dropdownCategoryIptalDurumlari").classList.add("hidden");
+            currentCategoryIptalDurumlari = value;
+            updateChartsData();
+        }
+
+        function selectEkip(value) {
+            document.getElementById("selectedEkip").textContent = value;
+            document.getElementById("ekipDropdown").classList.add("hidden");
+            currentEkip = value;
+            updateChartsData();
+        }
+
+        function selectBolge(value) {
+            document.getElementById("selectedBolge").textContent = value;
+            document.getElementById("bolgeDropdown").classList.add("hidden");
+            currentBolge = value;
+            updateChartsData();
+        }
+    </script>
 
 </body>
-
 </html>
